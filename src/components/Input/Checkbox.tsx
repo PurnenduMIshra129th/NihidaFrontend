@@ -1,0 +1,19 @@
+interface ICheckboxProps {
+    text?: string
+    inputClassName?: string
+    labelClassName?: string
+}
+// eslint-disable-next-line @typescript-eslint/naming-convention
+function Checkbox(props: ICheckboxProps) {
+    const { text = 'None Provided', inputClassName = '', labelClassName = '' } = props
+    return (
+        <>
+            <div className="flex items-center">
+                <input checked id="checked-checkbox" type="checkbox" value="" className={`w-4 h-4 text-custom_white bg-custom_white border-custom_white rounded-sm focus:ring-blue-500 ${inputClassName}`} />
+                <label htmlFor="checked-checkbox" className={`ms-2 text-sm font-medium text-custom_white  ${labelClassName}`}>{text}</label>
+            </div>
+        </>
+    )
+}
+
+export default Checkbox
