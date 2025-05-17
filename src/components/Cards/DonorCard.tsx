@@ -5,7 +5,8 @@ import Typography from "../Text/Typography"
 function DonorCard() {
   return (
     <>
-      <div className="bg-custom_white rounded-lg absolute top-1/2 transform -translate-y-1/2 right-[12%] p-10">
+      <div className="bg-custom_white rounded-lg sm:p-10 p-[0.5rem]">
+      {/* <div className="bg-custom_white rounded-lg absolute top-1/2 transform -translate-y-1/2 right-[12%] p-10"></div> */}
         <div>
           <Typography className="mb-5 uppercase text-custom_maroon font-bold text-[20px] leading-[2] tracking-[4px]" text="For Donors" />
           <ul className="list-disc ml-10 text-custom_black">

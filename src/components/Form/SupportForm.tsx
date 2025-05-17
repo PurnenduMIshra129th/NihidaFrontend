@@ -8,7 +8,7 @@ import Typography from "../Text/Typography"
 function SupportForm() {
   return (
     <>
-    <div className="w-[80%]  bg-custom_blue_2 rounded-lg">
+    <div className="sm:w-[80%] w-full bg-custom_blue_2 rounded-lg">
         <div className="h-[5rem] bg-custom_maroon  px-7 flex justify-start items-center rounded-lg">
             <Typography text="Support HelpYourNGO" className="text-custom_white text-[15px] font-semibold leading-5" />
         </div>

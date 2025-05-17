@@ -8,7 +8,7 @@ import Typography from "../Text/Typography"
 function OfferingCard3() {
     return (
         <>
-            <div className="flex  flex-col flex-1">
+            <div className="flex  flex-col sm:flex-1">
                 <div className="bg-custom_green_1 w-full p-3 flex flex-col justify-center items-center pb-[3.5rem]" >
                     <Typography text="Charity Registry" className="text-custom_white text-center font-bold text-[20px] my-5 hover:underline cursor-pointer" />
                     <Typography text="Want to start Charity or make a gift on behalf of someone special to you? Make your registry now. Some more details abou..." className="text-custom_white text-center font-normal leading-[1.6] text-[16px] mb-3 hover:underline cursor-pointer" />

@@ -7,10 +7,10 @@ import SubHeading from "../../components/Text/SubHeading"
 function FundingPage() {
     return (
         <>
-            <div className="flex justify-center items-center flex-col w-[80%] m-3">
+            <div className="flex justify-center items-center flex-col sm:w-[80%] w-full p-[1rem] sm:p-0 m-3">
                 <SubHeading text="Crowdfunding Campaigns" />
-                <Heading text="Support causes you're passionate about" className="text-custom_maroon"/>
-                <div className="flex justify-end w-full my-3">
+                <Heading text="Support causes you're passionate about" className="text-custom_maroon text-center"/>
+                <div className="flex sm:justify-end justify-center w-full my-3">
                     <ViewAllButton text="View All Campaigns"/>
                 </div>
                 <div className="flex flex-row justify-center items-center flex-wrap w-full gap-[1.5rem] my-3">

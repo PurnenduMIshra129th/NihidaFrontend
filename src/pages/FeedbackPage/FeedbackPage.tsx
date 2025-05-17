@@ -25,10 +25,10 @@ function FeedbackPage() {
     const orderedCards = [...card.slice(currentIndex), ...card.slice(0, currentIndex)];
     return (
         <>
-            <div className="flex justify-center items-center flex-col w-full mt-3 bg-custom_blue_3">
+            <div className="flex justify-center items-center flex-col w-full mt-3 bg-custom_blue_3 overflow-hidden p-[1rem] sm:p-0">
                 <SubHeading text="Testimonials" className="text-custom_white mt-5" />
                 <Heading text="Happy Clients & Feedback" className="text-custom_white" />
-                <div className="flex flex-row justify-center items-center flex-wrap w-full gap-[1.5rem] my-[4rem] ">
+                <div className="flex flex-row justify-center items-center w-full gap-[1.5rem] py-[4rem] overflow-x-scroll sm:overflow-x-hidden">
                     {orderedCards.map(({ id, component }) => (
                         <div key={id}>
                             {component}
@@ -36,7 +36,7 @@ function FeedbackPage() {
                     ))}
                 </div>
 
-                <div className="w-full flex justify-center space-x-2 mb-[3rem]">
+                <div className="w-full flex justify-center space-x-2 mb-[3rem] ">
                     {card.map((_, index) => (
                         <div key={index}
                             className={`w-4 h-4 rounded-full transition-colors duration-300 ${index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'}`} />

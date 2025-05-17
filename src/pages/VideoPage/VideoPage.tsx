@@ -6,12 +6,12 @@ import Heading from "../../components/Text/Heading"
 function VideoPage() {
     return (
         <>
-            <div className="flex justify-center items-center flex-col w-[80%] m-3">
+            <div className="flex justify-center items-center flex-col sm:w-[80%] w-full p-[1rem] sm:p-0 m-3">
                 <Heading text="Webinar Videos"/>
-                <div className="flex justify-end w-full my-3">
+                <div className="flex sm:justify-end justify-center w-full my-3">
                     <ViewAllButton text="View All Videos" />
                 </div>
-                <div className="flex flex-row justify-center items-center flex-wrap w-full gap-[4.5rem] my-3">
+                <div className="flex flex-row justify-center items-center flex-wrap w-full sm:gap-[4.5rem] gap-2 my-3">
                     <VideoCard/>
                     <VideoCard/>
                     <VideoCard/>

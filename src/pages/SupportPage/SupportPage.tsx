@@ -7,8 +7,8 @@ import Typography from "../../components/Text/Typography"
 function SupportPage() {
     return (
         <>
-            <div className="flex justify-center items-start flex-row w-[80%] m-3">
-                <div className="w-[50%] flex flex-col">
+            <div className="flex justify-center items-start flex-row sm:w-[80%] w-full p-[1rem] sm:p-0 flex-wrap sm:flex-nowrap m-3">
+                <div className="sm:w-[50%] w-full flex flex-col">
                     <SubHeading text="Welcome to HelpYourNGO - Your Guide to the World of Philanthropy" className="mt-3"/>
                     <Heading text="Evaluate. Then Donate." className="mb-3 text-custom_maroon"/>
                     <p className="text-custom_grey text-justify">
@@ -27,7 +27,7 @@ function SupportPage() {
                     </p>
 
                 </div>
-                <div className="w-[50%] flex justify-end">
+                <div className="sm:w-[50%] w-full flex justify-end mt-[2rem] sm:mt-0">
                     <SupportForm/>
                 </div>
             </div>

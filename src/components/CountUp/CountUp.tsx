@@ -13,7 +13,7 @@ function CountUpComponent(props : ICountUpComponentProps) {
   return (
     <>
     <div className='mx-5 w-[150px]'>
-    <CountUp start={start} end={end} duration={duration} className='font-extrabold text-[40px] text-custom_orange_1'/>
+    <CountUp start={start} end={end} duration={duration} className='font-extrabold sm:text-[40px] text-[20px] text-custom_orange_1'/>
     <Typography text={text} className='my-4 text-[14px] font-semibold text-custom_maroon'/>
     </div>
     </>

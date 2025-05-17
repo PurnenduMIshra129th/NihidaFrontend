@@ -5,7 +5,7 @@ import Typography from '../Text/Typography'
 function Card() {
     return (
         <>
-            <div className="max-w-[20rem] bg-white border border-gray-200 rounded-tl-[10rem] shadow-sm h-[33rem] hover:bg-orange-100 relative group">
+            <div className="w-full my-[1rem] sm:my-0 sm:max-w-[20rem] bg-white border border-gray-200 rounded-tl-[10rem] shadow-sm sm:h-[33rem] h-auto hover:bg-orange-100 relative group">
                 <a href="#">
                     <img className="rounded-tl-[10rem]" src={img1} alt="" />
                 </a>

@@ -1,5 +1,4 @@
 import Carousel from "../../components/Carousel/Carousel"
-import SubscribeForm from "../../components/Form/SubscribeForm"
 import Navbar from "../../components/Navbar/Navbar"
 import BlogPage from "../BlogPage/BlogPage"
 import CountUpPage from "../CountUpPage/CountUpPage"
@@ -17,7 +16,6 @@ function HomePage() {
     <>
       <Navbar />
       <Carousel />
-      <SubscribeForm />
       <div className="w-full flex flex-col justify-center items-center">
         <SupportPage/>
         <BlogPage />

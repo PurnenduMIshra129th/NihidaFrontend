@@ -5,10 +5,10 @@ function VideoCard() {
   return (
     <>
     <div className='flex justify-center items-center flex-col'>
-        <div className='w-64'>
+        <div className='sm:w-64 w-full'>
             <img src={img2} alt="" />
         </div>
-        <Typography text='Why is transparency essential in the social sector?' className='my-3 hover:underline cursor-pointer text-[12px] text-custom_black_1 hover:text-custom_orange_1'/>
+        <Typography text='Why is transparency essential in the social sector?' className='my-3 hover:underline cursor-pointer sm:text-[12px] text-[20px] text-custom_black_1 hover:text-custom_orange_1'/>
     </div>
     </>
   )

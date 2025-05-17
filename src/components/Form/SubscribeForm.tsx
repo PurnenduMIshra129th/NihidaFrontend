@@ -10,7 +10,7 @@ function SubscribeForm() {
     const [isSubscribeFormClosed, setIsSubscribeFormClosed] = useState(false)
     return (
         <>{!isSubscribeFormClosed &&
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[3rem] sm:mt-0 z-20">
                 <div className="relative bg-custom_white h-[30rem] w-[25rem] overflow-hidden">
                     <div className="absolute top-[-25px] right-[-22px] ">
                         <div className="w-[5rem] h-[5rem] bg-custom_maroon rounded-full relative flex cursor-pointer group" onClick={() => setIsSubscribeFormClosed(true)}>

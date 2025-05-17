@@ -6,10 +6,10 @@ import SubHeading from "../../components/Text/SubHeading"
 function BlogPage() {
     return (
         <>
-            <div className="flex justify-center items-center flex-col w-[80%] m-3">
+            <div className="flex justify-center items-center flex-col sm:w-[80%] w-full p-[1rem] sm:p-0 m-3">
                 <SubHeading text="Our Blog"/>
                 <Heading text="Latest news from our blog" className="text-custom_maroon"/>
-                <div className="flex justify-end w-full my-3">
+                <div className="flex sm:justify-end justify-center w-full my-3">
                     <ViewAllButton text="View All Blog Posts"/>
                 </div>
                 <div className="flex flex-row justify-center items-center flex-wrap w-full gap-[1.5rem] my-3">

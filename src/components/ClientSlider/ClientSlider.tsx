@@ -24,18 +24,18 @@ function ClientSlider() {
     const orderedImages = [...img.slice(currentIndex), ...img.slice(0, currentIndex)];
     
     return (
-        <div className="w-full ">
+        <div className="w-full overflow-hidden">
             {/* Image Wrapper */}
-            <div className="flex justify-center space-x-[8rem]  transition-transform duration-500 ease-in-out" >
+            <div className="flex justify-center sm:space-x-[8rem] space-x-[3rem] transition-transform duration-500 ease-in-out sm:overflow-hidden overflow-x-scroll" >
                 {orderedImages.map((item, index) => (
-                    <div key={index} className="w-[10rem] h-[10rem]">
+                    <div key={index} className="sm:w-[10rem] sm:h-[10rem] w-[100px] h-[100px]">
                         <img src={item} alt="Client" className="w-full h-full object-cover rounded-lg shadow-lg" />
                     </div>
                 ))}
             </div>
 
             {/* Pagination Dots */}
-            <div className="w-full flex justify-center space-x-2 my-[5rem]">
+            <div className="w-full flex justify-center space-x-2 sm:my-[5rem] mt-[2rem] overflow-x-scroll sm:overflow-x-hidden">
                 {img.map((_, index) => (
                     <div key={index}
                         className={`w-4 h-4 rounded-full transition-colors duration-300 ${index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'}`} />
