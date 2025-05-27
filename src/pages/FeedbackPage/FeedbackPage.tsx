@@ -25,10 +25,10 @@ function FeedbackPage() {
     const orderedCards = [...card.slice(currentIndex), ...card.slice(0, currentIndex)];
     return (
         <>
-            <div className="flex justify-center items-center flex-col w-full mt-3 bg-custom_blue_3 overflow-hidden p-[1rem] sm:p-0">
+            <div className="flex justify-center items-center flex-col relative w-full mt-3 bg-custom_blue_3 overflow-hidden p-[1rem] sm:p-0">
                 <SubHeading text="Testimonials" className="text-custom_white mt-5" />
                 <Heading text="Happy Clients & Feedback" className="text-custom_white" />
-                <div className="flex flex-row justify-center items-center w-full gap-[1.5rem] py-[4rem] overflow-x-scroll sm:overflow-x-hidden">
+                <div className="flex flex-row items-center w-full gap-[1.5rem] py-[4rem] overflow-x-auto sm:overflow-x-hidden sm:justify-center">
                     {orderedCards.map(({ id, component }) => (
                         <div key={id}>
                             {component}

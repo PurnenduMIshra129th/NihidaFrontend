@@ -285,6 +285,33 @@ export const GiftIcon = ({ size = 24, color = 'currentColor', ...props }) => (
     <path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M469 128h-76q12-20 12-43q0-35-25-60T320 0q-40 0-64 30q-24-30-64-30q-35 0-60 25t-25 60q0 23 12 43H43q-18 0-30.5 12.5T0 171v42q0 18 12.5 30.5T43 256v192q0 27 18 45.5t46 18.5h298q28 0 46-18.5t18-45.5V256q18 0 30.5-12.5T512 213v-42q0-18-12.5-30.5T469 128zM192 469h-85q-22 0-22-21V256h107v213zm0-256H43v-42h149v42zm0-85q-17 0-30-12.5T149 85q0-17 13-29.5T192 43t30 12.5T235 85q0 18-13 30.5T192 128zm85 341h-42V256h42v213zm0-256h-42v-42h42v42zm0-128q0-17 13-29.5T320 43t30 12.5T363 85q0 18-13 30.5T320 128t-30-12.5T277 85zm150 363q0 21-22 21h-85V256h107v192zm42-235H320v-42h149v42z" />
   </svg>
 );
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const MediaIcon = ({ size = 24, color = 'currentColor', ...props }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 512 512" 
+    width={size} 
+    height={size} 
+    fill={color}
+    {...props}
+  >
+    <path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M244.4 69.8L174.5 0h-58.2l69.8 69.8h58.3zm151.2 0L325.8 0h-58.2l69.8 69.8h58.2zM418.9 0l69.8 69.8H512V0h-93.1zm0 162.9h-93.1l69.8-69.8h-58.2l-69.8 69.8h-93.1l69.8-69.8h-58.2l-69.8 69.8h-93l69.8-69.8H0v372.4C0 491.1 20.9 512 46.5 512h418.9c25.7 0 46.5-20.9 46.5-46.5V93.1h-23.3l-69.7 69.8zM23.3 0H0v69.8h93.1L23.3 0z"/>
+  </svg>
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const NewspaperFoldingIcon = ({ size = 24, color = 'currentColor', ...props }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 48 48" 
+    width={size} 
+    height={size} 
+    fill={color}
+    {...props}
+  >
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4"><path stroke="#000" d="M22 44L21 36"/><path fill="#2F88FF" stroke="#000" d="M42 44V12H26L27 20L28 28L29 36L22 44H42Z"/><path stroke="#fff" d="M28 28H33"/><path stroke="#fff" d="M27 20H33"/><path fill="#2F88FF" stroke="#000" d="M6 4H25L26 12L27 20L28 28L29 36H21H6V4Z"/><path stroke="#fff" d="M12 12H19"/><path stroke="#fff" d="M12 20H20"/><path stroke="#fff" d="M12 28H21"/></g>
+  </svg>
+);
+
 
 
 

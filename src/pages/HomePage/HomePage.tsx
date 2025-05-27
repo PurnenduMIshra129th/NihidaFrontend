@@ -1,5 +1,4 @@
 import Carousel from "../../components/Carousel/Carousel"
-import Navbar from "../../components/Navbar/Navbar"
 import BlogPage from "../BlogPage/BlogPage"
 import CountUpPage from "../CountUpPage/CountUpPage"
 import FeedbackPage from "../FeedbackPage/FeedbackPage"
@@ -14,7 +13,6 @@ import VideoPage from "../VideoPage/VideoPage"
 function HomePage() {
   return (
     <>
-      <Navbar />
       <Carousel />
       <div className="w-full flex flex-col justify-center items-center">
         <SupportPage/>

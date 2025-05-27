@@ -1,3 +1,5 @@
+import { Link } from "react-router"
+
 import { CallIcon, FacebookIcon, InstagramIcon, LinkedinIcon, TelegramIconChangedBG, TwitterIcon, YoutubeIcon } from "../Icons/Icon"
 import IconWithText from "../Icons/IconWithText"
 
@@ -32,6 +34,9 @@ function Navbar() {
                             </li>
                         </ul> */}
                         <div className="flex flex-row space-x-4 w-full sm:w-auto justify-center mb-3 sm:mb-0">
+                            <div  className='cursor-pointer'>
+                                 <Link to="/manage">Manage</Link>
+                            </div>
                             <FacebookIcon className='cursor-pointer' />
                             <TwitterIcon className='cursor-pointer' />
                             <InstagramIcon className='cursor-pointer' />
