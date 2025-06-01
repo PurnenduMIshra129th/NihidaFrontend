@@ -1,10 +1,7 @@
+import { IFeedbackCardProps } from "../../types/cards/card.type"
 import { QuoteLeftIcon, StarIcon } from "../Icons/Icon"
 import Typography from "../Text/Typography"
-interface IFeedbackCardProps {
-    aboutSection: string
-    title: string
-    description: string
-}
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function FeedbackCard(props: IFeedbackCardProps) {
     const { aboutSection = '', title = '', description = '' } = props

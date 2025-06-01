@@ -1,8 +1,6 @@
+import { IDonorCardIconProps } from "../../types/Icons/icon.types"
 import { QuoteAltIcon } from "./Icon"
 
-interface IDonorCardIconProps{
-    text?:string
-}
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function DonorCardIcon(props:IDonorCardIconProps) {
     const {text = 'No text Provide'} = props

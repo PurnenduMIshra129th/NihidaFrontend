@@ -1,8 +1,6 @@
+import { IFooterTextProps } from "../../types/Text/text.types"
 import Typography from "./Typography"
 
-interface IFooterTextProps{
-    text?:string
-}
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function FooterText(props:IFooterTextProps) {
     const {text}=props

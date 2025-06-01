@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import apiClient from "../services/axiosInstance";
+import {apiClient} from "../services/axiosInstance";
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 const useFetch = <T,>(endpoint: string, method: HttpMethod = "GET", payload?: { [key: string]: string }) => {

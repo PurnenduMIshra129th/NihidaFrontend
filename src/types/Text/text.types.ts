@@ -1,12 +1,16 @@
 export interface IHeadingProps {
-    text?:string
-    className?:string
+    text?: string
+    className?: string
 }
 export interface ISubHeadingProps {
     text?: string
-    className?:string
-  }
-export interface ITypographyProps{
-    text?:string
-    className?:string
+    className?: string
+}
+export interface ITypographyProps {
+    text?: string
+    className?: string
+}
+
+export interface IFooterTextProps {
+    text?: string
 }

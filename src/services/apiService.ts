@@ -1,5 +1,4 @@
-// utils/apiRequest.ts
-import apiClient from "../services/axiosInstance";
+import { apiClient, multipartApiClient } from "../services/axiosInstance";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
@@ -15,5 +14,16 @@ export const apiRequest = async <T,>(endpoint: string, method: HttpMethod = "GET
     // eslint-disable-next-line no-console
     console.error("API Request Error:", err);
     return null;
+  }
+};
+
+export const uploadMedia = async (endpoint: string, formData: FormData) => {
+  try {    
+    const response = await multipartApiClient.post(endpoint, formData);
+    return response.data;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(`Media Upload Error at ${endpoint}:`, error);
+    throw error;
   }
 };

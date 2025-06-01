@@ -1,5 +1,6 @@
 import ViewAllButton from "../../components/Button/ViewAllButton"
 import VideoCard from "../../components/Cards/VideoCard"
+// import YouTubePopup from "../../components/Popup/YoutubePopUp"
 import Heading from "../../components/Text/Heading"
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -12,6 +13,7 @@ function VideoPage() {
                     <ViewAllButton text="View All Videos" />
                 </div>
                 <div className="flex flex-row justify-center items-center flex-wrap w-full sm:gap-[4.5rem] gap-2 my-3">
+                    {/* <YouTubePopup /> */}
                     <VideoCard/>
                     <VideoCard/>
                     <VideoCard/>

@@ -1,12 +1,6 @@
+import { IIconWithTextProps } from "../../types/Icons/icon.types"
 import Typography from "../Text/Typography"
 
-interface IIconWithTextProps {
-    Icon: React.ElementType
-    text?:string
-    iconClassName?: string;
-    textClassName?: string;
-  
-}
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function IconWithText(props: IIconWithTextProps) {
     // eslint-disable-next-line @typescript-eslint/naming-convention

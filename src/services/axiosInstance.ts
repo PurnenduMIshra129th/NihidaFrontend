@@ -1,11 +1,20 @@
 import axios from "axios";
 
-const apiClient = axios.create({
-  baseURL: "http://localhost:3000/api/",
-  timeout: 5000,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+import { API_BASE_URL } from "../utils/config";
 
-export default apiClient;
+// Function to create an Axios instance with dynamic Content-Type
+const createApiClient = (contentType: string = "application/json") => {
+  return axios.create({
+    baseURL: API_BASE_URL,
+    // timeout: 5000,
+    headers: {
+      "Content-Type": contentType,
+    },
+  });
+};
+
+// Default client for JSON requests
+export const apiClient = createApiClient();
+
+// Separate client for multipart/form-data requests
+export const multipartApiClient = createApiClient("multipart/form-data");

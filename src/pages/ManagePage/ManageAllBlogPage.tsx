@@ -1,26 +1,15 @@
 import { useEffect, useState } from "react";
 
-import EditMangeCard from "../../components/Cards/EditMangeCard";
+import EditDeleteBlogCard from "../../components/Cards/AdminCard/EditDeleteBlogCard";
 import useFetch from "../../hooks/useFetch";
 import { apiRequest } from "../../services/apiService";
+import { IApiResponse, IBlogApiData } from "../../types/api/blog.types";
 import { trimText } from "../../utils/trimText";
-interface IApiResponse {
-  statusCode: number;
-  message: string;
-  data: IApiData[]
-}
-interface IApiData {
-  _id: string;
-  heading: string;
-  description: string;
-  time: string;
-  __v: number;
-  imagePath: string;
-}
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
-function ViewAllMediaPage() {
-  const { data, error, isLoading, fetchData } = useFetch<IApiResponse>("media/getAllMedia");
-  const [apiData, setApiData] = useState<IApiData[]>();
+function ManageAllBlogPage() {
+  const { data, error, isLoading, fetchData } = useFetch<IApiResponse>("blog/getAllBlog");
+  const [apiData, setApiData] = useState<IBlogApiData[]>();
 
   useEffect(() => {
     const manageData = () => {
@@ -41,13 +30,13 @@ function ViewAllMediaPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await apiRequest(`media/deleteMedia/${id}`, "DELETE");
+      await apiRequest(`blog/deleteBlog/${id}`, "DELETE");
       // eslint-disable-next-line no-console
-      console.log("Deleted media:", id);
+      console.log("Deleted Blog:", id);
       fetchData();
     } catch (err) {
       // eslint-disable-next-line no-console
-      console.error("Error deleting media:", err);
+      console.error("Error deleting Blog:", err);
     }
   };
 
@@ -55,11 +44,11 @@ function ViewAllMediaPage() {
     <div className="mt-[4rem] px-[1rem]">
       <div className="flex flex-row justify-center flex-wrap gap-[1.5rem] ">
         {apiData && apiData.map((item, index) => (
-          <EditMangeCard key={index} textHeading={trimText(item.heading, 6)} textDescription={trimText(item.description, 10)} imageURL={item.imagePath} onDelete={() => handleDelete(item._id)} />
+          <EditDeleteBlogCard key={index} textHeading={trimText(item.heading, 6)} textDescription={trimText(item.description, 10)} imageURL={item.imagePath} onDelete={() => handleDelete(item._id)} id={item._id}/>
         ))}
       </div>
     </div>
   )
 }
 
-export default ViewAllMediaPage
+export default ManageAllBlogPage

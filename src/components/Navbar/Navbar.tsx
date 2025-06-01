@@ -10,9 +10,9 @@ function Navbar() {
             <nav className={`w-full z-20 top-0 fixed start-0 border-b text-custom_white bg-custom_blue_1`} >
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
                     <div className="flex flex-row flex-wrap justify-center space-x-4">
-                        <a href="" className="flex items-center space-x-3 rtl:space-x-reverse outline-none ">
+                        <Link to = '/' className="flex items-center space-x-3 rtl:space-x-reverse outline-none ">
                             <span className={`self-center text-2xl font-semibold whitespace-nowrap ml-3 sm:ml-0 mt-[1rem] sm:mt-0`}>Nihida</span>
-                        </a>
+                        </Link>
                         <div className="flex flex-row  justify-center space-x-4 text-custom_white">
                             <IconWithText Icon={TelegramIconChangedBG} text="Nihida@Telegram.com" textClassName="text-custom_white" iconClassName="text-custom_white size-3" />
                             <IconWithText Icon={CallIcon} text="+91 8144746685" textClassName="text-custom_white" iconClassName="text-custom_white size-3" />
