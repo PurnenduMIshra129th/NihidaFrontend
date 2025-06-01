@@ -1,20 +1,18 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import OfferingCard1 from "../../components/OfferingCard/OfferingCard1";
 import OfferingCard2 from "../../components/OfferingCard/OfferingCard2";
 import OfferingCard3 from "../../components/OfferingCard/OfferingCard3";
 import Heading from "../../components/Text/Heading"
 import SubHeading from "../../components/Text/SubHeading"
-import { fetchService, selectService } from "../../contexts/slice/serviceSlice";
+import { fetchService } from "../../contexts/slice/serviceSlice";
 import { AppDispatch } from "../../contexts/store";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function ServicesPage() {
-  const dispatch = useDispatch<AppDispatch>();
-  const serviceList = useSelector(selectService);
-  console.log('serviceList', serviceList);
-  
+  const dispatch = useDispatch<AppDispatch>();  
+
   useEffect(() => {
     dispatch(fetchService());
   },[dispatch]);
