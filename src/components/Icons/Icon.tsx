@@ -365,6 +365,36 @@ export const ISocialServicesIcon = ({ size = 24, color = 'currentColor', ...prop
   </svg>
 );
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const VideoIcon = ({ size = 24, color = 'currentColor', ...props }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 100 100" 
+    width={size} 
+    height={size} 
+    fill={color}
+    {...props}
+  >
+    <path xmlns="http://www.w3.org/2000/svg" fill="#1C3C50" d="M98 10h-4c-1.104 0-9 4.896-9 6H74v26h11c0 1.104 7.896 6 9 6h4a2 2 0 0 0 2-1.999V12a2 2 0 0 0-2-2zM69.979 48.569c.006 2.149.015 3.432.021 3.432v-3l-.021-.432zM12 58a2.003 2.003 0 0 0 2 2h8.957c1.812 2.618 4.459 6 6.043 6h2c5.523 0 10 4.479 10 10.001V96a4 4 0 0 0 4 4h13a4 4 0 0 0 4-4V66h5c2.209 0 3-.79 3-2.999v-11H12V58z"/><path xmlns="http://www.w3.org/2000/svg" fill="#EBEEEF" d="M70 0H12C5.373 0 0 5.373 0 12v28c0 6.628 5.373 12.001 12 12.001h58c-.051 0-.07-52.052 0-52.001z"/><path xmlns="http://www.w3.org/2000/svg" fill="#C8CBCB" d="M27 15h-6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2z"/><path xmlns="http://www.w3.org/2000/svg" fill="#23475F" d="M72 0h-2v52h2a2 2 0 0 0 2-2.001V2a2 2 0 0 0-2-2zm13 16h-3v26h3V16z"/><path xmlns="http://www.w3.org/2000/svg" fill="#fff" d="M54 12a6 6 0 1 0 6 6c0-3.313-2.688-6-6-6z"/><path xmlns="http://www.w3.org/2000/svg" fill="#FF4B39" d="M54 14a4 4 0 1 0 0 8a4 4 0 0 0 0-8z"/><path xmlns="http://www.w3.org/2000/svg" fill="#00BD9C" d="M37 14H13a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h24a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2z"/><path xmlns="http://www.w3.org/2000/svg" fill="#1C3C50" d="M28 13h-6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2z"/><path xmlns="http://www.w3.org/2000/svg" fill="#23475F" d="M26 13h-2v10h2V13z"/><path xmlns="http://www.w3.org/2000/svg" fill="#BCC4C8" d="M0 36v4c0 6.628 5.373 12.001 12 12.001h58c-.02 0-.033-7.074-.041-16L0 36z"/><path xmlns="http://www.w3.org/2000/svg" fill="#23475F" d="M98 10h-4c-.176 0-.538.135-1 .349v37.302c.462.214.824.349 1 .349h4a2 2 0 0 0 2-1.999V12a2 2 0 0 0-2-2z"/><path xmlns="http://www.w3.org/2000/svg" fill="#00A185" d="M20 21v-5.722c-.595.346-1 .984-1 1.723v5h1.277A1.984 1.984 0 0 1 20 21z"/><path xmlns="http://www.w3.org/2000/svg" fill="#23475F" d="M22.957 60c1.812 2.618 4.459 6 6.043 6h38c2.209 0 3-.79 3-2.999"/><path xmlns="http://www.w3.org/2000/svg" fill="#23475F" d="M22.957 60c1.812 2.618 4.459 6 6.043 6h38c2.209 0 3-.79 3-2.999V60H22.957z"/>
+  </svg>
+);
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ImageIcon = ({ size = 24, color = 'currentColor', ...props }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    width={size} 
+    height={size} 
+    fill={color}
+    {...props}
+  >
+    <circle xmlns="http://www.w3.org/2000/svg" cx="8.5" cy="8.5" r="2.5" fill="currentColor"/><path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M16 10c-2 0-3 3-4.5 3s-1.499-1-3.5-1c-2 0-3.001 4-3.001 4H19s-1-6-3-6zm4-7H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm0 14H4V5h16v12z"/>
+  </svg>
+);
+
+
+
 
 
 

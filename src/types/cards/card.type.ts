@@ -5,6 +5,11 @@ export interface IEditDeleteMediaCardProps {
     onDelete?: () => void
     id?:string
 }
+export interface IEditDeleteCarouselCardProps {
+    imageURL?: string
+    onDelete?: () => void
+    id?:string
+}
 export interface IEditDeleteNewsCardProps {
     textHeading?: string
     textDescription?: string
@@ -16,6 +21,14 @@ export interface IEditDeleteServiceCardProps {
     textHeading?: string
     textDescription?: string
     imageURL?: string
+    onDelete?: () => void
+    id?:string
+}
+export interface IEditDeleteVideoCardProps {
+    textHeading?: string
+    textDescription?: string
+    imageURL?: string
+    videoUrl?: string
     onDelete?: () => void
     id?:string
 }
@@ -46,4 +59,12 @@ export interface ICardProps{
     imagePath?:string
     id?:string
     readMoreRouting?:string
+}
+export interface IVideoCardProps{
+    textTime?: string
+    textHeading?: string
+    textDescription?: string
+    imageURL?: string
+    videoUrl?: string
+    id?:string
 }

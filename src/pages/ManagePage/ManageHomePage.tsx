@@ -1,7 +1,9 @@
 import ManageBlogCard from "../../components/Cards/AdminCard/ManageBlogCard"
+import ManageCarouselCard from "../../components/Cards/AdminCard/ManageCarouselCard"
 import ManageMediaCard from "../../components/Cards/AdminCard/ManageMediaCard"
 import ManageNewsCard from "../../components/Cards/AdminCard/ManageNewsCard"
 import ManageServiceCard from "../../components/Cards/AdminCard/ManageServiceCard"
+import ManageVideoCard from "../../components/Cards/AdminCard/ManageVideoCard"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function ManageHomePage() {
   return (
@@ -12,6 +14,8 @@ function ManageHomePage() {
           <ManageBlogCard />
           <ManageNewsCard/>
           <ManageServiceCard/>
+          <ManageVideoCard/>
+          <ManageCarouselCard/>
         </div>
       </div>
     </>

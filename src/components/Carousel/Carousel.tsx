@@ -1,36 +1,56 @@
 import { useEffect, useState } from "react";
 
-import img1 from "../../assets/img1.jpg";
-import img2 from "../../assets/img2.jpg";
-import img3 from "../../assets/img3.png";
-import img4 from "../../assets/img4.png";
-import img5 from "../../assets/img5.jpg";
+import useFetch from "../../hooks/useFetch";
+import { ICarouselApiData } from "../../types/api/carousel.types";
+import { IApiResponse } from "../../types/api/service.types";
 import DonorCard from "../Cards/DonorCard";
 import SubscribeForm from "../Form/SubscribeForm";
 import Heading from "../Text/Heading";
 
-const images = [img1, img2, img3, img4, img5];
+
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Carousel() {
+    const { data, error, isLoading } = useFetch<IApiResponse>("carousel/getAllCarousel");
+    const [apiData, setApiData] = useState<ICarouselApiData[]>();
+
+    useEffect(() => {
+        const manageData = () => {
+            if (data && data.statusCode == 1 && data.data.length > 0) {
+                setApiData(data.data.slice(0, 5))
+            }
+            if (error) {
+                // eslint-disable-next-line no-console
+                console.log(error)
+            }
+            if (isLoading) {
+                // eslint-disable-next-line no-console
+                console.log(isLoading)
+            }
+        }
+        manageData();
+    }, [data, error, isLoading])
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Auto-slide functionality
     useEffect(() => {
+        if(!apiData) return
         const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % apiData?.length);
         }, 3000); // Change slide every 3 seconds
         return () => clearInterval(interval); // Cleanup interval on unmount
     }, []);
 
     // Next slide function
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        if(!apiData) return
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % apiData.length);
     };
 
     // Previous slide function
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+        if(!apiData) return
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + apiData.length) % apiData.length);
     };
 
     return (
@@ -38,12 +58,12 @@ function Carousel() {
             <div className="relative w-full h-[100%]" >
                 {/* Carousel wrapper */}
                 <div className="relative h-full overflow-hidden rounded-lg ">
-                    {images.map((img, index) => (
+                    {apiData?.map((img, index) => (
                         <div
                             key={index}
                             className={`h-full w-full transition-opacity duration-700 ease-in-out${index === currentIndex ? "opacity-100" : "opacity-0 hidden"}`}
                         >
-                            <img src={img} className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
+                            <img src={img.imagePath } className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
                         </div>
                     ))}
 
@@ -51,7 +71,7 @@ function Carousel() {
 
                 {/* Navigation Indicators */}
                 <div className="absolute z-10 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-                    {images.map((_, index) => (
+                    {apiData?.map((_, index) => (
                         <button
                             key={index}
                             type="button"

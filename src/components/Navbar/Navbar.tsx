@@ -11,7 +11,8 @@ function Navbar() {
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ">
                     <div className="flex flex-row flex-wrap justify-center space-x-4">
                         <Link to = '/' className="flex items-center space-x-3 rtl:space-x-reverse outline-none ">
-                            <span className={`self-center text-2xl font-semibold whitespace-nowrap ml-3 sm:ml-0 mt-[1rem] sm:mt-0`}>Nihida</span>
+                            <img src="/NIHIDA-LOGO.jpg" className="w-[2rem] h-[2rem]" alt="Nihida Logo"/>
+                            {/* <span className={`self-center text-2xl font-semibold whitespace-nowrap ml-3 sm:ml-0 mt-[1rem] sm:mt-0`}>Nihida</span> */}
                         </Link>
                         <div className="flex flex-row  justify-center space-x-4 text-custom_white">
                             <IconWithText Icon={TelegramIconChangedBG} text="Nihida@Telegram.com" textClassName="text-custom_white" iconClassName="text-custom_white size-3" />

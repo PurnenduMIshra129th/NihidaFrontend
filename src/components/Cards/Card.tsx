@@ -12,7 +12,7 @@ function Card(props:ICardProps) {
         <>
             <div className="w-full my-[1rem] sm:my-0 sm:max-w-[20rem] bg-white border border-gray-200 rounded-tl-[10rem] shadow-sm sm:h-[33rem] h-auto hover:bg-orange-100 relative group">
                 <a href="#">
-                    <img className="rounded-tl-[10rem] h-[12rem] w-full object-cover" src={imagePath} alt="" />
+                    <img className=" h-[12rem] w-full object-cover" src={imagePath} alt="" />
                 </a>
                 <div className="p-5 break-words ">
                     <Typography className='uppercase hover:underline cursor-pointer text-custom_green_1 font-medium text-[12px] tracking-[1px] mb-2' text={textTime} />

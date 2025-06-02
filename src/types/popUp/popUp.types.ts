@@ -10,6 +10,12 @@ export interface ICreateNewServicePopUpProps {
 export interface ICreateNewBlogPopUpProps {
     setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
 }
+export interface ICreateNewCarouselPopUpProps {
+    setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
+}
+export interface ICreateNewVideoPopUpProps {
+    setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
+}
 
 export interface IDynamicEditPopUpProps {
     setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
@@ -26,11 +32,19 @@ export interface IEditMediaPopUpProps {
     setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
     id?: string
 }
+export interface IEditCarouselPopUpProps {
+    setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
+    id?: string
+}
 export interface IEditNewsPopUpProps {
     setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
     id?: string
 }
 export interface IEditServicePopUpProps {
+    setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
+    id?: string
+}
+export interface IEditVideoPopUpProps {
     setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
     id?: string
 }
@@ -42,6 +56,12 @@ export interface IMediaItem {
     _id: string;
     heading: string;
     description: string;
+    time: string;
+    __v: number;
+    imagePath: string;
+}
+export interface ICarouselItem {
+    _id: string;
     time: string;
     __v: number;
     imagePath: string;
@@ -62,6 +82,15 @@ export interface IServiceItem {
     __v: number;
     imagePath: string;
 }
+export interface IVideoItem {
+    _id: string;
+    heading: string;
+    description: string;
+    videoUrl: string
+    time: string;
+    __v: number;
+    imagePath: string;
+}
 export interface IBlogItem {
     _id: string;
     heading: string;
@@ -69,4 +98,11 @@ export interface IBlogItem {
     time: string;
     __v: number;
     imagePath: string;
+}
+export interface IYouTubePopupProps {
+    videoUrl: string; 
+    textHeading?: string
+    textDescription?: string
+    setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
+    time?: string
 }
