@@ -1,3 +1,6 @@
+
+export const defaultImage = "public/fallbackImage.jpg"
+
 export const nameOfIcon = {
     instagram :"instagram",
     facebook : "facebook" ,

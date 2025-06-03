@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 
-import SI_1 from "../../assets/SI_1.png"
-import SI_2 from "../../assets/SI_2.png"
-import SI_3 from "../../assets/SI_3.png"
-import SI_4 from "../../assets/SI_4.png"
-import SI_5 from "../../assets/SI_5.png"
+import { defaultImage } from "../../utils/constant";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function ClientSlider() {
-    const img = [SI_1, SI_2, SI_3, SI_4, SI_5];
+    const img = [defaultImage ,defaultImage];
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Rotate images one position at a time

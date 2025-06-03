@@ -1,12 +1,12 @@
 import { useState } from 'react'
 
-import img2 from '../../assets/img2.jpg'
 import { IVideoCardProps } from '../../types/cards/card.type'
+import { defaultImage } from '../../utils/constant'
 import YouTubePopup from '../Popup/YoutubePopUp'
 import Typography from '../Text/Typography'
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function VideoCard(props:IVideoCardProps) {
-  const {textHeading = 'no Heading', textDescription = 'no Description', imageURL = img2, videoUrl ='' , textTime = 'no Time'} = props
+  const {textHeading = 'no Heading', textDescription = 'no Description', imageURL = defaultImage, videoUrl ='' , textTime = 'no Time'} = props
   const [isPopUpOpened, setIsPopUpOpened] = useState(false)
   return (
     <>

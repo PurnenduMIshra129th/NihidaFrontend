@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 
-import icon1_1 from "../../assets/ServiceIcon1.png"
+import icon1_1 from "../../assets/ServiceIcon1.1.png"
 import { selectService } from "../../contexts/slice/serviceSlice"
 import { trimText } from "../../utils/trimText"
 import { EcologyIcon } from "../Icons/Icon"
