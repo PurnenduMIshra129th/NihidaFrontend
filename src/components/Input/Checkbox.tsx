@@ -1,10 +1,8 @@
 import { useState } from "react";
 
-interface ICheckboxProps {
-    text?: string
-    inputClassName?: string
-    labelClassName?: string
-}
+import { ICheckboxProps } from "../../types/input/input.types";
+
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Checkbox(props: ICheckboxProps) {
     const [isChecked, setIsChecked] = useState(false);

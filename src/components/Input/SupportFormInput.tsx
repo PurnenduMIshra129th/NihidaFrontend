@@ -1,9 +1,6 @@
+import { ISupportFormInputProps } from "../../types/input/input.types";
 import Input from "./Input"
-interface ISupportFormInputProps {
-    placeholder?: string
-    className?: string
-    Icon?: React.ElementType;
-}
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function SupportFormInput(props: ISupportFormInputProps) {
     // eslint-disable-next-line @typescript-eslint/naming-convention

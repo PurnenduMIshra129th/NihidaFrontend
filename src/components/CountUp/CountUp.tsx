@@ -1,12 +1,8 @@
 import CountUp from 'react-countup';
 
+import { ICountUpComponentProps } from '../../types/countUp/countUp.types';
 import Typography from '../Text/Typography';
-interface ICountUpComponentProps{
-    text?:string
-    start?:number
-    end?:number
-    duration?:number
-}
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function CountUpComponent(props : ICountUpComponentProps) {
     const {text ,start = 0 ,end=1000,duration=10}=props;
