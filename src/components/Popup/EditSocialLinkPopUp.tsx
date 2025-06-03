@@ -23,7 +23,7 @@ function EditSocialLinkPopUp(props: IEditSocialLinkPopUpProps) {
                 initialValues={socialLinkList.length > 0 ? socialLinkList[0] : initialValues}
                 enableReinitialize
                 onSubmit={(values) => {
-                    apiRequest(`/socialLink/updateSocialLink/${socialLinkList[0]._id}`, "POST", values)
+                    apiRequest(`/socialLink/updateSocialLink/${socialLinkList[0]._id || 'noID'}`, "POST", values)
                         // eslint-disable-next-line no-console
                         .then((response: unknown) => console.log("SocialLink Updated Successfully:", response))
                         // eslint-disable-next-line no-console
@@ -34,7 +34,7 @@ function EditSocialLinkPopUp(props: IEditSocialLinkPopUpProps) {
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 w-full max-w-md max-h-full">
                         <div className="relative bg-white rounded-lg shadow-sm ">
                             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t  border-gray-200">
-                                <Typography className="text-lg font-semibold text-gray-900" text={`Edit SocialLink Content for ID: ${socialLinkList[0]._id}`} />
+                                <Typography className="text-lg font-semibold text-gray-900" text={`Edit SocialLink Content for ID: ${socialLinkList[0]._id || 'noID'}`} />
                                 <div className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" onClick={() => setIsPopUpOpened(false)}>
                                     <CrossIcon className="w-5 h-5" />
                                 </div>
