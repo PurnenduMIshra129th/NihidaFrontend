@@ -1,3 +1,4 @@
+
 import { IIconWithTextProps } from "../../types/Icons/icon.types"
 import Typography from "../Text/Typography"
 
@@ -7,7 +8,7 @@ function IconWithText(props: IIconWithTextProps) {
     const { Icon ,text ,iconClassName='',textClassName=''} = props
     return (
         <>
-            <div className="flex flex-row group cursor-pointer my-3 items-end">
+            <div className="flex flex-row group cursor-pointer my-3 items-end" >
                 <div className="mr-3 h-full flex items-center">
                 <Icon size={18} className={`text-custom_green_1 group-hover:text-custom_orange_1 group-hover:underline  ${iconClassName}`}/>
                 </div>

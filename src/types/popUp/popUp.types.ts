@@ -32,6 +32,10 @@ export interface IEditMediaPopUpProps {
     setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
     id?: string
 }
+export interface IEditSocialLinkPopUpProps {
+    setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
+    id?: string
+}
 export interface IEditCarouselPopUpProps {
     setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>
     id?: string
@@ -59,6 +63,20 @@ export interface IMediaItem {
     time: string;
     __v: number;
     imagePath: string;
+}
+export interface ISocialLinkItem {
+    _id: string;
+    time: string;
+    __v: number;
+    instagramUrl: string;
+    facebookUrl: string;
+    youtubeUrl: string;
+    linkedinUrl: string;
+    twitterUrl: string;
+    whatsappUrl: string;
+    telegramUrl: string;
+    phoneNumber1: string;
+    phoneNumber2: string;
 }
 export interface ICarouselItem {
     _id: string;

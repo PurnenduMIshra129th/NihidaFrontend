@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import serviceReducer from "./slice/serviceSlice";
+import socialLinkReducer from "./slice/socialLinkSlice";
 export const store = configureStore({
   reducer: {
     service: serviceReducer,
+    socialLink:socialLinkReducer
   },
 });
 
