@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 import { IEditDeleteMediaCardProps } from "../../../types/cards/card.type"
+import { defaultImage } from "../../../utils/constant"
 import Button from "../../Button/Button"
 import EditMediaPopUp from "../../Popup/EditMediaPopUp"
 import Typography from "../../Text/Typography"
@@ -8,7 +9,7 @@ import Typography from "../../Text/Typography"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function EditDeleteMediaCard(props: IEditDeleteMediaCardProps) {
     const [isEditPopUpOpened, setIsEditPopUpOpened] = useState(false)    
-    const { textHeading = 'no Heading', textDescription = 'no Description', imageURL = '' ,onDelete = () => {},id ='noID'} = props
+    const { textHeading = 'no Heading', textDescription = 'no Description', imageURL = defaultImage ,onDelete = () => {},id ='noID'} = props
     
     return (
         <>

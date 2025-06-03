@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 import { IEditDeleteBlogCardProps } from "../../../types/cards/card.type"
+import { defaultImage } from "../../../utils/constant"
 import Button from "../../Button/Button"
 import EditBlogPopUp from "../../Popup/EditBlogPopUp"
 import Typography from "../../Text/Typography"
@@ -8,7 +9,7 @@ import Typography from "../../Text/Typography"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function EditDeleteBlogCard(props: IEditDeleteBlogCardProps) {
     const [isEditPopUpOpened, setIsEditPopUpOpened] = useState(false)    
-    const { textHeading = 'no Heading', textDescription = 'no Description', imageURL = '' ,onDelete = () => {},id ='noID'} = props
+    const { textHeading = 'no Heading', textDescription = 'no Description', imageURL = defaultImage ,onDelete = () => {},id ='noID'} = props
     
     return (
         <>

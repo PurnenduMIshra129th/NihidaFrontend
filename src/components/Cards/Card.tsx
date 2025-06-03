@@ -1,12 +1,13 @@
 import { useNavigate } from 'react-router'
 
 import { ICardProps } from '../../types/cards/card.type'
+import { defaultImage } from '../../utils/constant'
 import { trimText } from '../../utils/trimText'
 import ReadMoreButton from '../Button/ReadMoreButton'
 import Typography from '../Text/Typography'
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Card(props:ICardProps) {
-    const {textTime = 'No time',textHeading = 'No Heading',textDescription = 'No Description',imagePath ='no image',id='noID' ,readMoreRouting='/'}=props
+    const {textTime = 'No time',textHeading = 'No Heading',textDescription = 'No Description',imagePath = defaultImage,id='noID' ,readMoreRouting='/'}=props
     const navigate = useNavigate()
     return (
         <>

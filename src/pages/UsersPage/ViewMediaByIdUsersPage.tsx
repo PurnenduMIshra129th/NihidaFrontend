@@ -5,6 +5,7 @@ import Heading from "../../components/Text/Heading";
 import Typography from "../../components/Text/Typography";
 import useFetch from "../../hooks/useFetch";
 import { IMediaResponseById } from "../../types/api/media.types";
+import { defaultImage } from "../../utils/constant";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function ViewMediaByIdUsersPage() {
@@ -26,7 +27,7 @@ function ViewMediaByIdUsersPage() {
     <div className="mt-[4rem] px-[1rem] flex justify-center flex-col items-center pb-[3rem]">
       {mediaDetails ? (
         <>
-          {mediaDetails.imagePath && <img src={mediaDetails.imagePath} alt="Media" className="mt-4 rounded-lg w-[90%] h-[30rem] object-cover" />}
+          {mediaDetails.imagePath && <img src={mediaDetails.imagePath || defaultImage} alt="Media" className="mt-4 rounded-lg w-[90%] h-[30rem] object-cover" />}
           <div className="w-[90%]">
           <Heading text={mediaDetails.heading} className="my-[3rem]"/>
           <Typography text={mediaDetails.description} className="break-words text-[25px]"/>

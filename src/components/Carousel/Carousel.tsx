@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { ICarouselApiData } from "../../types/api/carousel.types";
 import { IApiResponse } from "../../types/api/service.types";
+import { defaultImage } from "../../utils/constant";
 import DonorCard from "../Cards/DonorCard";
 import SubscribeForm from "../Form/SubscribeForm";
 import Heading from "../Text/Heading";
@@ -63,7 +64,7 @@ function Carousel() {
                             key={index}
                             className={`h-full w-full transition-opacity duration-700 ease-in-out${index === currentIndex ? "opacity-100" : "opacity-0 hidden"}`}
                         >
-                            <img src={img.imagePath } className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
+                            <img src={img.imagePath || defaultImage } className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
                         </div>
                     ))}
 

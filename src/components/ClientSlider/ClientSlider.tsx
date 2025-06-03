@@ -25,7 +25,7 @@ function ClientSlider() {
             <div className="flex justify-center sm:space-x-[8rem] space-x-[3rem] transition-transform duration-500 ease-in-out sm:overflow-hidden overflow-x-scroll" >
                 {orderedImages.map((item, index) => (
                     <div key={index} className="sm:w-[10rem] sm:h-[10rem] w-[100px] h-[100px]">
-                        <img src={item} alt="Client" className="w-full h-full object-cover rounded-lg shadow-lg" />
+                        <img src={item || defaultImage} alt="Client" className="w-full h-full object-cover rounded-lg shadow-lg" />
                     </div>
                 ))}
             </div>

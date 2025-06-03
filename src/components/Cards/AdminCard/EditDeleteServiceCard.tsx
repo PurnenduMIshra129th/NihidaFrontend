@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 import { IEditDeleteServiceCardProps } from "../../../types/cards/card.type"
+import { defaultImage } from "../../../utils/constant"
 import Button from "../../Button/Button"
 import EditServicePopUp from "../../Popup/EditServicePopUp"
 import Typography from "../../Text/Typography"
@@ -8,7 +9,7 @@ import Typography from "../../Text/Typography"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function EditDeleteServiceCard(props: IEditDeleteServiceCardProps) {
     const [isEditPopUpOpened, setIsEditPopUpOpened] = useState(false)    
-    const { textHeading = 'no Heading', textDescription = 'no Description', imageURL = '' ,onDelete = () => {},id ='noID'} = props
+    const { textHeading = 'no Heading', textDescription = 'no Description', imageURL = defaultImage ,onDelete = () => {},id ='noID'} = props
     
     return (
         <>

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 
 import icon1_2 from "../../assets/ServiceIcon3.2.png"
 import { selectService } from "../../contexts/slice/serviceSlice"
+import { defaultImage } from "../../utils/constant"
 import { trimText } from "../../utils/trimText"
 import {GiftIcon } from "../Icons/Icon"
 import Typography from "../Text/Typography"
@@ -16,7 +17,7 @@ function OfferingCard3() {
                     <Typography text={trimText(serviceList[4]?.heading,35)} className="text-custom_white text-center font-bold text-[20px] my-5 hover:underline cursor-pointer" />
                     <Typography text={trimText(serviceList[4]?.description,150)} className="text-custom_white text-center font-normal leading-[1.6] text-[16px] mb-3 hover:underline cursor-pointer" />
                 </div>
-                <div className="w-full relative h-[200px] bg-cover bg-center" style={{ backgroundImage: `url(${serviceList[4]?.imagePath})` }}>
+                <div className="w-full relative h-[200px] bg-cover bg-center" style={{ backgroundImage: `url(${serviceList[4]?.imagePath || defaultImage})` }}>
                     <div className='absolute -top-[3rem] left-1/2 transform -translate-x-1/2 w-[6rem] h-[6rem] bg-custom_white flex justify-center items-center rounded-full cursor-pointer'>
                     <div className='w-[6rem] h-[6rem] bg-custom_white flex justify-center items-center rounded-full'>
                         <GiftIcon className='size-10 text-custom_green_1' />
@@ -27,10 +28,10 @@ function OfferingCard3() {
                     <Typography text={trimText(serviceList[5]?.heading,35)} className="text-custom_white text-center font-bold text-[20px] my-5 hover:underline cursor-pointer" />
                     <Typography text={trimText(serviceList[5]?.description,150)} className="text-custom_white text-center font-normal leading-[1.6] text-[16px] mb-3 hover:underline cursor-pointer" />  
                 </div>
-                <div className="w-full relative h-[200px] bg-cover bg-center" style={{ backgroundImage: `url(${serviceList[5]?.imagePath})` }}>
+                <div className="w-full relative h-[200px] bg-cover bg-center" style={{ backgroundImage: `url(${serviceList[5]?.imagePath || defaultImage})` }}>
                     <div className='absolute -top-[3rem] left-1/2 transform -translate-x-1/2 w-[6rem] h-[6rem] bg-custom_white flex justify-center items-center rounded-full cursor-pointer'>
                     
-                    <img src={icon1_2} className="w-[60%]"></img>
+                    <img src={icon1_2 || defaultImage} className="w-[60%]"></img>
                     </div>
                 </div>
             </div>
