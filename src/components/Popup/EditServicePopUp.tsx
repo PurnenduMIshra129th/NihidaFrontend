@@ -1,8 +1,10 @@
 import { Formik } from "formik"
 import { useEffect, useState } from "react"
 
+import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
 import { uploadMedia } from "../../services/apiService"
+import { IServiceApiData } from "../../types/api/service.types"
 import { IEditServicePopUpProps, IServiceItem } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
 import { CrossIcon } from "../Icons/Icon"
@@ -15,6 +17,7 @@ function EditServicePopUp(props: IEditServicePopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ serviceHeading: "", serviceDescription: "", serviceImage: '' });
     const { data } = useFetch<{ statusCode: number; data: IServiceItem }>(`productAndService/getProductAndServiceById/${id}`);
+    const { fetchData } = useData<IServiceApiData[]>();
 
     useEffect(() => {
         if (data && data.statusCode === 1) {
@@ -26,23 +29,25 @@ function EditServicePopUp(props: IEditServicePopUpProps) {
         }
     }, [data]);
 
+    const handleFormSubmit = async (values: { serviceHeading: string; serviceDescription: string; serviceImage: string; }) => {
+        const formData = new FormData();
+        formData.append("heading", values.serviceHeading);
+        formData.append("description", values.serviceDescription);
+        if (values.serviceImage) {
+            formData.append("image", values.serviceImage);
+        }
+        setIsPopUpOpened(false)
+        await uploadMedia(`/productAndService/updateProductAndService/${id}`, formData)
+        await fetchData();
+    }
+
     return (
         <>
             <Formik
                 initialValues={initialValues}
                 enableReinitialize
                 onSubmit={(values) => {
-                    const formData = new FormData();
-                    formData.append("heading", values.serviceHeading);
-                    formData.append("description", values.serviceDescription);
-                    if (values.serviceImage) {
-                        formData.append("image", values.serviceImage);
-                    }
-                    uploadMedia(`/productAndService/updateProductAndService/${id}`, formData)
-                        // eslint-disable-next-line no-console
-                        .then((response: unknown) => console.log("Service Updated Successfully:", response))
-                        // eslint-disable-next-line no-console
-                        .catch((error: unknown) => console.error("Error updating Service:", error));
+                    handleFormSubmit(values)
                 }}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">

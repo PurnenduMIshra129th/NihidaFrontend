@@ -1,9 +1,11 @@
 import { Formik } from "formik"
 import { useEffect, useState } from "react"
 
+import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
 import { uploadMedia } from "../../services/apiService"
-import { ICarouselItem,IEditCarouselPopUpProps } from "../../types/popUp/popUp.types"
+import { ICarouselApiData } from "../../types/api/carousel.types"
+import { ICarouselItem, IEditCarouselPopUpProps } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
 import { CrossIcon } from "../Icons/Icon"
 import FormikFileInput from "../Input/FormikFileInput"
@@ -12,8 +14,9 @@ import Typography from "../Text/Typography"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function EditCarouselPopUp(props: IEditCarouselPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
-    const [initialValues, setInitialValues] = useState({  carouselImage: '' });
+    const [initialValues, setInitialValues] = useState({ carouselImage: '' });
     const { data } = useFetch<{ statusCode: number; data: ICarouselItem }>(`carousel/getCarouselById/${id}`);
+    const { fetchData } = useData<ICarouselApiData[]>();
 
     useEffect(() => {
         if (data && data.statusCode === 1) {
@@ -22,22 +25,24 @@ function EditCarouselPopUp(props: IEditCarouselPopUpProps) {
             });
         }
     }, [data]);
-    
+
+    const handleFormSubmit = async (values: { carouselImage: string; }) => {
+        const formData = new FormData();
+        if (values.carouselImage) {
+            formData.append("image", values.carouselImage);
+        }
+        setIsPopUpOpened(false)
+        await uploadMedia(`/carousel/updateCarousel/${id}`, formData)
+        await fetchData();
+    }
+
     return (
         <>
             <Formik
                 initialValues={initialValues}
-                enableReinitialize 
+                enableReinitialize
                 onSubmit={(values) => {
-                    const formData = new FormData();
-                    if (values.carouselImage) {
-                        formData.append("image", values.carouselImage);
-                    }
-                    uploadMedia(`/carousel/updateCarousel/${id}`, formData)
-                        // eslint-disable-next-line no-console
-                        .then((response: unknown) => console.log("Carousel Updated Successfully:", response))
-                        // eslint-disable-next-line no-console
-                        .catch((error: unknown) => console.error("Error updating carousel:", error));
+                    handleFormSubmit(values)
                 }}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">
@@ -51,13 +56,13 @@ function EditCarouselPopUp(props: IEditCarouselPopUpProps) {
                             </div>
                             <form className="p-4 md:p-5">
                                 <div className="grid gap-4 mb-4 grid-cols-2">
-                                
+
 
                                     <div className="col-span-2">
-                                        <FormikFileInput name="carouselImage" label="Upload Image" currentFileName={initialValues.carouselImage}/>
+                                        <FormikFileInput name="carouselImage" label="Upload Image" currentFileName={initialValues.carouselImage} />
                                     </div>
 
-                                   
+
                                 </div>
                                 <Button name="Update" onClick={handleSubmit} />
                             </form>

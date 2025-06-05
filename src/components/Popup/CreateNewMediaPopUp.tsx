@@ -1,6 +1,8 @@
 import { Formik } from "formik"
 
+// import { useAlert } from "../../contexts/context/alert/AlertContext"
 import { uploadMedia } from "../../services/apiService"
+// import { IApiResponse } from "../../types/api/media.types"
 import { ICreateNewMediaPopUpProps } from "../../types/popUp/popUp.types"
 import AddNewButton from "../Button/AddNewButton"
 import { CrossIcon } from "../Icons/Icon"
@@ -11,6 +13,7 @@ import Typography from "../Text/Typography"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function CreateNewMediaPopUp(props: ICreateNewMediaPopUpProps) {
     const { setIsPopUpOpened = () => false } = props
+    // const { showAlert } = useAlert();
     return (
         <>
             <Formik
@@ -22,11 +25,8 @@ function CreateNewMediaPopUp(props: ICreateNewMediaPopUpProps) {
                     if (values.mediaImage) {
                         formData.append("image", values.mediaImage);
                     }
+                    setIsPopUpOpened(false)
                     uploadMedia("/media/createMedia", formData)
-                        // eslint-disable-next-line no-console
-                        .then((response: unknown) => console.log("Media Uploaded Successfully:", response))
-                        // eslint-disable-next-line no-console
-                        .catch((error: unknown) => console.error("Error uploading media:", error));
                 }}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">

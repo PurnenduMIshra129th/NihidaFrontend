@@ -1,8 +1,10 @@
 import { Formik } from "formik"
 import { useEffect, useState } from "react"
 
+import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
 import { uploadMedia } from "../../services/apiService"
+import { IMediaApiData } from "../../types/api/media.types"
 import { IEditMediaPopUpProps, IMediaItem } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
 import { CrossIcon } from "../Icons/Icon"
@@ -15,6 +17,7 @@ function EditMediaPopUp(props: IEditMediaPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ mediaHeading: "", mediaDescription: "", mediaImage: '' });
     const { data } = useFetch<{ statusCode: number; data: IMediaItem }>(`media/getMediaById/${id}`);
+    const { fetchData } = useData<IMediaApiData[]>();
 
     useEffect(() => {
         if (data && data.statusCode === 1) {
@@ -25,25 +28,25 @@ function EditMediaPopUp(props: IEditMediaPopUpProps) {
             });
         }
     }, [data]);
-    
+
+    const handleFormSubmit = async (values : { mediaHeading: string; mediaDescription: string; mediaImage: string; }) => {
+        const formData = new FormData();
+        formData.append("heading", values.mediaHeading);
+        formData.append("description", values.mediaDescription);
+        if (values.mediaImage) {
+            formData.append("image", values.mediaImage);
+        }
+        setIsPopUpOpened(false)
+        await uploadMedia(`/media/updateMedia/${id}`, formData)
+        await fetchData();
+    }
+
     return (
         <>
             <Formik
                 initialValues={initialValues}
-                enableReinitialize 
-                onSubmit={(values) => {
-                    const formData = new FormData();
-                    formData.append("heading", values.mediaHeading);
-                    formData.append("description", values.mediaDescription);
-                    if (values.mediaImage) {
-                        formData.append("image", values.mediaImage);
-                    }
-                    uploadMedia(`/media/updateMedia/${id}`, formData)
-                        // eslint-disable-next-line no-console
-                        .then((response: unknown) => console.log("Media Updated Successfully:", response))
-                        // eslint-disable-next-line no-console
-                        .catch((error: unknown) => console.error("Error updating media:", error));
-                }}
+                enableReinitialize
+                onSubmit={(values) => handleFormSubmit(values)}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 w-full max-w-md max-h-full">
@@ -61,7 +64,7 @@ function EditMediaPopUp(props: IEditMediaPopUpProps) {
                                     </div>
 
                                     <div className="col-span-2">
-                                        <FormikFileInput name="mediaImage" label="Upload Image" currentFileName={initialValues.mediaImage}/>
+                                        <FormikFileInput name="mediaImage" label="Upload Image" currentFileName={initialValues.mediaImage} />
                                     </div>
 
                                     <div className="col-span-2">

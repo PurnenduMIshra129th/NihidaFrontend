@@ -1,8 +1,10 @@
 import { Formik } from "formik"
 import { useEffect, useState } from "react"
 
+import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
 import { uploadMedia } from "../../services/apiService"
+import { INewsApiData } from "../../types/api/news.types"
 import { IEditNewsPopUpProps, INewsItem } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
 import { CrossIcon } from "../Icons/Icon"
@@ -15,6 +17,7 @@ function EditNewsPopUp(props: IEditNewsPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ newsHeading: "", newsDescription: "", newsImage: '' });
     const { data } = useFetch<{ statusCode: number; data: INewsItem }>(`news/getNewsById/${id}`);
+    const { fetchData } = useData<INewsApiData[]>();
 
     useEffect(() => {
         if (data && data.statusCode === 1) {
@@ -25,24 +28,26 @@ function EditNewsPopUp(props: IEditNewsPopUpProps) {
             });
         }
     }, [data]);
-    
+
+    const handleFormSubmit = async (values: { newsHeading: string; newsDescription: string; newsImage: string; }) => {
+        const formData = new FormData();
+        formData.append("heading", values.newsHeading);
+        formData.append("description", values.newsDescription);
+        if (values.newsImage) {
+            formData.append("image", values.newsImage);
+        }
+        setIsPopUpOpened(false)
+        await uploadMedia(`/news/updateNews/${id}`, formData)
+        await fetchData();
+    }
+
     return (
         <>
             <Formik
                 initialValues={initialValues}
-                enableReinitialize 
+                enableReinitialize
                 onSubmit={(values) => {
-                    const formData = new FormData();
-                    formData.append("heading", values.newsHeading);
-                    formData.append("description", values.newsDescription);
-                    if (values.newsImage) {
-                        formData.append("image", values.newsImage);
-                    }
-                    uploadMedia(`/news/updateNews/${id}`, formData)
-                        // eslint-disable-next-line no-console
-                        .then((response: unknown) => console.log("News Updated Successfully:", response))
-                        // eslint-disable-next-line no-console
-                        .catch((error: unknown) => console.error("Error updating news:", error));
+                    handleFormSubmit(values)
                 }}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">
@@ -61,7 +66,7 @@ function EditNewsPopUp(props: IEditNewsPopUpProps) {
                                     </div>
 
                                     <div className="col-span-2">
-                                        <FormikFileInput name="newsImage" label="Upload Image" currentFileName={initialValues.newsImage}/>
+                                        <FormikFileInput name="newsImage" label="Upload Image" currentFileName={initialValues.newsImage} />
                                     </div>
 
                                     <div className="col-span-2">

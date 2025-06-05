@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { eventBus } from "../contexts/context/eventBus";
 import {apiClient} from "../services/axiosInstance";
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
@@ -11,6 +12,7 @@ const useFetch = <T,>(endpoint: string, method: HttpMethod = "GET", payload?: { 
   const fetchData = async () => {
     setIsLoading(true);
     try {
+      eventBus.emit({ type: "loader_start" , message: "Loading..." });
       const response = await apiClient.request<T>({
         url: endpoint,
         method,
@@ -21,6 +23,7 @@ const useFetch = <T,>(endpoint: string, method: HttpMethod = "GET", payload?: { 
       setError(err instanceof Error ? err : new Error("Unknown error occurred"));
     } finally {
       setIsLoading(false);
+      eventBus.emit({ type: "loader_stop" , message: "Loading..." });
     }
   };
 

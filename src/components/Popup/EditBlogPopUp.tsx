@@ -1,9 +1,11 @@
 import { Formik } from "formik"
 import { useEffect, useState } from "react"
 
+import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
 import { uploadMedia } from "../../services/apiService"
-import { IBlogItem, IEditBlogPopUpProps,} from "../../types/popUp/popUp.types"
+import { IBlogApiData } from "../../types/api/blog.types"
+import { IBlogItem, IEditBlogPopUpProps, } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
 import { CrossIcon } from "../Icons/Icon"
 import FormikFileInput from "../Input/FormikFileInput"
@@ -15,6 +17,7 @@ function EditBlogPopUp(props: IEditBlogPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ blogHeading: "", blogDescription: "", blogImage: '' });
     const { data } = useFetch<{ statusCode: number; data: IBlogItem }>(`blog/getBlogById/${id}`);
+    const { fetchData } = useData<IBlogApiData[]>();
 
     useEffect(() => {
         if (data && data.statusCode === 1) {
@@ -25,24 +28,26 @@ function EditBlogPopUp(props: IEditBlogPopUpProps) {
             });
         }
     }, [data]);
-    
+
+    const handleFormSubmit = async (values: { blogHeading: string; blogDescription: string; blogImage: string; }) => {
+        const formData = new FormData();
+        formData.append("heading", values.blogHeading);
+        formData.append("description", values.blogDescription);
+        if (values.blogImage) {
+            formData.append("image", values.blogImage);
+        }
+        setIsPopUpOpened(false)
+        await uploadMedia(`/blog/updateBlog/${id}`, formData)
+        await fetchData();
+    }
+
     return (
         <>
             <Formik
                 initialValues={initialValues}
-                enableReinitialize 
+                enableReinitialize
                 onSubmit={(values) => {
-                    const formData = new FormData();
-                    formData.append("heading", values.blogHeading);
-                    formData.append("description", values.blogDescription);
-                    if (values.blogImage) {
-                        formData.append("image", values.blogImage);
-                    }
-                    uploadMedia(`/blog/updateBlog/${id}`, formData)
-                        // eslint-disable-next-line no-console
-                        .then((response: unknown) => console.log("Blog Updated Successfully:", response))
-                        // eslint-disable-next-line no-console
-                        .catch((error: unknown) => console.error("Error updating media:", error));
+                    handleFormSubmit(values)
                 }}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">
@@ -61,7 +66,7 @@ function EditBlogPopUp(props: IEditBlogPopUpProps) {
                                     </div>
 
                                     <div className="col-span-2">
-                                        <FormikFileInput name="blogImage" label="Upload Image" currentFileName={initialValues.blogImage}/>
+                                        <FormikFileInput name="blogImage" label="Upload Image" currentFileName={initialValues.blogImage} />
                                     </div>
 
                                     <div className="col-span-2">

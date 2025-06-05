@@ -1,8 +1,10 @@
 import { Formik } from "formik"
 import { useEffect, useState } from "react"
 
+import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
 import { uploadMedia } from "../../services/apiService"
+import { IVideoApiData } from "../../types/api/video.types"
 import { IEditVideoPopUpProps, IVideoItem } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
 import { CrossIcon } from "../Icons/Icon"
@@ -15,6 +17,7 @@ function EditVideoPopUp(props: IEditVideoPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ videoHeading: "", videoDescription: "", videoImage: '' , videoUrl: ''});
     const { data } = useFetch<{ statusCode: number; data: IVideoItem }>(`video/getVideoById/${id}`);
+    const { fetchData } = useData<IVideoApiData[]>();
 
     useEffect(() => {
         if (data && data.statusCode === 1) {
@@ -27,24 +30,26 @@ function EditVideoPopUp(props: IEditVideoPopUpProps) {
         }
     }, [data]);
 
+    const handleFormSubmit = async (values: { videoHeading: string; videoDescription: string; videoImage: string; videoUrl: string; }) => {
+        const formData = new FormData();
+        formData.append("heading", values.videoHeading);
+        formData.append("description", values.videoDescription);
+        formData.append("videoUrl", values.videoUrl);
+        if (values.videoImage) {
+            formData.append("image", values.videoImage);
+        }
+        setIsPopUpOpened(false)
+        await uploadMedia(`/video/updateVideo/${id}`, formData)
+        await fetchData();
+    }
+
     return (
         <>
             <Formik
                 initialValues={initialValues}
                 enableReinitialize
                 onSubmit={(values) => {
-                    const formData = new FormData();
-                    formData.append("heading", values.videoHeading);
-                    formData.append("description", values.videoDescription);
-                    formData.append("videoUrl", values.videoUrl);
-                    if (values.videoImage) {
-                        formData.append("image", values.videoImage);
-                    }
-                    uploadMedia(`/video/updateVideo/${id}`, formData)
-                        // eslint-disable-next-line no-console
-                        .then((response: unknown) => console.log("Video Updated Successfully:", response))
-                        // eslint-disable-next-line no-console
-                        .catch((error: unknown) => console.error("Error updating Video:", error));
+                    handleFormSubmit(values)
                 }}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">

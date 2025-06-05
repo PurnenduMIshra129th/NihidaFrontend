@@ -23,11 +23,8 @@ function CreateNewVideoPopUp(props: ICreateNewVideoPopUpProps) {
                     if (values.videoImage) {
                         formData.append("image", values.videoImage);
                     }
+                    setIsPopUpOpened(false)
                     uploadMedia("/video/createVideo", formData)
-                        // eslint-disable-next-line no-console
-                        .then((response: unknown) => console.log("Video Uploaded Successfully:", response))
-                        // eslint-disable-next-line no-console
-                        .catch((error: unknown) => console.error("Error uploading Video:", error));
                 }}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">
