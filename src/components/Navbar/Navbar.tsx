@@ -41,6 +41,9 @@ function Navbar() {
                             <div className='cursor-pointer'>
                                 <Link to="/manage">Manage</Link>
                             </div>
+                            <Link to="/login">
+                                Login
+                            </Link>
                             <Link to={socialLink[0]?.facebookUrl || '/'} target="_blank">
                                 <FacebookIcon className='cursor-pointer' />
                             </Link>

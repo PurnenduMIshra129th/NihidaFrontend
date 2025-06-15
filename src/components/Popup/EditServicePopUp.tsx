@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
-import { uploadMedia } from "../../services/apiService"
+import { multiPartAPI } from "../../services/apiService"
 import { IServiceApiData } from "../../types/api/service.types"
 import { IEditServicePopUpProps, IServiceItem } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
@@ -16,7 +16,7 @@ import Typography from "../Text/Typography"
 function EditServicePopUp(props: IEditServicePopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ serviceHeading: "", serviceDescription: "", serviceImage: '' });
-    const { data } = useFetch<{ statusCode: number; data: IServiceItem }>(`productAndService/getProductAndServiceById/${id}`);
+    const { data } = useFetch<IServiceItem >(`productAndService/getProductAndServiceById/${id}`,"GET", undefined,true);
     const { fetchData } = useData<IServiceApiData[]>();
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function EditServicePopUp(props: IEditServicePopUpProps) {
             formData.append("image", values.serviceImage);
         }
         setIsPopUpOpened(false)
-        await uploadMedia(`/productAndService/updateProductAndService/${id}`, formData)
+        await multiPartAPI(`/productAndService/updateProductAndService/${id}`, formData ,true)
         await fetchData();
     }
 

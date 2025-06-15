@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
-import { uploadMedia } from "../../services/apiService"
+import { multiPartAPI } from "../../services/apiService"
 import { INewsApiData } from "../../types/api/news.types"
 import { IEditNewsPopUpProps, INewsItem } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
@@ -16,7 +16,7 @@ import Typography from "../Text/Typography"
 function EditNewsPopUp(props: IEditNewsPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ newsHeading: "", newsDescription: "", newsImage: '' });
-    const { data } = useFetch<{ statusCode: number; data: INewsItem }>(`news/getNewsById/${id}`);
+    const { data } = useFetch<INewsItem>(`news/getNewsById/${id}`,"GET", undefined,true);
     const { fetchData } = useData<INewsApiData[]>();
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function EditNewsPopUp(props: IEditNewsPopUpProps) {
             formData.append("image", values.newsImage);
         }
         setIsPopUpOpened(false)
-        await uploadMedia(`/news/updateNews/${id}`, formData)
+        await multiPartAPI(`/news/updateNews/${id}`, formData, true)
         await fetchData();
     }
 

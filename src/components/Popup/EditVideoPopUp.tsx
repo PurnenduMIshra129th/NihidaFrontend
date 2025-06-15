@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
-import { uploadMedia } from "../../services/apiService"
+import { multiPartAPI } from "../../services/apiService"
 import { IVideoApiData } from "../../types/api/video.types"
 import { IEditVideoPopUpProps, IVideoItem } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
@@ -16,7 +16,7 @@ import Typography from "../Text/Typography"
 function EditVideoPopUp(props: IEditVideoPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ videoHeading: "", videoDescription: "", videoImage: '' , videoUrl: ''});
-    const { data } = useFetch<{ statusCode: number; data: IVideoItem }>(`video/getVideoById/${id}`);
+    const { data } = useFetch<IVideoItem>(`video/getVideoById/${id}`,"GET", undefined,true);
     const { fetchData } = useData<IVideoApiData[]>();
 
     useEffect(() => {
@@ -39,7 +39,7 @@ function EditVideoPopUp(props: IEditVideoPopUpProps) {
             formData.append("image", values.videoImage);
         }
         setIsPopUpOpened(false)
-        await uploadMedia(`/video/updateVideo/${id}`, formData)
+        await multiPartAPI(`/video/updateVideo/${id}`, formData, true)
         await fetchData();
     }
 

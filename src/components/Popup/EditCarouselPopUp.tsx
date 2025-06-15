@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
-import { uploadMedia } from "../../services/apiService"
+import { multiPartAPI } from "../../services/apiService"
 import { ICarouselApiData } from "../../types/api/carousel.types"
 import { ICarouselItem, IEditCarouselPopUpProps } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
@@ -15,7 +15,7 @@ import Typography from "../Text/Typography"
 function EditCarouselPopUp(props: IEditCarouselPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ carouselImage: '' });
-    const { data } = useFetch<{ statusCode: number; data: ICarouselItem }>(`carousel/getCarouselById/${id}`);
+    const { data } = useFetch<ICarouselItem>(`carousel/getCarouselById/${id}`,"GET", undefined,true);
     const { fetchData } = useData<ICarouselApiData[]>();
 
     useEffect(() => {
@@ -32,7 +32,7 @@ function EditCarouselPopUp(props: IEditCarouselPopUpProps) {
             formData.append("image", values.carouselImage);
         }
         setIsPopUpOpened(false)
-        await uploadMedia(`/carousel/updateCarousel/${id}`, formData)
+        await multiPartAPI(`/carousel/updateCarousel/${id}`, formData ,true)
         await fetchData();
     }
 

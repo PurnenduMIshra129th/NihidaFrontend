@@ -11,7 +11,7 @@ function ManageAllServicePage() {
   const { data: apiData, fetchData } = useData<IServiceApiData[]>();
   const handleDelete = async (id: string) => {
     try {
-      await apiRequest(`productAndService/deleteProductAndService/${id}`, "DELETE");
+      await apiRequest(`productAndService/deleteProductAndService/${id}`, "DELETE" , undefined, true);
       await fetchData();
     } catch (err) {
       // eslint-disable-next-line no-console

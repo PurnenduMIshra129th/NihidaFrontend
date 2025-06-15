@@ -12,7 +12,7 @@ function ManageAllNewsPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await apiRequest(`news/deleteNews/${id}`, "DELETE");
+      await apiRequest(`news/deleteNews/${id}`, "DELETE" , undefined, true);
       await fetchData();
     } catch (err) {
       // eslint-disable-next-line no-console

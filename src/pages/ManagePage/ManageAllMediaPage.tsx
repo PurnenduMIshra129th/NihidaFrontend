@@ -12,7 +12,7 @@ function ManageAllMediaPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await apiRequest(`media/deleteMedia/${id}`, "DELETE");
+      await apiRequest(`media/deleteMedia/${id}`, "DELETE" , undefined, true);
       await fetchData();
     } catch (err) {
       // eslint-disable-next-line no-console

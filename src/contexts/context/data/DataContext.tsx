@@ -16,7 +16,7 @@ const DataContext = createContext<IDataContextType<unknown> | undefined>(undefin
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const DataProvider = <T,>({ endpoint, children }: { endpoint: string; children: ReactNode }) => {
   const { data, isLoading, fetchData: originalFetchData  } = useFetch<ISuccessResponse<T> | null>(endpoint);
-  const [fetchedData, setFetchedData] = useState< T | null>(null);
+  const [fetchedData, setFetchedData] = useState< ISuccessResponse<T> | null>(null);
 
   useEffect(() => {
     if (!isLoading && data?.statusCode === 1) {

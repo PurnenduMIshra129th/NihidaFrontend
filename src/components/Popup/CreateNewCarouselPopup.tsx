@@ -1,6 +1,6 @@
 import { Formik } from "formik"
 
-import { uploadMedia } from "../../services/apiService"
+import { multiPartAPI } from "../../services/apiService"
 import { ICreateNewCarouselPopUpProps } from "../../types/popUp/popUp.types"
 import AddNewButton from "../Button/AddNewButton"
 import { CrossIcon } from "../Icons/Icon"
@@ -20,7 +20,7 @@ function CreateNewCarouselPopUp(props: ICreateNewCarouselPopUpProps) {
                         formData.append("image", values.carouselImage);
                     }
                     setIsPopUpOpened(false)
-                    uploadMedia("/carousel/createCarousel", formData)
+                    multiPartAPI("/carousel/createCarousel", formData ,true)
                 }}
             >{({ handleSubmit }) => (
                 <div className=" overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-zinc-500 bg-opacity-50">

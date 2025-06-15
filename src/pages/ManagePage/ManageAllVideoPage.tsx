@@ -11,7 +11,7 @@ function ManageAllVideoPage() {
   const { data: apiData, fetchData } = useData<IVideoApiData[]>();
   const handleDelete = async (id: string) => {
     try {
-      await apiRequest(`video/deleteVideo/${id}`, "DELETE");
+      await apiRequest(`video/deleteVideo/${id}`, "DELETE" , undefined, true);
       await fetchData();
     } catch (err) {
       // eslint-disable-next-line no-console

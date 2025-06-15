@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router";
 import App from "./App";
 import { ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import HomePage from "./pages/HomePage/HomePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 import ManageHomePage from "./pages/ManagePage/ManageHomePage";
 import ViewAllBlogPageUsers from "./pages/UsersPage/ViewAllBlogPageUsers";
 import ViewAllMediaPageUsers from "./pages/UsersPage/ViewAllMediaPageUsers";
@@ -38,6 +39,9 @@ export const router = createBrowserRouter([
       { path: "users/media/:id", Component: ViewMediaByIdUsersPage },
       { path: "users/blog/:id", Component: ViewBlogByIdUsersPage },
       { path: "users/news/:id", Component: ViewNewsByIdUsersPage },
+
+
+      { path: "login", Component: LoginPage },
     ],
   },
 ]);

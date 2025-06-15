@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
-import { uploadMedia } from "../../services/apiService"
+import { multiPartAPI } from "../../services/apiService"
 import { IMediaApiData } from "../../types/api/media.types"
 import { IEditMediaPopUpProps, IMediaItem } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
@@ -16,7 +16,7 @@ import Typography from "../Text/Typography"
 function EditMediaPopUp(props: IEditMediaPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ mediaHeading: "", mediaDescription: "", mediaImage: '' });
-    const { data } = useFetch<{ statusCode: number; data: IMediaItem }>(`media/getMediaById/${id}`);
+    const { data } = useFetch<IMediaItem>(`media/getMediaById/${id}`,"GET", undefined,true);
     const { fetchData } = useData<IMediaApiData[]>();
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function EditMediaPopUp(props: IEditMediaPopUpProps) {
             formData.append("image", values.mediaImage);
         }
         setIsPopUpOpened(false)
-        await uploadMedia(`/media/updateMedia/${id}`, formData)
+        await multiPartAPI(`/media/updateMedia/${id}`, formData, true)
         await fetchData();
     }
 

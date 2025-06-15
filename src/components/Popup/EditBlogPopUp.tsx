@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 import { useData } from "../../contexts/context/data/DataContext"
 import useFetch from "../../hooks/useFetch"
-import { uploadMedia } from "../../services/apiService"
+import { multiPartAPI } from "../../services/apiService"
 import { IBlogApiData } from "../../types/api/blog.types"
 import { IBlogItem, IEditBlogPopUpProps, } from "../../types/popUp/popUp.types"
 import Button from "../Button/Button"
@@ -16,7 +16,7 @@ import Typography from "../Text/Typography"
 function EditBlogPopUp(props: IEditBlogPopUpProps) {
     const { setIsPopUpOpened = () => false, id = 'noId' } = props
     const [initialValues, setInitialValues] = useState({ blogHeading: "", blogDescription: "", blogImage: '' });
-    const { data } = useFetch<{ statusCode: number; data: IBlogItem }>(`blog/getBlogById/${id}`);
+    const { data } = useFetch<IBlogItem>(`blog/getBlogById/${id}`,"GET", undefined,true);
     const { fetchData } = useData<IBlogApiData[]>();
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function EditBlogPopUp(props: IEditBlogPopUpProps) {
             formData.append("image", values.blogImage);
         }
         setIsPopUpOpened(false)
-        await uploadMedia(`/blog/updateBlog/${id}`, formData)
+        await multiPartAPI(`/blog/updateBlog/${id}`, formData, true)
         await fetchData();
     }
 

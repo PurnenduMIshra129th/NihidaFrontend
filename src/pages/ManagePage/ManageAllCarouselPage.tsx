@@ -11,7 +11,7 @@ function ManageAllCarouselPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await apiRequest(`carousel/deleteCarousel/${id}`, "DELETE");
+      await apiRequest(`carousel/deleteCarousel/${id}`, "DELETE" , undefined, true);
       await fetchData();
     } catch (err) {
       // eslint-disable-next-line no-console

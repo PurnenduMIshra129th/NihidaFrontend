@@ -12,7 +12,7 @@ function ManageAllBlogPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      await apiRequest(`blog/deleteBlog/${id}`, "DELETE");
+      await apiRequest(`blog/deleteBlog/${id}`, "DELETE" , undefined, true);
       await fetchData();
     } catch (err) {
       // eslint-disable-next-line no-console
