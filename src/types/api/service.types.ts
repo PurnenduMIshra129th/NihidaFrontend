@@ -10,8 +10,3 @@ export interface IServiceApiData {
   createdAt: string;
   imagePath: string;
 }
-export interface INewsResponseById {
-  statusCode: number;
-  message: string;
-  data: IServiceApiData
-}

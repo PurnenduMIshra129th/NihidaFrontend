@@ -4,7 +4,7 @@ function Button(props: IButtonProps) {
     const {
         name = 'No Name Provided',
         className = '',
-        onClick = () => {},
+        onClick = () => { },
     } = props;
     return (
         <button

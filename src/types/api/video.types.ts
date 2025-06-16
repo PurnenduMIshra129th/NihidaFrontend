@@ -1,8 +1,4 @@
-export interface IApiResponse {
-  statusCode: number;
-  message: string;
-  data: IVideoApiData[]
-}
+
 export interface IVideoApiData {
   _id: string;
   heading: string;
@@ -10,9 +6,4 @@ export interface IVideoApiData {
   videoUrl: string;
   createdAt: string;
   imagePath: string;
-}
-export interface INewsResponseById {
-  statusCode: number;
-  message: string;
-  data: IVideoApiData
 }

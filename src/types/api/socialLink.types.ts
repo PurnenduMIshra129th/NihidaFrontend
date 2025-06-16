@@ -16,8 +16,3 @@ export interface ISocialLinkApiData {
   phoneNumber1: string;
   phoneNumber2: string;
 }
-export interface INewsResponseById {
-  statusCode: number;
-  message: string;
-  data: ISocialLinkApiData
-}

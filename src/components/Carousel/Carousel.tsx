@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import useFetch from "../../hooks/useFetch";
 import { ICarouselApiData } from "../../types/api/carousel.types";
-import { IApiResponse } from "../../types/api/service.types";
 import { defaultImage } from "../../utils/constant";
 import DonorCard from "../Cards/DonorCard";
 import SubscribeForm from "../Form/SubscribeForm";
@@ -12,7 +11,7 @@ import Heading from "../Text/Heading";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Carousel() {
-    const { data, error, isLoading } = useFetch<IApiResponse>("carousel/getAllCarousel");
+    const { data, } = useFetch<ICarouselApiData[]>("carousel/getAllCarousel");
     const [apiData, setApiData] = useState<ICarouselApiData[]>();
 
     useEffect(() => {
@@ -20,37 +19,29 @@ function Carousel() {
             if (data && data.statusCode == 1 && data.data.length > 0) {
                 setApiData(data.data.slice(0, 5))
             }
-            if (error) {
-                // eslint-disable-next-line no-console
-                console.log(error)
-            }
-            if (isLoading) {
-                // eslint-disable-next-line no-console
-                console.log(isLoading)
-            }
         }
         manageData();
-    }, [data, error, isLoading])
+    }, [data])
     const [currentIndex, setCurrentIndex] = useState(0);
 
     // Auto-slide functionality
     useEffect(() => {
-        if(!apiData) return
+        if (!apiData) return
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % apiData?.length);
         }, 3000); // Change slide every 3 seconds
         return () => clearInterval(interval); // Cleanup interval on unmount
-    }, []);
+    },);
 
     // Next slide function
     const nextSlide = () => {
-        if(!apiData) return
+        if (!apiData) return
         setCurrentIndex((prevIndex) => (prevIndex + 1) % apiData.length);
     };
 
     // Previous slide function
     const prevSlide = () => {
-        if(!apiData) return
+        if (!apiData) return
         setCurrentIndex((prevIndex) => (prevIndex - 1 + apiData.length) % apiData.length);
     };
 
@@ -64,7 +55,7 @@ function Carousel() {
                             key={index}
                             className={`h-full w-full transition-opacity duration-700 ease-in-out${index === currentIndex ? "opacity-100" : "opacity-0 hidden"}`}
                         >
-                            <img src={img.imagePath || defaultImage } className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
+                            <img src={img.imagePath || defaultImage} className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
                         </div>
                     ))}
 

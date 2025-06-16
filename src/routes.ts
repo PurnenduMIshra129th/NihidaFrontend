@@ -2,19 +2,16 @@ import { createBrowserRouter } from "react-router";
 
 import App from "./App";
 import { ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import ViewAllBlogPageUsers from "./pages/BlogPage/ViewAllBlogPageUsers";
+import ViewBlogByIdUsersPage from "./pages/BlogPage/ViewBlogByIdUsersPage";
 import HomePage from "./pages/HomePage/HomePage";
+import ManageHomePage from "./pages/HomePage/ManageHomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import ManageHomePage from "./pages/ManagePage/ManageHomePage";
-import ViewAllBlogPageUsers from "./pages/UsersPage/ViewAllBlogPageUsers";
-import ViewAllMediaPageUsers from "./pages/UsersPage/ViewAllMediaPageUsers";
-import ViewAllNewsPageUsers from "./pages/UsersPage/ViewAllNewsPageUsers";
-import ViewAllVideoPageUsers from "./pages/UsersPage/ViewAllVideoPageUsers";
-import ViewBlogByIdUsersPage from "./pages/UsersPage/ViewBlogByIdUsersPage";
-import ViewMediaByIdUsersPage from "./pages/UsersPage/ViewMediaByIdUsersPage";
-import ViewNewsByIdUsersPage from "./pages/UsersPage/viewNewsByIdUsersPage";
-
- 
-// const ManageAllMediaPageWithData = withDataProvider(ManageAllMediaPage, "media/getAllMedia");
+import ViewAllMediaPageUsers from "./pages/MediaPage/ViewAllMediaPageUsers";
+import ViewMediaByIdUsersPage from "./pages/MediaPage/ViewMediaByIdUsersPage";
+import ViewAllNewsPageUsers from "./pages/NewsPage/ViewAllNewsPageUsers";
+import ViewNewsByIdUsersPage from "./pages/NewsPage/ViewNewsByIdUsersPage";
+import ViewAllVideoPageUsers from "./pages/VideoPage/ViewAllVideoPageUsers";
 
 export const router = createBrowserRouter([
   {

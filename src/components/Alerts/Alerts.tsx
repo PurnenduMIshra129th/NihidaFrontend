@@ -1,10 +1,6 @@
 import { useAlert } from "../../contexts/context/alert/AlertContext";
 import { alertStyles } from "../../utils/constant";
 
-// interface IAlertProps {
-//     type: keyof typeof alertStyles;
-//     message: string;
-// }
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Alerts() {
 
@@ -13,7 +9,7 @@ function Alerts() {
     if (!alert) return null;
 
     const styles = alertStyles[alert.type];
-    
+
     return (
         <>
             <div className={`flex items-center p-4 mb-4 rounded-lg ${styles.bg} ${styles.text} z-50 fixed top-[4rem] right-[1rem]`} role="alert">
