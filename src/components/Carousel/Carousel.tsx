@@ -11,7 +11,7 @@ import Heading from "../Text/Heading";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Carousel() {
-    const { data, } = useFetch<ICarouselApiData[]>("carousel/getAllCarousel");
+    const { data, } = useFetch<ICarouselApiData[]>("carousel/getAllCarousel" , "GET", undefined, true);
     const [apiData, setApiData] = useState<ICarouselApiData[]>();
 
     useEffect(() => {
