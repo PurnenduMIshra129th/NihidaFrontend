@@ -26,12 +26,19 @@ function HomePage() {
     <>
       <Carousel />
       <div className="w-full flex flex-col justify-center items-center">
+        <div id="about" className="w-full flex flex-col justify-center items-center"><AboutScreen /></div>
+        <div id="blog" className="w-full flex flex-col justify-center items-center"><BlogScreen /></div>
+        <div id="media" className="w-full flex flex-col justify-center items-center"><MediaScreen /></div>
+        <div id="services" className="w-full flex flex-col justify-center items-center"> <ProductAndServiceScreen /></div>
+        <div id="news" className="w-full flex flex-col justify-center items-center"><NewsScreen /></div>
+        <div id="videos" className="w-full flex flex-col justify-center items-center"><VideoScreen /></div>
+        {/* 
         <AboutScreen />
         <BlogScreen />
         <MediaScreen />
         <ProductAndServiceScreen />
         <NewsScreen />
-        <VideoScreen />
+        <VideoScreen /> */}
         <FeedbackScreen />
         <CountUpScreen />
         <NewsSubscribeScreen />

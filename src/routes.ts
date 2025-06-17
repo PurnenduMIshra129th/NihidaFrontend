@@ -1,17 +1,10 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper } from "./components/HigherOrderComponent/Wrapper";
-import ViewAllBlogPageUsers from "./pages/BlogPage/ViewAllBlogPageUsers";
-import ViewBlogByIdUsersPage from "./pages/BlogPage/ViewBlogByIdUsersPage";
+import { LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, ManageHomePageWrapper, ViewAllBlogPageUsersWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import HomePage from "./pages/HomePage/HomePage";
-import ManageHomePage from "./pages/HomePage/ManageHomePage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import ViewAllMediaPageUsers from "./pages/MediaPage/ViewAllMediaPageUsers";
-import ViewMediaByIdUsersPage from "./pages/MediaPage/ViewMediaByIdUsersPage";
-import ViewAllNewsPageUsers from "./pages/NewsPage/ViewAllNewsPageUsers";
-import ViewNewsByIdUsersPage from "./pages/NewsPage/ViewNewsByIdUsersPage";
-import ViewAllVideoPageUsers from "./pages/VideoPage/ViewAllVideoPageUsers";
+import PageNotAccessible from "./pages/NotFoundPage/PageNotAccessible";
+import PageNotFound from "./pages/NotFoundPage/PageNotFound";
 
 export const router = createBrowserRouter([
   {
@@ -19,26 +12,26 @@ export const router = createBrowserRouter([
     Component: App,
     children: [
       { index: true, Component: HomePage },
-      {
-        path: "manage", Component: ManageHomePage,
+      { path: "login", Component: LoginPageWrapper },
+      { path: "notAccessible", Component: PageNotAccessible },
 
-      },
-      { path: "manage/manage-all-media",  Component:ManageAllMediaPageWrapper },
+      { path: "manage", Component: ManageHomePageWrapper,},
+      { path: "manage/manage-all-media", Component: ManageAllMediaPageWrapper },
       { path: "manage/manage-all-blog", Component: ManageAllBlogPageWrapper },
       { path: "manage/manage-all-news", Component: ManageAllNewsPageWrapper },
       { path: "manage/manage-all-service", Component: ManageAllServicePageWrapper },
       { path: "manage/manage-all-video", Component: ManageAllVideoPageWrapper },
       { path: "manage/manage-all-carousel", Component: ManageAllCarouselPageWrapper },
-      { path: "users/view-all-media", Component: ViewAllMediaPageUsers },
-      { path: "users/view-all-blog", Component: ViewAllBlogPageUsers },
-      { path: "users/view-all-news", Component: ViewAllNewsPageUsers },
-      { path: "users/view-all-video", Component: ViewAllVideoPageUsers },
-      { path: "users/media/:id", Component: ViewMediaByIdUsersPage },
-      { path: "users/blog/:id", Component: ViewBlogByIdUsersPage },
-      { path: "users/news/:id", Component: ViewNewsByIdUsersPage },
+      { path: "users/view-all-media", Component: ViewAllMediaPageUsersWrapper },
+      { path: "users/view-all-blog", Component: ViewAllBlogPageUsersWrapper },
+      { path: "users/view-all-news", Component: ViewAllNewsPageUsersWrapper },
+      { path: "users/view-all-video", Component: ViewAllVideoPageUsersWrapper },
+      { path: "users/media/:id", Component: ViewMediaByIdUsersPageWrapper },
+      { path: "users/blog/:id", Component: ViewBlogByIdUsersPageWrapper},
+      { path: "users/news/:id", Component: ViewNewsByIdUsersPageWrapper },
 
+      { path: "*", Component: PageNotFound },
 
-      { path: "login", Component: LoginPage },
     ],
   },
 ]);

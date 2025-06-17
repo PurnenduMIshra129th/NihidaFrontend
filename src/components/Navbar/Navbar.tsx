@@ -1,13 +1,40 @@
 import { useSelector } from "react-redux"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 
+import { eventBus } from "../../contexts/context/eventBus"
 import { selectSocialLink } from "../../contexts/slice/socialLinkSlice"
+import { getStorageItem, removeStorageItem } from "../../utils/util"
 import { CallIcon, FacebookIcon, InstagramIcon, LinkedinIcon, TelegramIconChangedBG, TwitterIcon, YoutubeIcon } from "../Icons/Icon"
 import IconWithText from "../Icons/IconWithText"
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Navbar() {
+    const navigate = useNavigate()
     const socialLink = useSelector(selectSocialLink)
+    const token = getStorageItem("token");
+    const role = getStorageItem("role");
+    const logout = () => {
+        removeStorageItem("token");
+        removeStorageItem("role");
+        eventBus.emit({
+            type: "success",
+            message: "You have been logged out successfully.",
+        });
+        navigate("/");
+    };
+    const scrollToSection = (sectionId: string) => {
+        if (location.pathname !== "/") {
+            navigate("/");
+
+            // Delay scroll slightly until HomePage has loaded
+            setTimeout(() => {
+                document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+            }, 100); // You can tweak this for better UX
+        } else {
+            document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <>
             <nav className={`w-full z-20 top-0 fixed start-0 border-b text-custom_white bg-custom_blue_1`} >
@@ -22,28 +49,45 @@ function Navbar() {
                             <IconWithText Icon={CallIcon} text={socialLink[0]?.phoneNumber1} textClassName="text-custom_white" iconClassName="text-custom_white size-3" />
                         </div>
                     </div>
-                    <div className="items-center justify-between w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-                        {/* <ul className={`flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 `} >
+                    <div className="items-center justify-end w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
                             <li>
-                                <a href="#" className="block py-2 px-3 rounded-sm  md:p-0 " aria-current="page">Home</a>
+                                <Link to="/" className="block py-2 px-3 rounded-sm md:p-0">Home</Link>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 px-3  rounded-sm   md:p-0 ">About</a>
+                                <button onClick={() => scrollToSection("about")} className="block py-2 px-3 rounded-sm md:p-0">About</button>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 px-3  rounded-sm   md:p-0 ">Services</a>
+                                <button onClick={() => scrollToSection("blog")} className="block py-2 px-3 rounded-sm md:p-0">Blog</button>
                             </li>
                             <li>
-                                <a href="#" className="block py-2 px-3  rounded-sm   md:p-0 ">Contact</a>
+                                <button onClick={() => scrollToSection("services")} className="block py-2 px-3 rounded-sm md:p-0">Services</button>
                             </li>
-                        </ul> */}
-                        <div className="flex flex-row space-x-4 w-full sm:w-auto justify-center mb-3 sm:mb-0">
-                            <div className='cursor-pointer'>
-                                <Link to="/manage">Manage</Link>
-                            </div>
-                            <Link to="/login">
-                                Login
-                            </Link>
+                            <li>
+                                <button onClick={() => scrollToSection("news")} className="block py-2 px-3 rounded-sm md:p-0">News</button>
+                            </li>
+                            <li>
+                                <button onClick={() => scrollToSection("videos")} className="block py-2 px-3 rounded-sm md:p-0">Videos</button>
+                            </li>
+                            {
+                                role === "admin" &&
+                                <li>
+                                    <Link to="/manage" className="block py-2 px-3 rounded-sm md:p-0">Admin</Link>
+                                </li>
+                            }
+
+
+                            {token ?
+                                <li>
+                                    <button onClick={() => logout()} className="block py-2 px-3 rounded-sm md:p-0">Logout</button>
+                                </li> :
+
+                                <li>
+                                    <Link to="/login" className="block py-2 px-3 rounded-sm md:p-0">Login</Link>
+                                </li>
+                            }
+                        </ul>
+                       <div className="flex flex-row space-x-4 w-full sm:w-auto justify-center mb-3 sm:mb-0 ml-[4rem]" >
                             <Link to={socialLink[0]?.facebookUrl || '/'} target="_blank">
                                 <FacebookIcon className='cursor-pointer' />
                             </Link>
@@ -61,6 +105,7 @@ function Navbar() {
                             </Link>
                         </div>
                     </div>
+                     
                 </div>
             </nav>
         </>

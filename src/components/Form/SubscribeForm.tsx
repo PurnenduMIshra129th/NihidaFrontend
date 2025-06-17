@@ -7,7 +7,7 @@ import Typography from "../Text/Typography"
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function SubscribeForm() {
-    const [isSubscribeFormClosed, setIsSubscribeFormClosed] = useState(false)
+    const [isSubscribeFormClosed, setIsSubscribeFormClosed] = useState(true)
     return (
         <>{!isSubscribeFormClosed &&
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[3rem] sm:mt-0 z-20">

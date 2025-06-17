@@ -1,4 +1,5 @@
 import { Formik } from "formik"
+import { useNavigate } from "react-router";
 
 import Button from "../../components/Button/Button";
 import FormikInput from "../../components/Input/FormikInput"
@@ -8,6 +9,7 @@ import { defaultImage } from "../../utils/constant"
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function LoginPage() {
+    const navigate = useNavigate()
     return (
         <>
             <Formik
@@ -18,6 +20,7 @@ function LoginPage() {
                         localStorage.setItem("token", result?.data?.token)
                         localStorage.setItem("role", result?.data?.user?.role)
                     }
+                    navigate("/")
                 }}
             >{({ handleSubmit }) => (
                 <div className="pb-16 pt-[12rem]">
