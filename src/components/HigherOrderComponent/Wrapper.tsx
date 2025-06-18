@@ -11,6 +11,7 @@ import ManageAllNewsPage from "../../pages/NewsPage/ManageAllNewsPage";
 import ViewAllNewsPageUsers from "../../pages/NewsPage/ViewAllNewsPageUsers";
 import ViewNewsByIdUsersPage from "../../pages/NewsPage/ViewNewsByIdUsersPage";
 import ManageAllProductAndServicePage from "../../pages/ProductAndServicePage/ManageAllProductAndServicePage";
+import SignupPage from "../../pages/SignupPage/SignupPage";
 import ManageAllVideoPage from "../../pages/VideoPage/ManageAllVideoPage";
 import ViewAllVideoPageUsers from "../../pages/VideoPage/ViewAllVideoPageUsers";
 import { withAuth } from "./ProtectedRoutes";
@@ -46,4 +47,6 @@ export const ViewAllVideoPageUsersWrapper = withAuth(ViewAllVideoPageUsers);
 export const ManageHomePageWrapper = withAuth(ManageHomePage );
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const LoginPageWrapper = withAuth(LoginPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const SignUpPageWrapper = withAuth(SignupPage);
 

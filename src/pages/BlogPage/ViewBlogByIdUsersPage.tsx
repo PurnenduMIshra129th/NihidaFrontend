@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
+import EmptyState from "../../components/EmptyState/EmptyState";
 import Heading from "../../components/Text/Heading";
 import Typography from "../../components/Text/Typography";
 import useFetch from "../../hooks/useFetch";
@@ -31,7 +32,7 @@ function ViewBlogByIdUsersPage() {
           </div>
         </>
       ) : (
-        <p>No Blog details found.</p>
+        <EmptyState/>
       )}
     </div>
   );

@@ -1,5 +1,6 @@
 import { Formik } from "formik"
 import { useNavigate } from "react-router";
+import { Link } from "react-router";
 
 import Button from "../../components/Button/Button";
 import FormikInput from "../../components/Input/FormikInput"
@@ -19,8 +20,8 @@ function LoginPage() {
                     if(result?.statusCode === 1) {
                         localStorage.setItem("token", result?.data?.token)
                         localStorage.setItem("role", result?.data?.user?.role)
+                        navigate("/")
                     }
-                    navigate("/")
                 }}
             >{({ handleSubmit }) => (
                 <div className="pb-16 pt-[12rem]">
@@ -47,7 +48,7 @@ function LoginPage() {
                             </div>
                             <div className="mt-4 flex items-center justify-between">
                                 <span className="border-b w-1/5 md:w-1/4"></span>
-                                <a href="#" className="text-xs text-gray-500 uppercase">or sign up</a>
+                                <Link className="text-xs text-gray-500 uppercase" to="/signup">or sign up</Link>
                                 <span className="border-b w-1/5 md:w-1/4"></span>
                             </div>
                         </div>

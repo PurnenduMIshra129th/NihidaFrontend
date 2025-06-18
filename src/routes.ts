@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, ManageHomePageWrapper, ViewAllBlogPageUsersWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import { LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, ManageHomePageWrapper, SignUpPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import HomePage from "./pages/HomePage/HomePage";
 import PageNotAccessible from "./pages/NotFoundPage/PageNotAccessible";
 import PageNotFound from "./pages/NotFoundPage/PageNotFound";
@@ -13,8 +13,8 @@ export const router = createBrowserRouter([
     children: [
       { index: true, Component: HomePage },
       { path: "login", Component: LoginPageWrapper },
-      { path: "notAccessible", Component: PageNotAccessible },
-
+      { path: "signup", Component: SignUpPageWrapper },
+      
       { path: "manage", Component: ManageHomePageWrapper,},
       { path: "manage/manage-all-media", Component: ManageAllMediaPageWrapper },
       { path: "manage/manage-all-blog", Component: ManageAllBlogPageWrapper },
@@ -29,7 +29,8 @@ export const router = createBrowserRouter([
       { path: "users/media/:id", Component: ViewMediaByIdUsersPageWrapper },
       { path: "users/blog/:id", Component: ViewBlogByIdUsersPageWrapper},
       { path: "users/news/:id", Component: ViewNewsByIdUsersPageWrapper },
-
+      
+      { path: "notAccessible", Component: PageNotAccessible },
       { path: "*", Component: PageNotFound },
 
     ],

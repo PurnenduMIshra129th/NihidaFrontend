@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Card from "../../components/Cards/Card"
+import EmptyState from "../../components/EmptyState/EmptyState";
 import useFetch from "../../hooks/useFetch";
 import { IBlogApiData } from "../../types/api/blog.types";
 
@@ -17,6 +18,13 @@ function ViewAllBlogPageUsers() {
     }
     manageData();
   }, [data])
+
+  if (!apiData || apiData.length === 0) {
+    return (
+      <EmptyState />
+    )
+  }
+  
   return (
     <>
       <div className="mt-[4rem] px-[1rem] pb-[3rem]">

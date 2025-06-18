@@ -32,13 +32,6 @@ function HomePage() {
         <div id="services" className="w-full flex flex-col justify-center items-center"> <ProductAndServiceScreen /></div>
         <div id="news" className="w-full flex flex-col justify-center items-center"><NewsScreen /></div>
         <div id="videos" className="w-full flex flex-col justify-center items-center"><VideoScreen /></div>
-        {/* 
-        <AboutScreen />
-        <BlogScreen />
-        <MediaScreen />
-        <ProductAndServiceScreen />
-        <NewsScreen />
-        <VideoScreen /> */}
         <FeedbackScreen />
         <CountUpScreen />
         <NewsSubscribeScreen />
