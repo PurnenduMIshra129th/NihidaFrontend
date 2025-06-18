@@ -1,4 +1,4 @@
-import SupportForm from "../../components/Form/SupportForm"
+// import SupportForm from "../../components/Form/SupportForm"
 import Heading from "../../components/Text/Heading"
 import SubHeading from "../../components/Text/SubHeading"
 // import Typography from "../../components/Text/Typography"
@@ -8,7 +8,7 @@ function AboutScreen() {
     return (
         <>
             <div className="flex justify-center items-start flex-row sm:w-[80%] w-full p-[1rem] sm:p-0 flex-wrap sm:flex-nowrap m-3 ">
-                <div className="sm:w-[50%] w-full flex flex-col h-[45rem] overflow-y-scroll">
+                <div className="sm:w-[100%] w-full flex flex-col h-[45rem] overflow-y-scroll">
                     <div className="bg-slate-500 sticky top-0">
                     <SubHeading text="Welcome to National Integrated Human And Industrial Development Agency (NIHIDA)" className="mt-3 sticky top-0" />
                     <Heading text="About NIHIDA" className="mb-3 text-custom_maroon sticky top-0" />
@@ -77,9 +77,9 @@ function AboutScreen() {
                     </p>
 
                 </div>
-                <div className="sm:w-[50%] w-full flex justify-end mt-[2rem] sm:mt-0 ">
+                {/* <div className="sm:w-[50%] w-full flex justify-end mt-[2rem] sm:mt-0 ">
                     <SupportForm />
-                </div>
+                </div> */}
             </div>
         </>
     )

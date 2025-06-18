@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { ICarouselApiData } from "../../types/api/carousel.types";
 import { defaultImage } from "../../utils/constant";
-import DonorCard from "../Cards/DonorCard";
+// import DonorCard from "../Cards/DonorCard";
 import SubscribeForm from "../Form/SubscribeForm";
 import Heading from "../Text/Heading";
 
@@ -11,7 +11,7 @@ import Heading from "../Text/Heading";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Carousel() {
-    const { data, } = useFetch<ICarouselApiData[]>("carousel/getAllCarousel" ,);
+    const { data, } = useFetch<ICarouselApiData[]>("carousel/getAllCarousel",);
     const [apiData, setApiData] = useState<ICarouselApiData[]>();
 
     useEffect(() => {
@@ -49,16 +49,16 @@ function Carousel() {
         <>
             <div className="relative w-full h-[100%]" >
                 {/* Carousel wrapper */}
-                <div className="relative h-full overflow-hidden rounded-lg ">
+                <div className="relative h-full overflow-hidden rounded-lg">
                     {apiData?.map((img, index) => (
                         <div
                             key={index}
-                            className={`h-full w-full transition-opacity duration-700 ease-in-out${index === currentIndex ? "opacity-100" : "opacity-0 hidden"}`}
+                            className={`h-full w-full transition-opacity duration-700 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0 hidden"}`}
                         >
+                            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm   "></div> {/* ✅ Blur Layer */}
                             <img src={img.imagePath || defaultImage} className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
                         </div>
                     ))}
-
                 </div>
 
                 {/* Navigation Indicators */}
@@ -103,9 +103,9 @@ function Carousel() {
                 </button>
                 <div className="w-full absolute top-[50%] transform -translate-y-1/2  flex flex-row justify-center items-center flex-wrap sm:flex-nowrap p-[1rem] sm:p-0 gap-2 sm:gap-0">
                     <div className="sm:w-[44%] w-full">
-                        <Heading text="We are changing the way India donates" className="text-custom_white text-[50px]" />
+                        <Heading text="National Integrated Human And Industrial Development Agency" className="text-custom_white text-[50px]" />
                     </div>
-                    <DonorCard />
+                    {/* <DonorCard /> */}
                 </div>
                 <SubscribeForm />
             </div>

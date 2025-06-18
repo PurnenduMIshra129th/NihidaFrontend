@@ -1,16 +1,16 @@
 // import img1 from "../../assets/img1.jpg"
-import Button from "../../components/Button/Button"
-import { CallIcon, FacebookIcon, InstagramIcon, LinkedinIcon, TelegramIconChangedBG, TwitterIcon, YoutubeIcon, } from "../../components/Icons/Icon"
-import IconWithText from "../../components/Icons/IconWithText"
-import FooterText from "../../components/Text/FooterText"
-import SubHeading from "../../components/Text/SubHeading"
-import Typography from "../../components/Text/Typography"
+// import Button from "../../components/Button/Button"
+// import { CallIcon, FacebookIcon, InstagramIcon, LinkedinIcon, TelegramIconChangedBG, TwitterIcon, YoutubeIcon, } from "../../components/Icons/Icon"
+// import IconWithText from "../../components/Icons/IconWithText"
+// import FooterText from "../../components/Text/FooterText"
+// import SubHeading from "../../components/Text/SubHeading"
+// import Typography from "../../components/Text/Typography"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function FooterScreen() {
     return (
         <>
             <div className="w-full flex flex-col items-center justify-center sm:py-7 py-2 bg-custom_black_2 p-[1rem] sm:p-0">
-                <div className="sm:w-[90%] w-full flex-row flex flex-wrap space-x-4">
+                {/* <div className="sm:w-[90%] w-full flex-row flex flex-wrap space-x-4">
                     <div className="flex flex-col sm:flex-1 sm:px-7 w-full " style={{marginLeft: "0"}}>
                         <Typography className="text-[20px] sm:my-5 my-3 text-custom_white font-extrabold uppercase" text="HelpYourNGO" />
                         <Typography text=" 103, Regent Chambers, Above Status Restaurant, Nariman Point, Mumbai - 400 021, India." className="text-custom_white_1 my-3" />
@@ -55,12 +55,9 @@ function FooterScreen() {
                         <Typography className="text-[20px] my-5 text-custom_white font-extrabold uppercase" text="Latest News" />
                         <FooterText text="Latest blog posts" />
                         <FooterText text="Latest webinar" />
-                        {/* <div className="my-3">
-                            <img src={img1} alt="" className="h-[25rem] w-[80%]"/>
-                        </div> */}
                     </div>
-                </div>
-                <p className="mt-10 text-[15px] font-normal text-custom_grey">Copyright © 2025 All rights reserved by <span className="text-red-400 font-bold text-[13px]">HYNGO India Pvt. Ltd.</span></p>
+                </div> */}
+                <p className="mt-10 text-[15px] font-normal text-custom_grey">Copyright © 2025 All rights reserved by <span className="text-red-400 font-bold text-[13px]">NIHIDA.</span></p>
             </div>
         </>
     )

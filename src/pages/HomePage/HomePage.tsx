@@ -7,13 +7,13 @@ import { fetchSocialLink } from "../../contexts/slice/socialLinkSlice"
 import { AppDispatch } from "../../contexts/store"
 import AboutScreen from "../../screens/About/AboutScreen"
 import BlogScreen from "../../screens/Blog/BlogScreen"
-import CountUpScreen from "../../screens/CountUP/CountUpScreen"
-import FeedbackScreen from "../../screens/Feedback/FeedbackScreen"
+// import CountUpScreen from "../../screens/CountUP/CountUpScreen"
+// import FeedbackScreen from "../../screens/Feedback/FeedbackScreen"
 import FooterScreen from "../../screens/Footer/FooterScreen"
 import MediaScreen from "../../screens/Media/MediaScreen"
 import NewsScreen from "../../screens/News/NewsScreen"
 import ProductAndServiceScreen from "../../screens/ProductAndService/ProductAndServiceScreen"
-import NewsSubscribeScreen from "../../screens/Subscribe/NewsSubscribeScreen"
+// import NewsSubscribeScreen from "../../screens/Subscribe/NewsSubscribeScreen"
 import VideoScreen from "../../screens/Video/VideoScreen"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function HomePage() {
@@ -32,9 +32,9 @@ function HomePage() {
         <div id="services" className="w-full flex flex-col justify-center items-center"> <ProductAndServiceScreen /></div>
         <div id="news" className="w-full flex flex-col justify-center items-center"><NewsScreen /></div>
         <div id="videos" className="w-full flex flex-col justify-center items-center"><VideoScreen /></div>
-        <FeedbackScreen />
+        {/* <FeedbackScreen />
         <CountUpScreen />
-        <NewsSubscribeScreen />
+        <NewsSubscribeScreen /> */}
         <FooterScreen />
       </div>
     </>
