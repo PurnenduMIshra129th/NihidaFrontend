@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { apiClient } from "../../services/axiosInstance";
 import { IApiResponse, ISocialLinkApiData } from "../../types/api/socialLink.types";
+import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
 export const fetchSocialLink = createAsyncThunk<IApiResponse>(
@@ -15,7 +16,7 @@ export const fetchSocialLink = createAsyncThunk<IApiResponse>(
                 return rejectWithValue('No data found');
             }
         } catch (error) {
-            return rejectWithValue(error);
+            return rejectWithValue(handleApiError(error));
         }
     }
 );

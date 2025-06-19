@@ -3,7 +3,9 @@ import { AxiosRequestConfig } from "axios";
 import { eventBus } from "../contexts/context/eventBus";
 import { apiClient, multipartApiClient } from "../services/axiosInstance";
 import { IErrorResponse, ISuccessResponse } from "../types/api/centralApi.types";
-import { getStorageItem } from "../utils/util";
+import { handleApiError } from "../utils/handleApiError";
+import { getNavigator } from "../utils/navigator";
+import { getStorageItem, validateTokenExpiry } from "../utils/util";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
@@ -15,9 +17,13 @@ export const apiRequest = async <T>(
 ): Promise<ISuccessResponse<T> | IErrorResponse> => {
   try {
     eventBus.emit({ type: "loader_start", message: "Loading..." });
-
+    const token = getStorageItem("token")?.toString();
+    const navigate = getNavigator();
+    if (token && navigate) {
+      validateTokenExpiry(navigate);
+    }
     const headers = tokenization
-      ? { Authorization: `Bearer ${getStorageItem("token")?.toString()}` }
+      ? { Authorization: `Bearer ${token}` }
       : {};
 
     const response = await apiClient.request<ISuccessResponse<T> | IErrorResponse>({
@@ -49,15 +55,7 @@ export const apiRequest = async <T>(
     return unknownError;
 
   } catch (error) {
-    const fallbackError: IErrorResponse = {
-      statusCode: 0,
-      errorCode: 500,
-      errorMessage: "Unexpected error occurred!",
-      shortHand: "SERVER_ERROR",
-      error: String(error),
-    };
-    eventBus.emit({ type: "danger", message: fallbackError.error });
-    return fallbackError;
+    return handleApiError(error);
   } finally {
     eventBus.emit({ type: "loader_stop", message: "Loading stop..." });
   }
@@ -66,9 +64,13 @@ export const apiRequest = async <T>(
 export const multiPartAPI = async <T>(endpoint: string, formData: FormData, tokenization: boolean = false): Promise<ISuccessResponse<T> | IErrorResponse> => {
   try {
     eventBus.emit({ type: "loader_start", message: "Loading..." });
-
+    const token = getStorageItem("token")?.toString();
+    const navigate = getNavigator();
+    if (token && navigate) {
+      validateTokenExpiry(navigate);
+    }
     const headers = tokenization
-      ? { Authorization: `Bearer ${getStorageItem("token")?.toString()}` }
+      ? { Authorization: `Bearer ${token}` }
       : {};
 
     const config: AxiosRequestConfig<FormData> = {
@@ -96,15 +98,7 @@ export const multiPartAPI = async <T>(endpoint: string, formData: FormData, toke
     eventBus.emit({ type: "danger", message: unknownError.shortHand });
     return unknownError;
   } catch (error) {
-    const fallbackError: IErrorResponse = {
-      statusCode: 0,
-      errorCode: 500,
-      errorMessage: "Unexpected error occurred!",
-      shortHand: "SERVER_ERROR",
-      error: String(error),
-    };
-    eventBus.emit({ type: "danger", message: fallbackError.error });
-    return fallbackError;
+    return handleApiError(error);
   }
   finally {
     eventBus.emit({ type: "loader_stop", message: "Loading stop..." });

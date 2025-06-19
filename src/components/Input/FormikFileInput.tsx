@@ -1,7 +1,7 @@
 import { useFormikContext } from "formik";
 
 import { IFormikFileInputProps } from "../../types/input/input.types";
-import { defaultImage } from "../../utils/constant";
+import Image from "../Image/Image";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const FormikFileInput = (props: IFormikFileInputProps) => {
@@ -12,7 +12,7 @@ const FormikFileInput = (props: IFormikFileInputProps) => {
         <div>
             {label && <label htmlFor={name} className="block mb-2 text-sm font-medium text-gray-900">{label}</label>}
             {currentFileName && (
-                <img src={currentFileName || defaultImage} alt="not found" className="w-full h-20 object-cover"/>
+                <Image imagePath={currentFileName} className="h-20"/>
             )}
 
             <input

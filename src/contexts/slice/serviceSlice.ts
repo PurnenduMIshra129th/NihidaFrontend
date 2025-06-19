@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { apiClient } from "../../services/axiosInstance";
 import { IApiResponse, IServiceApiData } from "../../types/api/service.types";
+import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
 export const fetchService = createAsyncThunk<IApiResponse>(
@@ -15,7 +16,7 @@ export const fetchService = createAsyncThunk<IApiResponse>(
                 return rejectWithValue('No data found');
             }
         } catch (error) {
-            return rejectWithValue(error);
+            return rejectWithValue(handleApiError(error));
         }
     }
 );

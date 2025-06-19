@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import { eventBus } from "../contexts/context/eventBus";
 import { apiClient } from "../services/axiosInstance";
 import { IErrorResponse, ISuccessResponse } from "../types/api/centralApi.types";
-import { getStorageItem } from "../utils/util";
+import { handleApiError } from "../utils/handleApiError";
+import { getNavigator } from "../utils/navigator";
+import { getStorageItem, validateTokenExpiry } from "../utils/util";
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 const useFetch = <T,>(endpoint: string, method: HttpMethod = "GET", payload?: { [key: string]: string }, tokenization: boolean = false) => {
@@ -15,9 +17,13 @@ const useFetch = <T,>(endpoint: string, method: HttpMethod = "GET", payload?: { 
     setIsLoading(true);
     try {
       eventBus.emit({ type: "loader_start", message: "Loading..." });
-
+      const token = getStorageItem("token")?.toString();
+      const navigate = getNavigator();
+      if (token && navigate) {
+        validateTokenExpiry(navigate);
+      }
       const headers = tokenization
-        ? { Authorization: `Bearer ${getStorageItem("token")?.toString()}` }
+        ? { Authorization: `Bearer ${token}` }
         : {};
 
       const response = await apiClient.request<T>({
@@ -35,16 +41,9 @@ const useFetch = <T,>(endpoint: string, method: HttpMethod = "GET", payload?: { 
       if ((response?.data as ISuccessResponse<T>)?.statusCode === 1) {
         setData((response?.data as ISuccessResponse<T>));
       }
-    } catch (err) {
-      const fallbackError: IErrorResponse = {
-        statusCode: 0,
-        errorCode: 500,
-        errorMessage: "Unexpected error occurred!",
-        shortHand: "SERVER_ERROR",
-        error: String(error),
-      };
-      eventBus.emit({ type: "danger", message: fallbackError.error });
-      setError(err instanceof Error ? err : new Error("Unknown error occurred"));
+    } catch (error) {
+      handleApiError(error);  
+      setError(new Error(error instanceof Error ? error.message : "Something went wrong. Please try again."));
     } finally {
       setIsLoading(false);
       eventBus.emit({ type: "loader_stop", message: "Loading..." });

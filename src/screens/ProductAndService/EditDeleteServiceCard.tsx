@@ -1,22 +1,21 @@
 import { useState } from "react"
 
 import Button from "../../components/Button/Button"
+import Image from "../../components/Image/Image"
 import Typography from "../../components/Text/Typography"
 import { IEditDeleteServiceCardProps } from "../../types/cards/card.type"
-import { defaultImage } from "../../utils/constant"
 import EditServicePopUp from "./EditServicePopUp"
-
 
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function EditDeleteServiceCard(props: IEditDeleteServiceCardProps) {
     const [isEditPopUpOpened, setIsEditPopUpOpened] = useState(false)    
-    const { textHeading = 'no Heading', textDescription = 'no Description', imageURL = defaultImage ,onDelete = () => {},id ='noID'} = props
+    const { textHeading = 'no Heading', textDescription = 'no Description', imageURL = '' ,onDelete = () => {},id ='noID'} = props
     
     return (
         <>
             <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row md:max-w-xl hover:bg-gray-100 ">
-                <img className="object-cover w-full rounded-t-lg h-96 md:h-full md:w-48 md:rounded-none md:rounded-s-lg" src={imageURL} alt="" />
+                <Image imagePath={imageURL} className='rounded-t-lg h-96 md:h-full md:w-48 md:rounded-none md:rounded-s-lg' />
                 <div className="flex flex-col justify-between p-4 leading-normal">
                     <Typography className="mb-2 text-2xl font-bold tracking-tight text-gray-900" text={textHeading}/>
                     <Typography className="mb-3 font-normal text-gray-700" text={textDescription}/>

@@ -1,18 +1,10 @@
-import { JSX } from "react";
-import { Navigate, useLocation } from "react-router";
+import { JSX, useEffect, useRef, useState } from "react";
+import { Navigate } from "react-router";
 
-import { getStorageItem } from "../../utils/util";
+import { eventBus } from "../../contexts/context/eventBus";
+import { useAccessControl } from "../../hooks/useAccessControl";
 
-const guestOnlyRoutes = ["/login", "/signUp"];
-const adminRestrictedRoutes = [
-    "/manage",
-    "/manage/manage-all-blog",
-    "/manage/manage-all-news",
-    "/manage/manage-all-media",
-    "/manage/manage-all-video",
-    "/manage/manage-all-carousel",
-    "/manage/manage-all-service",
-];
+
 
 
 interface IProtectedRouteProps {
@@ -20,27 +12,39 @@ interface IProtectedRouteProps {
     requiredRole?: string;
 }
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ProtectedRoute = ({ children, }: IProtectedRouteProps) => {
-    const location = useLocation();
-    const token = getStorageItem("token");
-    const role = getStorageItem("role");
-    const path = location.pathname;
+export const ProtectedRoute = ({ children }: IProtectedRouteProps) => {
+    const { isAuthorized, accessDetails } = useAccessControl();
+    const [showRedirect, setShowRedirect] = useState(false);
+    const hasEmitted = useRef(false);
 
-    if (!token && adminRestrictedRoutes.includes(path)) {
-        return <Navigate to="/login" replace />;
+    useEffect(() => {
+        if (!isAuthorized && !hasEmitted.current) {
+            hasEmitted.current = true;
+
+            const messageMap: Record<string, string> = {
+                NO_TOKEN: "You need to log in to access this page.",
+                GUEST_PAGE_BLOCKED: "You're already logged in — this page is for guests only.",
+                NOT_ADMIN: "You don't have permission to access this admin page.",
+                UNKNOWN_ROUTE: "This page is not available.",
+            };
+
+            const reason = accessDetails.reason || "UNKNOWN_ROUTE";
+            const message = messageMap[reason] || "Access denied.";
+
+            eventBus.emit({ type: "warning", message });
+
+            // Trigger redirect after state-safe delay
+            setShowRedirect(true);
+        }
+    }, [isAuthorized, accessDetails]);
+
+    if (!isAuthorized && accessDetails.redirectTo && showRedirect) {
+        return <Navigate to={accessDetails.redirectTo} replace />;
     }
-
-    if (token && guestOnlyRoutes.includes(path)) {
-        return <Navigate to="/notAccessible" replace />;
-    }
-
-    if (token && adminRestrictedRoutes.includes(path) && role !== "admin") {
-        return <Navigate to="/notAccessible" replace />;
-    }
-
 
     return children;
 };
+
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const withAuth = <P extends object>(

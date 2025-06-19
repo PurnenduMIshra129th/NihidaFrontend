@@ -5,6 +5,7 @@ import { ICarouselApiData } from "../../types/api/carousel.types";
 import { defaultImage } from "../../utils/constant";
 // import DonorCard from "../Cards/DonorCard";
 import SubscribeForm from "../Form/SubscribeForm";
+import Image from "../Image/Image";
 import Heading from "../Text/Heading";
 
 
@@ -55,10 +56,23 @@ function Carousel() {
                             key={index}
                             className={`h-full w-full transition-opacity duration-700 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0 hidden"}`}
                         >
-                            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm   "></div> {/* ✅ Blur Layer */}
-                            <img src={img.imagePath || defaultImage} className="w-full h-full object-cover" alt={`Slide ${index + 1}`} />
+                            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm   "></div>
+                            <Image imagePath={img.imagePath} className="h-full"/>
                         </div>
                     ))}
+                    {!apiData && 
+                        <div
+                           
+                            className={`h-full w-full transition-opacity duration-700 ease-in-out "opacity-100"`}
+                        >
+                            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm "></div>
+                            <img onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.onerror = null;
+                                target.src = defaultImage;
+                            }}
+                                src={defaultImage} className="w-full h-full object-cover" alt={`Not Found Image`} />
+                        </div> }
                 </div>
 
                 {/* Navigation Indicators */}
