@@ -1,5 +1,5 @@
 import { Formik } from "formik"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { fetchSocialLink, selectSocialLink } from "../../contexts/slice/socialLinkSlice"
@@ -17,6 +17,10 @@ function EditSocialLinkPopUp(props: IEditSocialLinkPopUpProps) {
     const { setIsPopUpOpened = () => false, } = props
     const socialLinkList = useSelector(selectSocialLink)
     const [initialValues] = useState({ instagramUrl: '', facebookUrl: '', twitterUrl: '', linkedinUrl: '', youtubeUrl: '', whatsappUrl: '', telegramUrl: '', phoneNumber1: '', phoneNumber2: '' })
+    useEffect(() => {
+        dispatch(fetchSocialLink());
+    }, [dispatch]);
+
     return (
         <>
             <Formik

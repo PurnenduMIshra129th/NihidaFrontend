@@ -9,7 +9,7 @@ export const fetchSocialLink = createAsyncThunk<IApiResponse>(
     "socialLink/fetchSocialLink",
     async (_, { rejectWithValue }) => {
         try {
-            const response = await apiClient.request({ url: "/socialLink/getAllSocialLink", method: "GET" });            
+            const response = await apiClient.request({ url: "/socialLink/getAllSocialLink", method: "GET" });                        
             if (response?.data?.statusCode == 1 && response?.data?.data?.length > 0) {                
                 return response?.data
             } else {

@@ -84,7 +84,9 @@ export const multiPartAPI = async <T>(endpoint: string, formData: FormData, toke
       return response.data as ISuccessResponse<T>;
     }
     if (response?.data?.statusCode === 0) {
-      eventBus.emit({ type: "warning", message: response.data.shortHand });
+      const errorValue = (response?.data as IErrorResponse)?.error;
+      const errorMessage = typeof errorValue === "string" ? errorValue : (response?.data as IErrorResponse)?.shortHand;
+      eventBus.emit({ type: "warning", message: errorMessage });
       return response.data as IErrorResponse;
     }
     const unknownError: IErrorResponse = {
