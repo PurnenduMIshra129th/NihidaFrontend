@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router"
 
 import { eventBus } from "../../contexts/context/eventBus"
 import { selectSocialLink } from "../../contexts/slice/socialLinkSlice"
-import { getStorageItem, removeStorageItem } from "../../utils/util"
+import { decodeToken, getStorageItem, removeStorageItem } from "../../utils/util"
 import { CallIcon, FacebookIcon, InstagramIcon, LinkedinIcon, TelegramIconChangedBG, TwitterIcon, YoutubeIcon } from "../Icons/Icon"
 import IconWithText from "../Icons/IconWithText"
 
@@ -12,6 +12,7 @@ function Navbar() {
     const navigate = useNavigate()
     const socialLink = useSelector(selectSocialLink)
     const token = getStorageItem("token");
+    const decoded = decodeToken<{ exp: number; role: string }>(token || "");
     const role = getStorageItem("role");
     const logout = () => {
         removeStorageItem("token");
@@ -70,7 +71,7 @@ function Navbar() {
                                 <button onClick={() => scrollToSection("videos")} className="block py-2 px-3 rounded-sm md:p-0">Videos</button>
                             </li>
                             {
-                                role === "admin" &&
+                                token && decoded?.role == 'admin' && role == 'admin' &&
                                 <li>
                                     <Link to="/manage" className="block py-2 px-3 rounded-sm md:p-0">Admin</Link>
                                 </li>

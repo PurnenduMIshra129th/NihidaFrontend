@@ -1,6 +1,6 @@
 import { matchPath, useLocation, useNavigate } from "react-router";
 
-import { getStorageItem } from "../utils/util";
+import { decodeToken, getStorageItem } from "../utils/util";
 
 
 type AccessResult = {
@@ -38,6 +38,7 @@ export const useAccessControl = () => {
     const navigate = useNavigate();
     const token = getStorageItem("token");
     const role = getStorageItem("role");
+    const decoded = decodeToken<{ exp: number; role: string }>(token || "");
 
     const getAccess = (): AccessResult => {
         if (pathname === "/") return { canAccess: true };
@@ -51,7 +52,7 @@ export const useAccessControl = () => {
             return { canAccess: false, reason: "GUEST_PAGE_BLOCKED", redirectTo: "/notAccessible" };
         }
 
-        if (role === "admin") {
+        if (role === decoded?.role) {
             if (matchesRoute([...adminRoutes], pathname)) return { canAccess: true };
             return { canAccess: false, reason: "UNKNOWN_ROUTE", redirectTo: "/notAccessible" };
         }

@@ -24,6 +24,14 @@ export const isTokenExpired = (token: string): boolean => {
     return true;
   }
 };
+export const decodeToken = <T = Record<string, string>>(token: string): T | null => {
+  try {
+    return jwtDecode<T>(token);
+  } catch {
+    return null;
+  }
+};
+
 export const validateTokenExpiry = (navigate: NavigateFunction) => {
   const token = getStorageItem("token");
 
