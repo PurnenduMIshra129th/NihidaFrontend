@@ -50,4 +50,8 @@ export const alertStyles = {
     buttonText: "text-gray-500 dark:text-gray-300 dark:hover:text-white",
   },
 };
+export const userRole ={
+    admin : "admin",
+    user : "user"
+} as const
 

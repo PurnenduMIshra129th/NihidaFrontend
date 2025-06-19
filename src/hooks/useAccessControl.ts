@@ -1,5 +1,6 @@
 import { matchPath, useLocation, useNavigate } from "react-router";
 
+import { userRole } from "../utils/constant";
 import { decodeToken, getStorageItem } from "../utils/util";
 
 
@@ -52,7 +53,7 @@ export const useAccessControl = () => {
             return { canAccess: false, reason: "GUEST_PAGE_BLOCKED", redirectTo: "/notAccessible" };
         }
 
-        if (role === decoded?.role) {
+        if (role === userRole.admin &&  decoded?.role === userRole.admin) {
             if (matchesRoute([...adminRoutes], pathname)) return { canAccess: true };
             return { canAccess: false, reason: "UNKNOWN_ROUTE", redirectTo: "/notAccessible" };
         }
