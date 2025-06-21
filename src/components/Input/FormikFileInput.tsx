@@ -17,6 +17,7 @@ const FormikFileInput = (props: IFormikFileInputProps) => {
 
             <input
                 type="file"
+                accept=".png, .jpg, .jpeg"
                 id={name}
                 className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm block w-full p-2.5 outline-none focus:ring-0 ${className}`}
                 onChange={(event) => {
