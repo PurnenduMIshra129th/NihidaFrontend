@@ -29,7 +29,7 @@ function ManageAllBlogPage() {
     <div className="mt-[4rem] px-[1rem]">
       <div className="flex flex-row justify-center flex-wrap gap-[1.5rem] ">
         {apiData && apiData.map((item, index) => (
-          <EditDeleteBlogCard key={index} textHeading={trimText(item.heading, 6)} textDescription={trimText(item.description, 10)} imageURL={item.imagePath} onDelete={() => handleDelete(item._id)} id={item._id} />
+          <EditDeleteBlogCard key={index} textHeading={trimText(item.heading, 6)} textDescription={trimText(item.description, 10)} imageURL={item.imagePaths?.[0]} onDelete={() => handleDelete(item._id ? item._id : "")} id={item._id} />
         ))}
       </div>
     </div>

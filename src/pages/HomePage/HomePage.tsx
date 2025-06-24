@@ -6,14 +6,14 @@ import Carousel from "../../components/Carousel/Carousel"
 import { fetchSocialLink } from "../../contexts/slice/socialLinkSlice"
 import { AppDispatch } from "../../contexts/store"
 import AboutScreen from "../../screens/About/AboutScreen"
+import MissionScreen from "../../screens/About/MissionScreen"
+import DonationImpactSection from "../../screens/About/ViewImpactScreen"
+import BannerScreen2 from "../../screens/Background/BannerScreen2"
 import BlogScreen from "../../screens/Blog/BlogScreen"
-// import CountUpScreen from "../../screens/CountUP/CountUpScreen"
-// import FeedbackScreen from "../../screens/Feedback/FeedbackScreen"
-import FooterScreen from "../../screens/Footer/FooterScreen"
+import ImpactScreen from "../../screens/Impact/ImpactScreen"
 import MediaScreen from "../../screens/Media/MediaScreen"
 import NewsScreen from "../../screens/News/NewsScreen"
 import ProductAndServiceScreen from "../../screens/ProductAndService/ProductAndServiceScreen"
-// import NewsSubscribeScreen from "../../screens/Subscribe/NewsSubscribeScreen"
 import VideoScreen from "../../screens/Video/VideoScreen"
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function HomePage() {
@@ -26,16 +26,16 @@ function HomePage() {
     <>
       <Carousel />
       <div className="w-full flex flex-col justify-center items-center">
-        <div id="about" className="w-full flex flex-col justify-center items-center"><AboutScreen /></div>
-        <div id="blog" className="w-full flex flex-col justify-center items-center"><BlogScreen /></div>
-        <div id="media" className="w-full flex flex-col justify-center items-center"><MediaScreen /></div>
-        <div id="services" className="w-full flex flex-col justify-center items-center"> <ProductAndServiceScreen /></div>
-        <div id="news" className="w-full flex flex-col justify-center items-center"><NewsScreen /></div>
-        <div id="videos" className="w-full flex flex-col justify-center items-center"><VideoScreen /></div>
-        {/* <FeedbackScreen />
-        <CountUpScreen />
-        <NewsSubscribeScreen /> */}
-        <FooterScreen />
+        <div id="about" className="w-full flex flex-col justify-center items-center scroll-mt-24"><AboutScreen /></div>
+        <div id="mission" className="w-full flex flex-col justify-center items-center scroll-mt-24"><MissionScreen /></div>
+        <div id="banner" className="w-full flex flex-col justify-center items-center scroll-mt-24"><BannerScreen2 /></div>
+        <div id="impact" className="w-full flex flex-col justify-center items-center scroll-mt-24"><ImpactScreen /></div>
+        <div id="blog" className="w-full flex flex-col justify-center items-center scroll-mt-24"><BlogScreen /></div>
+        <div id="blog" className="w-full flex flex-col justify-center items-center scroll-mt-24"><DonationImpactSection /></div>
+        <div id="media" className="w-full flex flex-col justify-center items-center scroll-mt-24"><MediaScreen /></div>
+        <div id="services" className="w-full flex flex-col justify-center items-center scroll-mt-24"> <ProductAndServiceScreen /></div>
+        <div id="news" className="w-full flex flex-col justify-center items-center scroll-mt-24"><NewsScreen /></div>
+        <div id="videos" className="w-full flex flex-col justify-center items-center scroll-mt-24"><VideoScreen /></div>
       </div>
     </>
   )

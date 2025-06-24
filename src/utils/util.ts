@@ -1,4 +1,5 @@
 import {jwtDecode} from "jwt-decode";
+import moment from "moment";
 import { NavigateFunction } from "react-router";
 
 import { eventBus } from "../contexts/context/eventBus";
@@ -45,5 +46,14 @@ export const validateTokenExpiry = (navigate: NavigateFunction) => {
     navigate("/login");
   }
 };
+export function getTextLength(text: string): number {
+  if (!text) return 0;
+  return text.trim().length;
+}
+
+export function formatToLocalTime(timeString?: string): string {
+  const time = timeString ? moment(timeString) : moment();
+  return time.local().format("dddd, MMMM Do YYYY, h:mm A");
+}
 
 

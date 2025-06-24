@@ -1,17 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import EmptyState from "../../components/EmptyState/EmptyState";
-import Image from "../../components/Image/Image";
-import Heading from "../../components/Text/Heading";
-import Typography from "../../components/Text/Typography";
 import useFetch from "../../hooks/useFetch";
+import GalleryScreenBySection from "../../screens/ImageGallery/GalleryScreenBySection";
 import { IBlogApiData } from "../../types/api/blog.types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function ViewBlogByIdUsersPage() {
   const { id } = useParams();
-  const [details, setDetails] = useState({ heading: "", description: "", imagePath: "" });
+  const [details, setDetails] = useState<IBlogApiData>({ heading: "", description: "", imagePaths: [],createdAt :'' });
 
   const { data, } = useFetch<IBlogApiData>(`blog/getBlogById/${id}`, "GET", undefined, true);
 
@@ -22,21 +19,9 @@ function ViewBlogByIdUsersPage() {
   }, [data]);
 
   return (
-    <div className="mt-[4rem] px-[1rem] flex justify-center flex-col items-center pb-[3rem]">
-      {details ? (
-        <>
-          {details.imagePath && 
-          <Image imagePath={details.imagePath} className="mt-4 rounded-lg w-[90%] h-[30rem] object-cover"/>
-          }
-          <div className="w-[90%]">
-            <Heading text={details.heading} className="my-[3rem]" />
-            <Typography text={details.description} className="break-words text-[25px]" />
-          </div>
-        </>
-      ) : (
-        <EmptyState/>
-      )}
-    </div>
+    <>
+    <GalleryScreenBySection heading={details?.heading} description={details?.description} createdAt={details?.createdAt} imagePaths={details.imagePaths || []}/>
+    </>
   );
 }
 

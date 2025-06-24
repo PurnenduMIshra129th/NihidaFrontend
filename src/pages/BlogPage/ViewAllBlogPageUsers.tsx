@@ -30,7 +30,7 @@ function ViewAllBlogPageUsers() {
       <div className="mt-[4rem] px-[1rem] pb-[3rem]">
         <div className="flex flex-row justify-center flex-wrap gap-[1.5rem]">
           {apiData?.map((item, index) => (
-            <Card key={index} textTime={item.createdAt} textHeading={item.heading} textDescription={item.description} imagePath={item.imagePath} id={item._id} readMoreRouting="/users/blog" />
+            <Card key={index} textTime={item.createdAt} textHeading={item.heading} textDescription={item.description} imagePath={item.imagePaths[0]} id={item._id} readMoreRouting="/users/blog" />
           ))}
         </div>
       </div>

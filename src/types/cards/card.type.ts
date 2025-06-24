@@ -68,3 +68,8 @@ export interface IVideoCardProps{
     videoUrl?: string
     id?:string
 }
+export interface IMissionSectionCard{
+    textHeading?:string
+    textDescription?:string
+    routePath?:string
+}

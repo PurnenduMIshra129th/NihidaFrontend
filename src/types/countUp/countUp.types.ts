@@ -3,4 +3,6 @@ export interface ICountUpComponentProps{
     start?:number
     end?:number
     duration?:number
+    textDescription?:string
+    isPlusTrue?:boolean
 }

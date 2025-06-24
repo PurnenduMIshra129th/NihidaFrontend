@@ -406,6 +406,19 @@ export const LinkIcon = ({ size = 24, color = 'currentColor', ...props }) => (
     <path xmlns="http://www.w3.org/2000/svg" fill="currentColor" d="M1000 267q0 112-78 188L747 631q-78 78-189 78q-97 0-171-63l115-115q26 17 56 17q44 0 75-31l175-176q31-29 31-74q0-44-30.5-74.5T734 162q-25 0-49.5 12T652 208H414L546 79Q626 1 734 1q110 0 188 78t78 188zm-387 89L498 471q-26-17-56-17q-44 0-75 31L192 661q-31 29-31 74q0 44 30.5 74.5T266 840q25 0 49.5-12t32.5-34h238L454 923q-80 78-188 78q-110 0-188-78T0 735q0-112 78-188l175-176q78-78 189-78q97 0 171 63z"/>
   </svg>
 );
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const HamburgerIcon = ({ size = 24, color = 'currentColor', ...props }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 32 32" 
+    width={size} 
+    height={size} 
+    fill={color}
+    {...props}
+  >
+    <path xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h22M5 16h22M5 24h22"/>
+  </svg>
+);
 
 
 

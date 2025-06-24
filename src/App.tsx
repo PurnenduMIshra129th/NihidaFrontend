@@ -1,23 +1,25 @@
-import './App.css'
+import "./App.css";
 
-import { useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router'
+import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router";
 
-import Alerts from './components/Alerts/Alerts'
-import ErrorBoundary from './components/ErrorBoundry/ErrorBoundry'
-import Loader from './components/Loader/Loader'
-import Navbar from './components/Navbar/Navbar'
-import { AlertProvider } from './contexts/context/alert/AlertContext'
-import { LoaderProvider } from './contexts/context/loader/LoaderContext'
-import { setNavigator } from './utils/navigator'
-import { validateTokenExpiry } from './utils/util'
+import Alerts from "./components/Alerts/Alerts";
+import ErrorBoundary from "./components/ErrorBoundry/ErrorBoundry";
+import Loader from "./components/Loader/Loader";
+import Navbar from "./components/Navbar/Navbar";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import { AlertProvider } from "./contexts/context/alert/AlertContext";
+import { LoaderProvider } from "./contexts/context/loader/LoaderContext";
+import FooterScreen from "./screens/Footer/FooterScreen";
+import { setNavigator } from "./utils/navigator";
+import { validateTokenExpiry } from "./utils/util";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
     validateTokenExpiry(navigate);
-  },);
+  });
 
   useEffect(() => {
     setNavigator(navigate);
@@ -28,15 +30,21 @@ function App() {
       <ErrorBoundary>
         <LoaderProvider>
           <AlertProvider>
+            <ScrollToTop />
             <Loader />
             <Alerts />
             <Navbar />
-            <Outlet />
+            <div className="min-h-screen flex flex-col">
+              <main className="flex-grow ">
+                <Outlet />
+              </main>
+              <FooterScreen />
+            </div>
           </AlertProvider>
         </LoaderProvider>
       </ErrorBoundary>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

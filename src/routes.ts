@@ -2,6 +2,11 @@ import { createBrowserRouter } from "react-router";
 
 import App from "./App";
 import { LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, ManageHomePageWrapper, SignUpPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+import ApprochPage from "./pages/AboutUsPage/ApprochPage";
+import FuturePlanPage from "./pages/AboutUsPage/FuturePlanPage";
+import MissionPage from "./pages/AboutUsPage/MissionPage";
+import VisionPage from "./pages/AboutUsPage/VisionPage";
 import HomePage from "./pages/HomePage/HomePage";
 import PageNotAccessible from "./pages/NotFoundPage/PageNotAccessible";
 import PageNotFound from "./pages/NotFoundPage/PageNotFound";
@@ -29,6 +34,12 @@ export const router = createBrowserRouter([
       { path: "users/media/:id", Component: ViewMediaByIdUsersPageWrapper },
       { path: "users/blog/:id", Component: ViewBlogByIdUsersPageWrapper},
       { path: "users/news/:id", Component: ViewNewsByIdUsersPageWrapper },
+
+      { path:"about/mission", Component: MissionPage },
+      { path:"about/vision", Component: VisionPage },
+      { path:"about/approch", Component: ApprochPage },
+      { path:"about/plan", Component: FuturePlanPage },
+      { path:"about", Component: AboutUsPage },
       
       { path: "notAccessible", Component: PageNotAccessible },
       { path: "*", Component: PageNotFound },

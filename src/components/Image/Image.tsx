@@ -9,7 +9,8 @@ function Image({ imagePath = defaultImage , className ='' }: { imagePath: string
                 target.onerror = null;
                 target.src = defaultImage;
             }}
-                className={`h-[12rem] w-full object-cover ${className}`} src={imagePath} alt="" />
+                loading="lazy"
+                className={`h-[12rem] w-full object-cover ${className}`} src={imagePath == ''? defaultImage : imagePath} alt="No image Found" />
         </>
     )
 }

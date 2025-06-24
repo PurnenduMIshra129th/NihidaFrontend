@@ -5,7 +5,7 @@ function Heading(props : IHeadingProps) {
     const {text = 'No Heading Provided !' , className = ''}=props
   return (
    <>
-   <Typography text={text} className={`sm:text-[40px] text-[25px] font-extrabold leading-[1.3] ${className}`}/>
+   <Typography text={text} className={`text-custom_orange_1 text-2xl md:text-3xl lg:text-4xl font-bold ${className}`}/>
    </>
   )
 }
