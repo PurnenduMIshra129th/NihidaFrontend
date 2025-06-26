@@ -12,7 +12,7 @@ type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 export const apiRequest = async <T>(
   endpoint: string,
   method: HttpMethod = "GET",
-  payload?: { [key: string]: string },
+  payload?: T,
   tokenization: boolean = false
 ): Promise<ISuccessResponse<T> | IErrorResponse> => {
   try {

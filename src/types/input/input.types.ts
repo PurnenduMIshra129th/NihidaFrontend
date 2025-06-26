@@ -19,6 +19,7 @@ export interface IFormikInputProps {
   type?: string;
   isTextArea?: boolean; 
   rows?: number;
+  required?: boolean;
 }
 
 export interface IInputProps{

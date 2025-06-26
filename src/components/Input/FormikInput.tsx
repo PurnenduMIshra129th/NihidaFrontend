@@ -1,21 +1,46 @@
-import { Field } from "formik"
+import { ErrorMessage,Field } from "formik";
 
 import { IFormikInputProps } from "../../types/input/input.types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function FormikInput(props: IFormikInputProps) {
-  const { placeholder = "", className = "", label = "", name = "", type = "text", isTextArea = false, rows = 3 } = props;
+  const {
+    placeholder = "",
+    className = "",
+    label = "",
+    name = "",
+    type = "text",
+    isTextArea = false,
+    rows = 3,
+    required = false,
+  } = props;
+
   return (
-    <div>
-      {label && <label htmlFor={name} className="block mb-2 text-sm font-medium text-gray-900">{label}</label>}
+    <div className="mb-5 w-full">
+      {label && (
+        <label
+          htmlFor={name}
+          className="block mb-2 text-sm font-semibold text-gray-800"
+        >
+          {label}
+          {required && <span className="text-red-500"> *</span>}
+        </label>
+      )}
 
       <Field
-        as={isTextArea ? "textarea" : "input"} 
+        as={isTextArea ? "textarea" : "input"}
         type={type}
         name={name}
+        id={name}
         rows={isTextArea ? rows : undefined}
         placeholder={placeholder}
-        className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm block w-full p-2.5 outline-none focus:ring-0 ${className}`}
+        className={`bg-white border border-gray-300 text-sm rounded-md w-full p-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-200 ${className}`}
+      />
+
+      <ErrorMessage
+        name={name}
+        component="div"
+        className="text-xs text-red-500 mt-1"
       />
     </div>
   );

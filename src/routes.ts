@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, ManageHomePageWrapper, SignUpPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import { AddFocusActivityPageWrapper, EditFocusActivityPageWrapper, FocusActivityDashboardPageWrapper, LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, ManageHomePageWrapper, SignUpPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ApprochPage from "./pages/AboutUsPage/ApprochPage";
 import FuturePlanPage from "./pages/AboutUsPage/FuturePlanPage";
@@ -21,6 +21,9 @@ export const router = createBrowserRouter([
       { path: "signup", Component: SignUpPageWrapper },
       
       { path: "manage", Component: ManageHomePageWrapper,},
+      { path: "admin/add-focus-activity", Component: AddFocusActivityPageWrapper },
+      { path: "admin/focus-activity-dashboard", Component: FocusActivityDashboardPageWrapper },
+      { path: "admin/focus-activities/:id", Component: EditFocusActivityPageWrapper },
       { path: "manage/manage-all-media", Component: ManageAllMediaPageWrapper },
       { path: "manage/manage-all-blog", Component: ManageAllBlogPageWrapper },
       { path: "manage/manage-all-news", Component: ManageAllNewsPageWrapper },

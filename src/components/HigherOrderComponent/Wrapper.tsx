@@ -2,6 +2,9 @@ import ManageAllBlogPage from "../../pages/BlogPage/ManageAllBlogPage";
 import ViewAllBlogPageUsers from "../../pages/BlogPage/ViewAllBlogPageUsers";
 import ViewBlogByIdUsersPage from "../../pages/BlogPage/ViewBlogByIdUsersPage";
 import ManageAllCarouselPage from "../../pages/Carousel/ManageAllCarouselPage";
+import AddFocusActivityPage from "../../pages/FocusActivity/admin/AddFocusActivity.page";
+import EditFocusActivityPage from "../../pages/FocusActivity/admin/EditFocusActivity.page";
+import FocusActivityAdminDashboardPage from "../../pages/FocusActivity/admin/FocusActivityAdminDashboard.page";
 import ManageHomePage from "../../pages/HomePage/ManageHomePage";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import ManageAllMediaPage from "../../pages/MediaPage/ManageAllMediaPage"
@@ -17,6 +20,12 @@ import ViewAllVideoPageUsers from "../../pages/VideoPage/ViewAllVideoPageUsers";
 import { withAuth } from "./ProtectedRoutes";
 import { withDataProvider } from "./WithDataProvider";
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const AddFocusActivityPageWrapper = withAuth(AddFocusActivityPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const FocusActivityDashboardPageWrapper = withAuth(withDataProvider(FocusActivityAdminDashboardPage, "focusActivity/getAllFocusActivity"));
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditFocusActivityPageWrapper = withAuth(EditFocusActivityPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ManageAllMediaPageWrapper = withAuth(withDataProvider(ManageAllMediaPage, "media/getAllMedia"), );
 // eslint-disable-next-line @typescript-eslint/naming-convention

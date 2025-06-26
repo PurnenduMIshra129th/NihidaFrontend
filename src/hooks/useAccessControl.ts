@@ -28,6 +28,9 @@ const adminRoutes = [
     "/manage/manage-all-video",
     "/manage/manage-all-carousel",
     "/manage/manage-all-service",
+    "/admin/add-focus-activity",
+    "/admin/focus-activity-dashboard",
+    "/admin/focus-activities/:id",
     ...userRoutes,
 ];
 

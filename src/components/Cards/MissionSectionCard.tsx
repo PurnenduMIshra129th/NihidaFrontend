@@ -15,13 +15,15 @@ function MissionSectionCard(props: IMissionSectionCard) {
   const descriptionLength = getTextLength(textDescription);
   return (
     <>
-      <div className="bg-custom_white_3 md:max-w-[30rem] min-h-[25rem] p-10 shadow-lg rounded-md w-full m-3">
+      <div className="bg-custom_white_3 md:max-w-[30rem] min-h-[25rem] p-10 shadow-lg rounded-md w-full m-3 flex flex-col">
         <Heading_2 text={textHeading} className="mb-4 text-custom_orange_1" />
+        <div className="flex-grow">
         <Typography
           className="text-custom_grey_1 text-justify md:text-sm"
           text={trimText(textDescription, 600)}
         />
-        {descriptionLength > 350 && <Button name="Read More" className="bg-custom_orange_1  text-custom_white_1 mt-4" onClick={()=> navigate(`${routePath}`)}/>}
+        </div>
+        {descriptionLength > 350 && <Button name="Read More" className="bg-custom_orange_1  text-custom_white_1 mt-4 w-fit" onClick={()=> navigate(`${routePath}`)}/>}
       </div>
     </>
   );
