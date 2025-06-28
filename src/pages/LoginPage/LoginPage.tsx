@@ -5,7 +5,7 @@ import { Link } from "react-router";
 import Button from "../../components/Button/Button";
 import FormikInput from "../../components/Input/FormikInput"
 import { apiRequest } from "../../services/apiService";
-import { ILoginApiData } from "../../types/api/authentication.types";
+import { ILoginApiPayload, ILoginApiResponse } from "../../types/api/api.type";
 import { defaultImage } from "../../utils/constant"
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -15,8 +15,8 @@ function LoginPage() {
         <>
             <Formik
                 initialValues={{ email: '', password: '' }}
-                onSubmit={ async (values) => {
-                    const result = await apiRequest<ILoginApiData>("authentication/login", "POST", values)
+                onSubmit={ async (values: ILoginApiPayload) => {
+                    const result = await apiRequest<ILoginApiResponse,ILoginApiPayload>("authentication/login", "POST", values)
                     if(result?.statusCode === 1) {
                         localStorage.setItem("token", result?.data?.token)
                         localStorage.setItem("role", result?.data?.user?.role)

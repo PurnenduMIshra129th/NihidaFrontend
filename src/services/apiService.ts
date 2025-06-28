@@ -9,12 +9,12 @@ import { getStorageItem, validateTokenExpiry } from "../utils/util";
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 
-export const apiRequest = async <T>(
+export const apiRequest = async <ResponseType,RequestPayloadType>(
   endpoint: string,
   method: HttpMethod = "GET",
-  payload?: T,
+  payload?: RequestPayloadType,
   tokenization: boolean = false
-): Promise<ISuccessResponse<T> | IErrorResponse> => {
+): Promise<ISuccessResponse<ResponseType> | IErrorResponse> => {
   try {
     eventBus.emit({ type: "loader_start", message: "Loading..." });
     const token = getStorageItem("token")?.toString();
@@ -26,7 +26,7 @@ export const apiRequest = async <T>(
       ? { Authorization: `Bearer ${token}` }
       : {};
 
-    const response = await apiClient.request<ISuccessResponse<T> | IErrorResponse>({
+    const response = await apiClient.request<ISuccessResponse<ResponseType> | IErrorResponse>({
       url: endpoint,
       method,
       data: payload,
@@ -35,7 +35,7 @@ export const apiRequest = async <T>(
 
     if (response?.data?.statusCode === 1) {
       eventBus.emit({ type: "success", message: response.data.message });
-      return response.data as ISuccessResponse<T>;
+      return response.data as ISuccessResponse<ResponseType>;
     }
 
     if (response?.data?.statusCode === 0) {
@@ -61,7 +61,7 @@ export const apiRequest = async <T>(
   }
 };
 
-export const multiPartAPI = async <T>(endpoint: string, formData: FormData, tokenization: boolean = false): Promise<ISuccessResponse<T> | IErrorResponse> => {
+export const multiPartAPI = async <ResponseType>(endpoint: string, formData: FormData, tokenization: boolean = false): Promise<ISuccessResponse<ResponseType> | IErrorResponse> => {
   try {
     eventBus.emit({ type: "loader_start", message: "Loading..." });
     const token = getStorageItem("token")?.toString();
@@ -81,7 +81,7 @@ export const multiPartAPI = async <T>(endpoint: string, formData: FormData, toke
 
     if (response?.data?.statusCode === 1) {
       eventBus.emit({ type: "success", message: response.data.message });
-      return response.data as ISuccessResponse<T>;
+      return response.data as ISuccessResponse<ResponseType>;
     }
     if (response?.data?.statusCode === 0) {
       const errorValue = (response?.data as IErrorResponse)?.error;

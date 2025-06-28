@@ -1,3 +1,4 @@
+import { IFile } from "../api/api.type";
 
 export interface IBannerScreenProps {
   textHeading: string;
@@ -8,4 +9,7 @@ export interface IGalleryScreenBySectionProps {
   description: string;
   createdAt: string;
   imagePaths: string[];
+}
+export interface IGallerySectionWithLimitNumberOfImagesProps {
+    files:IFile[]
 }

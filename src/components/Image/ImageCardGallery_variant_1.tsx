@@ -1,12 +1,22 @@
+import { useState } from "react";
+
 import { IImageCardGalleryProps } from "../../types/Component/component.types";
 import Image from "./Image";
+import ImagePreviewModal from "./ImagePreviewModal";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-function ImageCardGallery(props: IImageCardGalleryProps) {
+function ImageCardGallery_variant_1(props: IImageCardGalleryProps) {
   const { colSpan, text, imagePath = "" } = props;
+  const [showPreview, setShowPreview] = useState(false);
+  const handleClose = () => {
+    setShowPreview(false);
+  };
   return (
     <div
-      className={`group relative flex h-48 md:h-80 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg ${colSpan}`}
+      className={`group relative flex h-48 md:h-80 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg cursor-pointer ${colSpan}`}
+      onClick={() => {
+        if (!showPreview) setShowPreview(true);
+      }}
     >
       <Image
         imagePath={imagePath}
@@ -18,8 +28,13 @@ function ImageCardGallery(props: IImageCardGalleryProps) {
       <span className="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">
         {text}
       </span>
+      <ImagePreviewModal
+        imageUrl={imagePath}
+        onClose={handleClose}
+        isOpen={showPreview}
+      />
     </div>
   );
 }
 
-export default ImageCardGallery;
+export default ImageCardGallery_variant_1;

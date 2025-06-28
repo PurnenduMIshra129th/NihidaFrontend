@@ -19,6 +19,9 @@ const userRoutes = [
     "/users/media/:id",
     "/users/blog/:id",
     "/users/news/:id",
+    "/user/view-focus-activity/:id",
+    "/user/view-all-focus-activity",
+    "/user/view-all-image",
 ];
 const adminRoutes = [
     "/manage",
@@ -30,7 +33,9 @@ const adminRoutes = [
     "/manage/manage-all-service",
     "/admin/add-focus-activity",
     "/admin/focus-activity-dashboard",
-    "/admin/focus-activities/:id",
+    "/admin/edit-focus-activity/:id",
+    "/admin/view-focus-activity/:id",
+    "/admin/image-management/:id",
     ...userRoutes,
 ];
 

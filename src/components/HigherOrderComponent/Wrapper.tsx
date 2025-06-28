@@ -2,10 +2,15 @@ import ManageAllBlogPage from "../../pages/BlogPage/ManageAllBlogPage";
 import ViewAllBlogPageUsers from "../../pages/BlogPage/ViewAllBlogPageUsers";
 import ViewBlogByIdUsersPage from "../../pages/BlogPage/ViewBlogByIdUsersPage";
 import ManageAllCarouselPage from "../../pages/Carousel/ManageAllCarouselPage";
+import ImageManagementPage from "../../pages/Files/admin/ImageManagement.page";
+import ViewAllImagePage from "../../pages/Files/user/ViewAllImage.page";
 import AddFocusActivityPage from "../../pages/FocusActivity/admin/AddFocusActivity.page";
 import EditFocusActivityPage from "../../pages/FocusActivity/admin/EditFocusActivity.page";
 import FocusActivityAdminDashboardPage from "../../pages/FocusActivity/admin/FocusActivityAdminDashboard.page";
-import ManageHomePage from "../../pages/HomePage/ManageHomePage";
+import FocusActivityDetailByIdPage from "../../pages/FocusActivity/admin/FocusActivityDetailById.page";
+import ViewAllFocusActivityPage from "../../pages/FocusActivity/user/ViewAllFocusActivity.page";
+import ViewFocusActivityByIdPage from "../../pages/FocusActivity/user/ViewFocusActivityById.page";
+import AdminControlPanelPage from "../../pages/HomePage/admin/AdminContolPanel.page";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import ManageAllMediaPage from "../../pages/MediaPage/ManageAllMediaPage"
 import ViewAllMediaPageUsers from "../../pages/MediaPage/ViewAllMediaPageUsers";
@@ -26,6 +31,16 @@ export const AddFocusActivityPageWrapper = withAuth(AddFocusActivityPage);
 export const FocusActivityDashboardPageWrapper = withAuth(withDataProvider(FocusActivityAdminDashboardPage, "focusActivity/getAllFocusActivity"));
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const EditFocusActivityPageWrapper = withAuth(EditFocusActivityPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewFocusActivityPageWrapper = withAuth(FocusActivityDetailByIdPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewFocusActivityForUserPageWrapper = withAuth(ViewFocusActivityByIdPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewAllFocusActivityForUserPageWrapper = withAuth(ViewAllFocusActivityPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewAllImagePageWrapper = withAuth(ViewAllImagePage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditUpdateImagePageWrapper = withAuth(ImageManagementPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ManageAllMediaPageWrapper = withAuth(withDataProvider(ManageAllMediaPage, "media/getAllMedia"), );
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -53,7 +68,7 @@ export const ViewNewsByIdUsersPageWrapper = withAuth(ViewNewsByIdUsersPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllVideoPageUsersWrapper = withAuth(ViewAllVideoPageUsers);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageHomePageWrapper = withAuth(ManageHomePage );
+export const AdminControlPanelPageWrapper = withAuth(AdminControlPanelPage );
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const LoginPageWrapper = withAuth(LoginPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention

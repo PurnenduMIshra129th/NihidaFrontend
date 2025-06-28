@@ -7,7 +7,7 @@ import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FormikInput from "../../../components/Input/FormikInput";
 import { apiRequest } from "../../../services/apiService";
-import { IFocusActivityApiData } from "../../../types/api/api.type";
+import { IFocusActivityApiPayload,IFocusActivityApiResponse } from "../../../types/api/api.type";
 
 
 const validationSchema = Yup.object({
@@ -36,12 +36,12 @@ const validationSchema = Yup.object({
 export default function EditFocusActivityPage() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [initialValues, setInitialValues] = useState<IFocusActivityApiData | null>(null);
+  const [initialValues, setInitialValues] = useState<IFocusActivityApiPayload | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       if (!id) return;
-      const res = await apiRequest<IFocusActivityApiData>(
+      const res = await apiRequest<IFocusActivityApiResponse,IFocusActivityApiPayload>(
         `/focusActivity/getFocusActivityById/${id}`,
         "GET",
         undefined,
@@ -54,9 +54,9 @@ export default function EditFocusActivityPage() {
     fetchData();
   }, [id]);
 
-  const handleSubmit = async (values: IFocusActivityApiData) => {
+  const handleSubmit = async (values: IFocusActivityApiPayload) => {
     if (id) {
-      await apiRequest<IFocusActivityApiData>(
+      await apiRequest<IFocusActivityApiResponse,IFocusActivityApiPayload>(
         `/focusActivity/updateFocusActivity/${id}`,
         "PUT",
         values,

@@ -1,4 +1,4 @@
-import ImageCardGallery from "../../components/Image/ImageCardGallery";
+import ImageCardGallery_variant_1 from "../../components/Image/ImageCardGallery_variant_1";
 import Heading_1 from "../../components/Text/Heading_1";
 import Typography from "../../components/Text/Typography";
 import { IGalleryScreenBySectionProps } from "../../types/screens/screen.types";
@@ -31,18 +31,18 @@ function GalleryScreenBySection(props: IGalleryScreenBySectionProps) {
           </div>
           </div>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
-            <ImageCardGallery text="AR" imagePath={imagePaths?.[0] || ""} />
-            <ImageCardGallery
+            <ImageCardGallery_variant_1 text="AR" imagePath={imagePaths?.[0] || ""} />
+            <ImageCardGallery_variant_1
               colSpan="md:col-span-2"
               text="Dev"
               imagePath={imagePaths?.[1] || ""}
             />
-            <ImageCardGallery
+            <ImageCardGallery_variant_1
               colSpan="md:col-span-2"
               text="Retro"
               imagePath={imagePaths?.[2] || ""}
             />
-            <ImageCardGallery text="VR" imagePath={imagePaths?.[3] || ""} />
+            <ImageCardGallery_variant_1 text="VR" imagePath={imagePaths?.[3] || ""} />
           </div>
         </div>
       </div>

@@ -4,13 +4,6 @@ export interface ICheckboxProps {
     labelClassName?: string
 }
 
-export interface IFormikFileInputProps {
-    name: string;
-    label?: string;
-    className?: string;
-    currentFileName?: string;
-}
-
 export interface IFormikInputProps {
   placeholder?: string;
   className?: string;

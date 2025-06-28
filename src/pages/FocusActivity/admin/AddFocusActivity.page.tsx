@@ -4,9 +4,9 @@ import * as Yup from "yup";
 import Button from "../../../components/Button/Button";
 import FormikInput from "../../../components/Input/FormikInput";
 import { apiRequest } from "../../../services/apiService";
-import { IFocusActivityApiData } from "../../../types/api/api.type";
+import { IFocusActivityApiPayload,IFocusActivityApiResponse } from "../../../types/api/api.type";
 
-const initialValues: IFocusActivityApiData = {
+const initialValues: IFocusActivityApiPayload = {
   title: "",
   subtitle: "",
   description: "",
@@ -43,8 +43,8 @@ const validationSchema = Yup.object({
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function AddFocusActivityPage() {
-  const handleSubmit = async (values: IFocusActivityApiData) => {
-    await apiRequest<IFocusActivityApiData>(
+  const handleSubmit = async (values: IFocusActivityApiPayload) => {
+    await apiRequest<IFocusActivityApiResponse, IFocusActivityApiPayload>(
       "/focusActivity/createFocusActivity",
       "POST",
       values,

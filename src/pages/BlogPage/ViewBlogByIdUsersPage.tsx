@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import useFetch from "../../hooks/useFetch";
-import GalleryScreenBySection from "../../screens/ImageGallery/GalleryScreenBySection";
+import GalleryScreenBySection from "../../screens/Image/GalleryScreenBySection";
 import { IBlogApiData } from "../../types/api/blog.types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

@@ -22,7 +22,7 @@ function InformationCard(props: ICardProps) {
   const navigate = useNavigate();
   return (
     <>
-      <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-[27rem] flex flex-col p-3 sm:p-0">
+      <div className="w-full  flex flex-col p-3 sm:p-0">
         <Image imagePath={imagePath} className="rounded-lg" />
         <div className="bg-custom_orange_2 p-2 mt-6 rounded-2xl w-[60%]">
           <Typography

@@ -7,13 +7,13 @@ import FocusActivityAdminCard from "../../../components/section/focusActivity/ad
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
 import { useData } from "../../../contexts/context/data/DataContext";
 import { apiRequest } from "../../../services/apiService";
-import { IFocusActivityApiData } from "../../../types/api/api.type";
+import { IFocusActivityApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const FocusActivityAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data: apiData, fetchData } = useData<IFocusActivityApiData[]>();
-  const [showUpload, setShowUpload] = useState(true);
+  const { data: apiData, fetchData } = useData<IFocusActivityApiResponse[]>();
+  const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
     setSelectedId(id);
@@ -31,7 +31,7 @@ const FocusActivityAdminDashboardPage = () => {
   };
 
   if (!apiData || apiData.length === 0) {
-    return <EmptyState />;
+    return <EmptyState routingPath="/admin/add-focus-activity" buttonText="Create Activity"/>;
   }
 
   return (
@@ -51,15 +51,42 @@ const FocusActivityAdminDashboardPage = () => {
           <FocusActivityAdminCard
             key={activity._id}
             data={activity}
-            onEdit={() => navigate(`/admin/focus-activities/${activity._id}`)}
+            onView={() =>
+              navigate(`/admin/view-focus-activity/${activity._id}`)
+            }
+            onEdit={() =>
+              navigate(`/admin/edit-focus-activity/${activity._id}`)
+            }
             onDelete={() => handleDelete(activity?._id ? activity._id : "")}
             onUpload={() =>
               handleUploadTrigger(activity?._id ? activity._id : "")
             }
+            onViewImages={() =>
+              navigate(
+                `/admin/image-management/${activity?._id ? activity._id : "noID"}`,
+                {
+                  state: {
+                    getDataEndPoint: `/focusActivity/getFocusActivityById`,
+                    updateDataEndPoint: `/upload/updateFocusActivityFile`,
+                    deleteDataEndPoint: `/upload/deleteFocusActivityFile`,
+                  },
+                }
+              )
+            }
           />
         ))}
       </div>
-      <UploadDocument isOpen={showUpload} onClose={() => setShowUpload(false)} endpoint={`upload/createFocusActivityFile?id=${selectedId ? selectedId : ""}`} label="Upload Focus Activity Section" note="Please upload a image( .jpg, .jpeg, .png ) file" warning="Multiple files are allowed to be uploaded (max. 5MB per file)" isMultiple={true}/>
+      <UploadDocument
+        isOpen={showUpload}
+        onClose={() => setShowUpload(false)}
+        endpoint={`upload/createFocusActivityFile?id=${
+          selectedId ? selectedId : ""
+        }`}
+        label="Upload Focus Activity Section"
+        note="Please upload a image( .jpg, .jpeg, .png ) file"
+        warning="Multiple files are allowed to be uploaded (max. 5MB per file)"
+        isMultiple={true}
+      />
     </section>
   );
 };

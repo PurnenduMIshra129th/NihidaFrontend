@@ -1,17 +1,15 @@
-import { useNavigate } from "react-router";
-
 import { IFocusActivityAdminCardProps } from "../../../../types/Component/component.types";
 import Button from "../../../Button/Button";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const FocusActivityAdminCard = ({
   data,
+  onView,
   onEdit,
   onDelete,
   onUpload,
+  onViewImages
 }: IFocusActivityAdminCardProps) => {
-  const navigate = useNavigate();
-
   return (
     <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-[28rem] bg-white rounded-lg shadow-md border border-orange-100 p-5 flex flex-col justify-between hover:shadow-lg transition-all duration-300 group">
       {/* Title + Date */}
@@ -48,7 +46,7 @@ const FocusActivityAdminCard = ({
       <div className="flex flex-wrap gap-2 mt-4">
         <Button
           name="View"
-          onClick={() => navigate(`/admin/focus-activities/${data._id}`)}
+          onClick={onView}
           className="border-custom_orange_1 text-custom_orange_1 hover:bg-custom_orange_1 hover:text-white"
         />
         <Button
@@ -65,6 +63,11 @@ const FocusActivityAdminCard = ({
           name="Upload Images"
           onClick={onUpload}
           className="border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white"
+        />
+        <Button
+          name="View Images"
+          onClick={onViewImages}
+          className="border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white"
         />
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { AddFocusActivityPageWrapper, EditFocusActivityPageWrapper, FocusActivityDashboardPageWrapper, LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, ManageHomePageWrapper, SignUpPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import { AddFocusActivityPageWrapper, AdminControlPanelPageWrapper, EditFocusActivityPageWrapper, EditUpdateImagePageWrapper, FocusActivityDashboardPageWrapper, LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, SignUpPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllImagePageWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ApprochPage from "./pages/AboutUsPage/ApprochPage";
 import FuturePlanPage from "./pages/AboutUsPage/FuturePlanPage";
@@ -20,10 +20,15 @@ export const router = createBrowserRouter([
       { path: "login", Component: LoginPageWrapper },
       { path: "signup", Component: SignUpPageWrapper },
       
-      { path: "manage", Component: ManageHomePageWrapper,},
+      { path: "manage", Component: AdminControlPanelPageWrapper,},
+      { path: "admin/image-management/:id", Component: EditUpdateImagePageWrapper },
       { path: "admin/add-focus-activity", Component: AddFocusActivityPageWrapper },
       { path: "admin/focus-activity-dashboard", Component: FocusActivityDashboardPageWrapper },
-      { path: "admin/focus-activities/:id", Component: EditFocusActivityPageWrapper },
+      { path: "admin/edit-focus-activity/:id", Component: EditFocusActivityPageWrapper },
+      { path: "admin/view-focus-activity/:id", Component: ViewFocusActivityPageWrapper },
+      { path: "user/view-all-image", Component: ViewAllImagePageWrapper },
+      { path: "user/view-focus-activity/:id", Component: ViewFocusActivityForUserPageWrapper },
+      { path: "user/view-all-focus-activity", Component: ViewAllFocusActivityForUserPageWrapper },
       { path: "manage/manage-all-media", Component: ManageAllMediaPageWrapper },
       { path: "manage/manage-all-blog", Component: ManageAllBlogPageWrapper },
       { path: "manage/manage-all-news", Component: ManageAllNewsPageWrapper },

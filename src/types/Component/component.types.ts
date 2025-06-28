@@ -1,4 +1,4 @@
-import { IFocusActivityApiData } from "../api/api.type";
+import { IFocusActivityApiResponse } from "../api/api.type";
 
 export interface IImageCardGalleryProps {
   colSpan?: string;
@@ -9,10 +9,12 @@ export interface IAddDataIntoFormProps {
   setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export interface IFocusActivityAdminCardProps {
-  data: IFocusActivityApiData;
+  data: IFocusActivityApiResponse;
+  onView?: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
   onUpload?: () => void;
+  onViewImages?: () => void;
 }
 
 export interface IFormikFileInputProps {
@@ -30,4 +32,30 @@ export interface IUploadDocumentModalProps extends IFormikFileInputProps {
   endpoint: string;
   note?: string;
   warning?: string;
+}
+export interface IFile {
+  _id: string
+  fileName: string
+  originalName: string
+  mimeType: string
+  serverFilePath: string
+  publicFilePath: string
+}
+export interface IDashboardSectionCardProps {
+  title: string;
+  route: string;
+  description?: string;
+  icon?: React.ReactNode;
+}
+export interface IEmptyStateProps {
+  routingPath?: string;
+  buttonText?: string;
+}
+export interface IImagePreviewModalProps {
+  imageUrl: string;
+  onClose: () => void;
+  isOpen: boolean;
+}
+export interface IImageCardGalleryVariant2{
+    imagePath: string
 }
