@@ -95,21 +95,21 @@ function Navbar() {
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection("blog")}
+                  onClick={() => scrollToSection("focusActivity")}
                   className="block py-2 px-3 rounded-sm md:p-0"
                 >
-                  Blog
+                  Focus Activity
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => scrollToSection("services")}
+                  onClick={() => scrollToSection("upcomingEvents")}
                   className="block py-2 px-3 rounded-sm md:p-0"
                 >
-                  Services
+                  Upcoming Events
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <button
                   onClick={() => scrollToSection("news")}
                   className="block py-2 px-3 rounded-sm md:p-0"
@@ -124,7 +124,7 @@ function Navbar() {
                 >
                   Videos
                 </button>
-              </li>
+              </li> */}
               {token &&
                 decoded?.role == userRole.admin &&
                 role == userRole.admin && (

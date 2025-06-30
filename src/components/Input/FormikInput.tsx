@@ -1,4 +1,5 @@
-import { ErrorMessage,Field } from "formik";
+import { ErrorMessage,Field, useFormikContext } from "formik";
+import { useEffect,useState } from "react";
 
 import { IFormikInputProps } from "../../types/input/input.types";
 
@@ -13,7 +14,28 @@ function FormikInput(props: IFormikInputProps) {
     isTextArea = false,
     rows = 3,
     required = false,
+    transformOnBlur
   } = props;
+    const { setFieldValue, values } = useFormikContext<string>();
+  const [localValue, setLocalValue] = useState("");
+
+  useEffect(() => {
+    const currentValue = values[name as keyof typeof values];
+    if (typeof currentValue === "string") {
+      setLocalValue(currentValue);
+    } else if (Array.isArray(currentValue)) {
+      setLocalValue(currentValue.join(", "));
+    }
+  }, [values, name]);
+
+  const handleBlur = () => {
+    if (transformOnBlur) {
+      const transformed = transformOnBlur(localValue);
+      setFieldValue(name, transformed);
+    } else {
+      setFieldValue(name, localValue);
+    }
+  };
 
   return (
     <div className="mb-5 w-full">
@@ -35,6 +57,7 @@ function FormikInput(props: IFormikInputProps) {
         rows={isTextArea ? rows : undefined}
         placeholder={placeholder}
         className={`bg-white border border-gray-300 text-sm rounded-md w-full p-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-200 ${className}`}
+        onBlur={handleBlur}
       />
 
       <ErrorMessage

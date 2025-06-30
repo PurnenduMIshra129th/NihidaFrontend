@@ -55,5 +55,11 @@ export function formatToLocalTime(timeString?: string): string {
   const time = timeString ? moment(timeString) : moment();
   return time.local().format("dddd, MMMM Do YYYY, h:mm A");
 }
-
+export function parseCommaSeparatedString(input: string): string[] {
+  if (!input) return [];
+  return input
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
 

@@ -1,4 +1,4 @@
-import { IFocusActivityApiResponse } from "../api/api.type";
+import { IFocusActivityApiResponse, IUpcomingEventApiResponse } from "../api/api.type";
 
 export interface IImageCardGalleryProps {
   colSpan?: string;
@@ -8,13 +8,18 @@ export interface IImageCardGalleryProps {
 export interface IAddDataIntoFormProps {
   setIsPopUpOpened?: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export interface IFocusActivityAdminCardProps {
-  data: IFocusActivityApiResponse;
+interface IAdminCard {
   onView?: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
   onUpload?: () => void;
   onViewImages?: () => void;
+}
+export interface IFocusActivityAdminCardProps extends IAdminCard {
+  data: IFocusActivityApiResponse;
+}
+export interface IUpcomingEventAdminCard extends IAdminCard {
+  data: IUpcomingEventApiResponse;
 }
 
 export interface IFormikFileInputProps {
@@ -22,7 +27,7 @@ export interface IFormikFileInputProps {
   label?: string;
   className?: string;
   currentFileName?: string;
-  accept?:  "image" | "pdf";
+  accept?: "image" | "pdf";
   isMultiple?: boolean;
 }
 
@@ -34,12 +39,12 @@ export interface IUploadDocumentModalProps extends IFormikFileInputProps {
   warning?: string;
 }
 export interface IFile {
-  _id: string
-  fileName: string
-  originalName: string
-  mimeType: string
-  serverFilePath: string
-  publicFilePath: string
+  _id: string;
+  fileName: string;
+  originalName: string;
+  mimeType: string;
+  serverFilePath: string;
+  publicFilePath: string;
 }
 export interface IDashboardSectionCardProps {
   title: string;
@@ -56,6 +61,6 @@ export interface IImagePreviewModalProps {
   onClose: () => void;
   isOpen: boolean;
 }
-export interface IImageCardGalleryVariant2{
-    imagePath: string
+export interface IImageCardGalleryVariant2 {
+  imagePath: string;
 }

@@ -21,6 +21,8 @@ const userRoutes = [
     "/users/news/:id",
     "/user/view-focus-activity/:id",
     "/user/view-all-focus-activity",
+    "/user/view-upcoming-event/:id",
+    "/user/view-all-upcoming-event",
     "/user/view-all-image",
 ];
 const adminRoutes = [
@@ -31,10 +33,17 @@ const adminRoutes = [
     "/manage/manage-all-video",
     "/manage/manage-all-carousel",
     "/manage/manage-all-service",
+
     "/admin/add-focus-activity",
     "/admin/focus-activity-dashboard",
     "/admin/edit-focus-activity/:id",
     "/admin/view-focus-activity/:id",
+
+    "/admin/add-upcoming-event",
+    "/admin/upcoming-event-dashboard",
+    "/admin/edit-upcoming-event/:id",
+    "/admin/view-upcoming-event/:id",
+    
     "/admin/image-management/:id",
     ...userRoutes,
 ];

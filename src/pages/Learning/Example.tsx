@@ -1,25 +1,31 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export function Parent() {
   const [count, setCount] = useState(0);
-
-  const handleClick = () => {
+  console.log("Parent re-rendered outside!");
+  
+  const handleClick = useCallback(() => {
     console.log("Clicked!", count);
-  };
+  },[]);
 
   useEffect(() => {
+    console.log("Parent re-rendered!");
+    
     const timer = setInterval(() => setCount((c) => c + 1), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  return <Child onClick={handleClick} />;
+  return <Child onClick={handleClick} count={count}/>;
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const Child = React.memo(({ onClick }: { onClick: () => void }) => {
+const Child = React.memo(({ onClick,count }: { onClick: () => void , count: number}) => {
   console.log("Child re-rendered!");
-  return <button className="pt-[5rem]" onClick={onClick}>Click me</button>;
+  return <>
+  <button className="pt-[8rem]" onClick={onClick}>Click me</button>;
+  <div>Count: {count}</div>
+  </>
 });
 
 const fibonacci = (n: number) : number => {

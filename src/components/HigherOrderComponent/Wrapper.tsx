@@ -12,7 +12,7 @@ import ViewAllFocusActivityPage from "../../pages/FocusActivity/user/ViewAllFocu
 import ViewFocusActivityByIdPage from "../../pages/FocusActivity/user/ViewFocusActivityById.page";
 import AdminControlPanelPage from "../../pages/HomePage/admin/AdminContolPanel.page";
 import LoginPage from "../../pages/LoginPage/LoginPage";
-import ManageAllMediaPage from "../../pages/MediaPage/ManageAllMediaPage"
+import ManageAllMediaPage from "../../pages/MediaPage/ManageAllMediaPage";
 import ViewAllMediaPageUsers from "../../pages/MediaPage/ViewAllMediaPageUsers";
 import ViewMediaByIdUsersPage from "../../pages/MediaPage/ViewMediaByIdUsersPage";
 import ManageAllNewsPage from "../../pages/NewsPage/ManageAllNewsPage";
@@ -20,6 +20,12 @@ import ViewAllNewsPageUsers from "../../pages/NewsPage/ViewAllNewsPageUsers";
 import ViewNewsByIdUsersPage from "../../pages/NewsPage/ViewNewsByIdUsersPage";
 import ManageAllProductAndServicePage from "../../pages/ProductAndServicePage/ManageAllProductAndServicePage";
 import SignupPage from "../../pages/SignupPage/SignupPage";
+import AddUpcomingEventPage from "../../pages/UpcomingEvent/admin/AddUpcomingEvent.page";
+import EditUpcomingEventPage from "../../pages/UpcomingEvent/admin/EditUpcomingEvent.page";
+import UpcomingEventAdminDashboardPage from "../../pages/UpcomingEvent/admin/UpcomingEventAdminDashboard.page";
+import UpcomingEventDetailByIdPage from "../../pages/UpcomingEvent/admin/UpcomingEventDetailById.page";
+import ViewAllUpcomingEventPage from "../../pages/UpcomingEvent/user/ViewAllUpcomingEvent.page";
+import ViewUpcomingEventByIdPage from "../../pages/UpcomingEvent/user/ViewUpcomingEventById.page";
 import ManageAllVideoPage from "../../pages/VideoPage/ManageAllVideoPage";
 import ViewAllVideoPageUsers from "../../pages/VideoPage/ViewAllVideoPageUsers";
 import { withAuth } from "./ProtectedRoutes";
@@ -28,31 +34,80 @@ import { withDataProvider } from "./WithDataProvider";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddFocusActivityPageWrapper = withAuth(AddFocusActivityPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const FocusActivityDashboardPageWrapper = withAuth(withDataProvider(FocusActivityAdminDashboardPage, "focusActivity/getAllFocusActivity"));
+export const FocusActivityDashboardPageWrapper = withAuth(
+  withDataProvider(
+    FocusActivityAdminDashboardPage,
+    "focusActivity/getAllFocusActivity"
+  )
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const EditFocusActivityPageWrapper = withAuth(EditFocusActivityPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewFocusActivityPageWrapper = withAuth(FocusActivityDetailByIdPage);
+export const ViewFocusActivityPageWrapper = withAuth(
+  FocusActivityDetailByIdPage
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewFocusActivityForUserPageWrapper = withAuth(ViewFocusActivityByIdPage);
+export const ViewFocusActivityForUserPageWrapper = withAuth(
+  ViewFocusActivityByIdPage
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewAllFocusActivityForUserPageWrapper = withAuth(ViewAllFocusActivityPage);
+export const ViewAllFocusActivityForUserPageWrapper = withAuth(
+  ViewAllFocusActivityPage
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const AddUpcomingEventPageWrapper = withAuth(AddUpcomingEventPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const UpcomingEventDashboardPageWrapper = withAuth(
+  withDataProvider(
+    UpcomingEventAdminDashboardPage,
+    "upcomingEvent/getAllUpcomingEvent"
+  )
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditUpcomingEventPageWrapper = withAuth(EditUpcomingEventPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewUpcomingEventPageWrapper = withAuth(
+  UpcomingEventDetailByIdPage
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewUpcomingEventForUserPageWrapper = withAuth(
+  ViewUpcomingEventByIdPage
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewAllUpcomingEventForUserPageWrapper = withAuth(
+  ViewAllUpcomingEventPage
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllImagePageWrapper = withAuth(ViewAllImagePage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const EditUpdateImagePageWrapper = withAuth(ImageManagementPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllMediaPageWrapper = withAuth(withDataProvider(ManageAllMediaPage, "media/getAllMedia"), );
+export const ManageAllMediaPageWrapper = withAuth(
+  withDataProvider(ManageAllMediaPage, "media/getAllMedia")
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllBlogPageWrapper = withAuth(withDataProvider(ManageAllBlogPage, "blog/getAllBlog"), );
+export const ManageAllBlogPageWrapper = withAuth(
+  withDataProvider(ManageAllBlogPage, "blog/getAllBlog")
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllNewsPageWrapper = withAuth(withDataProvider(ManageAllNewsPage, "news/getAllNews"), );
+export const ManageAllNewsPageWrapper = withAuth(
+  withDataProvider(ManageAllNewsPage, "news/getAllNews")
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllServicePageWrapper = withAuth(withDataProvider(ManageAllProductAndServicePage, "productAndService/getAllProductAndService"), );
+export const ManageAllServicePageWrapper = withAuth(
+  withDataProvider(
+    ManageAllProductAndServicePage,
+    "productAndService/getAllProductAndService"
+  )
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllVideoPageWrapper = withAuth(withDataProvider(ManageAllVideoPage, "video/getAllVideo"), );
+export const ManageAllVideoPageWrapper = withAuth(
+  withDataProvider(ManageAllVideoPage, "video/getAllVideo")
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllCarouselPageWrapper = withAuth(withDataProvider(ManageAllCarouselPage, "carousel/getAllCarousel"), );
+export const ManageAllCarouselPageWrapper = withAuth(
+  withDataProvider(ManageAllCarouselPage, "carousel/getAllCarousel")
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllMediaPageUsersWrapper = withAuth(ViewAllMediaPageUsers);
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -68,11 +123,8 @@ export const ViewNewsByIdUsersPageWrapper = withAuth(ViewNewsByIdUsersPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllVideoPageUsersWrapper = withAuth(ViewAllVideoPageUsers);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const AdminControlPanelPageWrapper = withAuth(AdminControlPanelPage );
+export const AdminControlPanelPageWrapper = withAuth(AdminControlPanelPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const LoginPageWrapper = withAuth(LoginPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const SignUpPageWrapper = withAuth(SignupPage);
-
-
-

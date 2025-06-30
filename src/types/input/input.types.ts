@@ -13,6 +13,7 @@ export interface IFormikInputProps {
   isTextArea?: boolean; 
   rows?: number;
   required?: boolean;
+  transformOnBlur?: (value: string) => string [];
 }
 
 export interface IInputProps{

@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { AddFocusActivityPageWrapper, AdminControlPanelPageWrapper, EditFocusActivityPageWrapper, EditUpdateImagePageWrapper, FocusActivityDashboardPageWrapper, LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, SignUpPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllImagePageWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import { AddFocusActivityPageWrapper, AddUpcomingEventPageWrapper, AdminControlPanelPageWrapper, EditFocusActivityPageWrapper, EditUpcomingEventPageWrapper, EditUpdateImagePageWrapper, FocusActivityDashboardPageWrapper, LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, SignUpPageWrapper, UpcomingEventDashboardPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllImagePageWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllUpcomingEventForUserPageWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper, ViewUpcomingEventForUserPageWrapper, ViewUpcomingEventPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ApprochPage from "./pages/AboutUsPage/ApprochPage";
 import FuturePlanPage from "./pages/AboutUsPage/FuturePlanPage";
 import MissionPage from "./pages/AboutUsPage/MissionPage";
 import VisionPage from "./pages/AboutUsPage/VisionPage";
-import HomePage from "./pages/HomePage/HomePage";
+import HomePage from "./pages/HomePage/user/HomePage";
+import { Parent } from "./pages/Learning/Example";
 import PageNotAccessible from "./pages/NotFoundPage/PageNotAccessible";
 import PageNotFound from "./pages/NotFoundPage/PageNotFound";
 
@@ -22,13 +23,22 @@ export const router = createBrowserRouter([
       
       { path: "manage", Component: AdminControlPanelPageWrapper,},
       { path: "admin/image-management/:id", Component: EditUpdateImagePageWrapper },
+      { path: "user/view-all-image", Component: ViewAllImagePageWrapper },
+
       { path: "admin/add-focus-activity", Component: AddFocusActivityPageWrapper },
       { path: "admin/focus-activity-dashboard", Component: FocusActivityDashboardPageWrapper },
       { path: "admin/edit-focus-activity/:id", Component: EditFocusActivityPageWrapper },
       { path: "admin/view-focus-activity/:id", Component: ViewFocusActivityPageWrapper },
-      { path: "user/view-all-image", Component: ViewAllImagePageWrapper },
       { path: "user/view-focus-activity/:id", Component: ViewFocusActivityForUserPageWrapper },
       { path: "user/view-all-focus-activity", Component: ViewAllFocusActivityForUserPageWrapper },
+
+      { path: "admin/add-upcoming-event", Component: AddUpcomingEventPageWrapper },
+      { path: "admin/upcoming-event-dashboard", Component:UpcomingEventDashboardPageWrapper },
+      { path: "admin/edit-upcoming-event/:id", Component: EditUpcomingEventPageWrapper },
+      { path: "admin/view-upcoming-event/:id", Component: ViewUpcomingEventPageWrapper },
+      { path: "user/view-upcoming-event/:id", Component: ViewUpcomingEventForUserPageWrapper },
+      { path: "user/view-all-upcoming-event", Component: ViewAllUpcomingEventForUserPageWrapper },
+
       { path: "manage/manage-all-media", Component: ManageAllMediaPageWrapper },
       { path: "manage/manage-all-blog", Component: ManageAllBlogPageWrapper },
       { path: "manage/manage-all-news", Component: ManageAllNewsPageWrapper },
@@ -42,6 +52,7 @@ export const router = createBrowserRouter([
       { path: "users/media/:id", Component: ViewMediaByIdUsersPageWrapper },
       { path: "users/blog/:id", Component: ViewBlogByIdUsersPageWrapper},
       { path: "users/news/:id", Component: ViewNewsByIdUsersPageWrapper },
+      { path: "learning", Component: Parent },
 
       { path:"about/mission", Component: MissionPage },
       { path:"about/vision", Component: VisionPage },

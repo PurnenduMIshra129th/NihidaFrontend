@@ -17,6 +17,47 @@ export interface IFocusActivityApiResponse extends ICreatedAt {
   date?: string | Date;
   files?: IFile[];
 }
+export interface IUpcomingEventApiPayload {
+  title: string;
+  subtitle?: string;
+  description: string;
+  date: string;
+  location: string;
+  tags?: string[];
+  cta?: {
+    label?: string;
+    url?: string;
+  };
+  impactGoals?: string[];
+  contactPerson?: {
+    name?: string;
+    phone?: string;
+    email?: string;
+  };
+  createdBy?: string;
+  status?: "upcoming" | "ongoing" | "closed";
+}
+export interface IUpcomingEventApiResponse extends ICreatedAt {
+  title: string;
+  subtitle?: string;
+  description: string;
+  date: string;
+  location: string;
+  tags?: string[];
+  cta?: {
+    label?: string;
+    url?: string;
+  };
+  impactGoals?: string[];
+  contactPerson?: {
+    name?: string;
+    phone?: string;
+    email?: string;
+  };
+  createdBy?: string;
+  status?: "upcoming" | "ongoing" | "closed";
+  files?: IFile[];
+}
 export interface ISignUpApiPayload {
   userName: string;
   email: string;
@@ -48,6 +89,12 @@ export interface ILoginApiResponse {
     __v: number;
     _id: string;
   };
+}
+export interface IGetUserApiResponse {
+  _id: string;
+  name: string;
+  email: string;
+  role: string;
 }
 export interface IImpactStat extends IId {
   label?: string;
