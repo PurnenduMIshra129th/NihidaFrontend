@@ -2,7 +2,14 @@ import ManageAllBlogPage from "../../pages/BlogPage/ManageAllBlogPage";
 import ViewAllBlogPageUsers from "../../pages/BlogPage/ViewAllBlogPageUsers";
 import ViewBlogByIdUsersPage from "../../pages/BlogPage/ViewBlogByIdUsersPage";
 import ManageAllCarouselPage from "../../pages/Carousel/ManageAllCarouselPage";
+import AddDocumentPage from "../../pages/Documents/admin/AddDocument.page";
+import DocumentAdminDashboardPage from "../../pages/Documents/admin/DocumentAdminDashboard.page";
+import DocumentDetailByIdPage from "../../pages/Documents/admin/DocumentDetailById.page";
+import EditDocumentPage from "../../pages/Documents/admin/EditDocument.page";
+import ViewAllDocumentPage from "../../pages/Documents/user/ViewAllDocument.page";
+import ViewDocumentByIdPage from "../../pages/Documents/user/ViewDocumentById.page";
 import ImageManagementPage from "../../pages/Files/admin/ImageManagement.page";
+import PdfManagementPage from "../../pages/Files/admin/PdfManagement.page";
 import ViewAllImagePage from "../../pages/Files/user/ViewAllImage.page";
 import AddFocusActivityPage from "../../pages/FocusActivity/admin/AddFocusActivity.page";
 import EditFocusActivityPage from "../../pages/FocusActivity/admin/EditFocusActivity.page";
@@ -55,6 +62,20 @@ export const ViewAllFocusActivityForUserPageWrapper = withAuth(
   ViewAllFocusActivityPage
 );
 // eslint-disable-next-line @typescript-eslint/naming-convention
+export const AddDocumentPageWrapper = withAuth(AddDocumentPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const DocumentDashboardPageWrapper = withAuth(
+  withDataProvider(DocumentAdminDashboardPage, "document/getAllDocument")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditDocumentPageWrapper = withAuth(EditDocumentPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewDocumentPageWrapper = withAuth(DocumentDetailByIdPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewDocumentForUserPageWrapper = withAuth(ViewDocumentByIdPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewAllDocumentForUserPageWrapper = withAuth(ViewAllDocumentPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddUpcomingEventPageWrapper = withAuth(AddUpcomingEventPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const UpcomingEventDashboardPageWrapper = withAuth(
@@ -81,6 +102,8 @@ export const ViewAllUpcomingEventForUserPageWrapper = withAuth(
 export const ViewAllImagePageWrapper = withAuth(ViewAllImagePage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const EditUpdateImagePageWrapper = withAuth(ImageManagementPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditUpdateFilePageWrapper = withAuth(PdfManagementPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ManageAllMediaPageWrapper = withAuth(
   withDataProvider(ManageAllMediaPage, "media/getAllMedia")

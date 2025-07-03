@@ -1,5 +1,5 @@
 import DashboardSectionCard from "../../../components/Cards/DashboardCard";
-import { ISocialServicesIcon, MediaIcon } from "../../../components/Icons/Icon";
+import { ISocialServicesIcon, MediaIcon, NewsIcon } from "../../../components/Icons/Icon";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function AdminControlPanelPage() {
   return (
@@ -27,6 +27,12 @@ function AdminControlPanelPage() {
             route="/admin/upcoming-event-dashboard"
             description="Edit, add and delete upcoming events"
             icon={<ISocialServicesIcon/>}
+          />
+          <DashboardSectionCard
+            title="Document"
+            route="/admin/document-dashboard"
+            description="Edit, add and delete documents"
+            icon={<NewsIcon/>}
           />
         </div>
       </div>

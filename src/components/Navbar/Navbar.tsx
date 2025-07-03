@@ -109,6 +109,14 @@ function Navbar() {
                   Upcoming Events
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("documents")}
+                  className="block py-2 px-3 rounded-sm md:p-0"
+                >
+                  Documents
+                </button>
+              </li>
               {/* <li>
                 <button
                   onClick={() => scrollToSection("news")}

@@ -58,6 +58,25 @@ export interface IUpcomingEventApiResponse extends ICreatedAt {
   status?: "upcoming" | "ongoing" | "closed";
   files?: IFile[];
 }
+export interface IDocumentApiPayload {
+  title: string;
+  type:
+    | "certificate"
+    | "recognition"
+    | "legal"
+    | "media"
+    | "annual-report"
+    | "other";
+  description?: string;
+  issuedBy?: string;
+  issueDate?: string;
+  expiresAt?: string;
+  visibility: "public" | "internal";
+  tags?: string[];
+  highlighted?: boolean;
+  createdBy?: string;
+}
+export interface IDocumentApiResponse extends IDocumentApiPayload, ICreatedAt, IFileApiData {}
 export interface ISignUpApiPayload {
   userName: string;
   email: string;

@@ -1,6 +1,7 @@
 
 
 import Carousel from "../../../components/Carousel/Carousel"
+import DocumentScreen from "../../../components/section/documents/user/Document.screen"
 import FocusActivityScreen from "../../../components/section/focusActivity/user/FocusActivity.screen"
 import UpcomingEventScreen from "../../../components/section/upcomingEvent/user/UpcomingEvent.screen"
 import AboutScreen from "../../../screens/About/AboutScreen"
@@ -21,6 +22,7 @@ function HomePage() {
         <div id="impact" className="w-full flex flex-col justify-center items-center scroll-mt-24"><ImpactScreen /></div>
         <div id="focusActivity" className="w-full flex flex-col justify-center items-center scroll-mt-24"><FocusActivityScreen /></div>
         <div id="upcomingEvents" className="w-full flex flex-col justify-center items-center scroll-mt-24"><UpcomingEventScreen /></div>
+        <div id="documents" className="w-full flex flex-col justify-center items-center scroll-mt-24"><DocumentScreen /></div>
         <div id="donationImpact" className="w-full flex flex-col justify-center items-center scroll-mt-24"><DonationImpactSection /></div>
       </div>
     </>

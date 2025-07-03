@@ -1,4 +1,4 @@
-import { IFocusActivityApiResponse, IUpcomingEventApiResponse } from "../api/api.type";
+import { IDocumentApiResponse, IFocusActivityApiResponse, IUpcomingEventApiResponse } from "../api/api.type";
 
 export interface IImageCardGalleryProps {
   colSpan?: string;
@@ -15,11 +15,14 @@ interface IAdminCard {
   onUpload?: () => void;
   onViewImages?: () => void;
 }
-export interface IFocusActivityAdminCardProps extends IAdminCard {
+export interface IFocusActivityAdminCard extends IAdminCard {
   data: IFocusActivityApiResponse;
 }
 export interface IUpcomingEventAdminCard extends IAdminCard {
   data: IUpcomingEventApiResponse;
+}
+export interface IDocumentAdminCard extends IAdminCard {
+  data: IDocumentApiResponse;
 }
 
 export interface IFormikFileInputProps {
@@ -63,4 +66,13 @@ export interface IImagePreviewModalProps {
 }
 export interface IImageCardGalleryVariant2 {
   imagePath: string;
+}
+export interface IPDFPreviewCardProps {
+  publicFilePath: string;
+  originalName: string;
+}
+
+export interface IPDFDocumentCardUser {
+  document: IDocumentApiResponse;
+  readMoreRouting: string;
 }

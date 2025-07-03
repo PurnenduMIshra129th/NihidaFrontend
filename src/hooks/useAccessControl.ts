@@ -21,6 +21,8 @@ const userRoutes = [
     "/users/news/:id",
     "/user/view-focus-activity/:id",
     "/user/view-all-focus-activity",
+    "/user/view-document/:id",
+    "/user/view-all-document",
     "/user/view-upcoming-event/:id",
     "/user/view-all-upcoming-event",
     "/user/view-all-image",
@@ -43,8 +45,14 @@ const adminRoutes = [
     "/admin/upcoming-event-dashboard",
     "/admin/edit-upcoming-event/:id",
     "/admin/view-upcoming-event/:id",
+
+    "/admin/add-document",
+    "/admin/document-dashboard",
+    "/admin/edit-document/:id",
+    "/admin/view-document/:id",
     
     "/admin/image-management/:id",
+    "/admin/file-management/:id",
     ...userRoutes,
 ];
 
