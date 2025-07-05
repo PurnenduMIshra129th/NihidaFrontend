@@ -17,6 +17,12 @@ import FocusActivityAdminDashboardPage from "../../pages/FocusActivity/admin/Foc
 import FocusActivityDetailByIdPage from "../../pages/FocusActivity/admin/FocusActivityDetailById.page";
 import ViewAllFocusActivityPage from "../../pages/FocusActivity/user/ViewAllFocusActivity.page";
 import ViewFocusActivityByIdPage from "../../pages/FocusActivity/user/ViewFocusActivityById.page";
+import AddGalleryPage from "../../pages/Gallery/admin/AddGallery.page";
+import EditGalleryPage from "../../pages/Gallery/admin/EditGallery.page";
+import GalleryAdminDashboardPage from "../../pages/Gallery/admin/GalleryAdminDashboard.page";
+import GalleryDetailByIdPage from "../../pages/Gallery/admin/GalleryDetailById.page";
+import ViewAllGalleryPage from "../../pages/Gallery/user/ViewAllGallery.page";
+import ViewGalleryByIdPage from "../../pages/Gallery/user/ViewGalleryById.page";
 import AdminControlPanelPage from "../../pages/HomePage/admin/AdminContolPanel.page";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import ManageAllMediaPage from "../../pages/MediaPage/ManageAllMediaPage";
@@ -60,6 +66,29 @@ export const ViewFocusActivityForUserPageWrapper = withAuth(
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllFocusActivityForUserPageWrapper = withAuth(
   ViewAllFocusActivityPage
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const AddGalleryPageWrapper = withAuth(AddGalleryPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const GalleryDashboardPageWrapper = withAuth(
+  withDataProvider(
+    GalleryAdminDashboardPage,
+    "gallery/getAllGallery"
+  )
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditGalleryPageWrapper = withAuth(EditGalleryPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewGalleryPageWrapper = withAuth(
+  GalleryDetailByIdPage
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewGalleryForUserPageWrapper = withAuth(
+  ViewGalleryByIdPage
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewAllGalleryForUserPageWrapper = withAuth(
+  ViewAllGalleryPage
 );
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddDocumentPageWrapper = withAuth(AddDocumentPage);

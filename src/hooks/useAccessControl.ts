@@ -25,6 +25,8 @@ const userRoutes = [
     "/user/view-all-document",
     "/user/view-upcoming-event/:id",
     "/user/view-all-upcoming-event",
+    "/user/view-gallery/:id",
+    "/user/view-all-gallery",
     "/user/view-all-image",
 ];
 const adminRoutes = [
@@ -50,6 +52,11 @@ const adminRoutes = [
     "/admin/document-dashboard",
     "/admin/edit-document/:id",
     "/admin/view-document/:id",
+
+    "/admin/add-gallery",
+    "/admin/gallery-dashboard",
+    "/admin/edit-gallery/:id",
+    "/admin/view-gallery/:id",
     
     "/admin/image-management/:id",
     "/admin/file-management/:id",

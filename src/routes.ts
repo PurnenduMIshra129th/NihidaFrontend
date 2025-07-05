@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { AddDocumentPageWrapper, AddFocusActivityPageWrapper, AddUpcomingEventPageWrapper, AdminControlPanelPageWrapper, DocumentDashboardPageWrapper, EditDocumentPageWrapper, EditFocusActivityPageWrapper, EditUpcomingEventPageWrapper, EditUpdateFilePageWrapper, EditUpdateImagePageWrapper, FocusActivityDashboardPageWrapper, LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, SignUpPageWrapper, UpcomingEventDashboardPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllDocumentForUserPageWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllImagePageWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllUpcomingEventForUserPageWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewDocumentForUserPageWrapper, ViewDocumentPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper, ViewUpcomingEventForUserPageWrapper, ViewUpcomingEventPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import { AddDocumentPageWrapper, AddFocusActivityPageWrapper, AddGalleryPageWrapper, AddUpcomingEventPageWrapper, AdminControlPanelPageWrapper, DocumentDashboardPageWrapper, EditDocumentPageWrapper, EditFocusActivityPageWrapper, EditGalleryPageWrapper, EditUpcomingEventPageWrapper, EditUpdateFilePageWrapper, EditUpdateImagePageWrapper, FocusActivityDashboardPageWrapper, GalleryDashboardPageWrapper, LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, SignUpPageWrapper, UpcomingEventDashboardPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllDocumentForUserPageWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllGalleryForUserPageWrapper, ViewAllImagePageWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsPageUsersWrapper, ViewAllUpcomingEventForUserPageWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewDocumentForUserPageWrapper, ViewDocumentPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewGalleryForUserPageWrapper, ViewGalleryPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper, ViewUpcomingEventForUserPageWrapper, ViewUpcomingEventPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ApprochPage from "./pages/AboutUsPage/ApprochPage";
 import FuturePlanPage from "./pages/AboutUsPage/FuturePlanPage";
@@ -39,6 +39,13 @@ export const router = createBrowserRouter([
       { path: "admin/view-document/:id", Component: ViewDocumentPageWrapper },
       { path: "user/view-document/:id", Component: ViewDocumentForUserPageWrapper },
       { path: "user/view-all-document", Component: ViewAllDocumentForUserPageWrapper },
+
+      { path: "admin/add-gallery", Component: AddGalleryPageWrapper },
+      { path: "admin/gallery-dashboard", Component: GalleryDashboardPageWrapper },
+      { path: "admin/edit-gallery/:id", Component: EditGalleryPageWrapper },
+      { path: "admin/view-gallery/:id", Component: ViewGalleryPageWrapper },
+      { path: "user/view-gallery/:id", Component: ViewGalleryForUserPageWrapper },
+      { path: "user/view-all-gallery", Component: ViewAllGalleryForUserPageWrapper },
 
       { path: "admin/add-upcoming-event", Component: AddUpcomingEventPageWrapper },
       { path: "admin/upcoming-event-dashboard", Component:UpcomingEventDashboardPageWrapper },

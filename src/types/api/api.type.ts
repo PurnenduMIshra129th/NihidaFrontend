@@ -76,7 +76,30 @@ export interface IDocumentApiPayload {
   highlighted?: boolean;
   createdBy?: string;
 }
-export interface IDocumentApiResponse extends IDocumentApiPayload, ICreatedAt, IFileApiData {}
+export interface IDocumentApiResponse
+  extends IDocumentApiPayload,
+    ICreatedAt,
+    IFileApiData {}
+export interface IGalleryApiPayload {
+  title: string;
+  category:
+    | "event"
+    | "impact"
+    | "volunteer"
+    | "daily-life"
+    | "community"
+    | "other";
+  description?: string;
+  date: string;
+  visibility: "public" | "internal";
+  tags?: string[];
+  highlighted?: boolean;
+  uploadedBy?: string;
+}
+export interface IGalleryApiResponse
+  extends IGalleryApiPayload,
+    ICreatedAt,
+    IFileApiData {}
 export interface ISignUpApiPayload {
   userName: string;
   email: string;

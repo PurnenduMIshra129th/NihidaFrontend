@@ -57,7 +57,10 @@ function Navbar() {
               title="Nihida Logo"
               className="flex items-center space-x-3 rtl:space-x-reverse outline-none "
             >
-              <Image imagePath="/NIHIDA-LOGO.jpg" className="w-[3rem] h-[3rem] rounded-md "/>
+              <Image
+                imagePath="/NIHIDA-LOGO.jpg"
+                className="w-[3rem] h-[3rem] rounded-md "
+              />
             </Link>
             <Typography
               text="NIHIDA"
@@ -115,6 +118,14 @@ function Navbar() {
                   className="block py-2 px-3 rounded-sm md:p-0"
                 >
                   Documents
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("gallery")}
+                  className="block py-2 px-3 rounded-sm md:p-0"
+                >
+                  Gallery
                 </button>
               </li>
               {/* <li>

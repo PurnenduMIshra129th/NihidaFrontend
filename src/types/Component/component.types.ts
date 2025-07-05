@@ -1,4 +1,4 @@
-import { IDocumentApiResponse, IFocusActivityApiResponse, IUpcomingEventApiResponse } from "../api/api.type";
+import { IDocumentApiResponse, IFocusActivityApiResponse, IGalleryApiResponse, IUpcomingEventApiResponse } from "../api/api.type";
 
 export interface IImageCardGalleryProps {
   colSpan?: string;
@@ -17,6 +17,9 @@ interface IAdminCard {
 }
 export interface IFocusActivityAdminCard extends IAdminCard {
   data: IFocusActivityApiResponse;
+}
+export interface IGalleryAdminCard extends IAdminCard {
+  data: IGalleryApiResponse;
 }
 export interface IUpcomingEventAdminCard extends IAdminCard {
   data: IUpcomingEventApiResponse;
