@@ -28,7 +28,7 @@ function ImpactScreen() {
             end={3000}
           />
           <CountUpComponent
-            text="Consumer Empowerment"
+            text="Consumer Empowerment"
             textDescription="Supported 1,000+ people with skills, training, and sustainable livelihood programs for financial independence."
             end={1000}
           />
