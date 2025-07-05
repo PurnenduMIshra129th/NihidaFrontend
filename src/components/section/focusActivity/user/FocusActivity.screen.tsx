@@ -25,7 +25,7 @@ function FocusActivityScreen() {
     <>
       <div className="flex justify-center items-center flex-col sm:w-[80%] w-full">
         <SectionDivider
-          textHeading="Focus Activity Section"
+          textHeading="Focus Activities Section"
           routePath="/user/view-all-focus-activity"
         />
         <div className="flex flex-wrap gap-6 justify-center sm:justify-center w-full my-3">

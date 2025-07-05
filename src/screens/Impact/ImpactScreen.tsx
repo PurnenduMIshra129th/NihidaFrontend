@@ -17,23 +17,23 @@ function ImpactScreen() {
         </div>
         <div className="flex flex-row flex-wrap md:flex-nowrap md:mt-24 mt-4">
           <CountUpComponent
-            text="Education"
+            text="Water conservation"
             textDescription="Empowered 5,000+ learners through digital literacy, schooling, and accessible community-based education programs in underserved areas."
             end={5000}
             isPlusTrue={true}
           />
           <CountUpComponent
-            text="Healthcare"
+            text="Road safety"
             textDescription="Improved access to basic healthcare, awareness drives, and sanitation for 3,000+ individuals in rural communities."
             end={3000}
           />
           <CountUpComponent
-            text="Economic Development"
+            text="Consumer Empowerment"
             textDescription="Supported 1,000+ people with skills, training, and sustainable livelihood programs for financial independence."
             end={1000}
           />
           <CountUpComponent
-            text="Environmental Initiatives"
+            text="Energy conservation"
             textDescription="Launched 6,000+ actions in conservation, climate education, and eco-sustainability to protect community resources."
             end={6000}
              isPlusTrue={true}
