@@ -10,7 +10,7 @@ import {
   IUpcomingEventApiPayload,
   IUpcomingEventApiResponse,
 } from "../../../types/api/api.type";
-import { parseCommaSeparatedString } from "../../../utils/util";
+// import { parseCommaSeparatedString } from "../../../utils/util";
 
 const initialValues: IUpcomingEventApiPayload = {
   title: "",
@@ -103,18 +103,18 @@ export default function AddUpcomingEventPage() {
             <FormikInput label="Date" name="date" type="date" required />
 
             {/* Tags */}
-            <FormikInput
+            {/* <FormikInput
               label="Tags (comma-separated)"
               name="tags"
               placeholder="e.g. education, health"
               transformOnBlur={(values) => parseCommaSeparatedString(values)}
-            />
+            /> */}
 
             {/* CTA */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* <div className="grid grid-cols-2 gap-4">
               <FormikInput label="CTA Label" name="cta.label" />
               <FormikInput label="CTA URL" name="cta.url" />
-            </div>
+            </div> */}
 
             {/* Impact Goals */}
             <FieldArray name="impactGoals">
