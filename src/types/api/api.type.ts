@@ -80,6 +80,7 @@ export interface IDocumentApiResponse
   extends IDocumentApiPayload,
     ICreatedAt,
     IFileApiData {}
+
 export interface IGalleryApiPayload {
   title: string;
   category:
@@ -100,6 +101,24 @@ export interface IGalleryApiResponse
   extends IGalleryApiPayload,
     ICreatedAt,
     IFileApiData {}
+
+export interface INewsApiPayload {
+  title: string;
+  summary: string;
+  content: string;
+  source?: string;
+  url?: string;
+  category: "press-release" | "impact" | "announcement" | "event" | "other";
+  date: string;
+  tags?: string[];
+  visibility: "public" | "internal";
+  createdBy?: string;
+}
+export interface INewsApiResponse
+  extends INewsApiPayload,
+    ICreatedAt,
+    IFileApiData {}
+
 export interface ISignUpApiPayload {
   userName: string;
   email: string;

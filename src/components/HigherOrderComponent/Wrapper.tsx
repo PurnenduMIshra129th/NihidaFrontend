@@ -28,6 +28,12 @@ import LoginPage from "../../pages/LoginPage/LoginPage";
 import ManageAllMediaPage from "../../pages/MediaPage/ManageAllMediaPage";
 import ViewAllMediaPageUsers from "../../pages/MediaPage/ViewAllMediaPageUsers";
 import ViewMediaByIdUsersPage from "../../pages/MediaPage/ViewMediaByIdUsersPage";
+import AddNewsPage from "../../pages/News/admin/AddNews.page";
+import EditNewsPage from "../../pages/News/admin/EditNews.page";
+import NewsAdminDashboardPage from "../../pages/News/admin/NewsAdminDashboard.page";
+import NewsDetailByIdPage from "../../pages/News/admin/NewsDetailById.page";
+import ViewAllNewsPage from "../../pages/News/user/ViewAllNews.page";
+import ViewNewsByIdPage from "../../pages/News/user/ViewNewsById.page";
 import ManageAllNewsPage from "../../pages/NewsPage/ManageAllNewsPage";
 import ViewAllNewsPageUsers from "../../pages/NewsPage/ViewAllNewsPageUsers";
 import ViewNewsByIdUsersPage from "../../pages/NewsPage/ViewNewsByIdUsersPage";
@@ -90,6 +96,8 @@ export const ViewGalleryForUserPageWrapper = withAuth(
 export const ViewAllGalleryForUserPageWrapper = withAuth(
   ViewAllGalleryPage
 );
+
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddDocumentPageWrapper = withAuth(AddDocumentPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -104,6 +112,24 @@ export const ViewDocumentPageWrapper = withAuth(DocumentDetailByIdPage);
 export const ViewDocumentForUserPageWrapper = withAuth(ViewDocumentByIdPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllDocumentForUserPageWrapper = withAuth(ViewAllDocumentPage);
+
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const AddNewsPageWrapper = withAuth(AddNewsPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const NewsDashboardPageWrapper = withAuth(
+  withDataProvider(NewsAdminDashboardPage, "news/getAllNews")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditNewsPageWrapper = withAuth(EditNewsPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewNewsPageWrapper = withAuth(NewsDetailByIdPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewNewsForUserPageWrapper = withAuth(ViewNewsByIdPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewAllNewsForUserPageWrapper = withAuth(ViewAllNewsPage);
+
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddUpcomingEventPageWrapper = withAuth(AddUpcomingEventPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention

@@ -40,6 +40,12 @@ function AdminControlPanelPage() {
             description="Edit, add and delete gallery"
             icon={<ISocialServicesIcon/>}
           />
+          <DashboardSectionCard
+            title="News"
+            route="/admin/news-dashboard"
+            description="Edit, add and delete news"
+            icon={<NewsIcon/>}
+          />
         </div>
       </div>
     </>

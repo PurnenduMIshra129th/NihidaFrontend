@@ -12,31 +12,26 @@ type AccessResult = {
 
 const guestOnlyRoutes = ["/login", "/signup"];
 const userRoutes = [
-    "/users/view-all-media",
-    "/users/view-all-blog",
-    "/users/view-all-news",
-    "/users/view-all-video",
-    "/users/media/:id",
-    "/users/blog/:id",
-    "/users/news/:id",
+
     "/user/view-focus-activity/:id",
     "/user/view-all-focus-activity",
+
     "/user/view-document/:id",
     "/user/view-all-document",
+
     "/user/view-upcoming-event/:id",
     "/user/view-all-upcoming-event",
+
     "/user/view-gallery/:id",
     "/user/view-all-gallery",
+
+    "/user/view-news/:id",
+    "/user/view-all-news",
+
     "/user/view-all-image",
 ];
 const adminRoutes = [
     "/manage",
-    "/manage/manage-all-blog",
-    "/manage/manage-all-news",
-    "/manage/manage-all-media",
-    "/manage/manage-all-video",
-    "/manage/manage-all-carousel",
-    "/manage/manage-all-service",
 
     "/admin/add-focus-activity",
     "/admin/focus-activity-dashboard",
@@ -57,6 +52,11 @@ const adminRoutes = [
     "/admin/gallery-dashboard",
     "/admin/edit-gallery/:id",
     "/admin/view-gallery/:id",
+
+    "/admin/add-news",
+    "/admin/news-dashboard",
+    "/admin/edit-news/:id",
+    "/admin/view-news/:id",
     
     "/admin/image-management/:id",
     "/admin/file-management/:id",

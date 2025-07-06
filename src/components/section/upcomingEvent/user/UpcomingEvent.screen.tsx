@@ -32,7 +32,7 @@ function UpcomingEventScreen() {
           {!apiData || apiData.length === 0 ? (
             <NoDataComponent message="No upcoming event available at the moment" />
           ) : null}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {apiData?.slice(0, 3)?.map((item, index) => (
               <InformationCard
                 key={index}

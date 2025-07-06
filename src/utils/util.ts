@@ -62,4 +62,7 @@ export function parseCommaSeparatedString(input: string): string[] {
     .map((item) => item.trim())
     .filter(Boolean);
 }
+export const formatDateForInput = (dateStr?: string) => {
+  return dateStr ? moment(dateStr).format("YYYY-MM-DD") : "";
+};
 
