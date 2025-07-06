@@ -1,5 +1,10 @@
 import DashboardSectionCard from "../../../components/Cards/DashboardCard";
-import { ISocialServicesIcon, MediaIcon, NewsIcon } from "../../../components/Icons/Icon";
+import {
+  ISocialServicesIcon,
+  MediaIcon,
+  NewsIcon,
+  VideoIcon,
+} from "../../../components/Icons/Icon";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function AdminControlPanelPage() {
   return (
@@ -10,41 +15,41 @@ function AdminControlPanelPage() {
         </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* <ManageBlogCard />
-          <ManageNewsCard />
-          <ManageServiceCard />
-          <ManageVideoCard />
-          <ManageCarouselCard />
-          <ManageSocialLinkCard /> */}
           <DashboardSectionCard
             title="Focus Activity"
             route="/admin/focus-activity-dashboard"
             description="Edit, add and delete focus activities"
-            icon={<MediaIcon/>}
+            icon={<MediaIcon />}
           />
           <DashboardSectionCard
             title="Upcoming Event"
             route="/admin/upcoming-event-dashboard"
             description="Edit, add and delete upcoming events"
-            icon={<ISocialServicesIcon/>}
+            icon={<ISocialServicesIcon />}
           />
           <DashboardSectionCard
             title="Document"
             route="/admin/document-dashboard"
             description="Edit, add and delete documents"
-            icon={<NewsIcon/>}
+            icon={<NewsIcon />}
           />
           <DashboardSectionCard
             title="Gallery"
             route="/admin/gallery-dashboard"
             description="Edit, add and delete gallery"
-            icon={<ISocialServicesIcon/>}
+            icon={<ISocialServicesIcon />}
           />
           <DashboardSectionCard
             title="News"
             route="/admin/news-dashboard"
             description="Edit, add and delete news"
-            icon={<NewsIcon/>}
+            icon={<NewsIcon />}
+          />
+          <DashboardSectionCard
+            title="Video"
+            route="/admin/video-dashboard"
+            description="Edit, add and delete videos"
+            icon={<VideoIcon />}
           />
         </div>
       </div>

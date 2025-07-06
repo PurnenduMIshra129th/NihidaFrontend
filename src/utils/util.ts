@@ -65,4 +65,25 @@ export function parseCommaSeparatedString(input: string): string[] {
 export const formatDateForInput = (dateStr?: string) => {
   return dateStr ? moment(dateStr).format("YYYY-MM-DD") : "";
 };
+export const extractYouTubeId = (url: string): string | null => {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname === "youtu.be") {
+      return parsed.pathname.slice(1);
+    }
+
+    if (parsed.hostname.includes("youtube.com")) {
+      const params = parsed.searchParams.get("v");
+      if (params) return params;
+
+      const pathMatch = parsed.pathname.match(/\/(embed|shorts|v)\/([^/?]+)/);
+      if (pathMatch) return pathMatch[2];
+    }
+
+    return null;
+  } catch {
+    return null;
+  }
+};
+
 

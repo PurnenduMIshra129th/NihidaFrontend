@@ -119,6 +119,28 @@ export interface INewsApiResponse
     ICreatedAt,
     IFileApiData {}
 
+export interface IVideoApiPayload {
+  title: string;
+  description?: string;
+  category:
+    | "testimonial"
+    | "project"
+    | "awareness"
+    | "media"
+    | "event"
+    | "other";
+  date: string;
+  visibility: "public" | "internal";
+  tags?: string[];
+  highlighted?: boolean;
+  uploadedBy?: string;
+  youtubeUrl: string;
+}
+export interface IVideoApiResponse
+  extends IVideoApiPayload,
+    ICreatedAt,
+    IFileApiData {}
+
 export interface ISignUpApiPayload {
   userName: string;
   email: string;

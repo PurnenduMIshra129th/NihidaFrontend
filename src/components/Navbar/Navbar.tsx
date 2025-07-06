@@ -128,6 +128,14 @@ function Navbar() {
                   Gallery
                 </button>
               </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("video")}
+                  className="block py-2 px-3 rounded-sm md:p-0"
+                >
+                  Video
+                </button>
+              </li>
               {/* <li>
                 <button
                   onClick={() => scrollToSection("news")}

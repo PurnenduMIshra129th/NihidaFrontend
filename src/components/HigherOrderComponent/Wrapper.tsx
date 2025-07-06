@@ -45,6 +45,12 @@ import UpcomingEventAdminDashboardPage from "../../pages/UpcomingEvent/admin/Upc
 import UpcomingEventDetailByIdPage from "../../pages/UpcomingEvent/admin/UpcomingEventDetailById.page";
 import ViewAllUpcomingEventPage from "../../pages/UpcomingEvent/user/ViewAllUpcomingEvent.page";
 import ViewUpcomingEventByIdPage from "../../pages/UpcomingEvent/user/ViewUpcomingEventById.page";
+import AddVideoPage from "../../pages/video/admin/AddVideo.page";
+import EditVideoPage from "../../pages/video/admin/EditVideo.page";
+import VideoAdminDashboardPage from "../../pages/video/admin/VideoAdminDashboard.page";
+import VideoDetailByIdPage from "../../pages/video/admin/VideoDetailById.page";
+import ViewAllVideoPage from "../../pages/video/user/ViewAllVideo.page";
+import ViewVideoByIdPage from "../../pages/video/user/ViewVideoById.page";
 import ManageAllVideoPage from "../../pages/VideoPage/ManageAllVideoPage";
 import ViewAllVideoPageUsers from "../../pages/VideoPage/ViewAllVideoPageUsers";
 import { withAuth } from "./ProtectedRoutes";
@@ -77,26 +83,16 @@ export const ViewAllFocusActivityForUserPageWrapper = withAuth(
 export const AddGalleryPageWrapper = withAuth(AddGalleryPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const GalleryDashboardPageWrapper = withAuth(
-  withDataProvider(
-    GalleryAdminDashboardPage,
-    "gallery/getAllGallery"
-  )
+  withDataProvider(GalleryAdminDashboardPage, "gallery/getAllGallery")
 );
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const EditGalleryPageWrapper = withAuth(EditGalleryPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewGalleryPageWrapper = withAuth(
-  GalleryDetailByIdPage
-);
+export const ViewGalleryPageWrapper = withAuth(GalleryDetailByIdPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewGalleryForUserPageWrapper = withAuth(
-  ViewGalleryByIdPage
-);
+export const ViewGalleryForUserPageWrapper = withAuth(ViewGalleryByIdPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewAllGalleryForUserPageWrapper = withAuth(
-  ViewAllGalleryPage
-);
-
+export const ViewAllGalleryForUserPageWrapper = withAuth(ViewAllGalleryPage);
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddDocumentPageWrapper = withAuth(AddDocumentPage);
@@ -113,7 +109,6 @@ export const ViewDocumentForUserPageWrapper = withAuth(ViewDocumentByIdPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllDocumentForUserPageWrapper = withAuth(ViewAllDocumentPage);
 
-
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddNewsPageWrapper = withAuth(AddNewsPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -129,6 +124,20 @@ export const ViewNewsForUserPageWrapper = withAuth(ViewNewsByIdPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllNewsForUserPageWrapper = withAuth(ViewAllNewsPage);
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const AddVideoPageWrapper = withAuth(AddVideoPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const VideoDashboardPageWrapper = withAuth(
+  withDataProvider(VideoAdminDashboardPage, "video/getAllVideo")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditVideoPageWrapper = withAuth(EditVideoPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewVideoPageWrapper = withAuth(VideoDetailByIdPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewVideoForUserPageWrapper = withAuth(ViewVideoByIdPage);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const ViewAllVideoForUserPageWrapper = withAuth(ViewAllVideoPage);
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddUpcomingEventPageWrapper = withAuth(AddUpcomingEventPage);
