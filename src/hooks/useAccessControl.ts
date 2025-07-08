@@ -34,7 +34,7 @@ const userRoutes = [
     "/user/view-all-image",
 ];
 const adminRoutes = [
-    "/manage",
+    "/admin",
 
     "/admin/add-focus-activity",
     "/admin/focus-activity-dashboard",

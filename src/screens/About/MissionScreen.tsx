@@ -6,13 +6,17 @@ import Typography from "../../components/Text/Typography";
 function MissionScreen() {
   return (
     <>
-      <div className="w-full flex flex-col justify-center items-center ">
-        <Heading_1 text="Our Mission" className="mt-6" />
+      <div className="w-full flex flex-col justify-center items-center bg-custom_white_3 py-16 px-4">
+        <Heading_1
+          text="Our Mission"
+          className="text-custom_orange_1 text-4xl font-bold"
+        />
         <Typography
           text="Our mission is to empower underserved communities by fostering inclusive development through education, health, environment, and economic support. We aim to drive sustainable change with collaborative action, policy advocacy, and capacity building that uplifts individuals and strengthens social equity at the grassroots level."
-          className="mt-6 text-custom_grey_1 w-[60%] text-center"
+          className="mt-6 text-gray-700 w-full max-w-4xl text-center text-[16px] leading-relaxed"
         />
-        <div className="flex flex-row flex-wrap md:flex-nowrap  justify-center mt-6 items-center">
+
+        <div className="flex flex-col md:flex-row justify-center items-stretch mt-10 gap-6 px-4 w-full max-w-7xl">
           <MissionSectionCard
             textHeading="Mission"
             textDescription="To build a strong Network platform for achieve various sustainable Developmental Goal(SDG) to adopt action oriented Burning Issues and mutual strengthening of the capacity of stake holders through sharing of experiences, views, ideas, policies analysis with collective action to influence the government policies, Schemes and programmes providing to needy communities and/or individuals for enhancing their socio-economic status through proper channel."
@@ -24,7 +28,7 @@ function MissionScreen() {
             routePath="about/vision"
           />
           <MissionSectionCard
-            textHeading="Approch"
+            textHeading="Approach"
             textDescription="NIHIDA adopts a uniquely holistic approach to improving the quality of life improving by conservation of Natural Resources like Water, Soil & Environmental atmospheres working directly with communities, sharing traditional knowledge and enhance their skills with partner organizations, and conducting research containing Macro climate for sustainable livelihood. This adaptability to changing development contexts has sustained NIHIDA for more than three decades, within the Odisha. This success stems from strategic thinking and effective operations across three key domains: Sustainable Rural Livelihoods, Inclusive Education on Natural resources, and Building Disaster-Resilient Communities while addressing Climate Change Concerns."
             routePath="about/approch"
           />

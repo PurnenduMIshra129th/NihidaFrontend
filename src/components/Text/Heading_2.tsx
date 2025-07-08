@@ -5,7 +5,7 @@ function Heading_2(props: IHeadingProps) {
   const { className = "", text = "No text Provided" } = props;
   return (
     <h3
-      className={`text-xl md:text-2xl lg:text-3xl font-bold font-sans ${className}`}
+      className={`text-xl md:text-2xl lg:text-3xl font-bold ${className}`}
     >
       {text}
     </h3>

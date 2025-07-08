@@ -4,7 +4,7 @@ function Typography(props:ITypographyProps) {
     const {text='No text provided',className=''} = props
   return (
     <>
-    <p className={`text-custom_black text-sm md:text-lg leading-relaxed font-serif ${className}`}>{text}</p>
+    <p className={`text-custom_black text-sm md:text-lg leading-relaxed ${className}`}>{text}</p>
     </>
   )
 }

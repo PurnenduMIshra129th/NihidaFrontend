@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { AddDocumentPageWrapper, AddFocusActivityPageWrapper, AddGalleryPageWrapper, AddNewsPageWrapper, AddUpcomingEventPageWrapper, AddVideoPageWrapper, AdminControlPanelPageWrapper, DocumentDashboardPageWrapper, EditDocumentPageWrapper, EditFocusActivityPageWrapper, EditGalleryPageWrapper, EditNewsPageWrapper, EditUpcomingEventPageWrapper, EditUpdateFilePageWrapper, EditUpdateImagePageWrapper, EditVideoPageWrapper, FocusActivityDashboardPageWrapper, GalleryDashboardPageWrapper, LoginPageWrapper, ManageAllBlogPageWrapper, ManageAllCarouselPageWrapper, ManageAllMediaPageWrapper, ManageAllNewsPageWrapper, ManageAllServicePageWrapper, ManageAllVideoPageWrapper, NewsDashboardPageWrapper, SignUpPageWrapper, UpcomingEventDashboardPageWrapper, VideoDashboardPageWrapper, ViewAllBlogPageUsersWrapper, ViewAllDocumentForUserPageWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllGalleryForUserPageWrapper, ViewAllImagePageWrapper, ViewAllMediaPageUsersWrapper, ViewAllNewsForUserPageWrapper, ViewAllNewsPageUsersWrapper, ViewAllUpcomingEventForUserPageWrapper, ViewAllVideoForUserPageWrapper, ViewAllVideoPageUsersWrapper, ViewBlogByIdUsersPageWrapper, ViewDocumentForUserPageWrapper, ViewDocumentPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewGalleryForUserPageWrapper, ViewGalleryPageWrapper, ViewMediaByIdUsersPageWrapper, ViewNewsByIdUsersPageWrapper, ViewNewsForUserPageWrapper, ViewNewsPageWrapper, ViewUpcomingEventForUserPageWrapper, ViewUpcomingEventPageWrapper, ViewVideoForUserPageWrapper, ViewVideoPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import { AddDocumentPageWrapper, AddFocusActivityPageWrapper, AddGalleryPageWrapper, AddNewsPageWrapper, AddUpcomingEventPageWrapper, AddVideoPageWrapper, AdminControlPanelPageWrapper, DocumentDashboardPageWrapper, EditDocumentPageWrapper, EditFocusActivityPageWrapper, EditGalleryPageWrapper, EditNewsPageWrapper, EditUpcomingEventPageWrapper, EditUpdateFilePageWrapper, EditUpdateImagePageWrapper, EditVideoPageWrapper, FocusActivityDashboardPageWrapper, GalleryDashboardPageWrapper, LoginPageWrapper, NewsDashboardPageWrapper, SignUpPageWrapper, UpcomingEventDashboardPageWrapper, VideoDashboardPageWrapper, ViewAllDocumentForUserPageWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllGalleryForUserPageWrapper, ViewAllImagePageWrapper, ViewAllNewsForUserPageWrapper, ViewAllUpcomingEventForUserPageWrapper, ViewAllVideoForUserPageWrapper, ViewDocumentForUserPageWrapper, ViewDocumentPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewGalleryForUserPageWrapper, ViewGalleryPageWrapper, ViewNewsForUserPageWrapper, ViewNewsPageWrapper, ViewUpcomingEventForUserPageWrapper, ViewUpcomingEventPageWrapper, ViewVideoForUserPageWrapper, ViewVideoPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ApprochPage from "./pages/AboutUsPage/ApprochPage";
 import FuturePlanPage from "./pages/AboutUsPage/FuturePlanPage";
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       { path: "login", Component: LoginPageWrapper },
       { path: "signup", Component: SignUpPageWrapper },
       
-      { path: "manage", Component: AdminControlPanelPageWrapper,},
+      { path: "admin", Component: AdminControlPanelPageWrapper,},
       { path: "admin/image-management/:id", Component: EditUpdateImagePageWrapper },
       { path: "admin/file-management/:id", Component: EditUpdateFilePageWrapper },
       { path: "user/view-all-image", Component: ViewAllImagePageWrapper },
@@ -68,19 +68,6 @@ export const router = createBrowserRouter([
       { path: "user/view-upcoming-event/:id", Component: ViewUpcomingEventForUserPageWrapper },
       { path: "user/view-all-upcoming-event", Component: ViewAllUpcomingEventForUserPageWrapper },
 
-      { path: "manage/manage-all-media", Component: ManageAllMediaPageWrapper },
-      { path: "manage/manage-all-blog", Component: ManageAllBlogPageWrapper },
-      { path: "manage/manage-all-news", Component: ManageAllNewsPageWrapper },
-      { path: "manage/manage-all-service", Component: ManageAllServicePageWrapper },
-      { path: "manage/manage-all-video", Component: ManageAllVideoPageWrapper },
-      { path: "manage/manage-all-carousel", Component: ManageAllCarouselPageWrapper },
-      { path: "users/view-all-media", Component: ViewAllMediaPageUsersWrapper },
-      { path: "users/view-all-blog", Component: ViewAllBlogPageUsersWrapper },
-      { path: "users/view-all-news", Component: ViewAllNewsPageUsersWrapper },
-      { path: "users/view-all-video", Component: ViewAllVideoPageUsersWrapper },
-      { path: "users/media/:id", Component: ViewMediaByIdUsersPageWrapper },
-      { path: "users/blog/:id", Component: ViewBlogByIdUsersPageWrapper},
-      { path: "users/news/:id", Component: ViewNewsByIdUsersPageWrapper },
       { path: "learning", Component: Parent },
 
       { path:"about/mission", Component: MissionPage },

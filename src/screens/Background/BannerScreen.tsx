@@ -18,7 +18,7 @@ function BannerScreen(props: IBannerScreenProps) {
       <div className="absolute top-0 bottom-0 left-2/4 w-1/4 bg-[#fd4c42]/30 z-0" />
       <div className="absolute top-0 bottom-0 left-3/4 w-1/4 bg-[#396dc4]/30 z-0" />
 
-      <div className="absolute bottom-[20%] z-10  px-4 text-center -translate-x-1/2 left-1/2">
+      <div className="absolute bottom-[20%]  z-10  px-4 text-center -translate-x-1/2 left-1/2">
         <Heading_1 text={textHeading} className="text-custom_white_1 "/>
         <Typography text={textDescription} className="text-custom_white_1 mt-4"/>
       </div>
