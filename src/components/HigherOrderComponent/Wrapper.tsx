@@ -36,7 +36,6 @@ import ViewNewsByIdPage from "../../pages/News/user/ViewNewsById.page";
 import ManageAllNewsPage from "../../pages/NewsPage/ManageAllNewsPage";
 import ViewAllNewsPageUsers from "../../pages/NewsPage/ViewAllNewsPageUsers";
 import ViewNewsByIdUsersPage from "../../pages/NewsPage/ViewNewsByIdUsersPage";
-import ManageAllProductAndServicePage from "../../pages/ProductAndServicePage/ManageAllProductAndServicePage";
 import SignupPage from "../../pages/SignupPage/SignupPage";
 import EditSocialLinkAndCommonImagePage from "../../pages/SocialLinkAndCommonImage/admin/EditSocialLinkAndCommonImage.page";
 import SocialLinkAndCommonImageAdminDashboardPage from "../../pages/SocialLinkAndCommonImage/admin/SocialLinkAndCommonImageAdminDashboard.page";
@@ -52,8 +51,6 @@ import VideoAdminDashboardPage from "../../pages/video/admin/VideoAdminDashboard
 import VideoDetailByIdPage from "../../pages/video/admin/VideoDetailById.page";
 import ViewAllVideoPage from "../../pages/video/user/ViewAllVideo.page";
 import ViewVideoByIdPage from "../../pages/video/user/ViewVideoById.page";
-import ManageAllVideoPage from "../../pages/VideoPage/ManageAllVideoPage";
-import ViewAllVideoPageUsers from "../../pages/VideoPage/ViewAllVideoPageUsers";
 import { withAuth } from "./ProtectedRoutes";
 import { withDataProvider } from "./WithDataProvider";
 
@@ -192,17 +189,6 @@ export const ManageAllNewsPageWrapper = withAuth(
   withDataProvider(ManageAllNewsPage, "news/getAllNews")
 );
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllServicePageWrapper = withAuth(
-  withDataProvider(
-    ManageAllProductAndServicePage,
-    "productAndService/getAllProductAndService"
-  )
-);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllVideoPageWrapper = withAuth(
-  withDataProvider(ManageAllVideoPage, "video/getAllVideo")
-);
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllMediaPageUsersWrapper = withAuth(ViewAllMediaPageUsers);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewMediaByIdUsersPageWrapper = withAuth(ViewMediaByIdUsersPage);
@@ -214,8 +200,6 @@ export const ViewBlogByIdUsersPageWrapper = withAuth(ViewBlogByIdUsersPage);
 export const ViewAllNewsPageUsersWrapper = withAuth(ViewAllNewsPageUsers);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewNewsByIdUsersPageWrapper = withAuth(ViewNewsByIdUsersPage);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewAllVideoPageUsersWrapper = withAuth(ViewAllVideoPageUsers);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AdminControlPanelPageWrapper = withAuth(AdminControlPanelPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
