@@ -12,14 +12,16 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { AlertProvider } from "./contexts/context/alert/AlertContext";
 import { LoaderProvider } from "./contexts/context/loader/LoaderContext";
 import { fetchUser } from "./contexts/slice/getUserSlice";
+import { fetchSocialLinkAndCommonImage } from "./contexts/slice/socialLinkAndCommonImageSlice";
 import { AppDispatch } from "./contexts/store";
 import FooterScreen from "./screens/Footer/FooterScreen";
 import { setNavigator } from "./utils/navigator";
-import { validateTokenExpiry } from "./utils/util";
+import { getStorageItem, validateTokenExpiry } from "./utils/util";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const token = getStorageItem("token");
 
   useEffect(() => {
     validateTokenExpiry(navigate);
@@ -30,8 +32,11 @@ function App() {
   }, [navigate]);
 
   useEffect(() => {
-    dispatch(fetchUser());
-  }, [dispatch]);
+    if(token && token !== ""){
+      dispatch(fetchUser());
+    }
+    dispatch(fetchSocialLinkAndCommonImage());
+  }, [dispatch, token]);
 
   return (
     <>

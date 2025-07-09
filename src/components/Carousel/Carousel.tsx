@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import useFetch from "../../hooks/useFetch";
-import { ICarouselApiData } from "../../types/api/carousel.types";
+import { selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImageSlice";
+import { IFile } from "../../types/api/api.type";
 import { defaultImage } from "../../utils/constant";
 import Button from "../Button/Button";
 import Image from "../Image/Image";
@@ -11,13 +12,13 @@ import Heading_1 from "../Text/Heading_1";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Carousel() {
   const navigate = useNavigate();
-  const { data } = useFetch<ICarouselApiData[]>("carousel/getAllCarousel");
-  const [apiData, setApiData] = useState<ICarouselApiData[]>();
-
+  const data = useSelector(selectSocialLinkAndCommonImage)
+  const [apiData, setApiData] = useState<IFile[] | null>(null);
+  
   useEffect(() => {
     const manageData = () => {
-      if (data && data.statusCode == 1 && data.data.length > 0) {
-        setApiData(data.data.slice(0, 5));
+      if (data?.[0]?.files?.length > 0) {
+        setApiData(data?.[0].files);
       }
     };
     manageData();
@@ -52,7 +53,7 @@ function Carousel() {
 
                   {/* Image */}
                   <Image
-                    imagePath={img.imagePath}
+                    imagePath={img?.publicFilePath || ''}
                     className="h-full w-full object-cover"
                   />
                 </div>

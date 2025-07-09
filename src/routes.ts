@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { AddDocumentPageWrapper, AddFocusActivityPageWrapper, AddGalleryPageWrapper, AddNewsPageWrapper, AddUpcomingEventPageWrapper, AddVideoPageWrapper, AdminControlPanelPageWrapper, DocumentDashboardPageWrapper, EditDocumentPageWrapper, EditFocusActivityPageWrapper, EditGalleryPageWrapper, EditNewsPageWrapper, EditUpcomingEventPageWrapper, EditUpdateFilePageWrapper, EditUpdateImagePageWrapper, EditVideoPageWrapper, FocusActivityDashboardPageWrapper, GalleryDashboardPageWrapper, LoginPageWrapper, NewsDashboardPageWrapper, SignUpPageWrapper, UpcomingEventDashboardPageWrapper, VideoDashboardPageWrapper, ViewAllDocumentForUserPageWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllGalleryForUserPageWrapper, ViewAllImagePageWrapper, ViewAllNewsForUserPageWrapper, ViewAllUpcomingEventForUserPageWrapper, ViewAllVideoForUserPageWrapper, ViewDocumentForUserPageWrapper, ViewDocumentPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewGalleryForUserPageWrapper, ViewGalleryPageWrapper, ViewNewsForUserPageWrapper, ViewNewsPageWrapper, ViewUpcomingEventForUserPageWrapper, ViewUpcomingEventPageWrapper, ViewVideoForUserPageWrapper, ViewVideoPageWrapper } from "./components/HigherOrderComponent/Wrapper";
+import { AddDocumentPageWrapper, AddFocusActivityPageWrapper, AddGalleryPageWrapper, AddNewsPageWrapper, AddUpcomingEventPageWrapper, AddVideoPageWrapper, AdminControlPanelPageWrapper, DocumentDashboardPageWrapper, EditDocumentPageWrapper, EditFocusActivityPageWrapper, EditGalleryPageWrapper, EditNewsPageWrapper, EditSocialLinkAndCommonImagePageWrapper, EditUpcomingEventPageWrapper, EditUpdateFilePageWrapper, EditUpdateImagePageWrapper, EditVideoPageWrapper, FocusActivityDashboardPageWrapper, GalleryDashboardPageWrapper, LoginPageWrapper, NewsDashboardPageWrapper, SignUpPageWrapper, SocialLinkAndCommonImageDashboardPageWrapper, UpcomingEventDashboardPageWrapper, VideoDashboardPageWrapper, ViewAllDocumentForUserPageWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllGalleryForUserPageWrapper, ViewAllImagePageWrapper, ViewAllNewsForUserPageWrapper, ViewAllUpcomingEventForUserPageWrapper, ViewAllVideoForUserPageWrapper, ViewDocumentForUserPageWrapper, ViewDocumentPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewGalleryForUserPageWrapper, ViewGalleryPageWrapper, ViewNewsForUserPageWrapper, ViewNewsPageWrapper, ViewUpcomingEventForUserPageWrapper, ViewUpcomingEventPageWrapper, ViewVideoForUserPageWrapper, ViewVideoPageWrapper } from "./components/HigherOrderComponent/Wrapper";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
 import ApprochPage from "./pages/AboutUsPage/ApprochPage";
 import FuturePlanPage from "./pages/AboutUsPage/FuturePlanPage";
@@ -53,6 +53,9 @@ export const router = createBrowserRouter([
       { path: "admin/view-news/:id", Component: ViewNewsPageWrapper },
       { path: "user/view-news/:id", Component: ViewNewsForUserPageWrapper },
       { path: "user/view-all-news", Component: ViewAllNewsForUserPageWrapper },
+
+      { path: "admin/socialLinkAndCommonImage-dashboard", Component: SocialLinkAndCommonImageDashboardPageWrapper },
+      { path: "admin/edit-socialLinkAndCommonImage/:id", Component: EditSocialLinkAndCommonImagePageWrapper },
 
       { path: "admin/add-video", Component: AddVideoPageWrapper },
       { path: "admin/video-dashboard", Component: VideoDashboardPageWrapper },

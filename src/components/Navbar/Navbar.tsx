@@ -21,6 +21,18 @@ function Navbar() {
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const role = getStorageItem("role");
   const [isOpen, setIsOpen] = useState(false);
+  const disableScrollHighlightRoutes = [
+    "/admin",
+    "/login",
+    "/blog",
+    "/donate",
+    "/contact",
+  ];
+
+  const isScrollHighlightDisabled = disableScrollHighlightRoutes.some((route) =>
+    location.pathname.startsWith(route)
+  );
+
   const logout = () => {
     removeStorageItem("token");
     removeStorageItem("role");
@@ -106,7 +118,7 @@ function Navbar() {
               onClick={() => setIsOpen(true)}
               title="Hamburger"
             >
-              <HamburgerIcon color="black"/>
+              <HamburgerIcon color="black" />
             </button>
 
             {/* Navigation Links */}
@@ -143,7 +155,7 @@ function Navbar() {
                     }}
                     className={`relative block py-2 px-3 rounded-sm md:p-0 transition-all duration-300
         ${
-          activeSection === id
+          activeSection === id && !isScrollHighlightDisabled
             ? "text-custom_orange_1 font-semibold after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-custom_orange_1 after:transition-all"
             : "text-black hover:text-custom_orange_1"
         }`}

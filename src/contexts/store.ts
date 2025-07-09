@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import userReducer from "./slice/getUserSlice";
-import serviceReducer from "./slice/serviceSlice";
-import socialLinkReducer from "./slice/socialLinkSlice";
+import socialLinkAndCommonImageReducer from "./slice/socialLinkAndCommonImageSlice";
 export const store = configureStore({
   reducer: {
-    service: serviceReducer,
-    socialLink:socialLinkReducer,
+    socialLinkAndCommonImage:socialLinkAndCommonImageReducer,
     user:userReducer,
   },
 });

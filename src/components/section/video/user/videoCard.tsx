@@ -27,7 +27,7 @@ function VideoCard(props: IVideoCard) {
   return (
     <div className="w-full bg-white rounded-xl shadow-md border border-orange-100 overflow-hidden flex flex-col">
       {/* Video or Thumbnail */}
-      <div className="aspect-w-16 aspect-h-9 bg-black">
+      <div className="aspect-w-16 h-[300px] aspect-h-9 bg-black">
         {embedUrl ? (
           <iframe
             src={embedUrl}

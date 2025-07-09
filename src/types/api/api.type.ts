@@ -119,6 +119,30 @@ export interface INewsApiResponse
     ICreatedAt,
     IFileApiData {}
 
+export interface ISocialLinkAndCommonImageApiPayload {
+  instagramUrl: string
+  facebookUrl: string
+  twitterUrl: string
+  linkedinUrl: string
+  youtubeUrl: string
+  whatsappUrl: string
+  telegramUrl: string
+  phoneNumber1: string
+  email: string
+  phoneNumber2: string
+  addressLine1: string;
+  addressLine2?: string;
+  city: string;
+  state: string;
+  country: string;
+  postalCode: string;
+
+}
+export interface ISocialLinkAndCommonImageApiResponse
+  extends ISocialLinkAndCommonImageApiPayload,
+    ICreatedAt,
+    IFileApiData {}
+
 export interface IVideoApiPayload {
   title: string;
   description?: string;

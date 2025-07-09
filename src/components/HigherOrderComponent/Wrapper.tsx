@@ -1,7 +1,6 @@
 import ManageAllBlogPage from "../../pages/BlogPage/ManageAllBlogPage";
 import ViewAllBlogPageUsers from "../../pages/BlogPage/ViewAllBlogPageUsers";
 import ViewBlogByIdUsersPage from "../../pages/BlogPage/ViewBlogByIdUsersPage";
-import ManageAllCarouselPage from "../../pages/Carousel/ManageAllCarouselPage";
 import AddDocumentPage from "../../pages/Documents/admin/AddDocument.page";
 import DocumentAdminDashboardPage from "../../pages/Documents/admin/DocumentAdminDashboard.page";
 import DocumentDetailByIdPage from "../../pages/Documents/admin/DocumentDetailById.page";
@@ -39,6 +38,8 @@ import ViewAllNewsPageUsers from "../../pages/NewsPage/ViewAllNewsPageUsers";
 import ViewNewsByIdUsersPage from "../../pages/NewsPage/ViewNewsByIdUsersPage";
 import ManageAllProductAndServicePage from "../../pages/ProductAndServicePage/ManageAllProductAndServicePage";
 import SignupPage from "../../pages/SignupPage/SignupPage";
+import EditSocialLinkAndCommonImagePage from "../../pages/SocialLinkAndCommonImage/admin/EditSocialLinkAndCommonImage.page";
+import SocialLinkAndCommonImageAdminDashboardPage from "../../pages/SocialLinkAndCommonImage/admin/SocialLinkAndCommonImageAdminDashboard.page";
 import AddUpcomingEventPage from "../../pages/UpcomingEvent/admin/AddUpcomingEvent.page";
 import EditUpcomingEventPage from "../../pages/UpcomingEvent/admin/EditUpcomingEvent.page";
 import UpcomingEventAdminDashboardPage from "../../pages/UpcomingEvent/admin/UpcomingEventAdminDashboard.page";
@@ -109,6 +110,7 @@ export const ViewDocumentForUserPageWrapper = withAuth(ViewDocumentByIdPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllDocumentForUserPageWrapper = withAuth(ViewAllDocumentPage);
 
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddNewsPageWrapper = withAuth(AddNewsPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -123,6 +125,15 @@ export const ViewNewsPageWrapper = withAuth(NewsDetailByIdPage);
 export const ViewNewsForUserPageWrapper = withAuth(ViewNewsByIdPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllNewsForUserPageWrapper = withAuth(ViewAllNewsPage);
+
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const SocialLinkAndCommonImageDashboardPageWrapper = withAuth(
+  withDataProvider(SocialLinkAndCommonImageAdminDashboardPage, "socialLinkAndCommonImage/getAllSocialLinkAndCommonImage")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const EditSocialLinkAndCommonImagePageWrapper = withAuth(EditSocialLinkAndCommonImagePage);
+
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AddVideoPageWrapper = withAuth(AddVideoPage);
@@ -190,10 +201,6 @@ export const ManageAllServicePageWrapper = withAuth(
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ManageAllVideoPageWrapper = withAuth(
   withDataProvider(ManageAllVideoPage, "video/getAllVideo")
-);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllCarouselPageWrapper = withAuth(
-  withDataProvider(ManageAllCarouselPage, "carousel/getAllCarousel")
 );
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const ViewAllMediaPageUsersWrapper = withAuth(ViewAllMediaPageUsers);

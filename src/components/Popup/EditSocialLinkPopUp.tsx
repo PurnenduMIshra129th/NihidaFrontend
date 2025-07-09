@@ -2,7 +2,7 @@ import { Formik } from "formik"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-import { fetchSocialLink, selectSocialLink } from "../../contexts/slice/socialLinkSlice"
+import { fetchSocialLink, selectSocialLink } from "../../contexts/slice/socialLinkAndCommonImageSlice"
 import { AppDispatch } from "../../contexts/store"
 import { apiRequest } from "../../services/apiService"
 import { IEditSocialLinkPopUpProps } from "../../types/popUp/popUp.types"

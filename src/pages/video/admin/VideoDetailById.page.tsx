@@ -79,7 +79,7 @@ export default function VideoDetailByIdPage() {
           <h2 className="text-lg font-semibold text-gray-800 mb-2">
             Watch Video
           </h2>
-          <div className="aspect-w-16 aspect-h-9 w-full rounded-md overflow-hidden shadow-md border border-gray-200">
+          <div className="aspect-w-16 h-[400px] aspect-h-9 w-full rounded-md overflow-hidden shadow-md border border-gray-200">
             <iframe
               src={`https://www.youtube.com/embed/${extractYouTubeId(
                 video.youtubeUrl

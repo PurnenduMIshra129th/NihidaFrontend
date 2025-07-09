@@ -65,6 +65,9 @@ const adminRoutes = [
     "/admin/video-dashboard",
     "/admin/edit-video/:id",
     "/admin/view-video/:id",
+
+    "/admin/socialLinkAndCommonImage-dashboard",
+    "/admin/edit-socialLinkAndCommonImage/:id",
     
     "/admin/image-management/:id",
     "/admin/file-management/:id",

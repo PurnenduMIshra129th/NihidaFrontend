@@ -1,82 +1,176 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router";
+
+import {
+  CallIcon,
+  FacebookIcon,
+  Gmail,
+  InstagramIcon,
+  LinkedinIcon,
+  TelegramIcon,
+  TwitterIcon,
+  WhatsappIcon,
+  YoutubeIcon,
+} from "../../components/Icons/Icon";
+import { selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImageSlice";
+import { ISocialLinkAndCommonImageApiResponse } from "../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function FooterScreen() {
+  const data = useSelector(selectSocialLinkAndCommonImage);
+  const [apiData, setApiData] =
+    useState<ISocialLinkAndCommonImageApiResponse | null>(null);
+
+  useEffect(() => {
+    const manageData = () => {
+      if (data?.[0]) {
+        setApiData(data?.[0]);
+      }
+    };
+    manageData();
+  }, [data]);
   return (
     <>
       <footer className="w-full bg-custom_orange_1 text-white py-12 px-4 text-[15px]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <p className="text-white/90 text-sm">234 Change Maker St.</p>
-            <p className="text-white/90 text-sm">City, State, ZIP</p>
-            <p className="text-white/90 text-sm mt-2">📞 (123) 456-7890</p>
-            <p className="text-white/90 text-sm">✉️ info@inspireaction.org</p>
+            <h3 className="text-2xl font-bold mb-4 text-white">Contact Us</h3>
+
+            {/* Address */}
+            <p className="text-white/90 text-lg">
+              {apiData?.addressLine1 || "234 Change Maker St."}
+            </p>
+            {apiData?.addressLine2 && (
+              <p className="text-white/90 text-lg">{apiData.addressLine2}</p>
+            )}
+            <p className="text-white/90 text-lg">
+              {apiData?.city || "City"}, {apiData?.state || "State"},{" "}
+              {apiData?.postalCode || "ZIP"}
+            </p>
+            <p className="text-white/90 text-lg">
+              {apiData?.country || "Country"}
+            </p>
+
+            {/* Phone Numbers */}
+            <div className="text-white/90 text-lg mt-4 flex items-center gap-2">
+              <CallIcon className="text-white/90" />
+              <a
+                href={`tel:${apiData?.phoneNumber1 || "8144746685"}`}
+                className="hover:underline"
+              >
+                (+91) {apiData?.phoneNumber1 || "8144746685"}
+              </a>
+            </div>
+            <div className="text-white/90 text-lg mt-2 flex items-center gap-2">
+              <CallIcon className="text-white/90" />
+              <a
+                href={`tel:${apiData?.phoneNumber2 || "8144746685"}`}
+                className="hover:underline"
+              >
+                (+91) {apiData?.phoneNumber2 || "8144746685"}
+              </a>
+            </div>
+
+            {/* Email */}
+            <div className="text-white/90 text-lg mt-2 flex items-center gap-2">
+              <Gmail className="text-white/90 w-6 h-6 shrink-0" />
+              <a
+                href={`mailto:${apiData?.email || "contact@example.com"}`}
+                className="hover:underline break-all"
+              >
+                {apiData?.email || "contact@example.com"}
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2 text-sm text-white/90">
-              <li>
-                <Link to="/" className="hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="hover:text-white">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/programs" className="hover:text-white">
-                  Programs
-                </Link>
-              </li>
-              <li>
-                <Link to="/get-involved" className="hover:text-white">
-                  Get Involved
-                </Link>
-              </li>
-              <li>
-                <Link to="/donate" className="hover:text-white">
-                  Donate
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" className="hover:text-white">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="hover:text-white">
-                  Contact Us
-                </Link>
-              </li>
+            <h3 className="text-2xl font-bold mb-4 text-white">Quick Links</h3>
+            <ul className="space-y-2 text-lg text-white/90">
+              {[
+                { label: "Home", path: "/" },
+                { label: "About Us", path: "/about" },
+                { label: "Programs", path: "/programs" },
+                { label: "Get Involved", path: "/get-involved" },
+                { label: "Donate", path: "/donate" },
+                { label: "Blog", path: "/blog" },
+                { label: "Contact Us", path: "/contact" },
+              ].map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="relative inline-block text-white/90 hover:text-white transition-colors duration-300
+            after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Social Media */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
-            <div className="flex space-x-4 text-xl">
-              <a href="#" aria-label="YouTube" className="hover:text-white">
-                📺
-              </a>
-              <a href="#" aria-label="Instagram" className="hover:text-white">
-                📸
-              </a>
-              <a href="#" aria-label="LinkedIn" className="hover:text-white">
-                💼
-              </a>
+            <h3 className="text-2xl font-bold mb-4 text-white">Follow Us</h3>
+            <div className="flex flex-wrap gap-4 text-xl">
+              {[
+                {
+                  href: apiData?.youtubeUrl,
+                  label: "YouTube",
+                  Icon: YoutubeIcon,
+                },
+                {
+                  href: apiData?.instagramUrl,
+                  label: "Instagram",
+                  Icon: InstagramIcon,
+                },
+                {
+                  href: apiData?.linkedinUrl,
+                  label: "LinkedIn",
+                  Icon: LinkedinIcon,
+                },
+                {
+                  href: apiData?.facebookUrl,
+                  label: "Facebook",
+                  Icon: FacebookIcon,
+                },
+                {
+                  href: apiData?.twitterUrl,
+                  label: "Twitter",
+                  Icon: TwitterIcon,
+                },
+                {
+                  href: apiData?.whatsappUrl,
+                  label: "WhatsApp",
+                  Icon: WhatsappIcon,
+                },
+                {
+                  href: apiData?.telegramUrl,
+                  label: "Telegram",
+                  Icon: TelegramIcon,
+                },
+              ].map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="group relative text-white/90 hover:text-white transition duration-300"
+                >
+                  <Icon className="w-6 h-6 group-hover:scale-110 group-hover:text-white transition-transform duration-300" />
+                  <span className="absolute left-1/2 -bottom-1.5 -translate-x-1/2 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Mission */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Our Mission</h3>
-            <p className="text-sm text-white/90 leading-relaxed">
+            <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+            <p className="text-lg text-white/90 leading-relaxed">
               We empower communities through education, health, and sustainable
               development. Join us in making a difference.
             </p>

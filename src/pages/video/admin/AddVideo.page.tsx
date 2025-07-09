@@ -65,7 +65,7 @@ export default function AddVideoPage() {
   return (
     <div className="max-w-5xl mx-auto px-4 pb-10 pt-[9rem]">
       <h1 className="text-3xl font-bold text-custom_orange_1 mb-8">
-        Add Video Article
+        Add Video
       </h1>
 
       <Formik

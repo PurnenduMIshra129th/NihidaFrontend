@@ -22,7 +22,7 @@ export const apiRequest = async <ResponseType,RequestPayloadType>(
     if (token && navigate) {
       validateTokenExpiry(navigate);
     }
-    const headers = tokenization
+    const headers =token && token !== "" && tokenization
       ? { Authorization: `Bearer ${token}` }
       : {};
 
@@ -69,7 +69,7 @@ export const multiPartAPI = async <ResponseType>(endpoint: string, formData: For
     if (token && navigate) {
       validateTokenExpiry(navigate);
     }
-    const headers = tokenization
+    const headers = token && token !== "" && tokenization
       ? { Authorization: `Bearer ${token}` }
       : {};
 

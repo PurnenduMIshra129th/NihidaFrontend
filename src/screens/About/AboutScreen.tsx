@@ -25,7 +25,7 @@ function AboutScreen() {
             className="text-white/90 text-[16px] sm:text-[17px] leading-relaxed text-justify"
           />
           <Button
-            className="mt-6 w-52 py-3 bg-white text-custom_orange_1 font-semibold border-2 border-white hover:bg-custom_orange_2 hover:text-custom_orange_1 transition"
+            className="mt-6 w-52 py-3 bg-white text-custom_orange_1 font-semibold border-2 border-white hover:bg-custom_orange_2 hover:text-white transition"
             name="Read More"
             onClick={() => navigate("/about")}
           />

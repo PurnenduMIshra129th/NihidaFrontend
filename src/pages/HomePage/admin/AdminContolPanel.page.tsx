@@ -51,6 +51,12 @@ function AdminControlPanelPage() {
             description="Edit, add and delete videos"
             icon={<VideoIcon />}
           />
+          <DashboardSectionCard
+            title="Social Link And Common Image"
+            route="/admin/socialLinkAndCommonImage-dashboard"
+            description="Edit, view and upload common Images and social links"
+            icon={<ISocialServicesIcon />}
+          />
         </div>
       </div>
     </>

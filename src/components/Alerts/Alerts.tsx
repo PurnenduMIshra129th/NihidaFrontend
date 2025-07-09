@@ -11,7 +11,11 @@ function Alerts() {
 
   return (
     <div
-      className={`fixed top-[8rem] right-4 sm:right-[1rem] z-50 w-[90%] sm:w-[25rem] flex items-center p-4 mb-4 rounded-lg ${styles.bg} ${styles.text} transition ease-in-out delay-100 shadow-lg`}
+      className={`fixed top-[8rem] right-4 sm:right-[1rem] z-50 w-[90%] sm:w-[25rem] flex items-center p-4 mb-4 rounded-lg
+    ${styles.bg} ${styles.text}
+    transform transition-transform duration-1000 ease-out
+    ${alert ? "translate-x-0" : "translate-x-full"}
+    shadow-lg`}
       role="alert"
     >
       {/* Icon */}

@@ -10,7 +10,7 @@ function AboutUsPage() {
       <div className="w-full">
         <BannerScreen
           textHeading="About us"
-          textDescription="NIHIDA has been working towards improving the quality of life of the pro-poor people by focusing on right based issues with eradicating extreme poverty, hunger, among socio-economically distressed people to access their entitlements."
+          textDescription="NIHIDA has been working towards improving the quality of life of the pro-poor people by focusing on right ."
         />
         <div className="px-6 md:px-20 py-12 bg-white text-gray-800">
           <div className="max-w-5xl mx-auto space-y-6">
