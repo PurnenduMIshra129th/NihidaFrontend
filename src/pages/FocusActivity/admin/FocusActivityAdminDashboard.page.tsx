@@ -1,24 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FocusActivityAdminCard from "../../../components/section/focusActivity/admin/FocusActivityAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import { useData } from "../../../contexts/context/data/DataContext";
+import useFetch from "../../../hooks/useFetch";
 import { apiRequest } from "../../../services/apiService";
 import { IFocusActivityApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const FocusActivityAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data: apiData, fetchData } = useData<IFocusActivityApiResponse[]>();
+  const { data, fetchData } = useFetch<IFocusActivityApiResponse[]>("focusActivity/getAllFocusActivity","GET",undefined,true);
   const [showUpload, setShowUpload] = useState(false);
+  const [apiData, setApiData] = useState<IFocusActivityApiResponse[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
     setSelectedId(id);
     setShowUpload(true);
   };
+  useEffect(() => {
+    if(data && data.statusCode == 1 && data.data.length > 0){
+      setApiData(data.data);
+    }
+  }, [data]);
 
   const handleDelete = async (id: string) => {
     await apiRequest(

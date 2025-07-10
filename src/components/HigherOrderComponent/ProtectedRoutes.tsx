@@ -42,20 +42,6 @@ export const ProtectedRoute = ({ children }: IProtectedRouteProps) => {
         return <Navigate to={accessDetails.redirectTo} replace />;
     }
 
-    return children;
+    return <>{children}</>;
 };
 
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const withAuth = <P extends object>(
-    WrappedComponent: React.ComponentType<P>,
-
-): React.FC<P> => {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    const ComponentWithAuth: React.FC<P> = (props) => (
-        <ProtectedRoute >
-            <WrappedComponent {...props} />
-        </ProtectedRoute>
-    );
-    return ComponentWithAuth;
-};

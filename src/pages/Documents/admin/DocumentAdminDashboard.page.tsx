@@ -1,25 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import DocumentAdminCard from "../../../components/section/documents/admin/DocumentAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import { useData } from "../../../contexts/context/data/DataContext";
+import useFetch from "../../../hooks/useFetch";
 import { apiRequest } from "../../../services/apiService";
 import { IDocumentApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const DocumentAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data: apiData, fetchData } = useData<IDocumentApiResponse[]>();
+  const { data, fetchData } = useFetch<IDocumentApiResponse[]>("document/getAllDocument","GET",undefined,true);
+  const [apiData, setApiData] = useState<IDocumentApiResponse[]>([]);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
     setSelectedId(id);
     setShowUpload(true);
   };
-
+  useEffect(() => {
+    if(data && data.statusCode == 1 && data.data.length > 0){
+      setApiData(data.data);
+    }
+  }, [data]);
   const handleDelete = async (id: string) => {
     await apiRequest(
       `document/deleteDocument/${id}`,

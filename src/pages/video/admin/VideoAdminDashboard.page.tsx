@@ -1,18 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import VideoAdminCard from "../../../components/section/video/admin/VideoAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import { useData } from "../../../contexts/context/data/DataContext";
+import useFetch from "../../../hooks/useFetch";
 import { apiRequest } from "../../../services/apiService";
 import { IVideoApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const VideoAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data: apiData, fetchData } = useData<IVideoApiResponse[]>();
+  const { data, fetchData } = useFetch<IVideoApiResponse[]>("video/getAllVideo","GET",undefined,true);
+  const [apiData, setApiData] = useState<IVideoApiResponse[]>([]);
+  useEffect(() => {
+    if(data && data.statusCode == 1 && data.data.length > 0){
+      setApiData(data.data);
+    }
+  }, [data]);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
+import { getUser } from "../../contexts/slice/getUserSlice";
 import { selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImageSlice";
 import { ISocialLinkAndCommonImageApiResponse } from "../../types/api/api.type";
+import { userRole } from "../../utils/constant";
 import {
   CallIcon,
   FacebookIcon,
@@ -18,18 +20,31 @@ import {
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Footer() {
+  const location = useLocation();
   const data = useSelector(selectSocialLinkAndCommonImage);
+  const user = useSelector(getUser);
   const [apiData, setApiData] =
     useState<ISocialLinkAndCommonImageApiResponse | null>(null);
+  const [userDetails, setUserDetails] = useState<string>("user");
 
   useEffect(() => {
     const manageData = () => {
       if (data?.[0]) {
         setApiData(data?.[0]);
       }
+      if (user?.role == userRole.admin) {
+        setUserDetails(user.role);
+      }
     };
     manageData();
-  }, [data]);
+  }, [data, user]);
+  if (
+    userDetails === userRole.admin &&
+    location.pathname.startsWith("/admin")
+  ) {
+    return null;
+  }
+
   return (
     <>
       <footer className="w-full bg-custom_orange_1 text-white py-12 px-4 text-[15px]">

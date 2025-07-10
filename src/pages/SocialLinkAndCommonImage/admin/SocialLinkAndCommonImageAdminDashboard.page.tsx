@@ -1,16 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import SocialLinkAndCommonImageAdminCard from "../../../components/section/socialLinkAndCommonImage/admin/SocialLinkAndCommonImageAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import { useData } from "../../../contexts/context/data/DataContext";
+import useFetch from "../../../hooks/useFetch";
 import { ISocialLinkAndCommonImageApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const SocialLinkAndCommonImageAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data: apiData } = useData<ISocialLinkAndCommonImageApiResponse[]>();
+  const { data } = useFetch<ISocialLinkAndCommonImageApiResponse[]>("socialLinkAndCommonImage/getAllSocialLinkAndCommonImage","GET",undefined,true);
+  const [apiData, setApiData] = useState<ISocialLinkAndCommonImageApiResponse[]>([]);
+  useEffect(() => {
+    if(data && data.statusCode == 1 && data.data.length > 0){
+      setApiData(data.data);
+    }
+  }, [data]);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
