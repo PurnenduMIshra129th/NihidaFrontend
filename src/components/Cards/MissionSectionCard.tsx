@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router";
 
-import { IMissionSectionCard } from "../../types/cards/card.type";
+import { IMissionSectionCard } from "../../types/component/component.types";
 import { trimText } from "../../utils/trimText";
-// import { getTextLength } from "../../utils/util";
 import Button from "../Button/Button";
 import Heading_2 from "../Text/Heading_2";
 import Typography from "../Text/Typography";

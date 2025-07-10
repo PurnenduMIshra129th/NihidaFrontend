@@ -1,4 +1,4 @@
-import { IFocusActivityAdminCard } from "../../../../types/Component/component.types";
+import { IFocusActivityAdminCard } from "../../../../types/component/component.types";
 import Button from "../../../Button/Button";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { eventBus } from "../contexts/context/eventBus";
 import { apiClient } from "../services/axiosInstance";
-import { IErrorResponse, ISuccessResponse } from "../types/api/centralApi.types";
+import { IErrorResponse,ISuccessResponse } from "../types/api/api.type";
 import { handleApiError } from "../utils/handleApiError";
 import { getNavigator } from "../utils/navigator";
 import { getStorageItem, validateTokenExpiry } from "../utils/util";

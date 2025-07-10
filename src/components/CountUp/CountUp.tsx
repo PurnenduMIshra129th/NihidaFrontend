@@ -1,6 +1,6 @@
 import CountUp from "react-countup";
 
-import { ICountUpComponentProps } from "../../types/countUp/countUp.types";
+import { ICountUpComponentProps } from "../../types/component/component.types";
 import Heading_2 from "../Text/Heading_2";
 import Typography from "../Text/Typography";
 

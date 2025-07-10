@@ -2,7 +2,7 @@ import { Form, Formik } from "formik";
 
 import { eventBus } from "../../contexts/context/eventBus";
 import { multiPartAPI } from "../../services/apiService";
-import { IUploadDocumentModalProps } from "../../types/Component/component.types";
+import { IUploadDocumentModalProps } from "../../types/component/component.types";
 import FormikFileInput from "../Input/FormikFileInput";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

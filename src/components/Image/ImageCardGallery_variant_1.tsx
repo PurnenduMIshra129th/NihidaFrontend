@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { IImageCardGalleryProps } from "../../types/Component/component.types";
+import { IImageCardGalleryProps } from "../../types/component/component.types";
 import Image from "./Image";
 import ImagePreviewModal from "./ImagePreviewModal";
 

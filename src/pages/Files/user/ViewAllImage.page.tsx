@@ -2,7 +2,7 @@ import { useLocation } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import ImageCardGallery_variant_2 from "../../../components/Image/ImageCardGallery_variant_2";
-import { IFile } from "../../../types/Component/component.types";
+import { IFile } from "../../../types/component/component.types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function ViewAllImagePage() {

@@ -1,7 +1,7 @@
 import { useFormikContext } from "formik";
 
 import { eventBus } from "../../contexts/context/eventBus";
-import { IFormikFileInputProps } from "../../types/Component/component.types";
+import { IFormikFileInputProps } from "../../types/component/component.types";
 import Image from "../Image/Image";
 
 const FILE_TYPE_MAP: Record<"image" | "pdf", string[]> = {

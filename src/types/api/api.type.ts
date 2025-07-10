@@ -2,8 +2,8 @@ export interface IFocusActivityApiPayload {
   title: string;
   subtitle: string;
   description: string;
-  impactStats: IImpactStat[];
-  testimonials?: ITestimonial[];
+  impactStats: IImpactStatPayload[];
+  testimonials?: ITestimonialPayload[];
   location?: string;
   date?: string | Date;
 }
@@ -11,8 +11,8 @@ export interface IFocusActivityApiResponse extends ICreatedAt {
   title: string;
   subtitle: string;
   description: string;
-  impactStats: IImpactStat[];
-  testimonials?: ITestimonial[];
+  impactStats: IImpactStatResponse[];
+  testimonials?: ITestimonialResponse[];
   location?: string;
   date?: string | Date;
   files?: IFile[];
@@ -203,16 +203,20 @@ export interface IGetUserApiResponse {
   email: string;
   role: string;
 }
-export interface IImpactStat extends IId {
+export interface IImpactStatResponse extends IImpactStatPayload , IId {
+}
+export interface IImpactStatPayload {
   label?: string;
   value?: number;
   unit?: string;
 }
 
-export interface ITestimonial extends IId {
+export interface ITestimonialPayload {
   name?: string;
   quote?: string;
   role?: string;
+}
+export interface ITestimonialResponse extends ITestimonialPayload, IId {
 }
 export interface IFile extends IId {
   fileName: string;
@@ -222,11 +226,24 @@ export interface IFile extends IId {
   publicFilePath: string;
 }
 export interface IId {
-  _id?: string;
+  _id: string;
 }
 export interface ICreatedAt extends IId {
   createdAt?: string;
 }
 export interface IFileApiData {
   files: IFile[];
+}
+export interface ISuccessResponse<T> {
+  statusCode: 1;
+  message: string;
+  data: T;
+}
+
+export interface IErrorResponse {
+  statusCode: 0;
+  errorCode: number;
+  errorMessage: string;
+  shortHand: string;
+  error: string;
 }

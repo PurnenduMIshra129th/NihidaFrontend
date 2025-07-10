@@ -1,6 +1,5 @@
-import ManageAllBlogPage from "../../pages/BlogPage/ManageAllBlogPage";
-import ViewAllBlogPageUsers from "../../pages/BlogPage/ViewAllBlogPageUsers";
-import ViewBlogByIdUsersPage from "../../pages/BlogPage/ViewBlogByIdUsersPage";
+import LoginPage from "../../pages/Authentication/Login.page";
+import SignupPage from "../../pages/Authentication/Signup.page";
 import AddDocumentPage from "../../pages/Documents/admin/AddDocument.page";
 import DocumentAdminDashboardPage from "../../pages/Documents/admin/DocumentAdminDashboard.page";
 import DocumentDetailByIdPage from "../../pages/Documents/admin/DocumentDetailById.page";
@@ -22,21 +21,13 @@ import GalleryAdminDashboardPage from "../../pages/Gallery/admin/GalleryAdminDas
 import GalleryDetailByIdPage from "../../pages/Gallery/admin/GalleryDetailById.page";
 import ViewAllGalleryPage from "../../pages/Gallery/user/ViewAllGallery.page";
 import ViewGalleryByIdPage from "../../pages/Gallery/user/ViewGalleryById.page";
-import AdminControlPanelPage from "../../pages/HomePage/admin/AdminContolPanel.page";
-import LoginPage from "../../pages/LoginPage/LoginPage";
-import ManageAllMediaPage from "../../pages/MediaPage/ManageAllMediaPage";
-import ViewAllMediaPageUsers from "../../pages/MediaPage/ViewAllMediaPageUsers";
-import ViewMediaByIdUsersPage from "../../pages/MediaPage/ViewMediaByIdUsersPage";
+import AdminControlPanelPage from "../../pages/Home/admin/AdminContolPanel.page";
 import AddNewsPage from "../../pages/News/admin/AddNews.page";
 import EditNewsPage from "../../pages/News/admin/EditNews.page";
 import NewsAdminDashboardPage from "../../pages/News/admin/NewsAdminDashboard.page";
 import NewsDetailByIdPage from "../../pages/News/admin/NewsDetailById.page";
 import ViewAllNewsPage from "../../pages/News/user/ViewAllNews.page";
 import ViewNewsByIdPage from "../../pages/News/user/ViewNewsById.page";
-import ManageAllNewsPage from "../../pages/NewsPage/ManageAllNewsPage";
-import ViewAllNewsPageUsers from "../../pages/NewsPage/ViewAllNewsPageUsers";
-import ViewNewsByIdUsersPage from "../../pages/NewsPage/ViewNewsByIdUsersPage";
-import SignupPage from "../../pages/SignupPage/SignupPage";
 import EditSocialLinkAndCommonImagePage from "../../pages/SocialLinkAndCommonImage/admin/EditSocialLinkAndCommonImage.page";
 import SocialLinkAndCommonImageAdminDashboardPage from "../../pages/SocialLinkAndCommonImage/admin/SocialLinkAndCommonImageAdminDashboard.page";
 import AddUpcomingEventPage from "../../pages/UpcomingEvent/admin/AddUpcomingEvent.page";
@@ -176,30 +167,6 @@ export const ViewAllImagePageWrapper = withAuth(ViewAllImagePage);
 export const EditUpdateImagePageWrapper = withAuth(ImageManagementPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const EditUpdateFilePageWrapper = withAuth(PdfManagementPage);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllMediaPageWrapper = withAuth(
-  withDataProvider(ManageAllMediaPage, "media/getAllMedia")
-);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllBlogPageWrapper = withAuth(
-  withDataProvider(ManageAllBlogPage, "blog/getAllBlog")
-);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ManageAllNewsPageWrapper = withAuth(
-  withDataProvider(ManageAllNewsPage, "news/getAllNews")
-);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewAllMediaPageUsersWrapper = withAuth(ViewAllMediaPageUsers);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewMediaByIdUsersPageWrapper = withAuth(ViewMediaByIdUsersPage);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewAllBlogPageUsersWrapper = withAuth(ViewAllBlogPageUsers);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewBlogByIdUsersPageWrapper = withAuth(ViewBlogByIdUsersPage);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewAllNewsPageUsersWrapper = withAuth(ViewAllNewsPageUsers);
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const ViewNewsByIdUsersPageWrapper = withAuth(ViewNewsByIdUsersPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const AdminControlPanelPageWrapper = withAuth(AdminControlPanelPage);
 // eslint-disable-next-line @typescript-eslint/naming-convention

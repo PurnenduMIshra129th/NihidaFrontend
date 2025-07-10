@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-import { IDashboardSectionCardProps } from "../../types/Component/component.types";
+import { IDashboardSectionCardProps } from "../../types/component/component.types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const DashboardSectionCard = (props: IDashboardSectionCardProps) => {

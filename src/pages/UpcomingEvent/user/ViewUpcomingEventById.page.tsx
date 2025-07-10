@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
+import GallerySectionWithLimitNumberOfImages from "../../../components/Image/GallerySectionWithLimitNumberOfImages";
 import useFetch from "../../../hooks/useFetch";
-import GallerySectionWithLimitNumberOfImages from "../../../screens/Image/GallerySectionWithLimitNumberOfImages";
 import { IUpcomingEventApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

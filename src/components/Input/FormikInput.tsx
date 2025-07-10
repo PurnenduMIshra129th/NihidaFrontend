@@ -1,7 +1,8 @@
 import { ErrorMessage, Field, useFormikContext } from "formik";
 import { useEffect, useState } from "react";
 
-import { IFormikInputProps } from "../../types/input/input.types";
+import { IFormikInputProps } from "../../types/component/component.types";
+
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function FormikInput(props: IFormikInputProps) {

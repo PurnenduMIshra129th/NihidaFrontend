@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import useFetch from "../../../hooks/useFetch";
-import GallerySectionWithLimitNumberOfImages from "../../../screens/Image/GallerySectionWithLimitNumberOfImages";
+import GallerySectionWithLimitNumberOfImages from "../../../components/Image/GallerySectionWithLimitNumberOfImages";
 import { INewsApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

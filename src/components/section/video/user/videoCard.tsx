@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useNavigate } from "react-router";
 
-import { IVideoCard } from "../../../../types/Component/component.types";
+import { IVideoCard } from "../../../../types/component/component.types";
 import { trimText } from "../../../../utils/trimText";
 import { extractYouTubeId, formatToLocalTime } from "../../../../utils/util";
 import Button from "../../../Button/Button";

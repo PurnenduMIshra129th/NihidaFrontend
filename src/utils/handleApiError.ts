@@ -1,8 +1,7 @@
 import { AxiosError } from "axios";
 
 import { eventBus } from "../contexts/context/eventBus";
-import { IErrorResponse } from "../types/api/centralApi.types";
-
+import { IErrorResponse } from "../types/api/api.type";
 
 export const handleApiError = (error: unknown, customMessage?: string): IErrorResponse => {
     const fallback: IErrorResponse = {

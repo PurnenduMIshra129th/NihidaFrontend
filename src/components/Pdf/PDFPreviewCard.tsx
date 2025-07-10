@@ -1,4 +1,4 @@
-import { IPDFPreviewCardProps } from "../../types/Component/component.types";
+import { IPDFPreviewCardProps } from "../../types/component/component.types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function PDFPreviewCard(props: IPDFPreviewCardProps) {

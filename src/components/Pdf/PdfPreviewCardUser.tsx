@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-import { IPDFDocumentCardUser } from "../../types/Component/component.types";
+import { IPDFDocumentCardUser } from "../../types/component/component.types";
 import { trimText } from "../../utils/trimText";
 import { formatToLocalTime } from "../../utils/util";
 

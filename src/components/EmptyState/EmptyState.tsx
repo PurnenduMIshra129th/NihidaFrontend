@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 
-import { IEmptyStateProps } from "../../types/Component/component.types";
+import { IEmptyStateProps } from "../../types/component/component.types";
 import Button from "../Button/Button";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const EmptyState = (props: IEmptyStateProps) => {

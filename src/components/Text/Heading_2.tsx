@@ -1,4 +1,4 @@
-import { IHeadingProps } from "../../types/Text/text.types";
+import { IHeadingProps } from "../../types/component/component.types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Heading_2(props: IHeadingProps) {

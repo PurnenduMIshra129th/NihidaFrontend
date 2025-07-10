@@ -6,6 +6,7 @@ import { Outlet, useNavigate } from "react-router";
 
 import Alerts from "./components/Alerts/Alerts";
 import ErrorBoundary from "./components/ErrorBoundry/ErrorBoundry";
+import FooterScreen from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
 import Navbar from "./components/Navbar/Navbar";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
@@ -14,7 +15,6 @@ import { LoaderProvider } from "./contexts/context/loader/LoaderContext";
 import { fetchUser } from "./contexts/slice/getUserSlice";
 import { fetchSocialLinkAndCommonImage } from "./contexts/slice/socialLinkAndCommonImageSlice";
 import { AppDispatch } from "./contexts/store";
-import FooterScreen from "./screens/Footer/FooterScreen";
 import { setNavigator } from "./utils/navigator";
 import { getStorageItem, validateTokenExpiry } from "./utils/util";
 // eslint-disable-next-line @typescript-eslint/naming-convention

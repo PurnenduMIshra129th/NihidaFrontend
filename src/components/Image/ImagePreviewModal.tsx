@@ -1,4 +1,4 @@
-import { IImagePreviewModalProps } from "../../types/Component/component.types";
+import { IImagePreviewModalProps } from "../../types/component/component.types";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const ImagePreviewModal = (props: IImagePreviewModalProps) => {

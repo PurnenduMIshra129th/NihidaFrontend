@@ -1,7 +1,7 @@
 import moment from "moment";
 import { useNavigate } from "react-router";
 
-import { ICardProps } from "../../types/cards/card.type";
+import { ICardProps } from "../../types/component/component.types";
 import { trimText } from "../../utils/trimText";
 import { formatToLocalTime } from "../../utils/util";
 import Button from "../Button/Button";

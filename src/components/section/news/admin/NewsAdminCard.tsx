@@ -1,4 +1,4 @@
-import { INewsAdminCard } from "../../../../types/Component/component.types";
+import { INewsAdminCard } from "../../../../types/component/component.types";
 import Button from "../../../Button/Button";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

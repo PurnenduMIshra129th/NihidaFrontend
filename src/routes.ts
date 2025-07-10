@@ -2,15 +2,15 @@ import { createBrowserRouter } from "react-router";
 
 import App from "./App";
 import { AddDocumentPageWrapper, AddFocusActivityPageWrapper, AddGalleryPageWrapper, AddNewsPageWrapper, AddUpcomingEventPageWrapper, AddVideoPageWrapper, AdminControlPanelPageWrapper, DocumentDashboardPageWrapper, EditDocumentPageWrapper, EditFocusActivityPageWrapper, EditGalleryPageWrapper, EditNewsPageWrapper, EditSocialLinkAndCommonImagePageWrapper, EditUpcomingEventPageWrapper, EditUpdateFilePageWrapper, EditUpdateImagePageWrapper, EditVideoPageWrapper, FocusActivityDashboardPageWrapper, GalleryDashboardPageWrapper, LoginPageWrapper, NewsDashboardPageWrapper, SignUpPageWrapper, SocialLinkAndCommonImageDashboardPageWrapper, UpcomingEventDashboardPageWrapper, VideoDashboardPageWrapper, ViewAllDocumentForUserPageWrapper, ViewAllFocusActivityForUserPageWrapper, ViewAllGalleryForUserPageWrapper, ViewAllImagePageWrapper, ViewAllNewsForUserPageWrapper, ViewAllUpcomingEventForUserPageWrapper, ViewAllVideoForUserPageWrapper, ViewDocumentForUserPageWrapper, ViewDocumentPageWrapper, ViewFocusActivityForUserPageWrapper, ViewFocusActivityPageWrapper, ViewGalleryForUserPageWrapper, ViewGalleryPageWrapper, ViewNewsForUserPageWrapper, ViewNewsPageWrapper, ViewUpcomingEventForUserPageWrapper, ViewUpcomingEventPageWrapper, ViewVideoForUserPageWrapper, ViewVideoPageWrapper } from "./components/HigherOrderComponent/Wrapper";
-import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
-import ApprochPage from "./pages/AboutUsPage/ApprochPage";
-import FuturePlanPage from "./pages/AboutUsPage/FuturePlanPage";
-import MissionPage from "./pages/AboutUsPage/MissionPage";
-import VisionPage from "./pages/AboutUsPage/VisionPage";
-import HomePage from "./pages/HomePage/user/HomePage";
-import { Parent } from "./pages/Learning/Example";
-import PageNotAccessible from "./pages/NotFoundPage/PageNotAccessible";
-import PageNotFound from "./pages/NotFoundPage/PageNotFound";
+import AboutUsPage from "./pages/AboutUs/AboutUs.page";
+import ApprochPage from "./pages/AboutUs/Approch.page";
+import FuturePlanPage from "./pages/AboutUs/FuturePlan.page";
+import MissionPage from "./pages/AboutUs/Mission.page";
+import VisionPage from "./pages/AboutUs/Vision.page";
+import HomePage from "./pages/Home/user/Home.page";
+import { Parent } from "./pages/Learning/Example.page";
+import PageNotAccessible from "./pages/NotFound/PageNotAccessible";
+import PageNotFound from "./pages/NotFound/PageNotFound";
 
 export const router = createBrowserRouter([
   {

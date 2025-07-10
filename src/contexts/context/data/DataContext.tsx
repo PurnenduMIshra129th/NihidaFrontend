@@ -1,7 +1,7 @@
 import { createContext, ReactNode,useCallback,useContext, useEffect, useState } from "react";
 
 import useFetch from "../../../hooks/useFetch";
-import { ISuccessResponse } from "../../../types/api/centralApi.types";
+import { ISuccessResponse } from "../../../types/api/api.type";
 
 interface IDataContextType<T> {
   data: T | null;

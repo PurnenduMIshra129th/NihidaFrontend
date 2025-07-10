@@ -1,4 +1,5 @@
-import { IButtonProps } from "../../types/Buttons/button.type";
+import { IButtonProps } from "../../types/component/component.types";
+
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Button(props: IButtonProps) {
   const {
