@@ -17,7 +17,7 @@ function Carousel() {
   
   useEffect(() => {
     const manageData = () => {
-      if (data?.[0]?.files?.length > 0) {
+      if (data?.[0]?.files && data?.[0]?.files?.length > 0) {
         setApiData(data?.[0].files);
       }
     };

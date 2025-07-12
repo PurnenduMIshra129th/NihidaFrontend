@@ -53,7 +53,7 @@ const validationSchema = Yup.object({
 export default function AddVideoPage() {
   const userDetails = useSelector(getUser);
   const handleSubmit = async (values: IVideoApiPayload) => {
-    values.uploadedBy = userDetails._id;
+    values.uploadedBy = userDetails?._id;
     await apiRequest<IVideoApiResponse, IVideoApiPayload>(
       "/video/createVideo",
       "POST",

@@ -49,7 +49,7 @@ const validationSchema = Yup.object({
 export default function AddGalleryPage() {
   const userDetails = useSelector(getUser);
   const handleSubmit = async (values: IGalleryApiPayload) => {
-    values.uploadedBy = userDetails._id;
+    values.uploadedBy = userDetails?._id;
     await apiRequest<IGalleryApiResponse, IGalleryApiPayload>(
       "/gallery/createGallery",
       "POST",

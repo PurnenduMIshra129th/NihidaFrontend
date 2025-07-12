@@ -65,7 +65,7 @@ export default function AddUpcomingEventPage() {
   const userDetails= useSelector(getUser);
   
   const handleSubmit = async (values: IUpcomingEventApiPayload) => {
-    values.createdBy = userDetails._id;
+    values.createdBy = userDetails?._id;
     await apiRequest<IUpcomingEventApiResponse, IUpcomingEventApiPayload>(
       "/upcomingEvent/createUpcomingEvent",
       "POST",

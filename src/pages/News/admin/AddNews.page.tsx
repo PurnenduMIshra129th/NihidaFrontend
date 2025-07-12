@@ -49,7 +49,7 @@ const validationSchema = Yup.object({
 export default function AddNewsPage() {
   const userDetails = useSelector(getUser); 
   const handleSubmit = async (values: INewsApiPayload) => {
-    values.createdBy = userDetails._id;
+    values.createdBy = userDetails?._id;
     await apiRequest<INewsApiResponse, INewsApiPayload>(
       "/news/createNews",
       "POST",

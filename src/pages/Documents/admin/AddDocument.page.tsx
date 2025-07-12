@@ -68,7 +68,7 @@ const validationSchema = Yup.object({
 export default function AddDocumentPage() {
    const userDetails= useSelector(getUser);
   const handleSubmit = async (values: IDocumentApiPayload) => {
-    values.createdBy = userDetails._id;
+    values.createdBy = userDetails?._id;
     await apiRequest<IDocumentApiResponse, IDocumentApiPayload>(
       "/document/createDocument",
       "POST",
