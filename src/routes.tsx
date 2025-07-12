@@ -55,8 +55,22 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <HomePage /> },
-      { path: "login", element: <LoginPage /> },
-      { path: "signup", element: <SignupPage /> },
+      {
+        path: "login",
+        element: (
+          <ProtectedRoute>
+            <LoginPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "signup",
+        element: (
+          <ProtectedRoute>
+            <SignupPage />
+          </ProtectedRoute>
+        ),
+      },
 
       {
         path: "admin",
