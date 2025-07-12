@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation, useParams } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import Image from "../../../components/Image/Image";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import useFetch from "../../../hooks/useFetch";
 import { apiRequest } from "../../../services/apiService";
-import { IFile, IFileApiData } from "../../../types/api/api.type";
+import { IFile } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function ImageManagementPage() {
@@ -14,26 +13,14 @@ export default function ImageManagementPage() {
   const { state } = useLocation();
 
   const {
-    getDataEndPoint = "noEndPoint",
     updateDataEndPoint = "noEndPoint",
     deleteDataEndPoint = "noEndPoint",
+    data = [],
+    onSuccess = () => {},
   } = state || {};
 
-  const { data ,fetchData } = useFetch<IFileApiData>(
-    `${getDataEndPoint}/${id}`,
-    "GET",
-    undefined,
-    true
-  );
-  const [images, setImages] = useState<IFile[]>([]);
   const [showUpload, setShowUpload] = useState(false);
   const [fileID, setFileID] = useState<string>("noID");
-
-  useEffect(() => {
-    if (data && data.statusCode === 1) {
-      setImages(data.data.files);
-    }
-  }, [data]);
 
   const handleDelete = async (_id: string = "noID") => {
     try {
@@ -43,18 +30,19 @@ export default function ImageManagementPage() {
         undefined,
         true
       );
-      await fetchData();
+      await onSuccess();
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error("Error deleting image:", err);
     }
   };
 
-  const handleUpdate = (_id: string = "noID") => {
+  const handleUpdate =async (_id: string = "noID") => {
     setFileID(_id);
     setShowUpload(true);
+    await onSuccess();
   };
-  if (images && images?.length === 0) {
+  if (data && data?.length === 0) {
     return <EmptyState/>;
   }
 
@@ -64,7 +52,7 @@ export default function ImageManagementPage() {
         Manage Images
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {images.map((file) => (
+        {data.map((file: IFile) => (
           <div
             key={file?._id || "noID"}
             className="relative rounded-lg overflow-hidden border border-gray-200 shadow-md group transition-all duration-300 hover:shadow-xl"

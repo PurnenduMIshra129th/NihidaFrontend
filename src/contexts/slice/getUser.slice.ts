@@ -17,6 +17,8 @@ export const fetchUser = createAsyncThunk(
       );
       if (response.statusCode == 1) {
         return response?.data;
+      } else if (response?.statusCode === 0) {
+        return null;
       } else {
         return rejectWithValue("No data found");
       }
@@ -29,7 +31,7 @@ export const fetchUser = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    userDetails: {} as IGetUserApiResponse,
+    userDetails: {} as IGetUserApiResponse | null,
     loading: false,
     error: null as string | null,
   },

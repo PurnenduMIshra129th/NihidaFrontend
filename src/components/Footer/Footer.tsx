@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router";
 
-import { getUser } from "../../contexts/slice/getUserSlice";
-import { selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImageSlice";
+import { getUser } from "../../contexts/slice/getUser.slice";
+import { selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImage.slice";
 import { ISocialLinkAndCommonImageApiResponse } from "../../types/api/api.type";
 import { userRole } from "../../utils/constant";
 import {

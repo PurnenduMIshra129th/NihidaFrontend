@@ -4,7 +4,7 @@ import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import FormikInput from "../../../components/Input/FormikInput";
-import { getUser } from "../../../contexts/slice/getUserSlice";
+import { getUser } from "../../../contexts/slice/getUser.slice";
 import { apiRequest } from "../../../services/apiService";
 import {
   IVideoApiPayload,

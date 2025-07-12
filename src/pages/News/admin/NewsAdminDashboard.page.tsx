@@ -1,24 +1,26 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import NewsAdminCard from "../../../components/section/news/admin/NewsAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import useFetch from "../../../hooks/useFetch";
+import {
+  fetchAllNews,
+  selectNews,
+} from "../../../contexts/slice/getAllNews.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
-import { INewsApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const NewsAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data, fetchData } = useFetch<INewsApiResponse[]>("news/getAllNews","GET",undefined,true);
-  const [apiData, setApiData] = useState<INewsApiResponse[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const data = useSelector(selectNews);
   useEffect(() => {
-    if(data && data.statusCode == 1 && data.data.length > 0){
-      setApiData(data.data);
-    }
-  }, [data]);
+    dispatch(fetchAllNews());
+  }, [dispatch]);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
@@ -28,10 +30,10 @@ const NewsAdminDashboardPage = () => {
 
   const handleDelete = async (id: string) => {
     await apiRequest(`news/deleteNews/${id}`, "DELETE", undefined, true);
-    await fetchData();
+    await dispatch(fetchAllNews());
   };
 
-  if (!apiData || apiData.length === 0) {
+  if (!data || data.length === 0) {
     return (
       <EmptyState
         routingPath="/admin/add-news"
@@ -53,7 +55,7 @@ const NewsAdminDashboardPage = () => {
         />
       </div>
       <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
-        {apiData.map((news) => (
+        {data.map((news) => (
           <NewsAdminCard
             key={news._id}
             data={news}
@@ -84,6 +86,7 @@ const NewsAdminDashboardPage = () => {
         note="Please upload a image( .jpg, .jpeg, .png ) file"
         warning="Multiple files are allowed to upload (max. 5MB per file)"
         isMultiple={true}
+        onSuccess={() => dispatch(fetchAllNews())}
       />
     </section>
   );

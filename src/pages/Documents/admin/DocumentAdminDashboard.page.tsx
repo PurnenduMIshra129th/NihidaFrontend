@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import DocumentAdminCard from "../../../components/section/documents/admin/DocumentAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import useFetch from "../../../hooks/useFetch";
+import {
+  fetchAllDocument,
+  selectDocument,
+} from "../../../contexts/slice/getAllDocument.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
-import { IDocumentApiResponse } from "../../../types/api/api.type";
-
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const DocumentAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data, fetchData } = useFetch<IDocumentApiResponse[]>("document/getAllDocument","GET",undefined,true);
-  const [apiData, setApiData] = useState<IDocumentApiResponse[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const data = useSelector(selectDocument);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
@@ -21,10 +24,8 @@ const DocumentAdminDashboardPage = () => {
     setShowUpload(true);
   };
   useEffect(() => {
-    if(data && data.statusCode == 1 && data.data.length > 0){
-      setApiData(data.data);
-    }
-  }, [data]);
+    dispatch(fetchAllDocument());
+  }, [dispatch]);
   const handleDelete = async (id: string) => {
     await apiRequest(
       `document/deleteDocument/${id}`,
@@ -32,10 +33,10 @@ const DocumentAdminDashboardPage = () => {
       undefined,
       true
     );
-    await fetchData();
+    await dispatch(fetchAllDocument());
   };
 
-  if (!apiData || apiData.length === 0) {
+  if (!data || data.length === 0 || data === undefined) {
     return (
       <EmptyState
         routingPath="/admin/add-document"
@@ -57,20 +58,20 @@ const DocumentAdminDashboardPage = () => {
         />
       </div>
       <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
-        {apiData.map((activity) => (
+        {data.map((document) => (
           <DocumentAdminCard
-            key={activity._id}
-            data={activity}
-            onView={() => navigate(`/admin/view-document/${activity._id}`)}
-            onEdit={() => navigate(`/admin/edit-document/${activity._id}`)}
-            onDelete={() => handleDelete(activity?._id ? activity._id : "")}
+            key={document._id}
+            data={document}
+            onView={() => navigate(`/admin/view-document/${document._id}`)}
+            onEdit={() => navigate(`/admin/edit-document/${document._id}`)}
+            onDelete={() => handleDelete(document?._id ? document._id : "")}
             onUpload={() =>
-              handleUploadTrigger(activity?._id ? activity._id : "")
+              handleUploadTrigger(document?._id ? document._id : "")
             }
             onViewImages={() =>
               navigate(
                 `/admin/file-management/${
-                  activity?._id ? activity._id : "noID"
+                  document?._id ? document._id : "noID"
                 }`,
                 {
                   state: {
@@ -95,6 +96,7 @@ const DocumentAdminDashboardPage = () => {
         warning="Multiple files are not  allowed to upload (max. 5MB per file)"
         isMultiple={false}
         accept="pdf"
+        onSuccess={() => dispatch(fetchAllDocument())}
       />
     </section>
   );

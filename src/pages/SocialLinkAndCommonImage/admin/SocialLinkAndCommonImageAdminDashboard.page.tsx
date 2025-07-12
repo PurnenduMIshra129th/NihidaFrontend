@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import SocialLinkAndCommonImageAdminCard from "../../../components/section/socialLinkAndCommonImage/admin/SocialLinkAndCommonImageAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import useFetch from "../../../hooks/useFetch";
-import { ISocialLinkAndCommonImageApiResponse } from "../../../types/api/api.type";
+import {
+  fetchSocialLinkAndCommonImage,
+  selectSocialLinkAndCommonImage,
+} from "../../../contexts/slice/socialLinkAndCommonImage.slice";
+import { AppDispatch } from "../../../contexts/store";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const SocialLinkAndCommonImageAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data } = useFetch<ISocialLinkAndCommonImageApiResponse[]>("socialLinkAndCommonImage/getAllSocialLinkAndCommonImage","GET",undefined,true);
-  const [apiData, setApiData] = useState<ISocialLinkAndCommonImageApiResponse[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const data = useSelector(selectSocialLinkAndCommonImage);
   useEffect(() => {
-    if(data && data.statusCode == 1 && data.data.length > 0){
-      setApiData(data.data);
-    }
-  }, [data]);
+    dispatch(fetchSocialLinkAndCommonImage());
+  }, [dispatch]);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
@@ -24,12 +26,8 @@ const SocialLinkAndCommonImageAdminDashboardPage = () => {
     setShowUpload(true);
   };
 
-  if (!apiData || apiData.length === 0) {
-    return (
-      <EmptyState
-        buttonText="Create SocialLinkAndCommonImage"
-      />
-    );
+  if (!data || data.length === 0) {
+    return <EmptyState buttonText="Create SocialLinkAndCommonImage" />;
   }
 
   return (
@@ -40,15 +38,29 @@ const SocialLinkAndCommonImageAdminDashboardPage = () => {
         </h2>
       </div>
       <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
-        {apiData.map((socialLinkAndCommonImage) => (
+        {data.map((socialLinkAndCommonImage) => (
           <SocialLinkAndCommonImageAdminCard
             key={socialLinkAndCommonImage._id}
             data={socialLinkAndCommonImage}
-            onEdit={() => navigate(`/admin/edit-socialLinkAndCommonImage/${socialLinkAndCommonImage._id}`)}
-            onUpload={() => handleUploadTrigger(socialLinkAndCommonImage?._id ? socialLinkAndCommonImage._id : "")}
+            onEdit={() =>
+              navigate(
+                `/admin/edit-socialLinkAndCommonImage/${socialLinkAndCommonImage._id}`
+              )
+            }
+            onUpload={() =>
+              handleUploadTrigger(
+                socialLinkAndCommonImage?._id
+                  ? socialLinkAndCommonImage._id
+                  : ""
+              )
+            }
             onViewImages={() =>
               navigate(
-                `/admin/image-management/${socialLinkAndCommonImage?._id ? socialLinkAndCommonImage._id : "noID"}`,
+                `/admin/image-management/${
+                  socialLinkAndCommonImage?._id
+                    ? socialLinkAndCommonImage._id
+                    : "noID"
+                }`,
                 {
                   state: {
                     getDataEndPoint: `/socialLinkAndCommonImage/getSocialLinkAndCommonImageById`,
@@ -64,11 +76,16 @@ const SocialLinkAndCommonImageAdminDashboardPage = () => {
       <UploadDocument
         isOpen={showUpload}
         onClose={() => setShowUpload(false)}
-        endpoint={`upload/createSocialLinkAndCommonImageFile?id=${selectedId ? selectedId : ""}`}
+        endpoint={`upload/createSocialLinkAndCommonImageFile?id=${
+          selectedId ? selectedId : ""
+        }`}
         label="Upload SocialLinkAndCommonImage Section"
         note="Please upload a image( .jpg, .jpeg, .png ) file"
         warning="Multiple files are allowed to upload (max. 5MB per file)"
         isMultiple={true}
+        onSuccess={() => {
+          dispatch(fetchSocialLinkAndCommonImage());
+        }}
       />
     </section>
   );

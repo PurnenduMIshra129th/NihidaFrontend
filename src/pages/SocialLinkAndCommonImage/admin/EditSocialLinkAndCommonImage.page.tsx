@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FormikInput from "../../../components/Input/FormikInput";
-import { fetchSocialLinkAndCommonImage } from "../../../contexts/slice/socialLinkAndCommonImageSlice";
+import { fetchSocialLinkAndCommonImage } from "../../../contexts/slice/socialLinkAndCommonImage.slice";
 import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import {

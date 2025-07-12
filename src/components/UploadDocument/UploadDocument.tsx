@@ -7,7 +7,15 @@ import FormikFileInput from "../Input/FormikFileInput";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UploadDocumentModal = (props: IUploadDocumentModalProps) => {
-  const { isOpen, onClose, note, warning, endpoint, ...fileInputProps } = props;
+  const {
+    isOpen,
+    onClose,
+    note,
+    warning,
+    endpoint,
+    onSuccess,
+    ...fileInputProps
+  } = props;
   if (!isOpen) return null;
   const handleSubmit = async (values: { files: File | File[] }) => {
     const selectedFiles = values.files;
@@ -30,8 +38,11 @@ const UploadDocumentModal = (props: IUploadDocumentModalProps) => {
     }
 
     try {
-      await multiPartAPI(endpoint, formData, true);
       onClose();
+      await multiPartAPI(endpoint, formData, true);
+      if (onSuccess) {
+        onSuccess();
+      }
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error("Error uploading files:", error);

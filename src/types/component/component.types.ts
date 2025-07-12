@@ -61,6 +61,7 @@ export interface IUploadDocumentModalProps extends IFormikFileInputProps {
   endpoint: string;
   note?: string;
   warning?: string;
+  onSuccess?: () => void;
 }
 export interface IFile {
   _id: string;

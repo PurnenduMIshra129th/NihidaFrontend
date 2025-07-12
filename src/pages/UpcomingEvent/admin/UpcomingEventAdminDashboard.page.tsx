@@ -1,24 +1,28 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import UpcomingEventAdminCard from "../../../components/section/upcomingEvent/admin/UpcomingEventAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import useFetch from "../../../hooks/useFetch";
+import {
+  fetchAllUpcomingEvent,
+  selectUpcomingEvent,
+} from "../../../contexts/slice/getAllUpcomingEvent.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
-import { IUpcomingEventApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UpcomingEventAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data, fetchData } = useFetch<IUpcomingEventApiResponse[]>("upcomingEvent/getAllUpcomingEvent","GET",undefined,true);
-  const [apiData, setApiData] = useState<IUpcomingEventApiResponse[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const data = useSelector(selectUpcomingEvent);
+
   useEffect(() => {
-    if(data && data.statusCode == 1 && data.data.length > 0){
-      setApiData(data.data);
-    }
-  }, [data]);
+    dispatch(fetchAllUpcomingEvent());
+  }, [dispatch]);
+
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
@@ -33,10 +37,10 @@ const UpcomingEventAdminDashboardPage = () => {
       undefined,
       true
     );
-    await fetchData();
+    await dispatch(fetchAllUpcomingEvent());
   };
 
-  if (!apiData || apiData.length === 0) {
+  if (!data || data.length === 0) {
     return (
       <EmptyState
         routingPath="/admin/add-upcoming-event"
@@ -58,7 +62,7 @@ const UpcomingEventAdminDashboardPage = () => {
         />
       </div>
       <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
-        {apiData.map((event) => (
+        {data.map((event) => (
           <UpcomingEventAdminCard
             key={event._id}
             data={event}
@@ -91,6 +95,9 @@ const UpcomingEventAdminDashboardPage = () => {
         note="Please upload a image( .jpg, .jpeg, .png ) file"
         warning="Multiple files are not allowed to upload (max. 5MB per file)"
         isMultiple={false}
+        onSuccess={() => {
+          dispatch(fetchAllUpcomingEvent());
+        }}
       />
     </section>
   );

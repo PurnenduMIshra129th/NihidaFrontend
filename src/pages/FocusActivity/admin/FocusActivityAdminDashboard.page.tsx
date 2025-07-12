@@ -1,30 +1,32 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FocusActivityAdminCard from "../../../components/section/focusActivity/admin/FocusActivityAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import useFetch from "../../../hooks/useFetch";
+import {
+  fetchAllFocusActivity,
+  selectFocusActivity,
+} from "../../../contexts/slice/getAllFocusActivity.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
-import { IFocusActivityApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const FocusActivityAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data, fetchData } = useFetch<IFocusActivityApiResponse[]>("focusActivity/getAllFocusActivity","GET",undefined,true);
+  const dispatch = useDispatch<AppDispatch>();
+  const data = useSelector(selectFocusActivity);
   const [showUpload, setShowUpload] = useState(false);
-  const [apiData, setApiData] = useState<IFocusActivityApiResponse[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
     setSelectedId(id);
     setShowUpload(true);
   };
   useEffect(() => {
-    if(data && data.statusCode == 1 && data.data.length > 0){
-      setApiData(data.data);
-    }
-  }, [data]);
+    dispatch(fetchAllFocusActivity());
+  }, [dispatch]);
 
   const handleDelete = async (id: string) => {
     await apiRequest(
@@ -33,11 +35,16 @@ const FocusActivityAdminDashboardPage = () => {
       undefined,
       true
     );
-    await fetchData();
+    await dispatch(fetchAllFocusActivity());
   };
 
-  if (!apiData || apiData.length === 0) {
-    return <EmptyState routingPath="/admin/add-focus-activity" buttonText="Create Activity"/>;
+  if (!data || data.length === 0) {
+    return (
+      <EmptyState
+        routingPath="/admin/add-focus-activity"
+        buttonText="Create Activity"
+      />
+    );
   }
 
   return (
@@ -53,7 +60,7 @@ const FocusActivityAdminDashboardPage = () => {
         />
       </div>
       <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
-        {apiData.map((activity) => (
+        {data.map((activity) => (
           <FocusActivityAdminCard
             key={activity._id}
             data={activity}
@@ -69,7 +76,9 @@ const FocusActivityAdminDashboardPage = () => {
             }
             onViewImages={() =>
               navigate(
-                `/admin/image-management/${activity?._id ? activity._id : "noID"}`,
+                `/admin/image-management/${
+                  activity?._id ? activity._id : "noID"
+                }`,
                 {
                   state: {
                     getDataEndPoint: `/focusActivity/getFocusActivityById`,
@@ -92,6 +101,7 @@ const FocusActivityAdminDashboardPage = () => {
         note="Please upload a image( .jpg, .jpeg, .png ) file"
         warning="Multiple files are allowed to be uploaded (max. 5MB per file)"
         isMultiple={true}
+        onSuccess={() => dispatch(fetchAllFocusActivity())}
       />
     </section>
   );

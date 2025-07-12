@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImageSlice";
+import { selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImage.slice";
 import { IFile } from "../../types/api/api.type";
 import { defaultImage } from "../../utils/constant";
 import Button from "../Button/Button";

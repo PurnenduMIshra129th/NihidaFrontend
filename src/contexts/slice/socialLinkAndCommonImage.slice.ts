@@ -15,6 +15,8 @@ export const fetchSocialLinkAndCommonImage = createAsyncThunk(
       >("/socialLinkAndCommonImage/getAllSocialLinkAndCommonImage", "GET");
       if (response?.statusCode == 1) {
         return response?.data;
+      } else if (response?.statusCode === 0) {
+        return null;
       } else {
         return rejectWithValue("No data found");
       }
@@ -27,7 +29,9 @@ export const fetchSocialLinkAndCommonImage = createAsyncThunk(
 const socialLinkAndCommonImageSlice = createSlice({
   name: "socialLinkAndCommonImage",
   initialState: {
-    socialLinkAndCommonImageList: [] as ISocialLinkAndCommonImageApiResponse[],
+    socialLinkAndCommonImageList: [] as
+      | ISocialLinkAndCommonImageApiResponse[]
+      | null,
     loading: false,
     error: null as string | null,
   },

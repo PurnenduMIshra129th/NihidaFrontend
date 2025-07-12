@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import GalleryAdminCard from "../../../components/section/gallery/admin/GalleryAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
-import useFetch from "../../../hooks/useFetch";
+import {
+  fetchAllGallery,
+  selectGallery,
+} from "../../../contexts/slice/getAllGallery.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
-import { IGalleryApiResponse } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const GalleryAdminDashboardPage = () => {
   const navigate = useNavigate();
-  const { data, fetchData } = useFetch<IGalleryApiResponse[]>("gallery/getAllGallery","GET",undefined,true);
-  const [apiData, setApiData] = useState<IGalleryApiResponse[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const data = useSelector(selectGallery);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
@@ -21,16 +25,15 @@ const GalleryAdminDashboardPage = () => {
     setShowUpload(true);
   };
   useEffect(() => {
-    if(data && data.statusCode == 1 && data.data.length > 0){
-      setApiData(data.data);
-    }
-  }, [data]);
+    dispatch(fetchAllGallery());
+  }, [dispatch]);
+
   const handleDelete = async (id: string) => {
     await apiRequest(`gallery/deleteGallery/${id}`, "DELETE", undefined, true);
-    await fetchData();
+    await dispatch(fetchAllGallery());
   };
 
-  if (!apiData || apiData.length === 0) {
+  if (!data || data.length === 0) {
     return (
       <EmptyState
         routingPath="/admin/add-gallery"
@@ -52,7 +55,7 @@ const GalleryAdminDashboardPage = () => {
         />
       </div>
       <div className="flex flex-wrap gap-6 justify-center sm:justify-start">
-        {apiData.map((gallery) => (
+        {data.map((gallery) => (
           <GalleryAdminCard
             key={gallery._id}
             data={gallery}
@@ -87,6 +90,7 @@ const GalleryAdminDashboardPage = () => {
         note="Please upload a image( .jpg, .jpeg, .png ) file"
         warning="Multiple files are allowed to upload (max. 5MB per file)"
         isMultiple={true}
+        onSuccess={() => dispatch(fetchAllGallery())}
       />
     </section>
   );

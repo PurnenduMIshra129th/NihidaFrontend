@@ -96,9 +96,10 @@ function PdfManagementPage() {
           endpoint={`${updateDataEndPoint}?id=${
             id ? id : "noID"
           }&fileID=${fileID}`}
-          label="Upldate Image"
+          label="Upldate PDF"
           note="Please upload a pdf file( *.pdf ) file"
           warning="Only one file is allowed to upload (max. 5MB per file)"
+          accept="pdf"
         />
       </div>
     </>
