@@ -23,7 +23,7 @@ function InformationCard(props: ICardProps) {
   return (
     <>
       <div className="w-full  flex flex-col p-3 sm:p-0">
-        <Image imagePath={imagePath} className="rounded-lg" />
+        <Image imagePath={imagePath} className="rounded-lg h-[15rem]" />
         <div className="bg-custom_orange_2 p-2 mt-6 rounded-2xl w-[60%]">
           <Typography
             text={formatToLocalTime(textTime)}
