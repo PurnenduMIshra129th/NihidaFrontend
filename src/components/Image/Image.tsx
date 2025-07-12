@@ -13,7 +13,12 @@ function Image({
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  const handleLoad = () => setIsLoaded(true);
+    const handleLoad = () => setIsLoaded(true);
+//   const handleLoad = () => {
+//     setTimeout(() => {
+//       setIsLoaded(true);
+//     }, 3000);
+//   };
   const handleError = () => {
     setHasError(true);
     setIsLoaded(true);
@@ -23,12 +28,11 @@ function Image({
 
   return (
     <>
-      {!isLoaded && (
-        <div className="absolute top-0 left-0 h-full w-full animate-pulse bg-gray-200 rounded-lg" />
-      )}
       <img
         loading="lazy"
-        className={`w-full object-cover ${className}`}
+        className={`w-full object-cover transition-opacity duration-500 ${
+          isLoaded ? "opacity-100" : "opacity-20 animate-pulse bg-orange-100"
+        } ${className}`}
         src={imageSrc}
         onLoad={handleLoad}
         onError={handleError}
