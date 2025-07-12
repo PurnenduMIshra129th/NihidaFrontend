@@ -23,9 +23,11 @@ const DocumentAdminDashboardPage = () => {
     setSelectedId(id);
     setShowUpload(true);
   };
+  
   useEffect(() => {
     dispatch(fetchAllDocument());
   }, [dispatch]);
+
   const handleDelete = async (id: string) => {
     await apiRequest(
       `document/deleteDocument/${id}`,

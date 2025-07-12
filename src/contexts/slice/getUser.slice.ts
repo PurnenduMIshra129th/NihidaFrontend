@@ -5,7 +5,7 @@ import { IGetUserApiResponse } from "../../types/api/api.type";
 import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
-export const fetchUser = createAsyncThunk(
+export const fetchUser = createAsyncThunk<IGetUserApiResponse | null, undefined, { state: RootState }>(
   "auth/getUser",
   async (_, { rejectWithValue }) => {
     try {
@@ -13,7 +13,7 @@ export const fetchUser = createAsyncThunk(
         "/authentication/getUser",
         "GET",
         undefined,
-        true
+        true,false
       );
       if (response.statusCode == 1) {
         return response?.data;

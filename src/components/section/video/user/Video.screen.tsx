@@ -14,7 +14,7 @@ function VideoScreen() {
   useEffect(() => {
     const manageData = () => {
       if (data && data.statusCode == 1 && data.data.length > 0) {
-        setApiData(data.data);
+        setApiData(data.data.slice(0, 3));
       }
     };
     manageData();

@@ -5,13 +5,13 @@ import { INewsApiResponse } from "../../types/api/api.type";
 import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
-export const fetchAllNews = createAsyncThunk(
+export const fetchAllNews = createAsyncThunk<INewsApiResponse[] | null, undefined, { state: RootState }>(
   "news/fetchNews",
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiRequest<INewsApiResponse[], undefined>(
         "/news/getAllNews",
-        "GET"
+        "GET",undefined,false,false
       );
       if (response?.statusCode == 1) {
         return response?.data;

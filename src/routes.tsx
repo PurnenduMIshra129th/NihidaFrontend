@@ -1,8 +1,7 @@
 import { createBrowserRouter } from "react-router";
 
 import App from "./App";
-import { ProtectedRouteAdmin } from "./components/HigherOrderComponent/ProtectedRouteAdmin";
-import { ProtectedRoute } from "./components/HigherOrderComponent/ProtectedRoutes";
+import { ProtectedRoute } from "./components/HigherOrderComponent/ProtectedRoute";
 import AboutUsPage from "./pages/AboutUs/AboutUs.page";
 import ApprochPage from "./pages/AboutUs/Approch.page";
 import FuturePlanPage from "./pages/AboutUs/FuturePlan.page";
@@ -13,9 +12,11 @@ import SignupPage from "./pages/Authentication/Signup.page";
 import AddDocumentPage from "./pages/Documents/admin/AddDocument.page";
 import DocumentAdminDashboardPage from "./pages/Documents/admin/DocumentAdminDashboard.page";
 import EditDocumentPage from "./pages/Documents/admin/EditDocument.page";
+import DocumentListPage from "./pages/Documents/user/ViewAllDocument.page";
 import ViewDocumentByIdPage from "./pages/Documents/user/ViewDocumentById.page";
 import ImageManagementPage from "./pages/Files/admin/ImageManagement.page";
 import PdfManagementPage from "./pages/Files/admin/PdfManagement.page";
+import ViewAllImagePage from "./pages/Files/user/ViewAllImage.page";
 import AddFocusActivityPage from "./pages/FocusActivity/admin/AddFocusActivity.page";
 import EditFocusActivityPage from "./pages/FocusActivity/admin/EditFocusActivity.page";
 import FocusActivityAdminDashboardPage from "./pages/FocusActivity/admin/FocusActivityAdminDashboard.page";
@@ -24,12 +25,14 @@ import ViewFocusActivityByIdPage from "./pages/FocusActivity/user/ViewFocusActiv
 import AddGalleryPage from "./pages/Gallery/admin/AddGallery.page";
 import EditGalleryPage from "./pages/Gallery/admin/EditGallery.page";
 import GalleryAdminDashboardPage from "./pages/Gallery/admin/GalleryAdminDashboard.page";
+import GalleryListPage from "./pages/Gallery/user/ViewAllGallery.page";
 import ViewGalleryByIdPage from "./pages/Gallery/user/ViewGalleryById.page";
 import AdminControlPanelPage from "./pages/Home/admin/AdminContolPanel.page";
 import HomePage from "./pages/Home/user/Home.page";
 import AddNewsPage from "./pages/News/admin/AddNews.page";
 import EditNewsPage from "./pages/News/admin/EditNews.page";
 import NewsAdminDashboardPage from "./pages/News/admin/NewsAdminDashboard.page";
+import NewsListPage from "./pages/News/user/ViewAllNews.page";
 import ViewNewsByIdPage from "./pages/News/user/ViewNewsById.page";
 import PageNotAccessible from "./pages/NotFound/PageNotAccessible";
 import PageNotFound from "./pages/NotFound/PageNotFound";
@@ -38,90 +41,18 @@ import SocialLinkAndCommonImageAdminDashboardPage from "./pages/SocialLinkAndCom
 import AddUpcomingEventPage from "./pages/UpcomingEvent/admin/AddUpcomingEvent.page";
 import EditUpcomingEventPage from "./pages/UpcomingEvent/admin/EditUpcomingEvent.page";
 import UpcomingEventAdminDashboardPage from "./pages/UpcomingEvent/admin/UpcomingEventAdminDashboard.page";
+import UpcomingEventListPage from "./pages/UpcomingEvent/user/ViewAllUpcomingEvent.page";
 import ViewUpcomingEventByIdPage from "./pages/UpcomingEvent/user/ViewUpcomingEventById.page";
 import AddVideoPage from "./pages/video/admin/AddVideo.page";
 import EditVideoPage from "./pages/video/admin/EditVideo.page";
 import VideoAdminDashboardPage from "./pages/video/admin/VideoAdminDashboard.page";
+import VideoListPage from "./pages/video/user/ViewAllVideo.page";
 import ViewVideoByIdPage from "./pages/video/user/ViewVideoById.page";
 
-// export const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     Component: App,
-//     children: [
-//       { index: true, Component: HomePage },
-//       { path: "login", Component: LoginPageWrapper },
-//       { path: "signup", Component: SignUpPageWrapper },
-
-//       { path: "admin", Component: AdminControlPanelPageWrapper,},
-//       { path: "admin/image-management/:id", Component: EditUpdateImagePageWrapper },
-//       { path: "admin/file-management/:id", Component: EditUpdateFilePageWrapper },
-//       { path: "user/view-all-image", Component: ViewAllImagePageWrapper },
-
-//       { path: "admin/add-focus-activity", Component: AddFocusActivityPageWrapper },
-//       { path: "admin/focus-activity-dashboard", Component: FocusActivityDashboardPageWrapper },
-//       { path: "admin/edit-focus-activity/:id", Component: EditFocusActivityPageWrapper },
-//       { path: "admin/view-focus-activity/:id", Component: ViewFocusActivityPageWrapper },
-//       { path: "user/view-focus-activity/:id", Component: ViewFocusActivityForUserPageWrapper },
-//       { path: "user/view-all-focus-activity", Component: ViewAllFocusActivityForUserPageWrapper },
-
-//       { path: "admin/add-document", Component: AddDocumentPageWrapper },
-//       { path: "admin/document-dashboard", Component: DocumentDashboardPageWrapper },
-//       { path: "admin/edit-document/:id", Component: EditDocumentPageWrapper },
-//       { path: "admin/view-document/:id", Component: ViewDocumentPageWrapper },
-//       { path: "user/view-document/:id", Component: ViewDocumentForUserPageWrapper },
-//       { path: "user/view-all-document", Component: ViewAllDocumentForUserPageWrapper },
-
-//       { path: "admin/add-gallery", Component: AddGalleryPageWrapper },
-//       { path: "admin/gallery-dashboard", Component: GalleryDashboardPageWrapper },
-//       { path: "admin/edit-gallery/:id", Component: EditGalleryPageWrapper },
-//       { path: "admin/view-gallery/:id", Component: ViewGalleryPageWrapper },
-//       { path: "user/view-gallery/:id", Component: ViewGalleryForUserPageWrapper },
-//       { path: "user/view-all-gallery", Component: ViewAllGalleryForUserPageWrapper },
-
-//       { path: "admin/add-news", Component: AddNewsPageWrapper },
-//       { path: "admin/news-dashboard", Component: NewsDashboardPageWrapper },
-//       { path: "admin/edit-news/:id", Component: EditNewsPageWrapper },
-//       { path: "admin/view-news/:id", Component: ViewNewsPageWrapper },
-//       { path: "user/view-news/:id", Component: ViewNewsForUserPageWrapper },
-//       { path: "user/view-all-news", Component: ViewAllNewsForUserPageWrapper },
-
-//       { path: "admin/socialLinkAndCommonImage-dashboard", Component: SocialLinkAndCommonImageDashboardPageWrapper },
-//       { path: "admin/edit-socialLinkAndCommonImage/:id", Component: EditSocialLinkAndCommonImagePageWrapper },
-
-//       { path: "admin/add-video", Component: AddVideoPageWrapper },
-//       { path: "admin/video-dashboard", Component: VideoDashboardPageWrapper },
-//       { path: "admin/edit-video/:id", Component: EditVideoPageWrapper },
-//       { path: "admin/view-video/:id", Component: ViewVideoPageWrapper },
-//       { path: "user/view-video/:id", Component: ViewVideoForUserPageWrapper },
-//       { path: "user/view-all-video", Component: ViewAllVideoForUserPageWrapper },
-
-//       { path: "admin/add-upcoming-event", Component: AddUpcomingEventPageWrapper },
-//       { path: "admin/upcoming-event-dashboard", Component:UpcomingEventDashboardPageWrapper },
-//       { path: "admin/edit-upcoming-event/:id", Component: EditUpcomingEventPageWrapper },
-//       { path: "admin/view-upcoming-event/:id", Component: ViewUpcomingEventPageWrapper },
-//       { path: "user/view-upcoming-event/:id", Component: ViewUpcomingEventForUserPageWrapper },
-//       { path: "user/view-all-upcoming-event", Component: ViewAllUpcomingEventForUserPageWrapper },
-
-//       { path: "learning", Component: Parent },
-
-//       { path:"about/mission", Component: MissionPage },
-//       { path:"about/vision", Component: VisionPage },
-//       { path:"about/approch", Component: ApprochPage },
-//       { path:"about/plan", Component: FuturePlanPage },
-//       { path:"about", Component: AboutUsPage },
-
-//       { path: "notAccessible", Component: PageNotAccessible },
-//       { path: "*", Component: PageNotFound },
-
-//     ],
-//   },
-// ]);
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <ErrorPage />,
     children: [
       { index: true, element: <HomePage /> },
       { path: "login", element: <LoginPage /> },
@@ -129,7 +60,7 @@ export const router = createBrowserRouter([
 
       {
         path: "admin",
-        element: <ProtectedRouteAdmin />,
+        element: <ProtectedRoute />,
         children: [
           { index: true, element: <AdminControlPanelPage /> },
           { path: "add-focus-activity", element: <AddFocusActivityPage /> },
@@ -189,28 +120,47 @@ export const router = createBrowserRouter([
           },
         ],
       },
-
       {
-        path: "user/view-focus-activity/:id",
-        element: (
-          <ProtectedRoute>
-            <ViewFocusActivityByIdPage />
-          </ProtectedRoute>
-        ),
+        path: "user",
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: "view-focus-activity/:id",
+            element: <ViewFocusActivityByIdPage />,
+          },
+          {
+            path: "view-all-focus-activity",
+            element: <FocusActivityListPage />,
+          },
+          { path: "view-gallery/:id", element: <ViewGalleryByIdPage /> },
+          { path: "view-all-gallery", element: <GalleryListPage /> },
+          { path: "view-news/:id", element: <ViewNewsByIdPage /> },
+          { path: "view-all-news", element: <NewsListPage /> },
+          { path: "view-document/:id", element: <ViewDocumentByIdPage /> },
+          { path: "view-all-document", element: <DocumentListPage /> },
+          {
+            path: "view-upcoming-event/:id",
+            element: <ViewUpcomingEventByIdPage />,
+          },
+          {
+            path: "view-all-upcoming-event",
+            element: <UpcomingEventListPage />,
+          },
+          { path: "view-video/:id", element: <ViewVideoByIdPage /> },
+          { path: "view-all-video", element: <VideoListPage /> },
+          { path: "view-all-image", element: <ViewAllImagePage /> },
+        ],
       },
       {
-        path: "user/view-all-focus-activity",
-        element: (
-          <ProtectedRoute>
-            <FocusActivityListPage />
-          </ProtectedRoute>
-        ),
+        path: "about",
+        children: [
+          { index: true, element: <AboutUsPage /> },
+          { path: "mission", element: <MissionPage /> },
+          { path: "vision", element: <VisionPage /> },
+          { path: "approch", element: <ApprochPage /> },
+          { path: "plan", element: <FuturePlanPage /> },
+        ],
       },
-      { path: "about/mission", element: <MissionPage /> },
-      { path: "about/vision", element: <VisionPage /> },
-      { path: "about/approch", element: <ApprochPage /> },
-      { path: "about/plan", element: <FuturePlanPage /> },
-      { path: "about", element: <AboutUsPage /> },
 
       { path: "notAccessible", element: <PageNotAccessible /> },
       { path: "*", element: <PageNotFound /> },

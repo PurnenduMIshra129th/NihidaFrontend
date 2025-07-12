@@ -5,13 +5,13 @@ import { IUpcomingEventApiResponse } from "../../types/api/api.type";
 import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
-export const fetchAllUpcomingEvent = createAsyncThunk(
+export const fetchAllUpcomingEvent = createAsyncThunk<IUpcomingEventApiResponse[] | null, undefined, { state: RootState }>(
   "upcomingEvent/fetchUpcomingEvent",
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiRequest<IUpcomingEventApiResponse[], undefined>(
         "/upcomingEvent/getAllUpcomingEvent",
-        "GET"
+        "GET",undefined,false,false
       );
       if (response?.statusCode == 1) {
         return response?.data;

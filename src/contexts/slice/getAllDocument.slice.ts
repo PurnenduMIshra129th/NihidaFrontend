@@ -5,13 +5,13 @@ import { IDocumentApiResponse } from "../../types/api/api.type";
 import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
-export const fetchAllDocument = createAsyncThunk(
+export const fetchAllDocument = createAsyncThunk<IDocumentApiResponse[] | null, undefined, { state: RootState }>(
   "document/fetchDocument",
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiRequest<IDocumentApiResponse[], undefined>(
         "/document/getAllDocument",
-        "GET"
+        "GET",undefined,false,false
       );
       if (response?.statusCode == 1) {
         return response?.data;

@@ -5,14 +5,14 @@ import { ISocialLinkAndCommonImageApiResponse } from "../../types/api/api.type";
 import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
-export const fetchSocialLinkAndCommonImage = createAsyncThunk(
+export const fetchSocialLinkAndCommonImage = createAsyncThunk<ISocialLinkAndCommonImageApiResponse[] | null, undefined, { state: RootState }>(
   "socialLinkAndCommonImage/fetchSocialLinkAndCommonImage",
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiRequest<
         ISocialLinkAndCommonImageApiResponse[],
         undefined
-      >("/socialLinkAndCommonImage/getAllSocialLinkAndCommonImage", "GET");
+      >("/socialLinkAndCommonImage/getAllSocialLinkAndCommonImage", "GET",undefined,false,false);
       if (response?.statusCode == 1) {
         return response?.data;
       } else if (response?.statusCode === 0) {

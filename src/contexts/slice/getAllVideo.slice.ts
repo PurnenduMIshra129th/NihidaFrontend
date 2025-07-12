@@ -5,13 +5,13 @@ import { IVideoApiResponse } from "../../types/api/api.type";
 import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
-export const fetchAllVideo = createAsyncThunk(
+export const fetchAllVideo = createAsyncThunk<IVideoApiResponse[] | null, undefined, { state: RootState }>(
   "video/fetchVideo",
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiRequest<IVideoApiResponse[], undefined>(
         "/video/getAllVideo",
-        "GET"
+        "GET",undefined,false,false
       );
       if (response?.statusCode == 1) {
         return response?.data;

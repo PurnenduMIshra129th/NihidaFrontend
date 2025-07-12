@@ -22,7 +22,7 @@ const useFetch = <T,>(endpoint: string, method: HttpMethod = "GET", payload?: { 
       if (token && navigate) {
         validateTokenExpiry(navigate);
       }
-      const headers = tokenization
+      const headers = token && token !== "" && tokenization
         ? { Authorization: `Bearer ${token}` }
         : {};
 

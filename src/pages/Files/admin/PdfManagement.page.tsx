@@ -32,6 +32,8 @@ function PdfManagementPage() {
   useEffect(() => {
     if (data && data.statusCode === 1) {
       setFiles(data.data.files);
+    } else {
+      setFiles([]);
     }
   }, [data]);
 
@@ -44,6 +46,7 @@ function PdfManagementPage() {
         true
       );
       await fetchData();
+      // fetchFiles(resourceKey);
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error("Error deleting image:", err);
@@ -100,6 +103,7 @@ function PdfManagementPage() {
           note="Please upload a pdf file( *.pdf ) file"
           warning="Only one file is allowed to upload (max. 5MB per file)"
           accept="pdf"
+          onSuccess={() => fetchData()}
         />
       </div>
     </>

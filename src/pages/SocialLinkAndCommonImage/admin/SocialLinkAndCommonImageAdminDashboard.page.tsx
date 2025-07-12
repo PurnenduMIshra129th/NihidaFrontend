@@ -34,7 +34,7 @@ const SocialLinkAndCommonImageAdminDashboardPage = () => {
     <section className="max-w-7xl mx-auto px-4 pt-[8rem] pb-12">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-3xl font-bold text-custom_orange_1">
-          Manage SocialLinkAndCommonImage
+          Manage SocialLink and Common Image
         </h2>
       </div>
       <div className="flex flex-wrap gap-6 justify-center sm:justify-start">

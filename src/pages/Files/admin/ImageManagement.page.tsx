@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import Image from "../../../components/Image/Image";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
+import useFetch from "../../../hooks/useFetch";
 import { apiRequest } from "../../../services/apiService";
-import { IFile } from "../../../types/api/api.type";
+import { IFile, IFileApiData } from "../../../types/api/api.type";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function ImageManagementPage() {
@@ -13,14 +14,29 @@ export default function ImageManagementPage() {
   const { state } = useLocation();
 
   const {
+    getDataEndPoint = "noEndPoint",
     updateDataEndPoint = "noEndPoint",
     deleteDataEndPoint = "noEndPoint",
-    data = [],
-    onSuccess = () => {},
   } = state || {};
+
+  const { data, fetchData } = useFetch<IFileApiData>(
+    `${getDataEndPoint}/${id}`,
+    "GET",
+    undefined,
+    true
+  );
 
   const [showUpload, setShowUpload] = useState(false);
   const [fileID, setFileID] = useState<string>("noID");
+  const [files, setFiles] = useState<IFile[]>([]);
+
+  useEffect(() => {
+    if (data && data.statusCode === 1) {
+      setFiles(data.data.files);
+    } else {
+      setFiles([]);
+    }
+  }, [data]);
 
   const handleDelete = async (_id: string = "noID") => {
     try {
@@ -30,20 +46,19 @@ export default function ImageManagementPage() {
         undefined,
         true
       );
-      await onSuccess();
+      await fetchData();
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error("Error deleting image:", err);
     }
   };
 
-  const handleUpdate =async (_id: string = "noID") => {
+  const handleUpdate = async (_id: string = "noID") => {
     setFileID(_id);
     setShowUpload(true);
-    await onSuccess();
   };
-  if (data && data?.length === 0) {
-    return <EmptyState/>;
+  if (files && files?.length === 0) {
+    return <EmptyState />;
   }
 
   return (
@@ -52,7 +67,7 @@ export default function ImageManagementPage() {
         Manage Images
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {data.map((file: IFile) => (
+        {files.map((file: IFile) => (
           <div
             key={file?._id || "noID"}
             className="relative rounded-lg overflow-hidden border border-gray-200 shadow-md group transition-all duration-300 hover:shadow-xl"
@@ -82,11 +97,13 @@ export default function ImageManagementPage() {
       <UploadDocument
         isOpen={showUpload}
         onClose={() => setShowUpload(false)}
-        endpoint={`${updateDataEndPoint}?id=${id ? id : "noID"
-          }&fileID=${fileID}`}
+        endpoint={`${updateDataEndPoint}?id=${
+          id ? id : "noID"
+        }&fileID=${fileID}`}
         label="Upldate Image"
         note="Please upload a image( .jpg, .jpeg, .png ) file"
         warning="Only one file is allowed to upload (max. 5MB per file)"
+        onSuccess={() => fetchData()}
       />
     </div>
   );

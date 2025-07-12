@@ -5,13 +5,13 @@ import { IGalleryApiResponse } from "../../types/api/api.type";
 import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
-export const fetchAllGallery = createAsyncThunk(
+export const fetchAllGallery = createAsyncThunk<IGalleryApiResponse[] | null, undefined, { state: RootState }>(
   "gallery/fetchGallery",
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiRequest<IGalleryApiResponse[], undefined>(
         "/gallery/getAllGallery",
-        "GET"
+        "GET",undefined,false,false
       );
       if (response?.statusCode == 1) {
         return response?.data;

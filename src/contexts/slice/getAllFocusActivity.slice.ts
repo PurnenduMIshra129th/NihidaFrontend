@@ -1,3 +1,4 @@
+
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { apiRequest } from "../../services/apiService";
@@ -5,13 +6,13 @@ import { IFocusActivityApiResponse } from "../../types/api/api.type";
 import { handleApiError } from "../../utils/handleApiError";
 import { RootState } from "../store";
 
-export const fetchAllFocusActivity = createAsyncThunk(
+export const fetchAllFocusActivity = createAsyncThunk<IFocusActivityApiResponse[] | null, undefined, { state: RootState }>(
   "focusActivity/fetchFocusActivity",
   async (_, { rejectWithValue }) => {
     try {
       const response = await apiRequest<IFocusActivityApiResponse[], undefined>(
         "/focusActivity/getAllFocusActivity",
-        "GET"
+        "GET",undefined,false,false
       );
       if (response?.statusCode == 1) {
         return response?.data;
@@ -62,3 +63,5 @@ export const { setFocusActivityList } = focusActivitySlice.actions;
 export const selectFocusActivity = (state: RootState) =>
   state.focusActivity.focusActivityList;
 export default focusActivitySlice.reducer;
+
+

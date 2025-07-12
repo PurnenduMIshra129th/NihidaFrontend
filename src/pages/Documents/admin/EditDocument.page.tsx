@@ -11,7 +11,7 @@ import {
   IDocumentApiPayload,
   IDocumentApiResponse,
 } from "../../../types/api/api.type";
-import { parseCommaSeparatedString } from "../../../utils/util";
+import { formatDateForInput, parseCommaSeparatedString } from "../../../utils/util";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -72,7 +72,12 @@ export default function EditDocumentPage() {
         true
       );
       if (res && res.statusCode === 1) {
-        setInitialValues(res.data);
+        const formattedData = {
+          ...res.data,
+          issueDate: formatDateForInput(`${res?.data?.issueDate}`),
+          expiresAt: formatDateForInput(`${res?.data?.expiresAt}`),
+        };
+        setInitialValues(formattedData);
       }
     };
     fetchData();

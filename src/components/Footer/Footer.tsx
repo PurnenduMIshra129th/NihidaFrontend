@@ -54,22 +54,22 @@ function Footer() {
             <h3 className="text-2xl font-bold mb-4 text-white">Contact Us</h3>
 
             {/* Address */}
-            <p className="text-white/90 text-lg">
+            <p className="text-white/90 md:text-lg text-sm">
               {apiData?.addressLine1 || "234 Change Maker St."}
             </p>
             {apiData?.addressLine2 && (
-              <p className="text-white/90 text-lg">{apiData.addressLine2}</p>
+              <p className="text-white/90 md:text-lg text-sm">{apiData.addressLine2}</p>
             )}
-            <p className="text-white/90 text-lg">
+            <p className="text-white/90 md:text-lg text-sm">
               {apiData?.city || "City"}, {apiData?.state || "State"},{" "}
               {apiData?.postalCode || "ZIP"}
             </p>
-            <p className="text-white/90 text-lg">
+            <p className="text-white/90 md:text-lg text-sm">
               {apiData?.country || "Country"}
             </p>
 
             {/* Phone Numbers */}
-            <div className="text-white/90 text-lg mt-4 flex items-center gap-2">
+            <div className="text-white/90 md:text-lg text-sm mt-4 flex items-center gap-2">
               <CallIcon className="text-white/90" />
               <a
                 href={`tel:${apiData?.phoneNumber1 || "8144746685"}`}
@@ -78,7 +78,7 @@ function Footer() {
                 (+91) {apiData?.phoneNumber1 || "8144746685"}
               </a>
             </div>
-            <div className="text-white/90 text-lg mt-2 flex items-center gap-2">
+            <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
               <CallIcon className="text-white/90" />
               <a
                 href={`tel:${apiData?.phoneNumber2 || "8144746685"}`}
@@ -89,7 +89,7 @@ function Footer() {
             </div>
 
             {/* Email */}
-            <div className="text-white/90 text-lg mt-2 flex items-center gap-2">
+            <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
               <Gmail className="text-white/90 w-6 h-6 shrink-0" />
               <a
                 href={`mailto:${apiData?.email || "contact@example.com"}`}
@@ -103,7 +103,7 @@ function Footer() {
           {/* Quick Links */}
           <div>
             <h3 className="text-2xl font-bold mb-4 text-white">Quick Links</h3>
-            <ul className="space-y-2 text-lg text-white/90">
+            <ul className="space-y-2 md:text-lg text-sm text-white/90">
               {[
                 { label: "Home", path: "/" },
                 { label: "About Us", path: "/about" },
@@ -185,7 +185,7 @@ function Footer() {
           {/* Mission */}
           <div>
             <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-            <p className="text-lg text-white/90 leading-relaxed">
+            <p className="md:text-lg text-sm text-white/90 leading-relaxed">
               We empower communities through education, health, and sustainable
               development. Join us in making a difference.
             </p>

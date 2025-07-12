@@ -11,6 +11,7 @@ import {
   IUpcomingEventApiPayload,
   IUpcomingEventApiResponse,
 } from "../../../types/api/api.type";
+import { formatDateForInput } from "../../../utils/util";
 
 const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
@@ -55,7 +56,11 @@ export default function EditUpcomingEventPage() {
         IUpcomingEventApiPayload
       >(`/upcomingEvent/getUpcomingEventById/${id}`, "GET", undefined, true);
       if (res && res.statusCode === 1) {
-        setInitialValues(res.data);
+        const formattedData = {
+          ...res.data,
+          date: formatDateForInput(`${res?.data?.date}`),
+        };
+        setInitialValues(formattedData);
       }
     };
     fetchData();
