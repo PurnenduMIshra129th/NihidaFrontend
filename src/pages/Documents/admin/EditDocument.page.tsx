@@ -1,11 +1,14 @@
 import { ErrorMessage, Field, Formik } from "formik";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, useNavigate, useParams } from "react-router";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllDocument } from "../../../contexts/slice/getAllDocument.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import {
   IDocumentApiPayload,
@@ -58,6 +61,7 @@ const validationSchema = Yup.object({
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function EditDocumentPage() {
   const { id } = useParams();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [initialValues, setInitialValues] =
     useState<IDocumentApiPayload | null>(null);
@@ -91,6 +95,7 @@ export default function EditDocumentPage() {
         values,
         true
       );
+      await dispatch(fetchAllDocument());
       navigate("/admin/document-dashboard");
     }
   };

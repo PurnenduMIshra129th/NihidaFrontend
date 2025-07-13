@@ -1,11 +1,14 @@
 import { ErrorMessage, Field, Formik } from "formik";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, useNavigate, useParams } from "react-router";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllNews } from "../../../contexts/slice/getAllNews.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import { INewsApiPayload, INewsApiResponse } from "../../../types/api/api.type";
 import { formatDateForInput, parseCommaSeparatedString } from "../../../utils/util";
@@ -36,6 +39,7 @@ const validationSchema = Yup.object({
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function EditNewsPage() {
   const { id } = useParams();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [initialValues, setInitialValues] = useState<INewsApiPayload | null>(
     null
@@ -69,6 +73,7 @@ export default function EditNewsPage() {
         values,
         true
       );
+      await dispatch(fetchAllNews());
       navigate("/admin/news-dashboard");
     }
   };

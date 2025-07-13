@@ -1,26 +1,26 @@
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
-import useFetch from "../../../../hooks/useFetch";
-import { IFocusActivityApiResponse } from "../../../../types/api/api.type";
+import { selectFocusActivity } from "../../../../contexts/slice/getAllFocusActivity.slice";
 import InformationCard from "../../../Cards/InformationCard";
 import NoDataComponent from "../../../EmptyState/NoData";
 import SectionDivider from "../../../SectionDivider/SectionDivider";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function FocusActivityScreen() {
-  const { data } = useFetch<IFocusActivityApiResponse[]>(
-    "focusActivity/getAllFocusActivity"
-  );
-  const [apiData, setApiData] = useState<IFocusActivityApiResponse[]>();
+  const data = useSelector(selectFocusActivity)
+  // const { data } = useFetch<IFocusActivityApiResponse[]>(
+  //   "focusActivity/getAllFocusActivity"
+  // );
+  // const [apiData, setApiData] = useState<IFocusActivityApiResponse[]>();
 
-  useEffect(() => {
-    const manageData = () => {
-      if (data && data.statusCode == 1 && data.data.length > 0) {
-        setApiData(data.data);
-      }
-    };
-    manageData();
-  }, [data]);
+  // useEffect(() => {
+  //   const manageData = () => {
+  //     if (data && data.statusCode == 1 && data.data.length > 0) {
+  //       setApiData(data.data);
+  //     }
+  //   };
+  //   manageData();
+  // }, [data]);
   return (
     <>
       <div className="flex justify-center items-center flex-col sm:w-[80%] w-full">
@@ -29,11 +29,11 @@ function FocusActivityScreen() {
           routePath="/user/view-all-focus-activity"
         />
         <div className="flex flex-wrap gap-6 justify-center sm:justify-center w-full my-3">
-          {!apiData || apiData.length === 0 ? (
+          {!data || data.length === 0 ? (
             <NoDataComponent message="No focus activity available at the moment" />
           ) : null}
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {apiData?.slice(0, 3)?.map((item, index) => (
+            {data?.slice(0, 3)?.map((item, index) => (
               <InformationCard
                 key={index}
                 textTime={item.createdAt}

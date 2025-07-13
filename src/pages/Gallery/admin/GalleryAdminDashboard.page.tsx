@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -24,9 +24,6 @@ const GalleryAdminDashboardPage = () => {
     setSelectedId(id);
     setShowUpload(true);
   };
-  useEffect(() => {
-    dispatch(fetchAllGallery());
-  }, [dispatch]);
 
   const handleDelete = async (id: string) => {
     await apiRequest(`gallery/deleteGallery/${id}`, "DELETE", undefined, true);
@@ -72,6 +69,7 @@ const GalleryAdminDashboardPage = () => {
                 }`,
                 {
                   state: {
+                    key : "gallery",
                     getDataEndPoint: `/gallery/getGalleryById`,
                     updateDataEndPoint: `/upload/updateGalleryFile`,
                     deleteDataEndPoint: `/upload/deleteGalleryFile`,

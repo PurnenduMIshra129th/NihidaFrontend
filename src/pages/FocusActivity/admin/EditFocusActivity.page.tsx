@@ -1,11 +1,14 @@
 import { FieldArray, Formik } from "formik";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, useNavigate, useParams } from "react-router";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllFocusActivity } from "../../../contexts/slice/getAllFocusActivity.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import {
   IFocusActivityApiPayload,
@@ -38,6 +41,7 @@ const validationSchema = Yup.object({
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function EditFocusActivityPage() {
   const { id } = useParams();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [initialValues, setInitialValues] =
     useState<IFocusActivityApiPayload | null>(null);
@@ -69,6 +73,7 @@ export default function EditFocusActivityPage() {
         values,
         true
       );
+      await dispatch(fetchAllFocusActivity());
       navigate("/admin/focus-activity-dashboard");
     }
   };

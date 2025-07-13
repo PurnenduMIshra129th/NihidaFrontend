@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -24,10 +24,6 @@ const DocumentAdminDashboardPage = () => {
     setShowUpload(true);
   };
   
-  useEffect(() => {
-    dispatch(fetchAllDocument());
-  }, [dispatch]);
-
   const handleDelete = async (id: string) => {
     await apiRequest(
       `document/deleteDocument/${id}`,
@@ -77,6 +73,7 @@ const DocumentAdminDashboardPage = () => {
                 }`,
                 {
                   state: {
+                    key: "document",
                     getDataEndPoint: `/document/getDocumentById`,
                     updateDataEndPoint: `/upload/updateDocumentFile`,
                     deleteDataEndPoint: `/upload/deleteDocumentFile`,

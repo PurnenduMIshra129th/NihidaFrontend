@@ -50,134 +50,89 @@ import VideoListPage from "./pages/video/user/ViewAllVideo.page";
 import ViewVideoByIdPage from "./pages/video/user/ViewVideoById.page";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      { index: true, element: <HomePage /> },
-      {
-        path: "login",
-        element: (
-          <ProtectedRoute>
-            <LoginPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "signup",
-        element: (
-          <ProtectedRoute>
-            <SignupPage />
-          </ProtectedRoute>
-        ),
-      },
+ {
+  path: "/",
+  element: <App />,
+  children: [
+    { index: true, element: <HomePage /> },
 
-      {
-        path: "admin",
-        element: <ProtectedRoute />,
-        children: [
-          { index: true, element: <AdminControlPanelPage /> },
-          { path: "add-focus-activity", element: <AddFocusActivityPage /> },
-          {
-            path: "focus-activity-dashboard",
-            element: <FocusActivityAdminDashboardPage />,
-          },
-          {
-            path: "edit-focus-activity/:id",
-            element: <EditFocusActivityPage />,
-          },
-          {
-            path: "view-focus-activity/:id",
-            element: <ViewFocusActivityByIdPage />,
-          },
-          { path: "add-gallery", element: <AddGalleryPage /> },
-          { path: "gallery-dashboard", element: <GalleryAdminDashboardPage /> },
-          { path: "edit-gallery/:id", element: <EditGalleryPage /> },
-          { path: "view-gallery/:id", element: <ViewGalleryByIdPage /> },
-          { path: "add-news", element: <AddNewsPage /> },
-          { path: "news-dashboard", element: <NewsAdminDashboardPage /> },
-          { path: "edit-news/:id", element: <EditNewsPage /> },
-          { path: "view-news/:id", element: <ViewNewsByIdPage /> },
-          { path: "add-document", element: <AddDocumentPage /> },
-          {
-            path: "document-dashboard",
-            element: <DocumentAdminDashboardPage />,
-          },
-          { path: "edit-document/:id", element: <EditDocumentPage /> },
-          { path: "view-document/:id", element: <ViewDocumentByIdPage /> },
-          { path: "add-upcoming-event", element: <AddUpcomingEventPage /> },
-          {
-            path: "upcoming-event-dashboard",
-            element: <UpcomingEventAdminDashboardPage />,
-          },
-          {
-            path: "edit-upcoming-event/:id",
-            element: <EditUpcomingEventPage />,
-          },
-          {
-            path: "view-upcoming-event/:id",
-            element: <ViewUpcomingEventByIdPage />,
-          },
-          { path: "add-video", element: <AddVideoPage /> },
-          { path: "video-dashboard", element: <VideoAdminDashboardPage /> },
-          { path: "edit-video/:id", element: <EditVideoPage /> },
-          { path: "view-video/:id", element: <ViewVideoByIdPage /> },
-          { path: "image-management/:id", element: <ImageManagementPage /> },
-          { path: "file-management/:id", element: <PdfManagementPage /> },
-          {
-            path: "socialLinkAndCommonImage-dashboard",
-            element: <SocialLinkAndCommonImageAdminDashboardPage />,
-          },
-          {
-            path: "edit-socialLinkAndCommonImage/:id",
-            element: <EditSocialLinkAndCommonImagePage />,
-          },
-        ],
-      },
-      {
-        path: "user",
-        element: <ProtectedRoute />,
-        children: [
-          {
-            path: "view-focus-activity/:id",
-            element: <ViewFocusActivityByIdPage />,
-          },
-          {
-            path: "view-all-focus-activity",
-            element: <FocusActivityListPage />,
-          },
-          { path: "view-gallery/:id", element: <ViewGalleryByIdPage /> },
-          { path: "view-all-gallery", element: <GalleryListPage /> },
-          { path: "view-news/:id", element: <ViewNewsByIdPage /> },
-          { path: "view-all-news", element: <NewsListPage /> },
-          { path: "view-document/:id", element: <ViewDocumentByIdPage /> },
-          { path: "view-all-document", element: <DocumentListPage /> },
-          {
-            path: "view-upcoming-event/:id",
-            element: <ViewUpcomingEventByIdPage />,
-          },
-          {
-            path: "view-all-upcoming-event",
-            element: <UpcomingEventListPage />,
-          },
-          { path: "view-video/:id", element: <ViewVideoByIdPage /> },
-          { path: "view-all-video", element: <VideoListPage /> },
-          { path: "view-all-image", element: <ViewAllImagePage /> },
-        ],
-      },
-      {
-        path: "about",
-        children: [
-          { index: true, element: <AboutUsPage /> },
-          { path: "mission", element: <MissionPage /> },
-          { path: "vision", element: <VisionPage /> },
-          { path: "approch", element: <ApprochPage /> },
-          { path: "plan", element: <FuturePlanPage /> },
-        ],
-      },
+    {
+      element: <ProtectedRoute />,
+      children: [
+        { path: "login", element: <LoginPage /> },
+        { path: "signup", element: <SignupPage /> },
+      ],
+    },
 
-      { path: "notAccessible", element: <PageNotAccessible /> },
-      { path: "*", element: <PageNotFound /> },
-    ],
-  },
+    {
+      path: "admin",
+      element: <ProtectedRoute />,
+      children: [
+        { index: true, element: <AdminControlPanelPage /> },
+        { path: "add-focus-activity", element: <AddFocusActivityPage /> },
+        { path: "focus-activity-dashboard", element: <FocusActivityAdminDashboardPage /> },
+        { path: "edit-focus-activity/:id", element: <EditFocusActivityPage /> },
+        { path: "view-focus-activity/:id", element: <ViewFocusActivityByIdPage /> },
+        { path: "add-gallery", element: <AddGalleryPage /> },
+        { path: "gallery-dashboard", element: <GalleryAdminDashboardPage /> },
+        { path: "edit-gallery/:id", element: <EditGalleryPage /> },
+        { path: "view-gallery/:id", element: <ViewGalleryByIdPage /> },
+        { path: "add-news", element: <AddNewsPage /> },
+        { path: "news-dashboard", element: <NewsAdminDashboardPage /> },
+        { path: "edit-news/:id", element: <EditNewsPage /> },
+        { path: "view-news/:id", element: <ViewNewsByIdPage /> },
+        { path: "add-document", element: <AddDocumentPage /> },
+        { path: "document-dashboard", element: <DocumentAdminDashboardPage /> },
+        { path: "edit-document/:id", element: <EditDocumentPage /> },
+        { path: "view-document/:id", element: <ViewDocumentByIdPage /> },
+        { path: "add-upcoming-event", element: <AddUpcomingEventPage /> },
+        { path: "upcoming-event-dashboard", element: <UpcomingEventAdminDashboardPage /> },
+        { path: "edit-upcoming-event/:id", element: <EditUpcomingEventPage /> },
+        { path: "view-upcoming-event/:id", element: <ViewUpcomingEventByIdPage /> },
+        { path: "add-video", element: <AddVideoPage /> },
+        { path: "video-dashboard", element: <VideoAdminDashboardPage /> },
+        { path: "edit-video/:id", element: <EditVideoPage /> },
+        { path: "view-video/:id", element: <ViewVideoByIdPage /> },
+        { path: "image-management/:id", element: <ImageManagementPage /> },
+        { path: "file-management/:id", element: <PdfManagementPage /> },
+        { path: "socialLinkAndCommonImage-dashboard", element: <SocialLinkAndCommonImageAdminDashboardPage /> },
+        { path: "edit-socialLinkAndCommonImage/:id", element: <EditSocialLinkAndCommonImagePage /> },
+      ],
+    },
+
+    {
+      path: "user",
+      element: <ProtectedRoute />,
+      children: [
+        { path: "view-focus-activity/:id", element: <ViewFocusActivityByIdPage /> },
+        { path: "view-all-focus-activity", element: <FocusActivityListPage /> },
+        { path: "view-gallery/:id", element: <ViewGalleryByIdPage /> },
+        { path: "view-all-gallery", element: <GalleryListPage /> },
+        { path: "view-news/:id", element: <ViewNewsByIdPage /> },
+        { path: "view-all-news", element: <NewsListPage /> },
+        { path: "view-document/:id", element: <ViewDocumentByIdPage /> },
+        { path: "view-all-document", element: <DocumentListPage /> },
+        { path: "view-upcoming-event/:id", element: <ViewUpcomingEventByIdPage /> },
+        { path: "view-all-upcoming-event", element: <UpcomingEventListPage /> },
+        { path: "view-video/:id", element: <ViewVideoByIdPage /> },
+        { path: "view-all-video", element: <VideoListPage /> },
+        { path: "view-all-image", element: <ViewAllImagePage /> },
+      ],
+    },
+
+    {
+      path: "about",
+      children: [
+        { index: true, element: <AboutUsPage /> },
+        { path: "mission", element: <MissionPage /> },
+        { path: "vision", element: <VisionPage /> },
+        { path: "approch", element: <ApprochPage /> },
+        { path: "plan", element: <FuturePlanPage /> },
+      ],
+    },
+
+    { path: "notAccessible", element: <PageNotAccessible /> },
+    { path: "*", element: <PageNotFound /> },
+  ],
+}
 ]);

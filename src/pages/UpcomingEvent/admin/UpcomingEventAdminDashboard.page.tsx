@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -18,10 +18,6 @@ const UpcomingEventAdminDashboardPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const data = useSelector(selectUpcomingEvent);
-
-  useEffect(() => {
-    dispatch(fetchAllUpcomingEvent());
-  }, [dispatch]);
 
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -75,9 +71,10 @@ const UpcomingEventAdminDashboardPage = () => {
                 `/admin/image-management/${event?._id ? event._id : "noID"}`,
                 {
                   state: {
+                    key: "upcomingEvent",
                     getDataEndPoint: `/upcomingEvent/getUpcomingEventById`,
-                    updateDataEndPoint: `/upload/updateFocusActivityFile`,
-                    deleteDataEndPoint: `/upload/deleteFocusActivityFile`,
+                    updateDataEndPoint: `/upload/updateUpcomingEventFile`,
+                    deleteDataEndPoint: `/upload/deleteUpcomingEventFile`,
                   },
                 }
               )

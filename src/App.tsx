@@ -12,6 +12,12 @@ import Navbar from "./components/Navbar/Navbar";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { AlertProvider } from "./contexts/context/alert/AlertContext";
 import { LoaderProvider } from "./contexts/context/loader/LoaderContext";
+import { fetchAllDocument } from "./contexts/slice/getAllDocument.slice";
+import { fetchAllFocusActivity } from "./contexts/slice/getAllFocusActivity.slice";
+import { fetchAllGallery } from "./contexts/slice/getAllGallery.slice";
+import { fetchAllNews } from "./contexts/slice/getAllNews.slice";
+import { fetchAllUpcomingEvent } from "./contexts/slice/getAllUpcomingEvent.slice";
+import { fetchAllVideo } from "./contexts/slice/getAllVideo.slice";
 import { fetchUser } from "./contexts/slice/getUser.slice";
 import { fetchSocialLinkAndCommonImage } from "./contexts/slice/socialLinkAndCommonImage.slice";
 import { AppDispatch } from "./contexts/store";
@@ -36,6 +42,12 @@ function App() {
       dispatch(fetchUser());
     }
     dispatch(fetchSocialLinkAndCommonImage());
+    dispatch(fetchAllDocument());
+    dispatch(fetchAllGallery());
+    dispatch(fetchAllUpcomingEvent());
+    dispatch(fetchAllFocusActivity());
+    dispatch(fetchAllVideo());
+    dispatch(fetchAllNews());
   }, [dispatch, token]);
 
   return (

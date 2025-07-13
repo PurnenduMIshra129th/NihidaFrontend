@@ -63,6 +63,7 @@ const SocialLinkAndCommonImageAdminDashboardPage = () => {
                 }`,
                 {
                   state: {
+                    key:"socialLinkAndCommonImage",
                     getDataEndPoint: `/socialLinkAndCommonImage/getSocialLinkAndCommonImageById`,
                     updateDataEndPoint: `/upload/updateSocialLinkAndCommonImageFile`,
                     deleteDataEndPoint: `/upload/deleteSocialLinkAndCommonImageFile`,

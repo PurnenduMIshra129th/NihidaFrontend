@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -18,9 +18,6 @@ const VideoAdminDashboardPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const data = useSelector(selectVideo);
-  useEffect(() => {
-    dispatch(fetchAllVideo());
-  }, [dispatch]);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
@@ -68,6 +65,7 @@ const VideoAdminDashboardPage = () => {
                 `/admin/image-management/${video?._id ? video._id : "noID"}`,
                 {
                   state: {
+                    key:"video",
                     getDataEndPoint: `/video/getVideoById`,
                     updateDataEndPoint: `/upload/updateVideoFile`,
                     deleteDataEndPoint: `/upload/deleteVideoFile`,

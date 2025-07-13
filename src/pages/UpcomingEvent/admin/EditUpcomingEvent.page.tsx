@@ -1,11 +1,14 @@
 import { Field, FieldArray, Formik } from "formik";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, useNavigate, useParams } from "react-router";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllUpcomingEvent } from "../../../contexts/slice/getAllUpcomingEvent.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import {
   IUpcomingEventApiPayload,
@@ -44,6 +47,7 @@ const validationSchema = Yup.object({
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function EditUpcomingEventPage() {
   const { id } = useParams();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [initialValues, setInitialValues] =
     useState<IUpcomingEventApiPayload | null>(null);
@@ -74,6 +78,7 @@ export default function EditUpcomingEventPage() {
         values,
         true
       );
+      await dispatch(fetchAllUpcomingEvent());
       navigate("/admin/upcoming-event-dashboard");
     }
   };

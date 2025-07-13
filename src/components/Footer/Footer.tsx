@@ -70,7 +70,7 @@ function Footer() {
 
             {/* Phone Numbers */}
             <div className="text-white/90 md:text-lg text-sm mt-4 flex items-center gap-2">
-              <CallIcon className="text-white/90" />
+              <CallIcon className="text-white/90 w-4 h-4 shrink-0" />
               <a
                 href={`tel:${apiData?.phoneNumber1 || "8144746685"}`}
                 className="hover:underline"
@@ -79,7 +79,7 @@ function Footer() {
               </a>
             </div>
             <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
-              <CallIcon className="text-white/90" />
+              <CallIcon className="text-white/90 w-4 h-4 shrink-0" />
               <a
                 href={`tel:${apiData?.phoneNumber2 || "8144746685"}`}
                 className="hover:underline"
@@ -90,10 +90,10 @@ function Footer() {
 
             {/* Email */}
             <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
-              <Gmail className="text-white/90 w-6 h-6 shrink-0" />
+              <Gmail className="text-white/90 w-4 h-4 shrink-0" />
               <a
                 href={`mailto:${apiData?.email || "contact@example.com"}`}
-                className="hover:underline break-all"
+                className="hover:underline break-words"
               >
                 {apiData?.email || "contact@example.com"}
               </a>

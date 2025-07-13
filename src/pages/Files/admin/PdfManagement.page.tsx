@@ -1,9 +1,13 @@
+import { Action } from "@reduxjs/toolkit";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import PDFPreviewCard from "../../../components/Pdf/PDFPreviewCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
+import { ResourceKey, resourceThunkMap } from "../../../contexts/fetchMap";
+import { AppDispatch } from "../../../contexts/store";
 import useFetch from "../../../hooks/useFetch";
 import { apiRequest } from "../../../services/apiService";
 import { IFile, IFileApiData } from "../../../types/api/api.type";
@@ -12,8 +16,9 @@ import { IFile, IFileApiData } from "../../../types/api/api.type";
 function PdfManagementPage() {
   const { id = "noID" } = useParams();
   const { state } = useLocation();
-
+  const dispatch = useDispatch<AppDispatch>();
   const {
+    key = "noKey",
     getDataEndPoint = "noEndPoint",
     updateDataEndPoint = "noEndPoint",
     deleteDataEndPoint = "noEndPoint",
@@ -32,6 +37,12 @@ function PdfManagementPage() {
   useEffect(() => {
     if (data && data.statusCode === 1) {
       setFiles(data.data.files);
+      if (data.data.files.length === 0) {
+        const resourceThunk = resourceThunkMap[key as ResourceKey];
+        if (resourceThunk) {
+          dispatch(resourceThunk() as unknown as Action);
+        }
+      }
     } else {
       setFiles([]);
     }

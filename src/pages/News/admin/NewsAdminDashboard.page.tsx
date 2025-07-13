@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -18,9 +18,6 @@ const NewsAdminDashboardPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const data = useSelector(selectNews);
-  useEffect(() => {
-    dispatch(fetchAllNews());
-  }, [dispatch]);
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
@@ -68,6 +65,7 @@ const NewsAdminDashboardPage = () => {
                 `/admin/image-management/${news?._id ? news._id : "noID"}`,
                 {
                   state: {
+                    key: "news",
                     getDataEndPoint: `/news/getNewsById`,
                     updateDataEndPoint: `/upload/updateNewsFile`,
                     deleteDataEndPoint: `/upload/deleteNewsFile`,

@@ -1,8 +1,11 @@
 import { FieldArray, Form, Formik } from "formik";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllFocusActivity } from "../../../contexts/slice/getAllFocusActivity.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import { IFocusActivityApiPayload,IFocusActivityApiResponse } from "../../../types/api/api.type";
 
@@ -43,6 +46,7 @@ const validationSchema = Yup.object({
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function AddFocusActivityPage() {
+  const dispatch = useDispatch<AppDispatch>();
   const handleSubmit = async (values: IFocusActivityApiPayload) => {
     await apiRequest<IFocusActivityApiResponse, IFocusActivityApiPayload>(
       "/focusActivity/createFocusActivity",
@@ -50,6 +54,7 @@ export default function AddFocusActivityPage() {
       values,
       true
     );
+    dispatch(fetchAllFocusActivity());
   };
 
   return (

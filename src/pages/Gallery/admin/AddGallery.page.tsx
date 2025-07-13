@@ -1,10 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllGallery } from "../../../contexts/slice/getAllGallery.slice";
 import { getUser } from "../../../contexts/slice/getUser.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import { IGalleryApiPayload,IGalleryApiResponse } from "../../../types/api/api.type";
 
@@ -48,6 +50,7 @@ const validationSchema = Yup.object({
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function AddGalleryPage() {
   const userDetails = useSelector(getUser);
+  const dispatch = useDispatch<AppDispatch>();
   const handleSubmit = async (values: IGalleryApiPayload) => {
     values.uploadedBy = userDetails?._id;
     await apiRequest<IGalleryApiResponse, IGalleryApiPayload>(
@@ -56,6 +59,7 @@ export default function AddGalleryPage() {
       values,
       true
     );
+    await dispatch(fetchAllGallery());
   };
 
   return (

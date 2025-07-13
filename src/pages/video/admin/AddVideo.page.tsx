@@ -1,10 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllVideo } from "../../../contexts/slice/getAllVideo.slice";
 import { getUser } from "../../../contexts/slice/getUser.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import {
   IVideoApiPayload,
@@ -52,6 +54,7 @@ const validationSchema = Yup.object({
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function AddVideoPage() {
   const userDetails = useSelector(getUser);
+  const dispatch = useDispatch<AppDispatch>();
   const handleSubmit = async (values: IVideoApiPayload) => {
     values.uploadedBy = userDetails?._id;
     await apiRequest<IVideoApiResponse, IVideoApiPayload>(
@@ -60,6 +63,7 @@ export default function AddVideoPage() {
       values,
       true
     );
+    await dispatch(fetchAllVideo());
   };
 
   return (

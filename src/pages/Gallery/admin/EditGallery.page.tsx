@@ -1,11 +1,14 @@
 import { ErrorMessage, Field, Formik } from "formik";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Form, useNavigate, useParams } from "react-router";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllGallery } from "../../../contexts/slice/getAllGallery.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import {
   IGalleryApiPayload,
@@ -43,6 +46,7 @@ const validationSchema = Yup.object({
 export default function EditGalleryPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   const [initialValues, setInitialValues] = useState<IGalleryApiPayload | null>(
     null
   );
@@ -75,6 +79,7 @@ export default function EditGalleryPage() {
         values,
         true
       );
+      await dispatch(fetchAllGallery());
       navigate("/admin/gallery-dashboard");
     }
   };

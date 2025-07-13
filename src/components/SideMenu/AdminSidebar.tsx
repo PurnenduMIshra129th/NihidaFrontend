@@ -94,9 +94,10 @@ function AdminSidebar({
   };
   return (
     <div
-      className={`fixed top-0 h-full w-64 bg-white shadow-lg border-r border-gray-200 z-30 transition-transform duration-300
-        ${showSidebar ? "translate-x-0 right-0" : "translate-x-full right-0"} 
-        md:translate-x-0 md:right-auto md:left-0`}
+      className={`fixed top-0 h-screen w-64 bg-white shadow-lg border-r border-gray-200 z-30 transition-transform duration-300
+  overflow-y-auto
+  ${showSidebar ? "translate-x-0 right-0" : "translate-x-full right-0"} 
+  md:translate-x-0 md:right-auto md:left-0`}
     >
       {/* Close button for mobile */}
       <div className="md:hidden flex justify-end p-4 pt-[8rem]">
@@ -105,8 +106,8 @@ function AdminSidebar({
         </button>
       </div>
 
-      {/* Navigation */}
-      <nav className="p-4 md:pt-[8rem] pt-0 space-y-2">
+      {/* Navigation Section */}
+      <nav className="flex-1 p-4 md:pt-[8rem] pt-0 space-y-2 overflow-y-auto">
         {sidebarItems.map((item) => {
           const isActive = checkActive(item);
           return (
@@ -141,13 +142,6 @@ function AdminSidebar({
           );
         })}
       </nav>
-
-      {/* Logout Button */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-200">
-        <button className="w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors">
-          Logout
-        </button>
-      </div>
     </div>
   );
 }

@@ -1,10 +1,12 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 
 import Button from "../../../components/Button/Button";
 import FormikInput from "../../../components/Input/FormikInput";
+import { fetchAllNews } from "../../../contexts/slice/getAllNews.slice";
 import { getUser } from "../../../contexts/slice/getUser.slice";
+import { AppDispatch } from "../../../contexts/store";
 import { apiRequest } from "../../../services/apiService";
 import { INewsApiPayload, INewsApiResponse } from "../../../types/api/api.type";
 import { parseCommaSeparatedString } from "../../../utils/util";
@@ -48,6 +50,7 @@ const validationSchema = Yup.object({
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function AddNewsPage() {
   const userDetails = useSelector(getUser); 
+  const dispatch = useDispatch<AppDispatch>();
   const handleSubmit = async (values: INewsApiPayload) => {
     values.createdBy = userDetails?._id;
     await apiRequest<INewsApiResponse, INewsApiPayload>(
@@ -56,6 +59,7 @@ export default function AddNewsPage() {
       values,
       true
     );
+    await dispatch(fetchAllNews());
   };
 
   return (

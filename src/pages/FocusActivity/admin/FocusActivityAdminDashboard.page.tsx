@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -6,6 +6,7 @@ import Button from "../../../components/Button/Button";
 import EmptyState from "../../../components/EmptyState/EmptyState";
 import FocusActivityAdminCard from "../../../components/section/focusActivity/admin/FocusActivityAdminCard";
 import UploadDocument from "../../../components/UploadDocument/UploadDocument";
+import { ResourceKey } from "../../../contexts/fetchMap";
 import {
   fetchAllFocusActivity,
   selectFocusActivity,
@@ -24,9 +25,6 @@ const FocusActivityAdminDashboardPage = () => {
     setSelectedId(id);
     setShowUpload(true);
   };
-  useEffect(() => {
-    dispatch(fetchAllFocusActivity());
-  }, [dispatch]);
 
   const handleDelete = async (id: string) => {
     await apiRequest(
@@ -81,6 +79,7 @@ const FocusActivityAdminDashboardPage = () => {
                 }`,
                 {
                   state: {
+                    key:"focusActivity" as ResourceKey,
                     getDataEndPoint: `/focusActivity/getFocusActivityById`,
                     updateDataEndPoint: `/upload/updateFocusActivityFile`,
                     deleteDataEndPoint: `/upload/deleteFocusActivityFile`,
