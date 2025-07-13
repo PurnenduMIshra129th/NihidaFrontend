@@ -1,6 +1,7 @@
 import { Formik } from "formik";
 import { useNavigate } from "react-router";
 import { Link } from "react-router";
+import * as Yup from "yup";
 
 import Button from "../../components/Button/Button";
 import FormikInput from "../../components/Input/FormikInput";
@@ -8,6 +9,15 @@ import { apiRequest } from "../../services/apiService";
 import { ILoginApiPayload, ILoginApiResponse } from "../../types/api/api.type";
 import { defaultImage, userRole } from "../../utils/constant";
 
+const loginValidationSchema = Yup.object({
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+
+  password: Yup.string()
+    .min(6, "Password must be at least 6 characters")
+    .required("Password is required"),
+});
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function LoginPage() {
   const navigate = useNavigate();
@@ -15,6 +25,7 @@ function LoginPage() {
     <>
       <Formik
         initialValues={{ email: "", password: "" }}
+        validationSchema={loginValidationSchema}
         onSubmit={async (values: ILoginApiPayload) => {
           const result = await apiRequest<ILoginApiResponse, ILoginApiPayload>(
             "authentication/login",

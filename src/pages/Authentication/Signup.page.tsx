@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router";
+import * as Yup from "yup";
 
 import Button from "../../components/Button/Button";
 import FormikInput from "../../components/Input/FormikInput";
@@ -7,6 +8,28 @@ import { eventBus } from "../../contexts/context/eventBus";
 import { apiRequest } from "../../services/apiService";
 import { ISignUpApiPayload, ISignUpApiResponse } from "../../types/api/api.type";
 
+const signUpValidationSchema = Yup.object({
+  userName: Yup.string()
+    .trim()
+    .required("Username is required")
+    .min(3, "Username must be at least 3 characters"),
+
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+
+  password: Yup.string()
+    .required("Password is required")
+    .min(6, "Password must be at least 6 characters"),
+
+  confirmPassword: Yup.string()
+    .required("Please confirm your password")
+    .oneOf([Yup.ref("password")], "Passwords must match"),
+
+  role: Yup.string()
+    .required("Role is required")
+    .oneOf(["user", "admin"], "Role must be either 'user' or 'admin'"),
+});
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function SignupPage() {
   const navigate = useNavigate();
@@ -20,6 +43,7 @@ function SignupPage() {
           confirmPassword: "",
           role: "user",
         }}
+        validationSchema={signUpValidationSchema}
         onSubmit={async (values) => {
           const payload = { ...values, role: values.role || "user" };
 
