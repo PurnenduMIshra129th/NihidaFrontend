@@ -8,19 +8,6 @@ import SectionDivider from "../../../SectionDivider/SectionDivider";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function GalleryScreen() {
   const data = useSelector(selectGallery);
-  // const { data } = useFetch<IGalleryApiResponse[]>(
-  //   "gallery/getAllGallery"
-  // );
-  // const [apiData, setApiData] = useState<IGalleryApiResponse[]>();
-
-  // useEffect(() => {
-  //   const manageData = () => {
-  //     if (data && data.statusCode == 1 && data.data.length > 0) {
-  //       setApiData(data.data);
-  //     }
-  //   };
-  //   manageData();
-  // }, [data]);
   return (
     <>
       <div className="flex justify-center items-center flex-col sm:w-[80%] w-full">

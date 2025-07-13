@@ -8,17 +8,6 @@ import VideoCard from "./videoCard";
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function VideoScreen() {
   const data = useSelector(selectVideo);
-  // const { data } = useFetch<IVideoApiResponse[]>("video/getAllVideo");
-  // const [apiData, setApiData] = useState<IVideoApiResponse[]>();
-
-  // useEffect(() => {
-  //   const manageData = () => {
-  //     if (data && data.statusCode == 1 && data.data.length > 0) {
-  //       setApiData(data.data.slice(0, 3));
-  //     }
-  //   };
-  //   manageData();
-  // }, [data]);
   return (
     <>
       <div className="flex justify-center items-center flex-col sm:w-[80%] w-full">
@@ -31,7 +20,7 @@ function VideoScreen() {
             <NoDataComponent message="No video available at the moment" />
           ) : null}
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {data?.map((item) => (
+            {data?.slice(0, 3)?.map((item) => (
               <VideoCard
                 key={item._id}
                 id={item._id || ""}
