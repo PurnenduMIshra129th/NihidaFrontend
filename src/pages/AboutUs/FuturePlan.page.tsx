@@ -9,7 +9,7 @@ function FuturePlanPage() {
       <div className="w-full">
         <BannerScreen
           textHeading="Future Plan"
-          textDescription="Water Conservation, Rain Water Harvesting, Ground water Recharges, Environmental protection, Natural Farming, Organic Products promotion etc."
+          textDescription="Water Conservation, Rain Water Harvesting, Ground water Recharges, Environmental protection etc."
         />
         <div className="px-6 md:px-20 py-12 bg-white text-gray-800">
           <div className="max-w-5xl mx-auto space-y-6">
