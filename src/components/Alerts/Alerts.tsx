@@ -1,6 +1,55 @@
 import { useAlert } from "../../contexts/context/alert/AlertContext";
-import { alertStyles } from "../../utils/constant";
+import {
+  CrossIcon,
+  DangerTriangleOutline,
+  Info,
+  Neutral,
+  Success,
+  Warning,
+} from "../Icons/Icon";
 
+const alertStyles = {
+  info: {
+    bg: "bg-blue-50 dark:bg-gray-800",
+    text: "text-blue-800 dark:text-blue-400",
+    buttonBg:
+      "bg-blue-50 hover:bg-blue-200 dark:bg-gray-800 dark:hover:bg-gray-700",
+    buttonText: "text-blue-500 dark:text-blue-400",
+    icon: <Info />,
+  },
+  danger: {
+    bg: "bg-red-50 dark:bg-gray-800",
+    text: "text-red-800 dark:text-red-400",
+    buttonBg:
+      "bg-red-50 hover:bg-red-200 dark:bg-gray-800 dark:hover:bg-gray-700",
+    buttonText: "text-red-500 dark:text-red-400",
+    icon: <DangerTriangleOutline />,
+  },
+  success: {
+    bg: "bg-green-50 dark:bg-gray-800",
+    text: "text-green-800 dark:text-green-400",
+    buttonBg:
+      "bg-green-50 hover:bg-green-200 dark:bg-gray-800 dark:hover:bg-gray-700",
+    buttonText: "text-green-500 dark:text-green-400",
+    icon: <Success />,
+  },
+  warning: {
+    bg: "bg-yellow-50 dark:bg-gray-800",
+    text: "text-yellow-800 dark:text-yellow-300",
+    buttonBg:
+      "bg-yellow-50 hover:bg-yellow-200 dark:bg-gray-800 dark:hover:bg-gray-700",
+    buttonText: "text-yellow-500 dark:text-yellow-300",
+    icon: <Warning />,
+  },
+  neutral: {
+    bg: "bg-gray-50 dark:bg-gray-800",
+    text: "text-gray-800 dark:text-gray-300",
+    buttonBg:
+      "bg-gray-50 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700",
+    buttonText: "text-gray-500 dark:text-gray-300 dark:hover:text-white",
+    icon: <Neutral />,
+  },
+};
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Alerts() {
   const { alert, hideAlert } = useAlert(); // use hideAlert directly
@@ -11,27 +60,18 @@ function Alerts() {
 
   return (
     <div
-      className={`fixed top-[8rem] right-4 sm:right-[1rem] z-50 w-[90%] sm:w-[25rem] flex items-center p-4 mb-4 rounded-lg
+      className={`fixed top-[8rem] right-4 sm:right-[1rem] z-50 w-[90%] sm:w-[25rem] flex items-start gap-3 p-4 mb-4 rounded-lg
     ${styles.bg} ${styles.text}
     transform transition-transform duration-1000 ease-out
     ${alert ? "translate-x-0" : "translate-x-full"}
     shadow-lg`}
       role="alert"
     >
-      {/* Icon */}
-      <svg
-        className="shrink-0 w-4 h-4"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Z" />
-      </svg>
-      <span className="sr-only">Info</span>
+      {/* Icon (dynamic from alertStyles) */}
+      <div className="shrink-0 mt-1">{styles.icon}</div>
 
       {/* Message */}
-      <div className="ms-3 text-sm font-medium break-words">
+      <div className="flex-1 text-sm font-medium break-words">
         {alert.message}
       </div>
 
@@ -39,24 +79,10 @@ function Alerts() {
       <button
         type="button"
         onClick={hideAlert}
-        className={`ms-auto p-1.5 rounded-lg focus:ring-2 inline-flex items-center justify-center h-8 w-8 ${styles.buttonBg} ${styles.buttonText}`}
+        className={`p-1.5 rounded-lg focus:ring-2 inline-flex items-center justify-center h-8 w-8 ${styles.buttonBg} ${styles.buttonText}`}
         aria-label="Close"
       >
-        <svg
-          className="w-3 h-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 14"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-          />
-        </svg>
+       <CrossIcon className="w-3 h-3"/>
       </button>
     </div>
   );

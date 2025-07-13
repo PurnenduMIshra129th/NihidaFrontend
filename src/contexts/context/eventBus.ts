@@ -50,7 +50,7 @@ class EventBus {
     
     setTimeout(() => {
       this.processNextMessage();
-    }, 2500);
+    }, 3000);
   }
 }
 

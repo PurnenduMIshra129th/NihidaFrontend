@@ -847,3 +847,49 @@ export const Gmail = (props : {className?:string}) => (
     <path fill="currentColor" d="m18.73 5.41l-1.28 1L12 10.46L6.55 6.37l-1.28-1A2 2 0 0 0 2 7.05v11.59A1.36 1.36 0 0 0 3.36 20h3.19v-7.72L12 16.37l5.45-4.09V20h3.19A1.36 1.36 0 0 0 22 18.64V7.05a2 2 0 0 0-3.27-1.64z"></path>
 </svg>
     )
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const Success = (props : {className?:string}) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48" {...props}>
+    <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4">
+        <path d="m24 4l5.253 3.832l6.503-.012l1.997 6.188l5.268 3.812L41 24l2.021 6.18l-5.268 3.812l-1.997 6.188l-6.503-.012L24 44l-5.253-3.832l-6.503.012l-1.997-6.188l-5.268-3.812L7 24l-2.021-6.18l5.268-3.812l1.997-6.188l6.503.012L24 4Z"></path>
+        <path d="m17 24l5 5l10-10"></path>
+    </g>
+</svg>
+    )
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const Info = (props: {className?:string}) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 48 48" {...props}>
+    <g fill="none">
+        <path stroke="currentColor" strokeLinejoin="round" strokeWidth="4" d="M24 44a19.937 19.937 0 0 0 14.142-5.858A19.937 19.937 0 0 0 44 24a19.938 19.938 0 0 0-5.858-14.142A19.937 19.937 0 0 0 24 4A19.938 19.938 0 0 0 9.858 9.858A19.938 19.938 0 0 0 4 24a19.937 19.937 0 0 0 5.858 14.142A19.938 19.938 0 0 0 24 44Z"></path>
+        <path fill="currentColor" fillRule="evenodd" d="M24 11a2.5 2.5 0 1 1 0 5a2.5 2.5 0 0 1 0-5Z" clipRule="evenodd"></path>
+        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="M24.5 34V20h-2M21 34h7"></path>
+    </g>
+</svg>
+    )
+ // eslint-disable-next-line @typescript-eslint/naming-convention
+ export const Warning = (props: {className?:string}) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" {...props}>
+    <g fill="none" stroke="currentColor">
+        <path strokeLinecap="round" strokeWidth="2" d="M16 18v-6M6.358 27h19.284c1.516 0 2.48-1.62 1.759-2.953l-9.642-17.8c-.757-1.397-2.761-1.397-3.518 0L4.6 24.047C3.877 25.38 4.842 27 6.358 27Z"></path>
+        <path fill="currentColor" d="M17 21.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0Z"></path>
+    </g>
+</svg>
+    )
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const DangerTriangleOutline = (props: {className?:string}) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <g fill="currentColor">
+        <path d="M12 7.25a.75.75 0 0 1 .75.75v5a.75.75 0 0 1-1.5 0V8a.75.75 0 0 1 .75-.75ZM12 17a1 1 0 1 0 0-2a1 1 0 0 0 0 2Z"></path>
+        <path fillRule="evenodd" d="M8.294 4.476C9.366 3.115 10.502 2.25 12 2.25c1.498 0 2.634.865 3.706 2.226c1.054 1.34 2.17 3.32 3.6 5.855l.436.772c1.181 2.095 2.115 3.75 2.605 5.077c.5 1.358.62 2.59-.138 3.677c-.735 1.055-1.962 1.486-3.51 1.69c-1.541.203-3.615.203-6.274.203h-.85c-2.66 0-4.733 0-6.274-.203c-1.548-.204-2.775-.635-3.51-1.69c-.758-1.087-.639-2.32-.138-3.677c.49-1.328 1.424-2.982 2.605-5.077l.436-.772c1.429-2.535 2.546-4.516 3.6-5.855Zm1.179.928C8.499 6.641 7.437 8.52 5.965 11.13l-.364.645c-1.226 2.174-2.097 3.724-2.54 4.925c-.438 1.186-.378 1.814-.04 2.3c.361.516 1.038.87 2.476 1.06c1.432.188 3.406.19 6.14.19h.727c2.733 0 4.707-.002 6.14-.19c1.437-.19 2.114-.544 2.474-1.06c.339-.486.4-1.114-.038-2.3c-.444-1.201-1.315-2.751-2.541-4.925l-.364-.645c-1.472-2.61-2.534-4.489-3.508-5.726C13.562 4.18 12.813 3.75 12 3.75c-.813 0-1.562.429-2.527 1.654Z" clipRule="evenodd"></path>
+    </g>
+</svg>
+    )
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export const Neutral = (props: {className?:string}) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>
+    <path fill="currentColor" d="M12 1.316C6.099 1.316 1.316 6.099 1.316 12S6.099 22.684 12 22.684S22.684 17.901 22.684 12c-.012-5.896-4.788-10.672-10.683-10.684H12zm0 22.297C5.586 23.613.387 18.414.387 12S5.586.387 12 .387S23.613 5.586 23.613 12v.015c0 6.405-5.192 11.597-11.597 11.597H12h.001z"></path>
+    <path fill="currentColor" d="M12 24C5.386 23.966.034 18.614 0 12.003V12C0 5.373 5.373 0 12 0s12 5.373 12 12c-.034 6.614-5.386 11.966-11.997 12zM12 .774C5.8.774.774 5.8.774 12S5.8 23.226 12 23.226S23.226 18.2 23.226 12C23.222 5.802 18.198.779 12.001.774zm0 22.297C5.886 23.071.929 18.114.929 12S5.886.929 12 .929S23.071 5.886 23.071 12S18.114 23.071 12 23.071zm0-21.368C6.313 1.703 1.703 6.313 1.703 12S6.313 22.297 12 22.297S22.297 17.687 22.297 12v-.005c0-5.684-4.608-10.292-10.292-10.292H12z"></path>
+    <path fill="currentColor" d="M9.677 9.91v.009c0 1.15-.932 2.082-2.082 2.082h-.009a2.09 2.09 0 0 1 0-4.18h.009c1.15 0 2.082.932 2.082 2.082v.009zm8.904 0a2.09 2.09 0 0 1-4.18 0v-.009c0-1.15.932-2.082 2.082-2.082h.009a2.132 2.132 0 0 1 2.09 2.088v.002zm-2.168 7.277H7.51a.465.465 0 1 1 0-.93h8.903a.499.499 0 0 1 .464.463v.021c0 .246-.2.446-.446.446h-.02h.001z"></path>
+    <path fill="currentColor" d="M16.413 17.574H7.51a.852.852 0 0 1 0-1.704h8.903a.852.852 0 0 1 0 1.704zm-8.826-.929c-.077 0-.077.077 0 0c-.02.02-.033.047-.033.077s.013.058.033.077h8.903a.077.077 0 0 0 .077-.077c0-.077 0-.077-.077-.077z"></path>
+</svg>
+    )   
