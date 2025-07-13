@@ -90,11 +90,11 @@ function Carousel() {
         </div>
 
         {/* Carousel Text Content */}
-        <div className="absolute  inset-0 z-30 flex items-center justify-center md:justify-start px-4 sm:px-6 md:px-16">
-          <div className="bg-black/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl w-full max-w-3xl animate-fade-in text-center md:text-left">
+        <div className="absolute  inset-0 z-30 flex items-center md:items-end justify-center md:justify-start px-4 sm:px-6 md:px-16">
+          <div className="bg-black/50 backdrop-blur-sm p-4 sm:p-6 rounded-xl w-full max-w-3xl animate-fade-in text-center md:text-left md:mb-[8%]">
             <Heading_1
               text="National Integrated Human And Industrial Development Agency"
-              className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold drop-shadow-md leading-snug"
+              className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl   font-bold drop-shadow-md leading-snug"
             />
             <Button
               className="mt-6 bg-custom_orange_1 w-full sm:w-64 text-custom_white_1 py-3 sm:py-4 mx-auto md:mx-0"
