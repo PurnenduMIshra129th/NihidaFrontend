@@ -6,7 +6,10 @@ import Button from "../../components/Button/Button";
 import FormikInput from "../../components/Input/FormikInput";
 import { eventBus } from "../../contexts/context/eventBus";
 import { apiRequest } from "../../services/apiService";
-import { ISignUpApiPayload, ISignUpApiResponse } from "../../types/api/api.type";
+import {
+  ISignUpApiPayload,
+  ISignUpApiResponse,
+} from "../../types/api/api.type";
 
 const signUpValidationSchema = Yup.object({
   userName: Yup.string()
@@ -15,7 +18,10 @@ const signUpValidationSchema = Yup.object({
     .min(3, "Username must be at least 3 characters"),
 
   email: Yup.string()
-    .email("Invalid email format")
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      "Invalid email format"
+    )
     .required("Email is required"),
 
   password: Yup.string()
@@ -53,11 +59,10 @@ function SignupPage() {
               message: "Passwords do not match",
             });
           } else {
-            const result = await apiRequest<ISignUpApiResponse, ISignUpApiPayload>(
-              "authentication/signUp",
-              "POST",
-              payload
-            );
+            const result = await apiRequest<
+              ISignUpApiResponse,
+              ISignUpApiPayload
+            >("authentication/signUp", "POST", payload);
             if (result?.statusCode === 1) {
               localStorage.setItem("token", result?.data?.token);
               localStorage.setItem("role", result?.data?.user?.role);

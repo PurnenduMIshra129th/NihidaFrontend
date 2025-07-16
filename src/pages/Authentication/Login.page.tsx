@@ -11,7 +11,10 @@ import { defaultImage, userRole } from "../../utils/constant";
 
 const loginValidationSchema = Yup.object({
   email: Yup.string()
-    .email("Invalid email format")
+    .matches(
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+      "Invalid email format"
+    )
     .required("Email is required"),
 
   password: Yup.string()
