@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
@@ -16,9 +16,7 @@ const SocialLinkAndCommonImageAdminDashboardPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const data = useSelector(selectSocialLinkAndCommonImage);
-  useEffect(() => {
-    dispatch(fetchSocialLinkAndCommonImage());
-  }, [dispatch]);
+
   const [showUpload, setShowUpload] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const handleUploadTrigger = (id: string) => {
