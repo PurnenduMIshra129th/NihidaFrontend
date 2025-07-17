@@ -13,7 +13,7 @@ function MissionScreen() {
         />
         <Typography
           text="Our mission is to empower underserved communities by fostering inclusive development through education, health, environment, and economic support. We aim to drive sustainable change with collaborative action, policy advocacy, and capacity building that uplifts individuals and strengthens social equity at the grassroots level."
-          className="mt-6 text-gray-700 w-full max-w-4xl  text-[16px] leading-relaxed text-justify"
+          className="mt-6 text-gray-700 w-full max-w-4xl  text-[16px] leading-relaxed text-center"
         />
 
         <div className="flex flex-col md:flex-row justify-center items-stretch mt-10 gap-6  w-full max-w-7xl cursor-pointer">

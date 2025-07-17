@@ -25,7 +25,7 @@ function MissionSectionCard(props: IMissionSectionCard) {
 
         <div className="flex-grow">
           <Typography
-            className="text-gray-700 text-justify text-[15px] sm:text-[16px] leading-relaxed"
+            className="text-gray-700  text-[15px] sm:text-[16px] leading-relaxed"
             text={trimText(textDescription, 350)}
           />
         </div>
