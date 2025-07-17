@@ -85,5 +85,9 @@ export const extractYouTubeId = (url: string): string | null => {
     return null;
   }
 };
+export const constructThumbnailUrl = (youtubeUrl: string): string | null => {
+  const id = extractYouTubeId(youtubeUrl);
+  return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : null;
+};
 
 

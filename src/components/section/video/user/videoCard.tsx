@@ -1,4 +1,7 @@
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+
 import moment from "moment";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import { useNavigate } from "react-router";
 
 import { IVideoCard } from "../../../../types/component/component.types";
@@ -20,6 +23,7 @@ function VideoCard(props: IVideoCard) {
     date = moment().toISOString(),
     readMoreRouting = "/videos",
   } = props;
+  
   const navigate = useNavigate();
   const videoId = extractYouTubeId(youtubeUrl);
   const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}` : null;
@@ -29,12 +33,13 @@ function VideoCard(props: IVideoCard) {
       {/* Video or Thumbnail */}
       <div className="aspect-w-16 h-[300px] aspect-h-9 bg-black">
         {embedUrl ? (
-          <iframe
-            src={embedUrl}
+          <LiteYouTubeEmbed
+            id={videoId || ""} 
             title={title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
+            poster="hqdefault"
+            noCookie
+            wrapperClass="yt-lite"
+            playerClass="lty-playbtn"
           />
         ) : (
           <Image imagePath={thumbnail} className="w-full h-full object-cover" />

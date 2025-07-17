@@ -1,3 +1,4 @@
+import React from "react";
 import CountUp from "react-countup";
 
 import { ICountUpComponentProps } from "../../types/component/component.types";
@@ -10,7 +11,7 @@ function CountUpComponent(props: ICountUpComponentProps) {
     text,
     start = 0,
     end = 1000,
-    duration = 10,
+    duration = 2,
     textDescription = "",
     isPlusTrue = false,
   } = props;
@@ -24,13 +25,17 @@ function CountUpComponent(props: ICountUpComponentProps) {
           start={start}
           end={end}
           duration={duration}
-          className="text-custom_orange_1 text-2xl md:text-3xl lg:text-6xl font-bold font-sans "
-        />
-        {isPlusTrue && (
-          <span className="text-custom_orange_1 text-2xl md:text-3xl lg:text-6xl font-bold font-sans">
-            +
-          </span>
-        )}
+          enableScrollSpy
+          scrollSpyDelay={300}
+          suffix={isPlusTrue ? " +" : ""}
+        >
+          {({ countUpRef }) => (
+            <span
+              ref={countUpRef}
+              className="text-custom_orange_1 text-2xl md:text-3xl lg:text-6xl font-bold font-sans"
+            />
+          )}
+        </CountUp>
         <div className="max-w-[70%]">
           <Typography
             text={textDescription}
@@ -42,4 +47,4 @@ function CountUpComponent(props: ICountUpComponentProps) {
   );
 }
 
-export default CountUpComponent;
+export default React.memo(CountUpComponent);

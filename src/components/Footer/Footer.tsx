@@ -38,168 +38,180 @@ function Footer() {
     };
     manageData();
   }, [data, user]);
-  if (
-    userDetails === userRole.admin &&
-    location.pathname.startsWith("/admin")
-  ) {
-    return null;
-  }
+
+  const shouldRenderFooter = !(
+    userDetails === userRole.admin && location.pathname.startsWith("/admin")
+  );
+  // if (
+  //   userDetails === userRole.admin &&
+  //   location.pathname.startsWith("/admin")
+  // ) {
+  //   return null;
+  // }
 
   return (
     <>
-      <footer className="w-full bg-custom_orange_1 text-white py-12 px-4 text-[15px]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4 text-white">Contact Us</h3>
+      {shouldRenderFooter ? (
+        <footer className="w-full bg-custom_orange_1 text-white py-12 px-4 text-[15px] min-h-[465px]">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4 text-white">Contact Us</h3>
 
-            {/* Address */}
-            <p className="text-white/90 md:text-lg text-sm">
-              {apiData?.addressLine1 || "234 Change Maker St."}
-            </p>
-            {apiData?.addressLine2 && (
-              <p className="text-white/90 md:text-lg text-sm">{apiData.addressLine2}</p>
-            )}
-            <p className="text-white/90 md:text-lg text-sm">
-              {apiData?.city || "City"}, {apiData?.state || "State"},{" "}
-              {apiData?.postalCode || "ZIP"}
-            </p>
-            <p className="text-white/90 md:text-lg text-sm">
-              {apiData?.country || "Country"}
-            </p>
+              {/* Address */}
+              <p className="text-white/90 md:text-lg text-sm">
+                {apiData?.addressLine1 || "234 Change Maker St."}
+              </p>
+              {apiData?.addressLine2 && (
+                <p className="text-white/90 md:text-lg text-sm">
+                  {apiData.addressLine2}
+                </p>
+              )}
+              <p className="text-white/90 md:text-lg text-sm">
+                {apiData?.city || "City"}, {apiData?.state || "State"},{" "}
+                {apiData?.postalCode || "ZIP"}
+              </p>
+              <p className="text-white/90 md:text-lg text-sm">
+                {apiData?.country || "Country"}
+              </p>
 
-            {/* Phone Numbers */}
-            <div className="text-white/90 md:text-lg text-sm mt-4 flex items-center gap-2">
-              <CallIcon className="text-white/90 w-4 h-4 shrink-0" />
-              <a
-                href={`tel:${apiData?.phoneNumber1 || "8144746685"}`}
-                className="hover:underline"
-              >
-                (+91) {apiData?.phoneNumber1 || "8144746685"}
-              </a>
-            </div>
-            <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
-              <CallIcon className="text-white/90 w-4 h-4 shrink-0" />
-              <a
-                href={`tel:${apiData?.phoneNumber2 || "8144746685"}`}
-                className="hover:underline"
-              >
-                (+91) {apiData?.phoneNumber2 || "8144746685"}
-              </a>
-            </div>
-
-            {/* Email */}
-            <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
-              <Gmail className="text-white/90 w-4 h-4 shrink-0" />
-              <a
-                href={`mailto:${apiData?.email || "contact@example.com"}`}
-                className="hover:underline break-words"
-              >
-                {apiData?.email || "contact@example.com"}
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4 text-white">Quick Links</h3>
-            <ul className="space-y-2 md:text-lg text-sm text-white/90">
-              {[
-                { label: "Home", path: "/" },
-                { label: "About Us", path: "/about" },
-                { label: "Programs", path: "/programs" },
-                { label: "Get Involved", path: "/get-involved" },
-                { label: "Donate", path: "/donate" },
-                { label: "Blog", path: "/blog" },
-                { label: "Contact Us", path: "/contact" },
-              ].map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="relative inline-block text-white/90 hover:text-white transition-colors duration-300
-            after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Social Media */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4 text-white">Follow Us</h3>
-            <div className="flex flex-wrap gap-4 text-xl">
-              {[
-                {
-                  href: apiData?.youtubeUrl,
-                  label: "YouTube",
-                  Icon: YoutubeIcon,
-                },
-                {
-                  href: apiData?.instagramUrl,
-                  label: "Instagram",
-                  Icon: InstagramIcon,
-                },
-                {
-                  href: apiData?.linkedinUrl,
-                  label: "LinkedIn",
-                  Icon: LinkedinIcon,
-                },
-                {
-                  href: apiData?.facebookUrl,
-                  label: "Facebook",
-                  Icon: FacebookIcon,
-                },
-                {
-                  href: apiData?.twitterUrl,
-                  label: "Twitter",
-                  Icon: TwitterIcon,
-                },
-                {
-                  href: apiData?.whatsappUrl,
-                  label: "WhatsApp",
-                  Icon: WhatsappIcon,
-                },
-                {
-                  href: apiData?.telegramUrl,
-                  label: "Telegram",
-                  Icon: TelegramIcon,
-                },
-              ].map(({ href, label, Icon }) => (
+              {/* Phone Numbers */}
+              <div className="text-white/90 md:text-lg text-sm mt-4 flex items-center gap-2">
+                <CallIcon className="text-white/90 w-4 h-4 shrink-0" />
                 <a
-                  key={label}
-                  href={href || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="group relative text-white/90 hover:text-white transition duration-300"
+                  href={`tel:${apiData?.phoneNumber1 || "8144746685"}`}
+                  className="hover:underline"
                 >
-                  <Icon className="w-6 h-6 group-hover:scale-110 group-hover:text-white transition-transform duration-300" />
-                  <span className="absolute left-1/2 -bottom-1.5 -translate-x-1/2 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                  (+91) {apiData?.phoneNumber1 || "8144746685"}
                 </a>
-              ))}
+              </div>
+              <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
+                <CallIcon className="text-white/90 w-4 h-4 shrink-0" />
+                <a
+                  href={`tel:${apiData?.phoneNumber2 || "8144746685"}`}
+                  className="hover:underline"
+                >
+                  (+91) {apiData?.phoneNumber2 || "8144746685"}
+                </a>
+              </div>
+
+              {/* Email */}
+              <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
+                <Gmail className="text-white/90 w-4 h-4 shrink-0" />
+                <a
+                  href={`mailto:${apiData?.email || "contact@example.com"}`}
+                  className="hover:underline break-words"
+                >
+                  {apiData?.email || "contact@example.com"}
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                Quick Links
+              </h3>
+              <ul className="space-y-2 md:text-lg text-sm text-white/90">
+                {[
+                  { label: "Home", path: "/" },
+                  { label: "About Us", path: "/about" },
+                  { label: "Programs", path: "/programs" },
+                  { label: "Get Involved", path: "/get-involved" },
+                  { label: "Donate", path: "/donate" },
+                  { label: "Blog", path: "/blog" },
+                  { label: "Contact Us", path: "/contact" },
+                ].map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className="relative inline-block text-white/90 hover:text-white transition-colors duration-300
+            after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Social Media */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4 text-white">Follow Us</h3>
+              <div className="flex flex-wrap gap-4 text-xl">
+                {[
+                  {
+                    href: apiData?.youtubeUrl,
+                    label: "YouTube",
+                    Icon: YoutubeIcon,
+                  },
+                  {
+                    href: apiData?.instagramUrl,
+                    label: "Instagram",
+                    Icon: InstagramIcon,
+                  },
+                  {
+                    href: apiData?.linkedinUrl,
+                    label: "LinkedIn",
+                    Icon: LinkedinIcon,
+                  },
+                  {
+                    href: apiData?.facebookUrl,
+                    label: "Facebook",
+                    Icon: FacebookIcon,
+                  },
+                  {
+                    href: apiData?.twitterUrl,
+                    label: "Twitter",
+                    Icon: TwitterIcon,
+                  },
+                  {
+                    href: apiData?.whatsappUrl,
+                    label: "WhatsApp",
+                    Icon: WhatsappIcon,
+                  },
+                  {
+                    href: apiData?.telegramUrl,
+                    label: "Telegram",
+                    Icon: TelegramIcon,
+                  },
+                ].map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="group relative text-white/90 hover:text-white transition duration-300"
+                  >
+                    <Icon className="w-6 h-6 group-hover:scale-110 group-hover:text-white transition-transform duration-300" />
+                    <span className="absolute left-1/2 -bottom-1.5 -translate-x-1/2 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Mission */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+              <p className="md:text-lg text-sm text-white/90 leading-relaxed">
+                We empower communities through education, health, and
+                sustainable development. Join us in making a difference.
+              </p>
             </div>
           </div>
 
-          {/* Mission */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-            <p className="md:text-lg text-sm text-white/90 leading-relaxed">
-              We empower communities through education, health, and sustainable
-              development. Join us in making a difference.
+          {/* Bottom Bar */}
+          <div className="mt-10 border-t border-white/40 pt-4 text-center text-sm">
+            <p>
+              Copyright © 2025 All rights reserved by{" "}
+              <span className="font-bold text-white">NIHIDA.</span>
             </p>
           </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-10 border-t border-white/40 pt-4 text-center text-sm">
-          <p>
-            Copyright © 2025 All rights reserved by{" "}
-            <span className="font-bold text-white">NIHIDA.</span>
-          </p>
-        </div>
-      </footer>
+        </footer>
+      ) : (
+        <div style={{ minHeight: "465px" }} />
+      )}
     </>
   );
 }

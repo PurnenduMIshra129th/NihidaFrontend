@@ -1,4 +1,7 @@
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
+
 import { useEffect, useState } from "react";
+import LiteYouTubeEmbed from "react-lite-youtube-embed";
 import { useParams } from "react-router";
 
 import EmptyState from "../../../components/EmptyState/EmptyState";
@@ -77,14 +80,14 @@ function ViewVideoByIdPage() {
               Watch Video
             </h2>
             <div className="aspect-w-4 h-[400px] aspect-h-3 w-full rounded-md overflow-hidden shadow-md border border-gray-200">
-              <iframe
-                src={`https://www.youtube.com/embed/${extractYouTubeId(video.youtubeUrl)}`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              ></iframe>
+            <LiteYouTubeEmbed
+              id={extractYouTubeId(video.youtubeUrl) || ""}
+              poster="hqdefault"
+              title={video.title}
+              noCookie
+              wrapperClass="yt-lite"
+              playerClass="lty-playbtn"
+            />
             </div>
           </div>
         ) : (

@@ -2,7 +2,7 @@
 export default function SuspenseSkeleton() {
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-white">
-      <div className="animate-pulse w-full max-w-6xl px-6 py-8 space-y-6">
+      <div className="animate-pulse w-full max-w-6xl px-6 pb-8 pt-[8rem] space-y-6">
         {/* Title Placeholder */}
         <div className="h-6 w-1/3 bg-gray-200 rounded" />
 
