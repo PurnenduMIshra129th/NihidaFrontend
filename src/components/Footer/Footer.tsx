@@ -56,7 +56,7 @@ function Footer() {
           <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Contact Info */}
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-white">Contact Us</h3>
+              <h2 className="text-2xl font-bold mb-4 text-white">Contact Us</h2>
 
               {/* Address */}
               <p className="text-white/90 md:text-lg text-sm">
@@ -109,9 +109,9 @@ function Footer() {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-white">
+              <h2 className="text-2xl font-bold mb-4 text-white">
                 Quick Links
-              </h3>
+              </h2>
               <ul className="space-y-2 md:text-lg text-sm text-white/90">
                 {[
                   { label: "Home", path: "/" },
@@ -137,7 +137,7 @@ function Footer() {
 
             {/* Social Media */}
             <div>
-              <h3 className="text-2xl font-bold mb-4 text-white">Follow Us</h3>
+              <h2 className="text-2xl font-bold mb-4 text-white">Follow Us</h2>
               <div className="flex flex-wrap gap-4 text-xl">
                 {[
                   {
@@ -193,7 +193,7 @@ function Footer() {
 
             {/* Mission */}
             <div>
-              <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
+              <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
               <p className="md:text-lg text-sm text-white/90 leading-relaxed">
                 We empower communities through education, health, and
                 sustainable development. Join us in making a difference.

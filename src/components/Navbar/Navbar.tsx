@@ -131,14 +131,15 @@ function Navbar() {
         `}
             >
               {/* Close Button (Mobile Only) */}
-              <button
-                className="absolute top-4 right-4 text-xl md:hidden"
-                onClick={() => setIsOpen(false)}
-                aria-label="Close Menu"
-              >
-                ❌
-              </button>
-
+              <li>
+                <button
+                  className="absolute top-4 right-4 text-xl md:hidden"
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Close Menu"
+                >
+                  ❌
+                </button>
+              </li>
               {[
                 { label: "About", id: "about" },
                 { label: "Focus Activity", id: "focusActivity" },
@@ -186,17 +187,15 @@ function Navbar() {
                 )}
 
               {token ? (
-                <li>
-                  <button
-                    onClick={() => {
-                      logout();
-                      setIsOpen(false);
-                    }}
-                    className="relative block py-2 px-3 rounded-sm md:p-0 text-black hover:text-custom_orange_1 transition-all duration-300
-        after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-custom_orange_1 hover:after:w-full"
-                  >
-                    Logout
-                  </button>
+                <li
+                  className="relative block py-2 px-3 rounded-sm md:p-0 text-black hover:text-custom_orange_1 transition-all duration-300
+        after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-custom_orange_1 hover:after:w-full cursor-pointer"
+                  onClick={() => {
+                    logout();
+                    setIsOpen(false);
+                  }}
+                >
+                  Logout
                 </li>
               ) : (
                 <li>

@@ -4,11 +4,11 @@ import { IHeadingProps } from "../../types/component/component.types";
 function Heading_2(props: IHeadingProps) {
   const { className = "", text = "No text Provided" } = props;
   return (
-    <h3
+    <h2
       className={`text-xl md:text-2xl lg:text-3xl font-bold ${className}`}
     >
       {text}
-    </h3>
+    </h2>
   );
 }
 
