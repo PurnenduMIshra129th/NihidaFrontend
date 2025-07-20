@@ -18,23 +18,23 @@ function ImpactScreen() {
         <div className="flex flex-row flex-wrap md:flex-nowrap md:mt-24 mt-4">
           <CountUpComponent
             text="Water conservation"
-            textDescription="Empowered 5,000+ learners through digital literacy, schooling, and accessible community-based education programs in underserved areas."
+            textDescription="NIHIDA conducted various Water Conservation Awareness and IEC activities on Water conservation education, It is refers to the practice of using water wisely and efficiently to reduce waste and ensure a sustainable supply for current and future needs."
             end={5000}
             isPlusTrue={true}
           />
           <CountUpComponent
             text="Road safety"
-            textDescription="Improved access to basic healthcare, awareness drives, and sanitation for 3,000+ individuals in rural communities."
+            textDescription=" NIHIDA organized different road safety advocacy and awareness Programmes under Puri district of Odisha state supported by MoRTH, Govt. of India sincerely and successfully. NIHIDA aims to reduce road accidents and fatalities through education, outreach, and policy influence. "
             end={3000}
           />
           <CountUpComponent
             text="Consumer Empowerment"
-            textDescription="Supported 1,000+ people with skills, training, and sustainable livelihood programs for financial independence."
+            textDescription="NIHIDA Focusing on Consumer Rights and Consumer Protection Act for empowerment to Consumers collaboration with District Administration, Puri & Department of Consumer Welfare, Food Distribution, Government of Odisha successfully. "
             end={1000}
           />
           <CountUpComponent
             text="Energy conservation"
-            textDescription="Launched 6,000+ actions in conservation, climate education, and eco-sustainability to protect community resources."
+            textDescription="NIHIDA conducted several Awareness activities on Energy conservation in Odisha state collaboration with PCRA, Govt.of India, IOCL,Govt. of India successfully. "
             end={6000}
              isPlusTrue={true}
           />
