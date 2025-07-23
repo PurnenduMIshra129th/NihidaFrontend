@@ -96,7 +96,7 @@ function Navbar() {
               className="flex items-center space-x-3 rtl:space-x-reverse outline-none"
             >
               <Image
-                imagePath="/NIHIDA-LOGO.jpg"
+                imagePath="/NIHIDA-LOGO.webp"
                 className="w-[3rem] h-[3rem] rounded-md"
               />
             </Link>
