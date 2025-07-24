@@ -33,16 +33,4 @@ export default defineConfig({
     // Optimize chunk size
     chunkSizeWarningLimit: 1000,
   },
-  css: {
-    postcss: {
-      plugins: [
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        require('tailwindcss'),
-        // eslint-disable-next-line @typescript-eslint/no-require-imports
-        require('autoprefixer'),
-      ]
-    },
-    // Enable CSS source maps in development for debugging
-    devSourcemap: true
-  }
 })
