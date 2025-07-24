@@ -1,5 +1,5 @@
 
-export const defaultImage = "/banner.png"
+export const defaultImage = "/banner.webp"
 
 export const colours = {
     custom_blue_1 : "#00043C",

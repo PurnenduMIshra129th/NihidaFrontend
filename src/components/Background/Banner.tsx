@@ -11,7 +11,7 @@ function Banner(props: IBannerProps) {
   return (
     <section
       className="relative w-full h-[400px] bg-center bg-cover overflow-hidden"
-      style={{ backgroundImage: `url(/banner.png)` }}
+      style={{ backgroundImage: `url(/banner.webp)` }}
     >
       <div className="absolute top-0 bottom-0 left-0 w-1/4 bg-[#158f67]/30 z-0" />
       <div className="absolute top-0 bottom-0 left-1/4 w-1/4 bg-[#e9b929]/30 z-0" />
