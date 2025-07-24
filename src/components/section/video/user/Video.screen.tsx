@@ -1,13 +1,22 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { selectVideo } from "../../../../contexts/slice/getAllVideo.slice";
+import {
+  fetchAllVideo,
+  selectVideo,
+} from "../../../../contexts/slice/getAllVideo.slice";
+import { AppDispatch } from "../../../../contexts/store";
 import NoDataComponent from "../../../EmptyState/NoData";
 import SectionDivider from "../../../SectionDivider/SectionDivider";
 import VideoCard from "./videoCard";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function VideoScreen() {
+  const dispatch = useDispatch<AppDispatch>();
   const data = useSelector(selectVideo);
+  useEffect(() => {
+    dispatch(fetchAllVideo());
+  }, [dispatch]);
   return (
     <>
       <div className="flex justify-center items-center flex-col sm:w-[80%] w-full">

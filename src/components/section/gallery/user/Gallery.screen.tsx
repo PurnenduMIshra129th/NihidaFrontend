@@ -1,13 +1,19 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { selectGallery } from "../../../../contexts/slice/getAllGallery.slice";
+import { fetchAllGallery, selectGallery } from "../../../../contexts/slice/getAllGallery.slice";
+import { AppDispatch } from "../../../../contexts/store";
 import InformationCard from "../../../Cards/InformationCard";
 import NoDataComponent from "../../../EmptyState/NoData";
 import SectionDivider from "../../../SectionDivider/SectionDivider";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function GalleryScreen() {
+  const dispatch = useDispatch<AppDispatch>()
   const data = useSelector(selectGallery);
+  useEffect(() => {
+    dispatch(fetchAllGallery())
+  },[dispatch])
   return (
     <>
       <div className="flex justify-center items-center flex-col sm:w-[80%] w-full">
