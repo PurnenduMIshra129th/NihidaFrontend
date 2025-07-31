@@ -25,12 +25,14 @@ function ImpactScreen() {
           <CountUpComponent
             text="Road safety"
             textDescription=" NIHIDA organized different road safety advocacy and awareness Programmes under Puri district of Odisha state supported by MoRTH, Govt. of India sincerely and successfully. NIHIDA aims to reduce road accidents and fatalities through education, outreach, and policy influence. "
-            end={3000}
+            end={10000}
+            isPlusTrue={true}
           />
           <CountUpComponent
             text="Consumer Empowerment"
             textDescription="NIHIDA Focusing on Consumer Rights and Consumer Protection Act for empowerment to Consumers collaboration with District Administration, Puri & Department of Consumer Welfare, Food Distribution, Government of Odisha successfully. "
-            end={1000}
+            end={15000}
+            isPlusTrue={true}
           />
           <CountUpComponent
             text="Energy conservation"
