@@ -1,4 +1,13 @@
-import { IDocumentApiResponse, IFocusActivityApiResponse, IGalleryApiResponse, INewsApiResponse, ISocialLinkAndCommonImageApiResponse, IUpcomingEventApiResponse, IVideoApiResponse } from "../api/api.type";
+import {
+  IDocumentApiResponse,
+  IFocusActivityApiResponse,
+  IGalleryApiResponse,
+  INewsApiResponse,
+  ISocialLinkAndCommonImageApiResponse,
+  ITeamMemberApiResponse,
+  IUpcomingEventApiResponse,
+  IVideoApiResponse,
+} from "../api/api.type";
 
 export interface IImageCardGalleryProps {
   colSpan?: string;
@@ -23,6 +32,9 @@ export interface IGalleryAdminCard extends IAdminCard {
 }
 export interface INewsAdminCard extends IAdminCard {
   data: INewsApiResponse;
+}
+export interface ITeamMemberAdminCard extends IAdminCard {
+  data: ITeamMemberApiResponse;
 }
 export interface IVideoAdminCard extends IAdminCard {
   data: IVideoApiResponse;
@@ -94,57 +106,69 @@ export interface IPDFDocumentCardUser {
   readMoreRouting: string;
 }
 export interface IButtonProps {
-    name?: string;
-    className?: string;
-    onClick?: () => void;
+  name?: string;
+  className?: string;
+  onClick?: () => void;
 }
-export interface IMissionSectionCard{
-    textHeading?:string
-    textDescription?:string
-    routePath?:string
+export interface IMissionSectionCard {
+  textHeading?: string;
+  textDescription?: string;
+  routePath?: string;
 }
-export interface ICardProps{
-    textTime?:string
-    textHeading?:string
-    textDescription?:string
-    imagePath?:string
-    id?:string
-    readMoreRouting?:string
-    fromDate?:string | Date
-    toDate?:string | Date
+export interface ICardProps {
+  textTime?: string;
+  textHeading?: string;
+  textDescription?: string;
+  imagePath?: string;
+  id?: string;
+  readMoreRouting?: string;
+  fromDate?: string | Date;
+  toDate?: string | Date;
 }
+export interface ITeamMemberCardProps {
+  id: string;
+  name: string;
+  designation: string;
+  bio: string;
+  focusArea?: string;
+  dateJoined?: string;
+  imagePath?: string;
+  extraImagePath?: string;
+  readMoreRouting: string;
+}
+
 export interface IDashboardSectionCardProps {
   title: string;
   route: string;
   description?: string;
   icon?: React.ReactNode;
 }
-export interface ICountUpComponentProps{
-    text?:string
-    start?:number
-    end?:number
-    duration?:number
-    textDescription?:string
-    isPlusTrue?:boolean
+export interface ICountUpComponentProps {
+  text?: string;
+  start?: number;
+  end?: number;
+  duration?: number;
+  textDescription?: string;
+  isPlusTrue?: boolean;
 }
 export interface IFormikInputProps {
   placeholder?: string;
   className?: string;
   label?: string;
-  name: string; 
+  name: string;
   type?: string;
-  isTextArea?: boolean; 
+  isTextArea?: boolean;
   rows?: number;
   required?: boolean;
-  transformOnBlur?: (value: string) => string [];
+  transformOnBlur?: (value: string) => string[];
 }
 export interface ITypographyProps {
-    text?: string
-    className?: string
+  text?: string;
+  className?: string;
 }
 export interface IHeadingProps {
-    text?: string
-    className?: string
+  text?: string;
+  className?: string;
 }
 export interface IBannerProps {
   textHeading: string;
@@ -157,6 +181,5 @@ export interface IGalleryScreenBySectionProps {
   imagePaths: string[];
 }
 export interface IGallerySectionWithLimitNumberOfImagesProps {
-    files:IFile[]
+  files: IFile[];
 }
-

@@ -13,6 +13,7 @@ import { fetchAllDocument } from "./contexts/slice/getAllDocument.slice";
 import { fetchAllFocusActivity } from "./contexts/slice/getAllFocusActivity.slice";
 import { fetchAllGallery } from "./contexts/slice/getAllGallery.slice";
 import { fetchAllNews } from "./contexts/slice/getAllNews.slice";
+import { fetchAllTeamMember } from "./contexts/slice/getAllTeamMember.slice";
 import { fetchAllUpcomingEvent } from "./contexts/slice/getAllUpcomingEvent.slice";
 import { fetchAllVideo } from "./contexts/slice/getAllVideo.slice";
 import { fetchUser } from "./contexts/slice/getUser.slice";
@@ -50,6 +51,7 @@ function App() {
       dispatch(fetchAllVideo());
       dispatch(fetchAllUpcomingEvent());
       dispatch(fetchSocialLinkAndCommonImage())
+      dispatch(fetchAllTeamMember())
     }
   }, [dispatch, token]);
 

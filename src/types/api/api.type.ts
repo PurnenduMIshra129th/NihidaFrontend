@@ -23,8 +23,8 @@ export interface IUpcomingEventApiPayload {
   title: string;
   subtitle?: string;
   description: string;
-  fromDate:Date | string,
-  toDate:Date | string,
+  fromDate: Date | string;
+  toDate: Date | string;
   location: string;
   tags?: string[];
   cta?: {
@@ -44,8 +44,8 @@ export interface IUpcomingEventApiResponse extends ICreatedAt {
   title: string;
   subtitle?: string;
   description: string;
-  fromDate:Date,
-  toDate:Date,
+  fromDate: Date;
+  toDate: Date;
   location: string;
   tags?: string[];
   cta?: {
@@ -120,6 +120,29 @@ export interface INewsApiPayload {
 }
 export interface INewsApiResponse
   extends INewsApiPayload,
+    ICreatedAt,
+    IFileApiData {}
+export interface ITeamMemberApiPayload {
+  name: string;
+  designation: string;
+  bio: string;
+  contact?: {
+    email?: string;
+    phone?: string;
+  };
+  socials?: {
+    linkedin?: string;
+    twitter?: string;
+  };
+  focusArea: "education" | "health" | "environment" | "livelihood" | "other";
+  dateJoined: string; // ISO date string
+
+  tags?: string[];
+  visibility: "public" | "internal";
+  createdBy?: string; // MongoDB ObjectId as string
+}
+export interface ITeamMemberApiResponse
+  extends ITeamMemberApiPayload,
     ICreatedAt,
     IFileApiData {}
 

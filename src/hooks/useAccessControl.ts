@@ -31,6 +31,9 @@ const userRoutes = [
     "/user/view-video/:id",
     "/user/view-all-video",
 
+    "/user/view-teamMember/:id",
+    "/user/view-all-teamMember",
+
     "/user/view-all-image",
 ];
 const adminRoutes = [
@@ -60,6 +63,11 @@ const adminRoutes = [
     "/admin/news-dashboard",
     "/admin/edit-news/:id",
     "/admin/view-news/:id",
+
+    "/admin/add-teamMember",
+    "/admin/teamMember-dashboard",
+    "/admin/edit-teamMember/:id",
+    "/admin/view-teamMember/:id",
 
     "/admin/add-video",
     "/admin/video-dashboard",

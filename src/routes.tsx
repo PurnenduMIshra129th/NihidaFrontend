@@ -183,6 +183,32 @@ const ViewUpcomingEventByIdPage = React.lazy(
 );
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
+const AddTeamMemberPage = React.lazy(
+  () => import("./pages/OurTeam/admin/AddTeamMember.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const EditTeamMemberPage = React.lazy(
+  () => import("./pages/OurTeam/admin/EditTeamMember.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const TeamMemberAdminDashboardPage = React.lazy(
+  () => import("./pages/OurTeam/admin/TeamMemberAdminDashboard.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ViewTeamMemberForAdminPage = React.lazy(
+  () => import("./pages/OurTeam/admin/TeamMemberDetailById.page")
+);
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const TeamMemberListPage = React.lazy(
+  () => import("./pages/OurTeam/user/ViewAllTeamMember.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ViewTeamMemberByIdPage = React.lazy(
+  () => import("./pages/OurTeam/user/ViewTeamMemberById.page")
+);
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const AddVideoPage = React.lazy(
   () => import("./pages/video/admin/AddVideo.page")
 );
@@ -281,6 +307,39 @@ export const router = createBrowserRouter([
             element: (
               <RouteSuspense>
                 <ViewFocusActivityForAdminPage />
+              </RouteSuspense>
+            ),
+          },
+          //team Member section
+          {
+            path: "add-teamMember",
+            element: (
+              <RouteSuspense>
+                <AddTeamMemberPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "teamMember-dashboard",
+            element: (
+              <RouteSuspense>
+                <TeamMemberAdminDashboardPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "edit-teamMember/:id",
+            element: (
+              <RouteSuspense>
+                <EditTeamMemberPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "view-teamMember/:id",
+            element: (
+              <RouteSuspense>
+                <ViewTeamMemberForAdminPage />
               </RouteSuspense>
             ),
           },
@@ -528,6 +587,22 @@ export const router = createBrowserRouter([
             element: (
               <RouteSuspense>
                 <NewsListPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "view-teamMember/:id",
+            element: (
+              <RouteSuspense>
+                <ViewTeamMemberByIdPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "view-all-teamMember",
+            element: (
+              <RouteSuspense>
+                <TeamMemberListPage />
               </RouteSuspense>
             ),
           },

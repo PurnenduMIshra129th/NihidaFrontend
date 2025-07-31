@@ -110,7 +110,7 @@ function Footer() {
                 {[
                   { label: "Home", path: "/" },
                   { label: "About Us", path: "/about" },
-                  { label: "Programs", path: "/programs" },
+                  { label: "Our Teams", path: "/user/view-all-teamMember" },
                   { label: "Get Involved", path: "/get-involved" },
                   { label: "Donate", path: "/donate" },
                   { label: "Blog", path: "/blog" },

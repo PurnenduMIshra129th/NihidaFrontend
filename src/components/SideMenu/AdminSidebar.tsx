@@ -4,6 +4,7 @@ import {
   ISocialServicesIcon,
   MediaIcon,
   NewsIcon,
+  TeamLine,
   VideoIcon,
 } from "../Icons/Icon";
 
@@ -71,6 +72,13 @@ const sidebarItems: ISidebarItem[] = [
     icon: <ISocialServicesIcon />,
     description: "Manage social links and images",
     key: "socialLinkAndCommonImage",
+  },
+  {
+    title: "Team Member",
+    route: "/admin/teamMember-dashboard",
+    icon: <TeamLine />,
+    description: "Manage team members",
+    key: "teamMember",
   },
 ];
 

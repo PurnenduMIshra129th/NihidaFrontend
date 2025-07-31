@@ -3,6 +3,7 @@ import {
   ISocialServicesIcon,
   MediaIcon,
   NewsIcon,
+  TeamLine,
   VideoIcon,
 } from "../../../components/Icons/Icon";
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -56,6 +57,12 @@ function AdminControlPanelPage() {
             route="/admin/socialLinkAndCommonImage-dashboard"
             description="Edit, view and upload common Images and social links"
             icon={<ISocialServicesIcon />}
+          />
+          <DashboardSectionCard
+            title="Team Member"
+            route="/admin/teamMember-dashboard"
+            description="Edit, view and upload team members"
+            icon={<TeamLine />}
           />
         </div>
       </div>
