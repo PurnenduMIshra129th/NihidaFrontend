@@ -1,10 +1,10 @@
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import moment from "moment";
 import { NavigateFunction } from "react-router";
 
 import { eventBus } from "../contexts/context/eventBus";
 
-type StorageKey = "token" | "role" ;
+type StorageKey = "token" | "role";
 
 export const setStorageItem = (key: StorageKey, value: string) => {
   localStorage.setItem(key, value);
@@ -25,7 +25,9 @@ export const isTokenExpired = (token: string): boolean => {
     return true;
   }
 };
-export const decodeToken = <T = Record<string, string>>(token: string): T | null => {
+export const decodeToken = <T = Record<string, string>>(
+  token: string
+): T | null => {
   try {
     return jwtDecode<T>(token);
   } catch {
@@ -51,9 +53,10 @@ export function getTextLength(text: string): number {
   return text.trim().length;
 }
 
-export function formatToLocalTime(timeString?: string): string {
-  const time = timeString ? moment(timeString) : moment();
-  return time.local().format("dddd, MMMM Do YYYY, h:mm A");
+export function formatToLocalTime(time?: string | Date): string {
+  if (time === undefined || time === null || time === "") return "no date";
+  const timeString = time instanceof Date ? time : new Date(time);
+  return moment(timeString).format("DD MMMM YYYY") || "no date";
 }
 export function parseCommaSeparatedString(input: string): string[] {
   if (!input) return [];
@@ -89,5 +92,25 @@ export const constructThumbnailUrl = (youtubeUrl: string): string | null => {
   const id = extractYouTubeId(youtubeUrl);
   return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : null;
 };
+export const calculateDuration = (
+  fromDate: Date | string,
+  toDate: Date | string
+) => {
+  if (!fromDate || !toDate || fromDate === "" || toDate === "")
+    return "No duration";
 
+  const from = new Date(fromDate);
+  const to = new Date(toDate);
 
+  if (isNaN(from.getTime()) || isNaN(to.getTime())) {
+    throw new Error("Invalid date format");
+  }
+
+  if (from > to) {
+    throw new Error("From date cannot be greater than to date");
+  }
+
+  const duration = to.getTime() - from.getTime();
+  const days = Math.floor(duration / (1000 * 3600 * 24));
+  return `${days == 0 ? 1 : days} days`;
+};

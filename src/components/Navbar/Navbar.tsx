@@ -108,13 +108,13 @@ function Navbar() {
 
           {/* Hamburger + Menu */}
           <div
-            className="items-center justify-end md:flex md:w-auto md:order-1"
+            className="items-center justify-end lg:flex lg:w-auto lg:order-1"
             id="navbar-sticky"
           >
             {/* Hamburger Button */}
             <button
               type="button"
-              className="md:hidden inline-flex items-center p-2 rounded-lg focus:outline-none text-black"
+              className="lg:hidden inline-flex items-center p-2 rounded-lg focus:outline-none text-black"
               onClick={() => setIsOpen(true)}
               title="Hamburger"
             >
@@ -125,15 +125,15 @@ function Navbar() {
             <ul
               className={`
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
-          fixed top-0 left-0 w-3/4 h-screen z-40 flex flex-col
+          fixed top-[-2rem] left-[-2%] w-3/4 h-screen z-40 flex flex-col
           px-6 pt-[22%] shadow-lg transition-transform duration-300 ease-in-out bg-custom_white_1
-          md:static md:flex-row md:translate-x-0 md:shadow-none md:bg-transparent md:h-auto md:w-auto md:p-0 md:space-x-6 text-[15px] font-semibold
+          lg:static lg:flex-row lg:translate-x-0 lg:shadow-none lg:bg-transparent lg:h-auto lg:w-auto lg:p-0 lg:space-x-6 text-[15px] font-semibold
         `}
             >
               {/* Close Button (Mobile Only) */}
               <li>
                 <button
-                  className="absolute top-4 right-4 text-xl md:hidden"
+                  className="absolute top-4 right-4 text-xl lg:hidden"
                   onClick={() => setIsOpen(false)}
                   aria-label="Close Menu"
                 >
@@ -154,7 +154,7 @@ function Navbar() {
                       scrollToSection(id);
                       setIsOpen(false);
                     }}
-                    className={`relative block py-2 px-3 rounded-sm md:p-0 transition-all duration-300
+                    className={`relative block py-2 px-3 rounded-sm lg:p-0 transition-all duration-300
         ${
           activeSection === id && !isScrollHighlightDisabled
             ? "text-custom_orange_1 font-semibold after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-custom_orange_1 after:transition-all"
@@ -173,7 +173,7 @@ function Navbar() {
                     <Link
                       to="/admin"
                       onClick={() => setIsOpen(false)}
-                      className={`relative block py-2 px-3 rounded-sm md:p-0 transition-all duration-300
+                      className={`relative block py-2 px-3 rounded-sm lg:p-0 transition-all duration-300
           ${
             location.pathname.startsWith("/admin")
               ? "text-custom_orange_1 font-semibold after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-custom_orange_1"
@@ -188,7 +188,7 @@ function Navbar() {
 
               {token ? (
                 <li
-                  className="relative block py-2 px-3 rounded-sm md:p-0 text-black hover:text-custom_orange_1 transition-all duration-300
+                  className="relative block py-2 px-3 rounded-sm lg:p-0 text-black hover:text-custom_orange_1 transition-all duration-300
         after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-custom_orange_1 hover:after:w-full cursor-pointer"
                   onClick={() => {
                     logout();
@@ -202,7 +202,7 @@ function Navbar() {
                   <Link
                     to="/login"
                     onClick={() => setIsOpen(false)}
-                    className={`relative block py-2 px-3 rounded-sm md:p-0 transition-all duration-300
+                    className={`relative block py-2 px-3 rounded-sm lg:p-0 transition-all duration-300
         ${
           location.pathname === "/login"
             ? "text-custom_orange_1 font-semibold after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-custom_orange_1"

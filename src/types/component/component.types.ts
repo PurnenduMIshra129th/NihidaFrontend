@@ -110,6 +110,8 @@ export interface ICardProps{
     imagePath?:string
     id?:string
     readMoreRouting?:string
+    fromDate?:string | Date
+    toDate?:string | Date
 }
 export interface IDashboardSectionCardProps {
   title: string;

@@ -1,4 +1,5 @@
 import { IFocusActivityAdminCard } from "../../../../types/component/component.types";
+import { calculateDuration, formatToLocalTime } from "../../../../utils/util";
 import Button from "../../../Button/Button";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -8,7 +9,7 @@ const FocusActivityAdminCard = ({
   onEdit,
   onDelete,
   onUpload,
-  onViewImages
+  onViewImages,
 }: IFocusActivityAdminCard) => {
   return (
     <div className="w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-[28rem] bg-white rounded-lg shadow-md border border-orange-100 p-5 flex flex-col justify-between hover:shadow-lg transition-all duration-300 group">
@@ -17,9 +18,22 @@ const FocusActivityAdminCard = ({
         <h3 className="text-xl font-semibold text-custom_orange_1 mb-1 break-words">
           {data.title}
         </h3>
-        <p className="text-sm text-gray-500 mb-3">
-          {data.date ? new Date(data.date).toLocaleDateString() : "No date"}
-        </p>
+        <div className="flex flex-col sm:flex-row sm:gap-4 mb-3 text-sm text-gray-600">
+          <div className="bg-orange-50 px-3 py-2 rounded-lg w-full sm:w-auto">
+            <span className="font-medium text-custom_orange_1">From:</span>{" "}
+            {data.fromDate ? formatToLocalTime(data.fromDate) : "No date"}
+          </div>
+          <div className="bg-orange-50 px-3 py-2 rounded-lg w-full sm:w-auto mt-2 sm:mt-0">
+            <span className="font-medium text-custom_orange_1">To:</span>{" "}
+            {data.toDate ? formatToLocalTime(data.toDate) : "No date"}
+          </div>
+        </div>
+        <div className="mb-3">
+          <p className="text-sm text-gray-700">
+            🕒 <span className="font-medium">Duration:</span>{" "}
+            {calculateDuration(data.fromDate, data.toDate)}
+          </p>
+        </div>
 
         {/* Description Preview */}
         <p className="text-gray-700 text-sm line-clamp-3 mb-4">

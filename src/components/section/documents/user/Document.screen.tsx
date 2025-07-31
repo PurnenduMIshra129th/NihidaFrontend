@@ -1,19 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { fetchAllDocument, selectDocument } from "../../../../contexts/slice/getAllDocument.slice";
-import { AppDispatch } from "../../../../contexts/store";
+import { selectDocument } from "../../../../contexts/slice/getAllDocument.slice";
 import NoDataComponent from "../../../EmptyState/NoData";
 import PDFDocumentCardUser from "../../../Pdf/PdfPreviewCardUser";
 import SectionDivider from "../../../SectionDivider/SectionDivider";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function DocumentScreen() {
-  const dispatch = useDispatch<AppDispatch>()
   const data  = useSelector(selectDocument);
-  useEffect(() => {
-    dispatch(fetchAllDocument())
-  },[dispatch])
   return (
     <>
       <div className="flex justify-center items-center flex-col sm:w-[80%] w-full">

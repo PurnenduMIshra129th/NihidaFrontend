@@ -29,7 +29,8 @@ const FocusActivityListPage = () => {
         {activities.map((item, index) => (
           <InformationCard
             key={index}
-            textTime={item.createdAt}
+            fromDate={item.fromDate}
+            toDate={item.toDate}
             textHeading={item.title}
             textDescription={item.description}
             imagePath={item?.files?.[0]?.publicFilePath || ""}

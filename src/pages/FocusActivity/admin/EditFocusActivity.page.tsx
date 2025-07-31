@@ -21,7 +21,11 @@ const validationSchema = Yup.object({
   subtitle: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
   location: Yup.string(),
-  date: Yup.date(),
+  fromDate: Yup.date().required("Required").typeError("Invalid date format"),
+  toDate: Yup.date()
+    .required("Required")
+    .typeError("Invalid date format")
+    .min(Yup.ref("fromDate"), "To Date must be after From Date"),
   impactStats: Yup.array().of(
     Yup.object({
       label: Yup.string().required("Required"),
@@ -57,7 +61,8 @@ export default function EditFocusActivityPage() {
       if (res && res.statusCode === 1) {
         const formattedData = {
           ...res.data,
-          date: formatDateForInput(`${res?.data?.date}`),
+          fromDate: formatDateForInput(`${res?.data?.fromDate}`),
+          toDate: formatDateForInput(`${res?.data?.toDate}`),
         };
         setInitialValues(formattedData);
       }
@@ -103,7 +108,10 @@ export default function EditFocusActivityPage() {
               required
             />
             <FormikInput label="Location" name="location" />
-            <FormikInput label="Date" name="date" type="date" />
+            <div className="grid grid-cols-2 gap-4">
+              <FormikInput label="from Date" name="fromDate" type="date" />
+              <FormikInput label="to Date" name="toDate" type="date" />
+            </div>
 
             {/* Impact Stats */}
             <FieldArray name="impactStats">

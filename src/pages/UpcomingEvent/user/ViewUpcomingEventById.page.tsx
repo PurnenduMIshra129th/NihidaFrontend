@@ -5,6 +5,7 @@ import EmptyState from "../../../components/EmptyState/EmptyState";
 import GallerySectionWithLimitNumberOfImages from "../../../components/Image/GallerySectionWithLimitNumberOfImages";
 import useFetch from "../../../hooks/useFetch";
 import { IUpcomingEventApiResponse } from "../../../types/api/api.type";
+import { calculateDuration,formatToLocalTime } from "../../../utils/util";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function ViewUpcomingEventByIdPage() {
@@ -27,21 +28,34 @@ function ViewUpcomingEventByIdPage() {
   return (
     <>
       <div className="max-w-5xl mx-auto px-4 pt-[8rem] pb-16">
-        <h1 className="text-3xl font-bold text-custom_orange_1 mb-4">
+        <h1 className="text-3xl text-center font-bold text-custom_orange_1 mb-4">
           {event.title}
         </h1>
 
         {event.subtitle && (
-          <p className="text-lg text-gray-700 font-medium mb-2">
+          <p className="text-lg text-center text-gray-700 font-medium mb-2">
             {event.subtitle}
           </p>
         )}
-
+        {/* Date Range + Duration */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-4 text-sm text-gray-600 mt-3">
+          <div className="bg-orange-50 border border-orange-200 rounded-lg px-4 py-2">
+            <span className="font-semibold text-custom_orange_1">From:</span>{" "}
+            {event.fromDate ? formatToLocalTime(event.fromDate) : "No date"}
+          </div>
+          <div className="bg-orange-50 border border-orange-200 rounded-lg px-4 py-2">
+            <span className="font-semibold text-custom_orange_1">To:</span>{" "}
+            {event.toDate ? formatToLocalTime(event.toDate) : "No date"}
+          </div>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">
+            🕒 <span className="font-semibold">Duration:</span>{" "}
+            {calculateDuration(event?.fromDate, event?.toDate)}
+          </div>
+        </div>
         <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
-          <span>{new Date(event.date || "").toLocaleDateString()}</span>
           {event.status && (
             <span
-              className={`px-2 py-0.5 rounded-full text-xs font-medium capitalize ${
+              className={`px-2 py-0.5 rounded-full text-xs font-medium capitalize mt-3 ${
                 event.status === "upcoming"
                   ? "bg-yellow-100 text-yellow-700"
                   : event.status === "ongoing"

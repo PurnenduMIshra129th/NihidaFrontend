@@ -14,7 +14,8 @@ const initialValues: IFocusActivityApiPayload = {
   subtitle: "",
   description: "",
   location: "",
-  date: "",
+  fromDate: new Date(),
+  toDate: new Date(),
   impactStats: [{ label: "", value: 0, unit: "" }],
   testimonials: [{ name: "", quote: "", role: "" }],
 };
@@ -24,7 +25,13 @@ const validationSchema = Yup.object({
   subtitle: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
   location: Yup.string(),
-  date: Yup.date(),
+  fromDate: Yup.date()
+    .required("Required")
+    .typeError("Invalid date format"),
+  toDate: Yup.date()
+    .required("Required")
+    .typeError("Invalid date format")
+    .min(Yup.ref("fromDate"), "To Date must be after From Date"),
   images: Yup.array().of(Yup.string().required("Required")).min(1),
   impactStats: Yup.array()
     .of(
@@ -82,7 +89,10 @@ export default function AddFocusActivityPage() {
               required
             />
             <FormikInput label="Location" name="location" />
-            <FormikInput label="Date" name="date" type="date" />
+            <div className="grid grid-cols-2 gap-4">
+            <FormikInput label="from Date" name="fromDate" type="date" />
+            <FormikInput label="to Date" name="toDate" type="date" />
+            </div>
 
             {/* Impact Stats */}
             <FieldArray name="impactStats">

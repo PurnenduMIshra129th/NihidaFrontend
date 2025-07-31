@@ -18,7 +18,8 @@ const initialValues: IUpcomingEventApiPayload = {
   title: "",
   subtitle: "",
   description: "",
-  date: "",
+  fromDate: new Date(),
+  toDate: new Date(),
   location: "",
   tags: [],
   cta: {
@@ -38,7 +39,11 @@ const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
   subtitle: Yup.string(),
   description: Yup.string().required("Description is required"),
-  date: Yup.date().required("Date is required"),
+  fromDate: Yup.date().required("Required").typeError("Invalid date format"),
+  toDate: Yup.date()
+    .required("Required")
+    .typeError("Invalid date format")
+    .min(Yup.ref("fromDate"), "To Date must be after From Date"),
   location: Yup.string().required("Location is required"),
 
   tags: Yup.array().of(Yup.string()),
@@ -64,7 +69,7 @@ const validationSchema = Yup.object({
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function AddUpcomingEventPage() {
-  const userDetails= useSelector(getUser);
+  const userDetails = useSelector(getUser);
   const dispatch = useDispatch<AppDispatch>();
   const handleSubmit = async (values: IUpcomingEventApiPayload) => {
     values.createdBy = userDetails?._id;
@@ -103,7 +108,10 @@ export default function AddUpcomingEventPage() {
               required
             />
             <FormikInput label="Location" name="location" required />
-            <FormikInput label="Date" name="date" type="date" required />
+            <div className="grid grid-cols-2 gap-4">
+              <FormikInput label="from Date" name="fromDate" type="date" />
+              <FormikInput label="to Date" name="toDate" type="date" />
+            </div>
 
             {/* Tags */}
             {/* <FormikInput

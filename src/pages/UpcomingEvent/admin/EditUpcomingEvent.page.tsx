@@ -20,7 +20,11 @@ const validationSchema = Yup.object({
   title: Yup.string().required("Title is required"),
   subtitle: Yup.string(),
   description: Yup.string().required("Description is required"),
-  date: Yup.date().required("Date is required"),
+  fromDate: Yup.date().required("Required").typeError("Invalid date format"),
+  toDate: Yup.date()
+    .required("Required")
+    .typeError("Invalid date format")
+    .min(Yup.ref("fromDate"), "To Date must be after From Date"),
   location: Yup.string().required("Location is required"),
 
   tags: Yup.array().of(Yup.string()),
@@ -62,7 +66,8 @@ export default function EditUpcomingEventPage() {
       if (res && res.statusCode === 1) {
         const formattedData = {
           ...res.data,
-          date: formatDateForInput(`${res?.data?.date}`),
+          fromDate: formatDateForInput(`${res?.data?.fromDate}`),
+          toDate: formatDateForInput(`${res?.data?.toDate}`),
         };
         setInitialValues(formattedData);
       }
@@ -109,7 +114,10 @@ export default function EditUpcomingEventPage() {
               required
             />
             <FormikInput label="Location" name="location" required />
-            <FormikInput label="Date" name="date" type="date" required />
+            <div className="grid grid-cols-2 gap-4">
+              <FormikInput label="from Date" name="fromDate" type="date" />
+              <FormikInput label="to Date" name="toDate" type="date" />
+            </div>
 
             {/* Tags */}
             {/* <FormikInput

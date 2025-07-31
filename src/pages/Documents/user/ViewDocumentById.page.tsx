@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
-import NoDataComponent from "../../../components/EmptyState/NoData";
+import EmptyState from "../../../components/EmptyState/EmptyState";
 import PDFPreviewCard from "../../../components/Pdf/PDFPreviewCard";
 import useFetch from "../../../hooks/useFetch";
 import { IDocumentApiResponse } from "../../../types/api/api.type";
@@ -24,7 +24,7 @@ function ViewDocumentByIdPage() {
   }, [data]);
 
   if (!document)
-    return <NoDataComponent message="No Document available at the moment" />;
+    return <EmptyState />;
   return (
     <>
       <div className="max-w-5xl mx-auto px-4 pt-[8rem] pb-16">

@@ -5,7 +5,8 @@ export interface IFocusActivityApiPayload {
   impactStats: IImpactStatPayload[];
   testimonials?: ITestimonialPayload[];
   location?: string;
-  date?: string | Date;
+  fromDate: Date | string;
+  toDate: Date | string;
 }
 export interface IFocusActivityApiResponse extends ICreatedAt {
   title: string;
@@ -14,14 +15,16 @@ export interface IFocusActivityApiResponse extends ICreatedAt {
   impactStats: IImpactStatResponse[];
   testimonials?: ITestimonialResponse[];
   location?: string;
-  date?: string | Date;
+  fromDate: Date;
+  toDate: Date;
   files?: IFile[];
 }
 export interface IUpcomingEventApiPayload {
   title: string;
   subtitle?: string;
   description: string;
-  date: string;
+  fromDate:Date | string,
+  toDate:Date | string,
   location: string;
   tags?: string[];
   cta?: {
@@ -41,7 +44,8 @@ export interface IUpcomingEventApiResponse extends ICreatedAt {
   title: string;
   subtitle?: string;
   description: string;
-  date: string;
+  fromDate:Date,
+  toDate:Date,
   location: string;
   tags?: string[];
   cta?: {
@@ -120,23 +124,22 @@ export interface INewsApiResponse
     IFileApiData {}
 
 export interface ISocialLinkAndCommonImageApiPayload {
-  instagramUrl: string
-  facebookUrl: string
-  twitterUrl: string
-  linkedinUrl: string
-  youtubeUrl: string
-  whatsappUrl: string
-  telegramUrl: string
-  phoneNumber1: string
-  email: string
-  phoneNumber2: string
+  instagramUrl: string;
+  facebookUrl: string;
+  twitterUrl: string;
+  linkedinUrl: string;
+  youtubeUrl: string;
+  whatsappUrl: string;
+  telegramUrl: string;
+  phoneNumber1: string;
+  email: string;
+  phoneNumber2: string;
   addressLine1: string;
   addressLine2?: string;
   city: string;
   state: string;
   country: string;
   postalCode: string;
-
 }
 export interface ISocialLinkAndCommonImageApiResponse
   extends ISocialLinkAndCommonImageApiPayload,
@@ -203,8 +206,7 @@ export interface IGetUserApiResponse {
   email: string;
   role: string;
 }
-export interface IImpactStatResponse extends IImpactStatPayload , IId {
-}
+export interface IImpactStatResponse extends IImpactStatPayload, IId {}
 export interface IImpactStatPayload {
   label?: string;
   value?: number;
@@ -216,8 +218,7 @@ export interface ITestimonialPayload {
   quote?: string;
   role?: string;
 }
-export interface ITestimonialResponse extends ITestimonialPayload, IId {
-}
+export interface ITestimonialResponse extends ITestimonialPayload, IId {}
 export interface IFile extends IId {
   fileName: string;
   originalName: string;

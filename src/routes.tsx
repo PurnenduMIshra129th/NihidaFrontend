@@ -71,6 +71,10 @@ const EditFocusActivityPage = React.lazy(
 const FocusActivityAdminDashboardPage = React.lazy(
   () => import("./pages/FocusActivity/admin/FocusActivityAdminDashboard.page")
 );
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ViewFocusActivityForAdminPage = React.lazy(
+  () => import("./pages/FocusActivity/admin/FocusActivityDetailById.page")
+);
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const FocusActivityListPage = React.lazy(
@@ -163,6 +167,10 @@ const EditUpcomingEventPage = React.lazy(
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UpcomingEventAdminDashboardPage = React.lazy(
   () => import("./pages/UpcomingEvent/admin/UpcomingEventAdminDashboard.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ViewUpcomingEventForAdminPage = React.lazy(
+  () => import("./pages/UpcomingEvent/admin/UpcomingEventDetailById.page")
 );
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -272,7 +280,7 @@ export const router = createBrowserRouter([
             path: "view-focus-activity/:id",
             element: (
               <RouteSuspense>
-                <ViewFocusActivityByIdPage />
+                <ViewFocusActivityForAdminPage />
               </RouteSuspense>
             ),
           },
@@ -400,7 +408,7 @@ export const router = createBrowserRouter([
             path: "view-upcoming-event/:id",
             element: (
               <RouteSuspense>
-                <ViewUpcomingEventByIdPage />
+                <ViewUpcomingEventForAdminPage />
               </RouteSuspense>
             ),
           },

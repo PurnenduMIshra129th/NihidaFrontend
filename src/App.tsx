@@ -9,7 +9,14 @@ import Navbar from "./components/Navbar/Navbar";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { AlertProvider } from "./contexts/context/alert/AlertContext";
 import { LoaderProvider } from "./contexts/context/loader/LoaderContext";
+import { fetchAllDocument } from "./contexts/slice/getAllDocument.slice";
+import { fetchAllFocusActivity } from "./contexts/slice/getAllFocusActivity.slice";
+import { fetchAllGallery } from "./contexts/slice/getAllGallery.slice";
+import { fetchAllNews } from "./contexts/slice/getAllNews.slice";
+import { fetchAllUpcomingEvent } from "./contexts/slice/getAllUpcomingEvent.slice";
+import { fetchAllVideo } from "./contexts/slice/getAllVideo.slice";
 import { fetchUser } from "./contexts/slice/getUser.slice";
+import { fetchSocialLinkAndCommonImage } from "./contexts/slice/socialLinkAndCommonImage.slice";
 import { AppDispatch } from "./contexts/store";
 import { setNavigator } from "./utils/navigator";
 import { getStorageItem, validateTokenExpiry } from "./utils/util";
@@ -36,6 +43,13 @@ function App() {
   useEffect(() => {
     if(token && token !== ""){
       dispatch(fetchUser());
+      dispatch(fetchAllNews());
+      dispatch(fetchAllDocument());
+      dispatch(fetchAllGallery());
+      dispatch(fetchAllFocusActivity());
+      dispatch(fetchAllVideo());
+      dispatch(fetchAllUpcomingEvent());
+      dispatch(fetchSocialLinkAndCommonImage())
     }
   }, [dispatch, token]);
 
@@ -49,7 +63,7 @@ function App() {
             <Alerts />
             <Navbar />
             <div className="min-h-screen flex flex-col">
-              <main className="min-h-screen ">
+              <main className="flex-grow">
                 <Outlet />
               </main>
               <FooterScreen />

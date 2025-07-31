@@ -5,14 +5,20 @@ import NoDataComponent from "../../../components/EmptyState/NoData";
 import Image from "../../../components/Image/Image";
 import useFetch from "../../../hooks/useFetch";
 import { IFocusActivityApiResponse } from "../../../types/api/api.type";
+import { calculateDuration, formatToLocalTime } from "../../../utils/util";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function FocusActivityDetailByIdPage() {
   const { id } = useParams();
   const { data } = useFetch<IFocusActivityApiResponse | null>(
-    `focusActivity/getFocusActivityById/${id}`,"GET",undefined,true
+    `focusActivity/getFocusActivityById/${id}`,
+    "GET",
+    undefined,
+    true
   );
-  const [activity, setActivity] = useState<IFocusActivityApiResponse | null>(null);
+  const [activity, setActivity] = useState<IFocusActivityApiResponse | null>(
+    null
+  );
 
   useEffect(() => {
     if (data && data.statusCode == 1) {
@@ -27,16 +33,28 @@ export default function FocusActivityDetailByIdPage() {
 
   return (
     <div className="max-w-5xl mx-auto px-4 pt-[8rem] pb-16">
-      <h1 className="text-3xl font-bold text-custom_orange_1 mb-4">
-        {activity.title}
-      </h1>
-      <p className="text-lg text-gray-700 font-medium mb-2">
-        {activity.subtitle}
-      </p>
-      <p className="text-sm text-gray-500 mb-6">
-        {new Date(activity.date || "").toLocaleDateString()}
-      </p>
+      <div className="">
+        <h1 className="text-4xl font-bold text-custom_orange_1 mb-2 break-words">
+          {activity.title}
+        </h1>
+        <p className="text-lg text-gray-700 font-medium">{activity.subtitle}</p>
+      </div>
 
+      {/* Date Range + Duration */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-600 mt-3">
+        <div className="bg-orange-50 border border-orange-200 rounded-lg px-4 py-2">
+          <span className="font-semibold text-custom_orange_1">From:</span>{" "}
+          {activity.fromDate ? formatToLocalTime(activity.fromDate) : "No date"}
+        </div>
+        <div className="bg-orange-50 border border-orange-200 rounded-lg px-4 py-2">
+          <span className="font-semibold text-custom_orange_1">To:</span>{" "}
+          {activity.toDate ? formatToLocalTime(activity.toDate) : "No date"}
+        </div>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">
+          🕒 <span className="font-semibold">Duration:</span>{" "}
+          {calculateDuration(activity?.fromDate, activity?.toDate)}
+        </div>
+      </div>
       <div className="mb-6">
         <h2 className="text-lg font-semibold text-gray-800 mb-2">
           Description

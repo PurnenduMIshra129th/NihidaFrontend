@@ -42,12 +42,6 @@ function Footer() {
   const shouldRenderFooter = !(
     userDetails === userRole.admin && location.pathname.startsWith("/admin")
   );
-  // if (
-  //   userDetails === userRole.admin &&
-  //   location.pathname.startsWith("/admin")
-  // ) {
-  //   return null;
-  // }
 
   return (
     <>
@@ -96,7 +90,7 @@ function Footer() {
               </div>
 
               {/* Email */}
-              <div className="text-white/90 md:text-lg text-sm mt-2 flex items-center gap-2">
+              <div className="text-white/90 md:text-lg text-sm mt-2 flex items-baseline gap-2 break-all">
                 <Gmail className="text-white/90 w-4 h-4 shrink-0" />
                 <a
                   href={`mailto:${apiData?.email || "contact@example.com"}`}
@@ -210,7 +204,7 @@ function Footer() {
           </div>
         </footer>
       ) : (
-        <div style={{ minHeight: "465px" }} />
+        <div style={{ minHeight: "465px" ,display:'none'}} />
       )}
     </>
   );

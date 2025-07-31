@@ -5,6 +5,7 @@ import NoDataComponent from "../../../components/EmptyState/NoData";
 import Image from "../../../components/Image/Image";
 import useFetch from "../../../hooks/useFetch";
 import { IUpcomingEventApiResponse } from "../../../types/api/api.type";
+import { calculateDuration,formatToLocalTime } from "../../../utils/util";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export default function UpcomingEventDetailByIdPage() {
@@ -39,12 +40,25 @@ export default function UpcomingEventDetailByIdPage() {
           {event.subtitle}
         </p>
       )}
-
+      {/* Date Range + Duration */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-sm text-gray-600 mt-3">
+        <div className="bg-orange-50 border border-orange-200 rounded-lg px-4 py-2">
+          <span className="font-semibold text-custom_orange_1">From:</span>{" "}
+          {event.fromDate ? formatToLocalTime(event.fromDate) : "No date"}
+        </div>
+        <div className="bg-orange-50 border border-orange-200 rounded-lg px-4 py-2">
+          <span className="font-semibold text-custom_orange_1">To:</span>{" "}
+          {event.toDate ? formatToLocalTime(event.toDate) : "No date"}
+        </div>
+        <div className="bg-gray-50 border border-gray-200 rounded-lg px-4 py-2">
+          🕒 <span className="font-semibold">Duration:</span>{" "}
+          {calculateDuration(event?.fromDate, event?.toDate)}
+        </div>
+      </div>
       <div className="flex items-center justify-between text-sm text-gray-500 mb-6">
-        <span>{new Date(event.date || "").toLocaleDateString()}</span>
         {event.status && (
           <span
-            className={`px-2 py-0.5 rounded-full text-xs font-medium capitalize ${
+            className={`px-2 py-0.5 rounded-full text-xs font-medium capitalize mt-3 ${
               event.status === "upcoming"
                 ? "bg-yellow-100 text-yellow-700"
                 : event.status === "ongoing"

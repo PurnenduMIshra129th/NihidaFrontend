@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
-import { fetchSocialLinkAndCommonImage, selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImage.slice";
-import { AppDispatch } from "../../contexts/store";
+import { selectSocialLinkAndCommonImage } from "../../contexts/slice/socialLinkAndCommonImage.slice";
 import { IFile } from "../../types/api/api.type";
 import { defaultImage } from "../../utils/constant";
 import Button from "../Button/Button";
@@ -12,7 +11,6 @@ import Heading_1 from "../Text/Heading_1";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function Carousel() {
-  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const data = useSelector(selectSocialLinkAndCommonImage)
   const [apiData, setApiData] = useState<IFile[] | null>(null);
@@ -34,9 +32,6 @@ function Carousel() {
     }, 3000);
     return () => clearInterval(interval);
   });
-  useEffect(() => {
-    dispatch(fetchSocialLinkAndCommonImage())
-  },[dispatch])
   return (
     <>
       <div className="relative w-full min-h-screen overflow-hidden">

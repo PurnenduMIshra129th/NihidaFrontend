@@ -1,19 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { fetchAllUpcomingEvent, selectUpcomingEvent } from "../../../../contexts/slice/getAllUpcomingEvent.slice";
-import { AppDispatch } from "../../../../contexts/store";
+import { selectUpcomingEvent } from "../../../../contexts/slice/getAllUpcomingEvent.slice";
 import InformationCard from "../../../Cards/InformationCard";
 import NoDataComponent from "../../../EmptyState/NoData";
 import SectionDivider from "../../../SectionDivider/SectionDivider";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function UpcomingEventScreen() {
-  const dispatch = useDispatch<AppDispatch>()
   const data = useSelector(selectUpcomingEvent);  
-  useEffect(() => {
-    dispatch(fetchAllUpcomingEvent())
-  },[dispatch])
 
   return (
     <>
@@ -30,7 +24,8 @@ function UpcomingEventScreen() {
             {data?.slice(0, 3)?.map((item, index) => (
               <InformationCard
                 key={index}
-                textTime={item.createdAt}
+                fromDate={item.fromDate}
+                toDate={item.toDate}
                 textHeading={item.title}
                 textDescription={item.description}
                 imagePath={item?.files?.[0]?.publicFilePath || ""}

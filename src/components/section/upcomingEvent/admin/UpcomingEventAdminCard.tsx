@@ -1,4 +1,5 @@
 import { IUpcomingEventAdminCard } from "../../../../types/component/component.types";
+import { calculateDuration, formatToLocalTime } from "../../../../utils/util";
 import Button from "../../../Button/Button";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -20,12 +21,25 @@ const UpcomingEventAdminCard = ({
         {data.subtitle && (
           <p className="text-sm text-gray-600 mb-2">{data.subtitle}</p>
         )}
+        <div className="flex flex-col sm:flex-row sm:gap-4 mb-3 text-sm text-gray-600">
+          <div className="bg-orange-50 px-3 py-2 rounded-lg w-full sm:w-auto">
+            <span className="font-medium text-custom_orange_1">From:</span>{" "}
+            {data.fromDate ? formatToLocalTime(data.fromDate) : "No date"}
+          </div>
+          <div className="bg-orange-50 px-3 py-2 rounded-lg w-full sm:w-auto mt-2 sm:mt-0">
+            <span className="font-medium text-custom_orange_1">To:</span>{" "}
+            {data.toDate ? formatToLocalTime(data.toDate) : "No date"}
+          </div>
+        </div>
+        <div className="mb-3">
+          <p className="text-sm text-gray-700">
+            🕒 <span className="font-medium">Duration:</span>{" "}
+            {calculateDuration(data.fromDate, data.toDate)}
+          </p>
+        </div>
 
         {/* Date + Status */}
         <div className="flex items-center justify-between text-sm text-gray-500 mb-3">
-          <span>
-            {data?.date ? new Date(data.date).toLocaleDateString() : "No date"}
-          </span>
           {data?.status && (
             <span
               className={`px-2 py-0.5 rounded-full text-xs font-medium capitalize ${

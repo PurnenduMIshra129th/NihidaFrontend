@@ -1,19 +1,13 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { fetchAllFocusActivity, selectFocusActivity } from "../../../../contexts/slice/getAllFocusActivity.slice";
-import { AppDispatch } from "../../../../contexts/store";
+import { selectFocusActivity } from "../../../../contexts/slice/getAllFocusActivity.slice";
 import InformationCard from "../../../Cards/InformationCard";
 import NoDataComponent from "../../../EmptyState/NoData";
 import SectionDivider from "../../../SectionDivider/SectionDivider";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function FocusActivityScreen() {
-  const dispatch = useDispatch<AppDispatch>()
   const data = useSelector(selectFocusActivity)
-  useEffect(() => {
-    dispatch(fetchAllFocusActivity())
-  },[dispatch])
   return (
     <>
       <div className="flex justify-center items-center flex-col sm:w-[80%] w-full">
@@ -29,7 +23,8 @@ function FocusActivityScreen() {
             {data?.slice(0, 3)?.map((item, index) => (
               <InformationCard
                 key={index}
-                textTime={item.createdAt}
+                fromDate={item.fromDate}
+                toDate={item.toDate}
                 textHeading={item.title}
                 textDescription={item.description}
                 imagePath={item?.files?.[0]?.publicFilePath || ""}
