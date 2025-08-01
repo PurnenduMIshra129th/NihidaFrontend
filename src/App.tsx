@@ -26,7 +26,9 @@ const Loader = lazy(() => import("./components/Loader/Loader"));
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const Alerts = lazy(() => import("./components/Alerts/Alerts"));
 // eslint-disable-next-line @typescript-eslint/naming-convention
-const ErrorBoundary = lazy(() => import("./components/ErrorBoundry/ErrorBoundry"));
+const ErrorBoundary = lazy(
+  () => import("./components/ErrorBoundry/ErrorBoundry")
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function App() {
   const navigate = useNavigate();
@@ -42,17 +44,17 @@ function App() {
   }, [navigate]);
 
   useEffect(() => {
-    if(token && token !== ""){
+    if (token && token !== "") {
       dispatch(fetchUser());
-      dispatch(fetchAllNews());
-      dispatch(fetchAllDocument());
-      dispatch(fetchAllGallery());
-      dispatch(fetchAllFocusActivity());
-      dispatch(fetchAllVideo());
-      dispatch(fetchAllUpcomingEvent());
-      dispatch(fetchSocialLinkAndCommonImage())
-      dispatch(fetchAllTeamMember())
     }
+    dispatch(fetchAllNews());
+    dispatch(fetchAllDocument());
+    dispatch(fetchAllGallery());
+    dispatch(fetchAllFocusActivity());
+    dispatch(fetchAllVideo());
+    dispatch(fetchAllUpcomingEvent());
+    dispatch(fetchSocialLinkAndCommonImage());
+    dispatch(fetchAllTeamMember());
   }, [dispatch, token]);
 
   return (
