@@ -1,5 +1,6 @@
 import DashboardSectionCard from "../../../components/Cards/DashboardCard";
 import {
+  Help,
   ISocialServicesIcon,
   MediaIcon,
   NewsIcon,
@@ -63,6 +64,12 @@ function AdminControlPanelPage() {
             route="/admin/teamMember-dashboard"
             description="Edit, view and upload team members"
             icon={<TeamLine />}
+          />
+          <DashboardSectionCard
+            title="Contact Us"
+            route="/admin/contactUs-dashboard"
+            description="Edit, view and upload contact us"
+            icon={<Help />}
           />
         </div>
       </div>

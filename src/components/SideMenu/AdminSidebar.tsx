@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router";
 
 import {
+  Help,
   ISocialServicesIcon,
   MediaIcon,
   NewsIcon,
@@ -79,6 +80,13 @@ const sidebarItems: ISidebarItem[] = [
     icon: <TeamLine />,
     description: "Manage team members",
     key: "teamMember",
+  },
+  {
+    title: "Contact Us",
+    route: "/admin/contactUs-dashboard",
+    icon: <Help/>,
+    description: "Manage Raised Queries",
+    key: "contactUs",
   },
 ];
 

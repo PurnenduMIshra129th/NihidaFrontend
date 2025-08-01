@@ -16,6 +16,7 @@ function FormikInput(props: IFormikInputProps) {
     rows = 3,
     required = false,
     transformOnBlur,
+    disabled,
   } = props;
   const { setFieldValue, values } = useFormikContext<string>();
   const [localValue, setLocalValue] = useState<string | undefined>(undefined);
@@ -61,6 +62,7 @@ function FormikInput(props: IFormikInputProps) {
         type={type}
         name={name}
         id={name}
+        disabled={disabled || false}
         rows={isTextArea ? rows : undefined}
         placeholder={placeholder}
         className={`bg-white border border-gray-300 text-sm rounded-md w-full p-2.5 text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-200 ${className}`}

@@ -122,6 +122,21 @@ export interface INewsApiResponse
   extends INewsApiPayload,
     ICreatedAt,
     IFileApiData {}
+
+export interface IContactUsApiPayload {
+  fullName: string;
+  email: string;
+  phone?: string;
+  message: string;
+  subject?: string;
+  type: "volunteer" | "donation" | "partnership" | "general" | "feedback";
+  responded?: boolean;
+  createdBy?: string;
+}
+export interface IContactUsApiResponse
+  extends IContactUsApiPayload,
+    ICreatedAt {}
+
 export interface ITeamMemberApiPayload {
   name: string;
   designation: string;

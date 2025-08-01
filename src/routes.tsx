@@ -4,6 +4,23 @@ import { createBrowserRouter } from "react-router";
 import App from "./App";
 import { ProtectedRoute } from "./components/HigherOrderComponent/ProtectedRoute";
 import RouteSuspense from "./components/HigherOrderComponent/RouteSuspense";
+
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const AddContactUsPage = React.lazy(
+  () => import("./pages/ContactUs/user/AddContactUs.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ContactUsAdminDashboardPage = React.lazy(
+  () => import("./pages/ContactUs/admin/ContactUsAdminDashboard.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const EditContactUsPage = React.lazy(
+  () => import("./pages/ContactUs/admin/EditContactUs.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ContactUsDetailByIdPage = React.lazy(
+  () => import("./pages/ContactUs/admin/ContactUsDetailById.page")
+);
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const AboutUsPage = React.lazy(() => import("./pages/AboutUs/AboutUs.page"));
 // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -278,6 +295,7 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //focus activity
           {
             path: "add-focus-activity",
             element: (
@@ -343,6 +361,7 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //gallery section
           {
             path: "add-gallery",
             element: (
@@ -375,6 +394,7 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //news section
           {
             path: "add-news",
             element: (
@@ -407,6 +427,7 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //document Section
           {
             path: "add-document",
             element: (
@@ -439,6 +460,7 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //upcoming event
           {
             path: "add-upcoming-event",
             element: (
@@ -471,6 +493,7 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //video section
           {
             path: "add-video",
             element: (
@@ -503,6 +526,32 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //contactUs section
+          {
+            path: "contactUs-dashboard",
+            element: (
+              <RouteSuspense>
+                <ContactUsAdminDashboardPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "edit-contactUs/:id",
+            element: (
+              <RouteSuspense>
+                <EditContactUsPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "view-contactUs/:id",
+            element: (
+              <RouteSuspense>
+                <ContactUsDetailByIdPage />
+              </RouteSuspense>
+            ),
+          },
+          //image and File section
           {
             path: "image-management/:id",
             element: (
@@ -519,6 +568,7 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //socialLinkAndCommonImage section
           {
             path: "socialLinkAndCommonImage-dashboard",
             element: (
@@ -714,6 +764,14 @@ export const router = createBrowserRouter([
             ),
           },
         ],
+      },
+      {
+        path: "add-contactUs",
+        element: (
+          <RouteSuspense>
+            <AddContactUsPage />
+          </RouteSuspense>
+        ),
       },
       {
         path: "notAccessible",

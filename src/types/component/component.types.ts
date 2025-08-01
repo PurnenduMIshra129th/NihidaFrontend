@@ -1,4 +1,5 @@
 import {
+  IContactUsApiResponse,
   IDocumentApiResponse,
   IFocusActivityApiResponse,
   IGalleryApiResponse,
@@ -32,6 +33,9 @@ export interface IGalleryAdminCard extends IAdminCard {
 }
 export interface INewsAdminCard extends IAdminCard {
   data: INewsApiResponse;
+}
+export interface IContactUsAdminCard extends IAdminCard {
+  data: IContactUsApiResponse;
 }
 export interface ITeamMemberAdminCard extends IAdminCard {
   data: ITeamMemberApiResponse;
@@ -161,6 +165,7 @@ export interface IFormikInputProps {
   rows?: number;
   required?: boolean;
   transformOnBlur?: (value: string) => string[];
+  disabled?: boolean;
 }
 export interface ITypographyProps {
   text?: string;
