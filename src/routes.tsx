@@ -599,14 +599,6 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "view-all-teamMember",
-            element: (
-              <RouteSuspense>
-                <TeamMemberListPage />
-              </RouteSuspense>
-            ),
-          },
-          {
             path: "view-document/:id",
             element: (
               <RouteSuspense>
@@ -710,7 +702,14 @@ export const router = createBrowserRouter([
           },
         ],
       },
-
+      {
+        path: "view-all-teamMember",
+        element: (
+          <RouteSuspense>
+            <TeamMemberListPage />
+          </RouteSuspense>
+        ),
+      },
       {
         path: "notAccessible",
         element: (
