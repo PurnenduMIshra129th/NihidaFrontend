@@ -38,7 +38,7 @@ const TeamMemberListPage = () => {
         dateJoined={member.createdAt}
         imagePath={member?.files?.[0]?.publicFilePath || ""}
         extraImagePath={member?.files?.[1]?.publicFilePath || ""} // optional 2nd image
-        readMoreRouting="/user/view-teamMember"
+        readMoreRouting="/our-team/view-teamMember"
       />
     ))}
   </div>
