@@ -111,10 +111,9 @@ function Footer() {
                   { label: "Home", path: "/" },
                   { label: "About Us", path: "/about" },
                   { label: "Our Teams", path: "/our-team/view-all-teamMember" },
-                  { label: "Contact Us", path: "/add-contactUs" },
-                  { label: "Get Involved", path: "/get-involved" },
+                  { label: "Our Partners", path: "/user/view-all-ourPartner" },
                   { label: "Donate", path: "/donate" },
-                  { label: "Blog", path: "/blog" },
+                  { label: "Contact Us", path: "/add-contactUs" },
                 ].map((link) => (
                   <li key={link.path}>
                     <Link

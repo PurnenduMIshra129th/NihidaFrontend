@@ -6,6 +6,30 @@ import { ProtectedRoute } from "./components/HigherOrderComponent/ProtectedRoute
 import RouteSuspense from "./components/HigherOrderComponent/RouteSuspense";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
+const OurPartnerDetailByIdPage = React.lazy(
+  () => import("./pages/OurPartner/admin/OurPartnerDetailById.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const EditOurPartnerPage = React.lazy(
+  () => import("./pages/OurPartner/admin/EditOurPartner.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const AddOurPartnerPage = React.lazy(
+  () => import("./pages/OurPartner/admin/AddOurPartner.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const OurPartnerAdminDashboardPage = React.lazy(
+  () => import("./pages/OurPartner/admin/OurPartnerAdminDashboard.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const OurPartnerListPage = React.lazy(
+  () => import("./pages/OurPartner/user/ViewAllOurPartner.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const ViewOurPartnerByIdPage = React.lazy(
+  () => import("./pages/OurPartner/user/ViewOurPartnerById.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const AddContactUsPage = React.lazy(
   () => import("./pages/ContactUs/user/AddContactUs.page")
 );
@@ -526,6 +550,39 @@ export const router = createBrowserRouter([
               </RouteSuspense>
             ),
           },
+          //our partner section
+          {
+            path: "add-ourPartner",
+            element: (
+              <RouteSuspense>
+                <AddOurPartnerPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "ourPartner-dashboard",
+            element: (
+              <RouteSuspense>
+                <OurPartnerAdminDashboardPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "edit-ourPartner/:id",
+            element: (
+              <RouteSuspense>
+                <EditOurPartnerPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "view-ourPartner/:id",
+            element: (
+              <RouteSuspense>
+                <OurPartnerDetailByIdPage />
+              </RouteSuspense>
+            ),
+          },
           //contactUs section
           {
             path: "contactUs-dashboard",
@@ -770,6 +827,22 @@ export const router = createBrowserRouter([
         element: (
           <RouteSuspense>
             <AddContactUsPage />
+          </RouteSuspense>
+        ),
+      },
+      {
+        path: "user/view-ourPartner/:id",
+        element: (
+          <RouteSuspense>
+            <ViewOurPartnerByIdPage />
+          </RouteSuspense>
+        ),
+      },
+      {
+        path: "user/view-all-ourPartner",
+        element: (
+          <RouteSuspense>
+            <OurPartnerListPage />
           </RouteSuspense>
         ),
       },

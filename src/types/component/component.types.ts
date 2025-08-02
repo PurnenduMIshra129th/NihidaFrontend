@@ -4,6 +4,7 @@ import {
   IFocusActivityApiResponse,
   IGalleryApiResponse,
   INewsApiResponse,
+  IOurPartnerApiResponse,
   ISocialLinkAndCommonImageApiResponse,
   ITeamMemberApiResponse,
   IUpcomingEventApiResponse,
@@ -33,6 +34,9 @@ export interface IGalleryAdminCard extends IAdminCard {
 }
 export interface INewsAdminCard extends IAdminCard {
   data: INewsApiResponse;
+}
+export interface IOurPartnerAdminCard extends IAdminCard {
+  data: IOurPartnerApiResponse;
 }
 export interface IContactUsAdminCard extends IAdminCard {
   data: IContactUsApiResponse;
@@ -120,6 +124,16 @@ export interface IMissionSectionCard {
   routePath?: string;
 }
 export interface ICardProps {
+  textTime?: string;
+  textHeading?: string;
+  textDescription?: string;
+  imagePath?: string;
+  id?: string;
+  readMoreRouting?: string;
+  fromDate?: string | Date;
+  toDate?: string | Date;
+}
+export interface IOurPartnerCardProps {
   textTime?: string;
   textHeading?: string;
   textDescription?: string;

@@ -5,6 +5,7 @@ import {
   ISocialServicesIcon,
   MediaIcon,
   NewsIcon,
+  Partnership,
   TeamLine,
   VideoIcon,
 } from "../Icons/Icon";
@@ -84,9 +85,16 @@ const sidebarItems: ISidebarItem[] = [
   {
     title: "Contact Us",
     route: "/admin/contactUs-dashboard",
-    icon: <Help/>,
+    icon: <Help />,
     description: "Manage Raised Queries",
     key: "contactUs",
+  },
+  {
+    title: "Our Partners",
+    route: "/admin/ourPartner-dashboard",
+    icon: <Partnership />,
+    description: "Manage Our Partners",
+    key: "ourPartner",
   },
 ];
 
@@ -123,41 +131,43 @@ function AdminSidebar({
       </div>
 
       {/* Navigation Section */}
-      <nav className="flex-1 p-4 md:pt-[8rem] pt-0 space-y-2 overflow-y-auto">
-        {sidebarItems.map((item) => {
-          const isActive = checkActive(item);
-          return (
-            <Link
-              key={item.route}
-              to={item.route}
-              onClick={onClose}
-              className={`flex items-center p-3 rounded-lg transition-colors duration-200 group ${
-                isActive
-                  ? "bg-custom_orange_1 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              <div
-                className={`mr-3 ${
-                  isActive ? "text-white" : "text-custom_orange_1"
+      <div className="h-[calc(100vh-6rem)] overflow-hidden md:pt-[8rem]">
+        <nav className="h-full p-4 space-y-2 overflow-y-auto">
+          {sidebarItems.map((item) => {
+            const isActive = checkActive(item);
+            return (
+              <Link
+                key={item.route}
+                to={item.route}
+                onClick={onClose}
+                className={`flex items-center p-3 rounded-lg transition-colors duration-200 group ${
+                  isActive
+                    ? "bg-custom_orange_1 text-white"
+                    : "text-gray-700 hover:bg-gray-100"
                 }`}
               >
-                {item.icon}
-              </div>
-              <div>
-                <div className="font-medium">{item.title}</div>
                 <div
-                  className={`text-xs ${
-                    isActive ? "text-gray-200" : "text-gray-500"
+                  className={`mr-3 ${
+                    isActive ? "text-white" : "text-custom_orange_1"
                   }`}
                 >
-                  {item.description}
+                  {item.icon}
                 </div>
-              </div>
-            </Link>
-          );
-        })}
-      </nav>
+                <div>
+                  <div className="font-medium">{item.title}</div>
+                  <div
+                    className={`text-xs ${
+                      isActive ? "text-gray-200" : "text-gray-500"
+                    }`}
+                  >
+                    {item.description}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </div>
   );
 }

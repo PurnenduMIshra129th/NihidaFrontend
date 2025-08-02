@@ -4,6 +4,7 @@ import {
   ISocialServicesIcon,
   MediaIcon,
   NewsIcon,
+  Partnership,
   TeamLine,
   VideoIcon,
 } from "../../../components/Icons/Icon";
@@ -70,6 +71,12 @@ function AdminControlPanelPage() {
             route="/admin/contactUs-dashboard"
             description="Edit, view and upload contact us"
             icon={<Help />}
+          />
+          <DashboardSectionCard
+            title="Our Partner"
+            route="/admin/ourPartner-dashboard"
+            description="Edit, view and upload our partners"
+            icon={<Partnership />}
           />
         </div>
       </div>

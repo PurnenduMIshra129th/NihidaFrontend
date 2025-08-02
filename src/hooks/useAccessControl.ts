@@ -71,6 +71,11 @@ const adminRoutes = [
     "/admin/edit-video/:id",
     "/admin/view-video/:id",
 
+    "/admin/add-ourPartner",
+    "/admin/ourPartner-dashboard",
+    "/admin/edit-ourPartner/:id",
+    "/admin/view-ourPartner/:id",
+
     "/admin/contactUs-dashboard",
     "/admin/edit-contactUs/:id",
     "/admin/view-contactUs/:id",
