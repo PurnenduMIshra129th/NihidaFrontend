@@ -13,7 +13,7 @@ function BackupImagePage() {
       const token = getStorageItem("token")?.toString();
       const headers =
         token && token !== "" ? { Authorization: `Bearer ${token}` } : {};
-
+      eventBus.emit({ type: "loader_start", message: "Loading..." });
       const response = await apiClient.get(
         `optimize/download-uploads/${folderKey}`,
         {
@@ -33,6 +33,8 @@ function BackupImagePage() {
       eventBus.emit({ type: "danger", message: "Download failed." });
       // eslint-disable-next-line no-console
       console.error("File Download Error:", error);
+    } finally {
+      eventBus.emit({ type: "loader_stop", message: "Loading stop..." });
     }
   };
   const keyArray = [
