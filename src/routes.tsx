@@ -6,6 +6,10 @@ import { ProtectedRoute } from "./components/HigherOrderComponent/ProtectedRoute
 import RouteSuspense from "./components/HigherOrderComponent/RouteSuspense";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
+const BackupImagePage = React.lazy(
+  () => import("./pages/Backup/admin/BackupImage.page")
+);
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const OurPartnerDetailByIdPage = React.lazy(
   () => import("./pages/OurPartner/admin/OurPartnerDetailById.page")
 );
@@ -622,6 +626,14 @@ export const router = createBrowserRouter([
             element: (
               <RouteSuspense>
                 <PdfManagementPage />
+              </RouteSuspense>
+            ),
+          },
+          {
+            path: "backup-image",
+            element: (
+              <RouteSuspense>
+                <BackupImagePage />
               </RouteSuspense>
             ),
           },

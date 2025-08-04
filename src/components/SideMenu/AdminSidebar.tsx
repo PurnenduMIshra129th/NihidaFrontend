@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router";
 
 import {
+  BackupOutline,
   Help,
   ISocialServicesIcon,
   MediaIcon,
@@ -95,6 +96,13 @@ const sidebarItems: ISidebarItem[] = [
     icon: <Partnership />,
     description: "Manage Our Partners",
     key: "ourPartner",
+  },
+  {
+    title: "Backup Images",
+    route: "/admin/backup-image",
+    icon: <BackupOutline />,
+    description: "Take backup of images",
+    key: "backupImage",
   },
 ];
 

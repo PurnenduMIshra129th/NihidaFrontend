@@ -1,5 +1,6 @@
 import DashboardSectionCard from "../../../components/Cards/DashboardCard";
 import {
+  BackupOutline,
   Help,
   ISocialServicesIcon,
   MediaIcon,
@@ -77,6 +78,12 @@ function AdminControlPanelPage() {
             route="/admin/ourPartner-dashboard"
             description="Edit, view and upload our partners"
             icon={<Partnership />}
+          />
+          <DashboardSectionCard
+            title="Backup Image"
+            route="/admin/backup-image"
+            description="Backup Image By Folder Key"
+            icon={<BackupOutline />}
           />
         </div>
       </div>
