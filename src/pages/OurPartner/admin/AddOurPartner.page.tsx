@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
 export default function AddOurPartnerPage() {
   const handleSubmit = async (values: IOurPartnerApiPayload) => {
     await apiRequest<IOurPartnerApiResponse, IOurPartnerApiPayload>(
-      "/ourPartner/createOurPartner",
+      "/partner/createPartner",
       "POST",
       values,
       true
