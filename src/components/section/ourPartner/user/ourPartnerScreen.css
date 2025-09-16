@@ -1,0 +1,31 @@
+/* Partners Section - Circular Scroll Animation */
+
+.scroll-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.scroll-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: scroll 60s linear infinite;
+  width: max-content;
+}
+
+.partner-card {
+  flex-shrink: 0;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% / 3));
+  }
+}
+
+/* Pause animation on hover */
+.scroll-container:hover .scroll-track {
+  animation-play-state: paused;
+}

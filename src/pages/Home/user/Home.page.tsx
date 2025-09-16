@@ -23,6 +23,8 @@ const VideoScreen = React.lazy(() => import("../../../components/section/video/u
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const DonationImpactSection = React.lazy(() => import("../../../components/section/about/user/ViewImpact.screen"));
 // eslint-disable-next-line @typescript-eslint/naming-convention
+const PartnerSection = React.lazy(() => import("../../../components/section/ourPartner/user/OurPartner.screen"));
+// eslint-disable-next-line @typescript-eslint/naming-convention
 function HomePage() {
 
   return (
@@ -40,6 +42,7 @@ function HomePage() {
         <div id="news" className="w-full flex flex-col justify-center items-center scroll-mt-24"><NewsScreen /></div>
         <div id="video" className="w-full flex flex-col justify-center items-center scroll-mt-24"><VideoScreen /></div>
         <div id="donationImpact" className="w-full flex flex-col justify-center items-center scroll-mt-24"><DonationImpactSection /></div>
+        <div id="partner" className="w-full flex flex-col justify-center items-center scroll-mt-24"><PartnerSection /></div>
       </div>
     </>
   )
