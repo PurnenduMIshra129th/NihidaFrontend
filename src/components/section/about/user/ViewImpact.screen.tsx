@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 import { selectSocialLinkAndCommonImage } from "../../../../contexts/slice/socialLinkAndCommonImage.slice";
 import Image from "../../../Image/Image";
@@ -9,6 +10,7 @@ export default function DonationImpactSection() {
   const data = useSelector(selectSocialLinkAndCommonImage);
   const [index, setIndex] = useState(0);
   const intervalId = useRef<NodeJS.Timeout | null>(null);
+  const navigate = useNavigate();
 
   const getIndexHandler = (Index: number) => {
     const length = data?.[0]?.files?.length ?? 0;
@@ -93,7 +95,7 @@ export default function DonationImpactSection() {
               Every action you take echoes through lives.
             </p>
 
-            <button className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-red-500 text-white font-semibold py-4 px-10 sm:py-5 sm:px-14 rounded-full text-lg sm:text-xl transition-all duration-300 shadow-lg hover:shadow-orange-400/40 hover:scale-105 active:scale-95 transform-gpu">
+            <button className="group bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-red-500 text-white font-semibold py-4 px-10 sm:py-5 sm:px-14 rounded-full text-lg sm:text-xl transition-all duration-300 shadow-lg hover:shadow-orange-400/40 hover:scale-105 active:scale-95 transform-gpu" onClick={() => navigate('/donationForm')}>
               <span className="relative z-10">Donate</span>
               <div className="absolute inset-0 bg-white/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </button>

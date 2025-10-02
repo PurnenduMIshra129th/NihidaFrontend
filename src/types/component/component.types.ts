@@ -1,3 +1,4 @@
+import { DonationFormValues } from "../../pages/Payment/user/DonationFormPage";
 import {
   IContactUsApiResponse,
   IDocumentApiResponse,
@@ -201,4 +202,14 @@ export interface IGalleryScreenBySectionProps {
 }
 export interface IGallerySectionWithLimitNumberOfImagesProps {
   files: IFile[];
+}
+export interface IPaymentGatewayProps {
+  values: DonationFormValues;
+  showPaymentGateway: boolean;
+  setShowPaymentGateway: (value: boolean) => void;
+}
+export interface ICardDetailsScreenProps {
+  values: DonationFormValues;
+  onSuccess: ({id}: {id: string}) => void;
+  onError: (error:string) => void;
 }

@@ -246,6 +246,34 @@ export interface ILoginApiResponse {
     _id: string;
   };
 }
+export interface ICreatePaymentApiPayload {
+ amount: string;
+ currency: string
+ metadata: {
+  name: string;
+  email: string
+ }
+  name: string
+  email: string
+  message?: string
+  billingName: string
+  billingAddress: string
+  city: string
+  state: string
+  postalCode: string
+  country: string
+}
+export interface ICreatePaymentApiResponse {
+ clientSecret: string,
+ paymentIntentId: string
+ databaseId: string
+}
+export interface IUpdatePaymentApiPayload {
+ status: "requires_payment_method" | "requires_confirmation" | "requires_action" | "processing" | "requires_capture" | "canceled" | "succeeded"
+}
+export interface IUpdatePaymentApiResponse {
+ status: "requires_payment_method" | "requires_confirmation" | "requires_action" | "processing" | "requires_capture" | "canceled" | "succeeded"
+}
 export interface IGetUserApiResponse {
   _id: string;
   name: string;

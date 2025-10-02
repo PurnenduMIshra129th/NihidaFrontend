@@ -266,6 +266,10 @@ const VideoListPage = React.lazy(
 const ViewVideoByIdPage = React.lazy(
   () => import("./pages/video/user/ViewVideoById.page")
 );
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const DonationFormPage = React.lazy(
+  () => import("./pages/Payment/user/DonationFormPage")
+);
 
 export const router = createBrowserRouter([
   {
@@ -831,6 +835,14 @@ export const router = createBrowserRouter([
         element: (
           <RouteSuspense>
             <AddContactUsPage />
+          </RouteSuspense>
+        ),
+      },
+      {
+        path: "donationForm",
+        element: (
+          <RouteSuspense>
+            <DonationFormPage />
           </RouteSuspense>
         ),
       },
